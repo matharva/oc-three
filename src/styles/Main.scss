@@ -1,0 +1,65 @@
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  // border: 1px solid orange;
+  padding: 2rem;
+
+  // cross browser
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  @media screen and (max-width: 720px) {
+    padding: 0.5rem;
+    padding-bottom: 5rem;
+  }
+
+  .menu-container {
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    cursor: pointer;
+
+    @media screen and (max-width: 720px) {
+      position: relative;
+      top: 0px;
+      // left: 20px;
+      display: flex;
+      margin: 0 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-img-container {
+      margin: 0.5rem 0;
+      width: 200px;
+      display: none;
+      @media screen and (max-width: 720px) {
+        display: block;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .account-icon {
+      display: none;
+      @media screen and (max-width: 720px) {
+        display: block;
+      }
+    }
+  }
+}
+
+.marker {
+  position: absolute;
+  background-color: rgb(23, 40, 73);
+  height: 200px;
+  width: 200px;
+  top: 0;
+  border-radius: 50%;
+}

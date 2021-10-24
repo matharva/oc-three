@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Icons
 import CloseIcon from "@mui/icons-material/Close";
@@ -9,29 +10,30 @@ import Oc from "../assets/Oculus.png";
 // Styles
 import "../styles/Sidebar.scss";
 
+const menuItems = [
+  {
+    title: "Events",
+    icon: <CloseIcon />,
+    path: "events",
+  },
+  {
+    title: "Donation Drive",
+    icon: "",
+    path: "",
+  },
+  {
+    title: "Sponsors",
+    icon: "",
+    path: "",
+  },
+  {
+    title: "Contact Us",
+    icon: "",
+    path: "",
+  },
+];
+
 const Sidebar = ({ setMenu }) => {
-  const menuItems = [
-    {
-      title: "Events",
-      icon: <CloseIcon />,
-      path: "",
-    },
-    {
-      title: "Donation Drive",
-      icon: "",
-      path: "",
-    },
-    {
-      title: "Sponsors",
-      icon: "",
-      path: "",
-    },
-    {
-      title: "Contact Us",
-      icon: "",
-      path: "",
-    },
-  ];
   return (
     <div className="sidebar">
       <div className="close-icon-container">
@@ -45,10 +47,12 @@ const Sidebar = ({ setMenu }) => {
       <div className="sidebar-menu">
         {menuItems.map((item) => {
           return (
-            <div className="sidebar-menu-item">
-              <div className="sidebar-menu-item-icon"></div>
-              <div className="sidebar-menu-item-title">{item.title}</div>
-            </div>
+            <Link to={`/${item.path}`}>
+              <div className="sidebar-menu-item">
+                <div className="sidebar-menu-item-icon"></div>
+                <div className="sidebar-menu-item-title">{item.title}</div>
+              </div>
+            </Link>
           );
         })}
       </div>
