@@ -7,6 +7,7 @@
   @media screen and (max-width: 720px) {
     padding: 0;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   .event-grid {
@@ -47,6 +48,10 @@
 
       padding: 2rem;
 
+      @media screen and (max-width: 720px) {
+        padding: 0rem;
+      }
+
       .event-header {
         font-size: 2rem;
         margin: 1rem;
@@ -58,6 +63,33 @@
         color: gray;
         margin: 1rem 3rem;
       }
+      .event-img-container {
+        // margin: 0 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 70%;
+          border-radius: 50%;
+        }
+      }
+      .event-type,
+      .event-date,
+      .event-prize {
+        display: flex;
+        flex: 0.33;
+        // border: 2px solid red;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 1rem;
+        .event-text {
+          padding: 1rem 0;
+          // font-size: 1.25rem;
+          // font-weight: bold;
+        }
+      }
 
       .section-1 {
         display: flex;
@@ -65,18 +97,30 @@
         justify-content: space-around;
         width: 70%;
         margin: 1rem 0;
+
+        .event-registration {
+          span {
+            // font-weight: bold;
+            font-size: 1rem;
+          }
+          .reg-text {
+            font-size: 2rem;
+          }
+        }
       }
       .register-btn {
-        margin-top: 2rem;
+        // margin-top: 2rem;
         font-size: 1rem;
+        cursor: pointer;
         // border: 2px solid ;
-        background-color: #a4508b;
-        background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+        // background-color: #a4508b;
+        // background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+        background-color: hsl(212, 100%, 21%);
 
-        padding: 1rem;
+        padding: 1rem 2rem;
         color: white;
-        font-weight: bold;
-        border-radius: 4px;
+        // font-weight: bold;
+        border-radius: 8px;
       }
     }
 
