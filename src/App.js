@@ -1,37 +1,14 @@
-import React, { useRef, useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
-import { Physics, usePlane, useBox } from "@react-three/cannon";
-import "./styles.css";
+import React, { useRef, useEffect, useState } from "react";
 
-function Box() {
-  const [ref, api] = useBox(() => ({ mass: 1, position: [0, 2, 0] }));
-  return (
-    <mesh
-      onClick={() => {
-        api.velocity.set(0, 2, 0);
-        console.log("dard");
-      }}
-      ref={ref}
-      position={[0, 2, 0]}
-    >
-      <boxBufferGeometry attach="geometry" />
-      <meshLambertMaterial attach="material" color="hotpink" />
-    </mesh>
-  );
-}
+// Styles
+import "./styles.scss";
 
-function Plane() {
-  const [ref] = usePlane(() => ({
-    rotation: [-Math.PI / 2, 0, 0],
-  }));
-  return (
-    <mesh ref={ref} rotation={[-Math.PI / 2, 0, 0]}>
-      <planeBufferGeometry attach="geometry" args={[100, 100]} />
-      <meshLambertMaterial attach="material" color="lightblue" />
-    </mesh>
-  );
-}
+// Icons
+import MenuIcon from "@mui/icons-material/Menu";
+
+// Components
+import ThreeContainer from "./components/ThreeContainer";
+import Sidebar from "./components/Sidebar";
 
 export default function App() {
   const boxRef = useRef(null);
@@ -41,25 +18,19 @@ export default function App() {
     console.log(boxRef);
     console.log(centerRef);
   }, [boxRef, centerRef]);
+
+  const [menu, setMenu] = useState(false);
+
   return (
-    <>
-      <div className="blah"></div>
-      <div className="center-box" ref={centerRef}>
-        <Canvas>
-          <OrbitControls />
-          <Stars />
-          <ambientLight intensity={0.5} />
-          <spotLight position={[10, 15, 10]} angle={0.3} />
-          <Physics>
-            {/* <group className="" ref={boxRef}> */}
-            <Box />
-            <Box />
-            {/* </group> */}
-            <Plane />
-          </Physics>
-        </Canvas>
-        <div className="marker"></div>
+    <div className="main-container">
+      <div className="menu-container">
+        <MenuIcon onClick={() => setMenu(true)} />
       </div>
-    </>
+      {menu ? <Sidebar setMenu={setMenu} /> : null}
+      <div className="model-box" ref={centerRef}>
+        <ThreeContainer />
+        {/* <div className="marker"></div> */}
+      </div>
+    </div>
   );
 }
