@@ -1,0 +1,17 @@
+npm i firebase-tools -g
+firebase login
+firebase init
+
+4th -> Deployment without github actions
+
+firebase console -> new project
+
+select from existing projects
+
+build
+y
+n
+
+npm run build
+
+firebase deploy

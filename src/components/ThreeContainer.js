@@ -47,6 +47,14 @@ const ThreeContainer = () => {
       <Physics>
         <Box />
         <Box />
+        <Box />
+        <Box />
+        <Box />
+        <Box />
+        <Box />
+        <Box />
+        <Box />
+        <Box />
         <Plane />
       </Physics>
     </Canvas>
