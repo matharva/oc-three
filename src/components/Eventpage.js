@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory, useRouteMatch } from "react-router";
 
 // Styles
@@ -16,10 +16,20 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 // Components
 import RegisterBtn from "./RegisterBtn";
 
+import { eventDetails } from "../data";
+
 const Eventpage = ({ event }) => {
   const { url, path } = useRouteMatch();
   const history = useHistory();
   console.log(event);
+  const [tabState, setTabState] = useState(0);
+
+  function tabsContent() {
+    console.log(tabState);
+    if (tabState === 0) return event.description;
+    if (tabState === 1) return event.rules;
+    if (tabState === 2) return event.faq;
+  }
   return (
     <div className="event-container">
       <div className="event-grid">
@@ -27,38 +37,70 @@ const Eventpage = ({ event }) => {
           <ArrowBackIcon />
         </div>
         <div className="left-grid">
-          <div className="event-header">{event.name}</div>
-          <div className="event-desc">{event.description}</div>
-          <div className="section-1">
-            <div className="event-type">
-              <div className="event-img-container">
-                <img src={Technical} alt="" />
-              </div>
-              <div className="event-text">{event.category}</div>
-            </div>
-            <div className="event-date">
-              <div className="event-img-container">
-                <img src={Cal} alt="" />
-              </div>
-              <div className="event-text">{event.date}</div>
-            </div>
-            <div className="event-prize">
-              <div className="event-img-container">
-                <img src={Prize} alt="" />
-              </div>
-              <div className="event-text">{event.prizes}</div>
-            </div>
-          </div>
-          <div className="section-1">
-            <div className="event-registration">
-              Registration:
-              <div className="reg-text">
-                <span>Rs:</span>
-                {event.registration}
+          <div className="event-details-grid">
+            <div className="event-title-container">
+              <div className="event-title">Codatron++</div>
+              {/* <div className="event-subtitle">Technical</div> */}
+              <div className="event-interested">
+                <ArrowBackIcon />
               </div>
             </div>
-            <div className="register-btn">Register</div>
-            {/* <RegisterBtn /> */}
+            <div className="event-description">
+              <div className="event-tabs">
+                <div
+                  className={`event-tab-item ${tabState === 0 ? "active" : ""}`}
+                  onClick={() => setTabState(0)}
+                >
+                  Description
+                </div>
+                <div
+                  className={`event-tab-item ${tabState === 1 ? "active" : ""}`}
+                  onClick={() => setTabState(1)}
+                >
+                  Rules
+                </div>
+                <div
+                  className={`event-tab-item ${tabState === 2 ? "active" : ""}`}
+                  onClick={() => setTabState(2)}
+                >
+                  FAQ
+                </div>
+              </div>
+              {console.log(tabsContent())}
+              <div className="event-content">{tabsContent()}</div>
+              <div className="section-1">
+                <div className="event-type">
+                  <div className="event-img-container">
+                    <img src={Technical} alt="" />
+                  </div>
+                  <div className="event-text">{event.category}</div>
+                </div>
+                <div className="event-date">
+                  <div className="event-img-container">
+                    <img src={Cal} alt="" />
+                  </div>
+                  <div className="event-text">{event.date}</div>
+                </div>
+                <div className="event-prize">
+                  <div className="event-img-container">
+                    <img src={Prize} alt="" />
+                  </div>
+                  <div className="event-text">{event.prizes}</div>
+                </div>
+              </div>
+            </div>
+            <div className="event-register">
+              <div className="reg-amt">
+                <span>Registration: </span>
+                <div className="reg-text">
+                  <span>Rs:</span>
+                  {event.registration}
+                </div>
+              </div>
+              <div className="reg-btn-container">
+                <button className="reg-btn">Register</button>
+              </div>
+            </div>
           </div>
         </div>
         <div className="right-grid">
