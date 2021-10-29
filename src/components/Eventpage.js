@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory, useRouteMatch } from "react-router";
+import ShowMoreText from "react-show-more-text";
 
 // Styles
 import "../styles/Eventpage.scss";
@@ -67,7 +68,10 @@ const Eventpage = ({ event }) => {
                 </div>
               </div>
               {console.log(tabsContent())}
-              <div className="event-content">{tabsContent()}</div>
+              <div className="event-content">
+                {/* <ShowMoreText lines={6}>{tabsContent()}</ShowMoreText> */}
+                {tabsContent()}
+              </div>
               <div className="section-1">
                 <div className="event-type">
                   <div className="event-img-container">
