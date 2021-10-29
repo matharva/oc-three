@@ -17,7 +17,39 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 // Components
 import RegisterBtn from "./RegisterBtn";
 
+// External CSS
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from "react-accessible-accordion";
+// Demo styles, see 'Styles' section below for some notes on use.
+import "react-accessible-accordion/dist/fancy-example.css";
+
 import { eventDetails } from "../data";
+
+const FaqSection = ({ faq }) => {
+  return (
+    <>
+      <Accordion>
+        {faq.map((item) => {
+          return (
+            <AccordionItem style={{}}>
+              <AccordionItemHeading>
+                <AccordionItemButton>{item.question}</AccordionItemButton>
+              </AccordionItemHeading>
+              <AccordionItemPanel>
+                <p>{item.answer}</p>
+              </AccordionItemPanel>
+            </AccordionItem>
+          );
+        })}
+      </Accordion>
+    </>
+  );
+};
 
 const Eventpage = ({ event }) => {
   const { url, path } = useRouteMatch();
@@ -29,7 +61,7 @@ const Eventpage = ({ event }) => {
     console.log(tabState);
     if (tabState === 0) return event.description;
     if (tabState === 1) return event.rules;
-    if (tabState === 2) return event.faq;
+    if (tabState === 2) return <FaqSection faq={event.faq} />;
   }
   return (
     <div className="event-container">

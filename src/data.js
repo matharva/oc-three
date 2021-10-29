@@ -10,7 +10,16 @@ const eventDetails = [
       "A traditional coding contest with problem statements covering various concepts of competitive programming in two rounds with elimination in the first round. Winners of Codatron++ Round 1, OCL: Search For Skywalker and OCL: Code Wars compete in this final round A traditional coding contest with problem statements covering various concepts of competitive programming in two rounds with elimination in the first round. Winners of Codatron++ Round 1, OCL: Search For Skywalker and OCL: Code Wars compete in this final round A traditional coding contest with problem statements covering various concepts of competitive programming in two rounds with elimination in the first round. Winners of Codatron++ Round 1, OCL: Search For Skywalker and OCL: Code Wars compete in this final round A traditional coding contest with problem statements covering various concepts of competitive programming in two rounds with elimination in the first round. Winners of Codatron++ Round 1, OCL: Search For Skywalker and OCL: Code Wars compete in this final round A traditional coding contest with problem statements covering various concepts of competitive programming in two rounds with elimination in the first round. Winners of Codatron++ Round 1, OCL: Search For Skywalker and OCL: Code Wars compete in this final round A traditional coding contest with problem statements covering various concepts of competitive programming in two rounds with elimination in the first round. Winners of Codatron++ Round 1, OCL: Search For Skywalker and OCL: Code Wars compete in this final round",
     path: "codatron",
     rules: "rules",
-    faq: "faq",
+    faq: [
+      {
+        question: "Question",
+        answer: "answer",
+      },
+      {
+        question: "Question",
+        answer: "answer",
+      },
+    ],
   },
 ];
 
