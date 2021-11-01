@@ -15,9 +15,6 @@ import Prize from "../assets/prize.jpg";
 // Icons
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-// Components
-import RegisterBtn from "./RegisterBtn";
-
 // External CSS
 import {
   Accordion,
@@ -30,7 +27,7 @@ import {
 import "react-accessible-accordion/dist/fancy-example.css";
 
 import { eventDetails } from "../data";
-import RegistrationModal from "./RegistrationModal";
+import RegistrationModal from "../components/RegistrationModal";
 
 const FaqSection = ({ faq }) => {
   return (

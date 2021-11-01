@@ -129,10 +129,10 @@ const RegistrationModal = ({ isOpen, setIsOpen }) => {
         <div className="cross-child" onClick={() => setIsOpen(false)}>
           <CloseIcon style={isMobile || true ? {} : { color: "white" }} />
         </div>
-        {/* {false ? <SinglePlayer /> : <MultiplePlayers />} */}
-        {/* {isRegistered} */}
+        {/* {!isRegistered && isSinglePlayer  ? <SinglePlayer /> : <MultiplePlayers />} */}
 
-        {true && <TeamModal />}
+        {/* {isRegistered && <TeamModal />} */}
+        <TeamModal />
       </Modal>
     </div>
   );

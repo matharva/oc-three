@@ -11,8 +11,8 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Oc from "../assets/Oculus.png";
 
 // Components
-import ThreeContainer from "./ThreeContainer";
-import Sidebar from "./Sidebar";
+import ThreeContainer from "../components/ThreeContainer";
+import Sidebar from "../components/Sidebar";
 
 const Main = () => {
   const boxRef = useRef(null);
