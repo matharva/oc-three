@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 
 // Icons
 import MenuIcon from "@mui/icons-material/Menu";
@@ -12,13 +13,14 @@ import Sidebar from "../components/Sidebar";
 
 const MobileNav = () => {
   const [menu, setMenu] = useState(false);
+  const history = useHistory();
   return (
     <>
       <div className="navbar-mobile">
         <div className="navbar-menu">
           <MenuIcon onClick={() => setMenu(true)} />
         </div>
-        <div className="nav-logo">
+        <div className="nav-logo" onClick={() => history.push("/")}>
           <img src={Oc} alt="" />
         </div>
         <div className="account">

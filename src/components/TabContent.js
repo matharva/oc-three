@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ThreeDCard from "./ThreeDCard";
+import { useHistory } from "react-router";
 // import cardImage from "./assets/card-image.jpg";
 
 const tabContentVariant = {
@@ -34,27 +35,35 @@ const cardVariant = {
 
 const cards = ["Yosemite", "New York", "Chicago", "Miami"];
 
-const TabContent = ({ id, active }) => (
-  <motion.div
-    role="tabpanel"
-    id={id}
-    className="tab-content"
-    variants={tabContentVariant}
-    animate={active ? "active" : "inactive"}
-    initial="inactive"
-  >
-    <div className="cards">
-      {cards.map((item, index) => (
-        <motion.div key={index} variants={cardVariant} className="content-card">
-          {/* <img src={""} alt="view of mountain" />
+const TabContent = ({ id, active }) => {
+  const history = useHistory();
+  return (
+    <motion.div
+      role="tabpanel"
+      id={id}
+      className="tab-content"
+      variants={tabContentVariant}
+      animate={active ? "active" : "inactive"}
+      initial="inactive"
+    >
+      <div className="cards">
+        {cards.map((item, index) => (
+          <motion.div
+            key={index}
+            variants={cardVariant}
+            className="content-card"
+            onClick={() => history.push(`/events/codatron`)}
+          >
+            {/* <img src={""} alt="view of mountain" />
           <div className="info">
-            <h3>{`${item}`} - From $800</h3>
-          </div> */}
-          <ThreeDCard />
-        </motion.div>
-      ))}
-    </div>
-  </motion.div>
-);
+          <h3>{`${item}`} - From $800</h3>
+        </div> */}
+            <ThreeDCard />
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
 
 export default TabContent;

@@ -19,17 +19,17 @@ const menuItems = [
   {
     title: "Donation Drive",
     icon: "",
-    path: "",
+    path: "donation-drive",
   },
   {
     title: "Sponsors",
     icon: "",
-    path: "",
+    path: "sponsors",
   },
   {
     title: "Contact Us",
     icon: "",
-    path: "",
+    path: "contact",
   },
 ];
 

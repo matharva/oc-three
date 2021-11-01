@@ -27,28 +27,9 @@ import {
 import "react-accessible-accordion/dist/fancy-example.css";
 
 import { eventDetails } from "../data";
+// Components
+import FaqSection from "../components/FaqSection";
 import RegistrationModal from "../components/RegistrationModal";
-
-const FaqSection = ({ faq }) => {
-  return (
-    <>
-      <Accordion>
-        {faq.map((item) => {
-          return (
-            <AccordionItem style={{}}>
-              <AccordionItemHeading>
-                <AccordionItemButton>{item.question}</AccordionItemButton>
-              </AccordionItemHeading>
-              <AccordionItemPanel>
-                <p>{item.answer}</p>
-              </AccordionItemPanel>
-            </AccordionItem>
-          );
-        })}
-      </Accordion>
-    </>
-  );
-};
 
 const Eventpage = ({ event }) => {
   const { url, path } = useRouteMatch();

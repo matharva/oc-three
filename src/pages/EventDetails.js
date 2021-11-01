@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, useRouteMatch, useHistory } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 // Styles
 import "../styles/EventDetails.scss";
-
-// Assets
-import Oc from "../assets/Oculus.png";
 
 // Components
 import MobileNav from "../components/MobileNav";
@@ -17,37 +14,21 @@ import TabComponent from "../components/TabComponent";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import { motion } from "framer-motion";
-
-const MobileEvents = () => {
-  return (
-    <div className="mobile-container">
-      <TabComponent tabs={tabs} />
-    </div>
-  );
-};
-
-const DesktopEvents = () => {
-  return (
-    <div className="desktop-container">
-      <TabComponent tabs={tabs} />
-    </div>
-  );
-};
+import Footer from "../components/Footer";
 
 const EventDetails = () => {
-  const { url, path } = useRouteMatch();
-  const history = useHistory();
-
-  console.log(url, path);
+  const { url } = useRouteMatch();
 
   return (
     <div>
       <MobileNav />
       <DesktopNav />
 
-      <MobileEvents />
-      <DesktopEvents />
+      <div className="tabs-container">
+        <TabComponent tabs={tabs} />
+      </div>
+
+      <Footer />
 
       <Link to="/">back </Link>
       <Link to={`${url}/codatron`}>Link to codatron here</Link>

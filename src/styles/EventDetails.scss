@@ -10,7 +10,12 @@
   padding: 0 1.5rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 
+  .navbar-menu {
+    cursor: pointer;
+  }
+
   .nav-logo {
+    cursor: pointer;
     width: 200px;
 
     img {
@@ -52,16 +57,7 @@
   }
 }
 
-.mobile-container {
-  @media screen and (min-width: 720px) {
-    display: none;
-  }
-}
-
-.desktop-container {
-  @media screen and (max-width: 720px) {
-    display: none;
-  }
+.tabs-container {
   max-width: 1270px;
   margin: 0 auto;
 }

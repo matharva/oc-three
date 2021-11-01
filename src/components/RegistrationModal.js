@@ -110,8 +110,6 @@ const RegistrationModal = ({ isOpen, setIsOpen }) => {
       left: "50%",
       right: "auto",
       bottom: "auto",
-      // marginRight: "-50%",
-      // border: "2px solid red",
       padding: 0,
       transform: "translate(-50%, -50%)",
       height: "50vh",
