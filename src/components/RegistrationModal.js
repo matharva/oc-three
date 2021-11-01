@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import "../styles/RegistrationModal.scss";
+import Oc from "../assets/tech.png";
 
 // Icons
 import CloseIcon from "@mui/icons-material/Close";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const MultiplePlayers = () => {
   return (
@@ -34,6 +36,55 @@ const SinglePlayer = () => {
         dashboard!
       </p>
       <button>Pay</button>
+    </div>
+  );
+};
+
+const TeamModal = () => {
+  return (
+    <div className="team-modal">
+      <h1>Team Code: #75948023</h1>
+      <div className="team-members">
+        <div className="team-member-items">
+          <div className="team-member-item-img-container">
+            <img src={Oc} alt="" />
+          </div>
+          <div className="items-info">
+            <div className="team-member-item-name">Bhushan</div>
+            <div className="team-member-item-email">bhushan@bhushan.com</div>
+          </div>
+        </div>
+        <div className="team-member-items">
+          <div className="team-member-item-img-container">
+            <img src={Oc} alt="" />
+          </div>
+          <div className="items-info">
+            <div className="team-member-item-name">Bhushan</div>
+            <div className="team-member-item-email">bhushan@bhushan.com</div>
+          </div>
+        </div>
+        <div className="team-member-items">
+          <div className="team-member-item-img-container">
+            <img src={Oc} alt="" />
+          </div>
+          <div className="items-info">
+            <div className="team-member-item-name">Bhushan</div>
+            <div className="team-member-item-email">bhushan@bhushan.com</div>
+          </div>
+        </div>
+        <div className="team-member-items">
+          <div className="team-member-item-img-container">
+            <img src={Oc} alt="" />
+          </div>
+          <div className="items-info">
+            <div className="team-member-item-name">Bhushan</div>
+            <div className="team-member-item-email">bhushan@bhushan.com</div>
+          </div>
+        </div>
+      </div>
+      <button>
+        <WhatsAppIcon style={{ color: "#25D366" }} /> Join on WhatsApp
+      </button>
     </div>
   );
 };
@@ -76,9 +127,12 @@ const RegistrationModal = ({ isOpen, setIsOpen }) => {
         contentLabel="Example Modal"
       >
         <div className="cross-child" onClick={() => setIsOpen(false)}>
-          <CloseIcon style={isMobile ? {} : { color: "white" }} />
+          <CloseIcon style={isMobile || true ? {} : { color: "white" }} />
         </div>
-        {false ? <SinglePlayer /> : <MultiplePlayers />}
+        {/* {false ? <SinglePlayer /> : <MultiplePlayers />} */}
+        {/* {isRegistered} */}
+
+        {true && <TeamModal />}
       </Modal>
     </div>
   );

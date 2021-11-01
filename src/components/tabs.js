@@ -10,7 +10,7 @@ const tabs = [
     title: "Technical",
     id: "flights",
     icon: tech,
-    color: "#63a7c7",
+    color: "linear-gradient(to right, #ff4b2b, #ff416c)",
     content: TabContent,
   },
   {
