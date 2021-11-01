@@ -33,10 +33,18 @@ const cardVariant = {
   },
 };
 
-const cards = ["Yosemite", "New York", "Chicago", "Miami"];
+const cards = [
+  "Yosemite",
+  "New York",
+  "Chicago",
+  "Miami",
+  // "sfvdggfd",
+  // "fdasfgdfsd",
+];
 
 const TabContent = ({ id, active }) => {
   const history = useHistory();
+  console.log("dard", id);
   return (
     <motion.div
       role="tabpanel"
@@ -52,7 +60,6 @@ const TabContent = ({ id, active }) => {
             key={index}
             variants={cardVariant}
             className="content-card"
-            onClick={() => history.push(`/events/codatron`)}
           >
             {/* <img src={""} alt="view of mountain" />
           <div className="info">
