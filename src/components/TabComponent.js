@@ -79,7 +79,7 @@ const TabComponent = ({ tabs, defaultIndex = 0 }) => {
             >
               <a href={`#${tab.id}`} onClick={() => onTabClick(index)}>
                 {/* {tab.icon} */}
-                <div className="img-container">
+                <div className="img-icon-container">
                   <img src={tab.icon} alt="" />
                 </div>
                 <motion.span variants={tabTextVariant}>{tab.title}</motion.span>

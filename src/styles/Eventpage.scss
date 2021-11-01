@@ -140,7 +140,8 @@
             &.active {
               color: white;
               border-radius: 10px;
-              background: var(--oc-btn-colour);
+              background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+              background: linear-gradient(to right, #ff4b2b, #ff416c);
             }
           }
         }
@@ -241,9 +242,11 @@
 
           .reg-btn {
             cursor: pointer;
-            background: var(--oc-btn-colour);
+            // background: var(--oc-btn-colour);
+            background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
             padding: 1rem 2rem;
-            border-radius: 8px;
+            border-radius: 50px;
             color: white;
             // font-weight: bold;
             font-size: 1.1rem;

@@ -1,0 +1,121 @@
+.modal-grid {
+  display: grid;
+  @media screen and (max-width: 720px) {
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "one"
+      "two";
+  }
+  @media screen and (min-width: 720px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "one two";
+  }
+  height: 100%;
+
+  .section-one {
+    grid-area: one;
+    //   border: 2px solid yellowgreen;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    div {
+      font-weight: bold;
+      font-size: 2rem;
+    }
+
+    input {
+      padding: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    button {
+      cursor: pointer;
+      background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+      background: linear-gradient(to right, #ff4b2b, #ff416c);
+      border-radius: 50px;
+      padding: 1rem 3rem;
+      border: 1px solid white;
+      color: white;
+      // font-weight: 600;
+      font-size: 1.1rem;
+    }
+  }
+
+  .section-two {
+    grid-area: two;
+    //   border: 2px solid dodgerblue;
+    background-color: hsl(350, 100%, 93%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    //   display: none;
+
+    button {
+      cursor: pointer;
+      background: transparent;
+      border-radius: 50px;
+      padding: 1rem 1.5rem;
+      border: 1px solid white;
+      color: white;
+      // font-weight: 600;
+      font-size: 1.2rem;
+
+      &:active {
+        outline: none;
+      }
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: white;
+      // font-weight: bold;
+      text-align: center;
+      width: 70%;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.modal-grid-one {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  button {
+    cursor: pointer;
+    background: transparent;
+    border-radius: 50px;
+    padding: 1rem 3rem;
+    border: 1px solid white;
+    color: white;
+    // font-weight: 600;
+    font-size: 1.2rem;
+
+    &:active {
+      outline: none;
+    }
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: white;
+    // font-weight: bold;
+    text-align: center;
+    width: 70%;
+    margin-bottom: 1rem;
+  }
+}
+
+.cross-child {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}

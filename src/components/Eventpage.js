@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, useRouteMatch } from "react-router";
 import ShowMoreText from "react-show-more-text";
+import Modal from "react-modal";
 
 // Styles
 import "../styles/Eventpage.scss";
@@ -29,6 +30,7 @@ import {
 import "react-accessible-accordion/dist/fancy-example.css";
 
 import { eventDetails } from "../data";
+import RegistrationModal from "./RegistrationModal";
 
 const FaqSection = ({ faq }) => {
   return (
@@ -56,6 +58,7 @@ const Eventpage = ({ event }) => {
   const history = useHistory();
   console.log(event);
   const [tabState, setTabState] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   function tabsContent() {
     console.log(tabState);
@@ -63,6 +66,7 @@ const Eventpage = ({ event }) => {
     if (tabState === 1) return event.rules;
     if (tabState === 2) return <FaqSection faq={event.faq} />;
   }
+
   return (
     <div className="event-container">
       <div className="event-grid">
@@ -74,9 +78,9 @@ const Eventpage = ({ event }) => {
             <div className="event-title-container">
               <div className="event-title">Codatron++</div>
               {/* <div className="event-subtitle">Technical</div> */}
-              <div className="event-interested">
+              {/* <div className="event-interested">
                 <ArrowBackIcon />
-              </div>
+              </div> */}
             </div>
             <div className="event-description">
               <div className="event-tabs">
@@ -134,10 +138,13 @@ const Eventpage = ({ event }) => {
                 </div>
               </div>
               <div className="reg-btn-container">
-                <button className="reg-btn">Register</button>
+                <button className="reg-btn" onClick={() => setIsOpen(true)}>
+                  Register
+                </button>
               </div>
             </div>
           </div>
+          <RegistrationModal isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
         <div className="right-grid">
           <div className="img-container">
