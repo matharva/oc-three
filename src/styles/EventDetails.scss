@@ -51,3 +51,48 @@
     }
   }
 }
+
+.mobile-container {
+  @media screen and (min-width: 720px) {
+    display: none;
+  }
+}
+
+.desktop-container {
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
+}
+
+.event-category-row {
+  // border: 2px solid red;
+  // width: 80%;
+
+  max-width: 1270px;
+  margin: 0 auto;
+  &-title {
+    margin-left: 3rem;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  &-cards {
+    // border: 2px solid orange;
+    // width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    // justify-content: space-evenly;
+    overflow: auto;
+    overflow-y: hidden;
+    padding: 0 1rem;
+  }
+}
+
+// @keyframes slide-color {
+//   from {
+//     background: none;
+//   }
+//   to {
+//     background: red;
+//   }
+// }

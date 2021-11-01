@@ -13,6 +13,15 @@ import Oc from "../assets/Oculus.png";
 
 // Components
 import Sidebar from "./Sidebar";
+import ThreeDCard from "./ThreeDCard";
+import tabs from "./tabs";
+import TabComponent from "./TabComponent";
+
+// External Components
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+import { motion } from "framer-motion";
 
 const MobileNav = () => {
   const [menu, setMenu] = useState(false);
@@ -74,6 +83,32 @@ const DesktopNav = () => {
   );
 };
 
+const MobileEvents = () => {
+  return (
+    <div className="mobile-container">
+      <TabComponent tabs={tabs} />
+    </div>
+  );
+};
+
+const DesktopEvents = () => {
+  return (
+    <div className="desktop-container">
+      <div className="event-category-row">
+        <div className="event-category-row-title">Tech Events</div>
+        <div className="event-category-row-cards">
+          <OwlCarousel className="owl-theme">
+            <ThreeDCard />
+            <ThreeDCard />
+            <ThreeDCard />
+            <ThreeDCard />
+          </OwlCarousel>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const EventDetails = () => {
   const { url, path } = useRouteMatch();
   const history = useHistory();
@@ -85,6 +120,10 @@ const EventDetails = () => {
       <MobileNav />
       <DesktopNav />
       <div className="">All Events</div>
+
+      <MobileEvents />
+      <DesktopEvents />
+
       <Link to="/">back </Link>
       <Link to={`${url}/codatron`}>Link to codatron here</Link>
     </div>

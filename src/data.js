@@ -19,6 +19,14 @@ const eventDetails = [
         question: "Question",
         answer: "answer",
       },
+      {
+        question: "Question",
+        answer: "answer",
+      },
+      {
+        question: "Question",
+        answer: "answer",
+      },
     ],
   },
 ];
