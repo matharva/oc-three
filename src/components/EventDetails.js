@@ -94,7 +94,7 @@ const MobileEvents = () => {
 const DesktopEvents = () => {
   return (
     <div className="desktop-container">
-      <div className="event-category-row">
+      {/* <div className="event-category-row">
         <div className="event-category-row-title">Tech Events</div>
         <div className="event-category-row-cards">
           <OwlCarousel className="owl-theme">
@@ -104,7 +104,8 @@ const DesktopEvents = () => {
             <ThreeDCard />
           </OwlCarousel>
         </div>
-      </div>
+      </div> */}
+      <TabComponent tabs={tabs} />
     </div>
   );
 };
@@ -119,7 +120,6 @@ const EventDetails = () => {
     <div>
       <MobileNav />
       <DesktopNav />
-      <div className="">All Events</div>
 
       <MobileEvents />
       <DesktopEvents />

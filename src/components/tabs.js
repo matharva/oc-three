@@ -3,40 +3,42 @@ import React from "react";
 import { ReactComponent as House } from "../assets/house.svg";
 import TabContent from "./TabContent";
 
+import tech from "../assets/tech.png";
+
 const tabs = [
   {
     title: "Technical",
     id: "flights",
-    icon: <House />,
-    color: "#5d5dff",
+    icon: tech,
+    color: "#63a7c7",
     content: TabContent,
   },
   {
     title: "Fun",
     id: "hotels",
-    icon: <House />,
-    color: "#67bb67",
+    icon: tech,
+    color: "#63a7c7",
     content: TabContent,
   },
   {
     title: "Pronites",
     id: "reservations",
-    icon: <House />,
+    icon: tech,
     color: "#63a7c7",
     content: TabContent,
   },
   {
     title: "Pre-events",
     id: "offers",
-    icon: <House />,
-    color: "#f56868",
+    icon: tech,
+    color: "#63a7c7",
     content: TabContent,
   },
   {
     title: "Cultural",
     id: "offers",
-    icon: <House />,
-    color: "#f56868",
+    icon: tech,
+    color: "#63a7c7",
     content: TabContent,
   },
 ];

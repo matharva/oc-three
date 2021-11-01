@@ -14,7 +14,7 @@
   // border: 2px dodgerblue solid;
   margin: 0 auto 20px;
   list-style: none;
-  // max-width: 300px;
+  // max-width: 500px;
   display: flex;
   justify-content: space-between;
 }
@@ -66,10 +66,17 @@
 }
 
 .tab a {
-  padding: 16px;
+  padding: 0.5rem;
   display: flex;
+  // border: 2px solid dodgerblue;
   align-items: center;
-  font-size: 20px;
+  justify-content: center;
+  // justify-content: start;
+
+  font-size: 16px;
+  @media screen and (min-width: 720px) {
+    font-size: 2rem;
+  }
   overflow: hidden;
   position: relative;
 }
@@ -83,6 +90,10 @@
 
 .content-card {
   width: 48%;
+
+  @media screen and (min-width: 720px) {
+    width: 33%;
+  }
   margin-bottom: 26px;
 }
 
@@ -106,4 +117,15 @@
 
 .content-card .info {
   padding: 10px 0;
+}
+
+.img-container {
+  @media screen and (min-width: 720px) {
+    width: 60px;
+  }
+  width: 30px;
+  img {
+    width: 100%;
+    border-radius: 50%;
+  }
 }
