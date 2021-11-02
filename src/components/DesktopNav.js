@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 // Assets
 import Oc from "../assets/Oculus.png";
@@ -24,9 +24,10 @@ const navbarItems = [
 ];
 
 const DesktopNav = () => {
+  const history = useHistory();
   return (
     <div className="navbar-desktop">
-      <div className="nav-logo">
+      <div className="nav-logo" onClick={() => history.push("/")}>
         <img src={Oc} alt="" />
       </div>
       <div className="nav-items">

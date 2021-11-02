@@ -1,0 +1,37 @@
+.sponsor-main {
+  max-width: 1024px;
+  margin: 0 auto;
+  text-align: center;
+  .title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 3rem 0;
+  }
+
+  .sponsor-img-container {
+    // border: 2px solid red;
+    width: 70%;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .sponsor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .sponsor-item {
+      margin: 3rem 1rem;
+      .sponsor-img-container {
+        width: 80%;
+        margin: 0 auto;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
