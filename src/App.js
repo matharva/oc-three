@@ -19,10 +19,10 @@ export default function App() {
             <Main />
           </Route>
           <Route path="/events/:eventName">
-            <Eventpage event={eventDetails[0]} />
+            <EventDetails event={eventDetails[0]} />
           </Route>
           <Route path="/events">
-            <EventDetails />
+            <Eventpage />
           </Route>
           <Route path="/sponsors">
             <Sponsors />
