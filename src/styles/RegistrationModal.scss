@@ -207,3 +207,51 @@
     }
   }
 }
+
+.payment-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+
+  p {
+    // width: 70%;
+    text-align: center;
+    margin: 2rem 0;
+    // border: 2px solid dodgerblue;
+  }
+
+  .payment-title {
+    display: flex;
+    align-items: center;
+
+    .payment-img-container {
+      width: 50px;
+      margin-right: 1rem;
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+    h1 {
+      @media screen and (max-width: 720px) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .team-details-btn {
+    cursor: pointer;
+    border: 0;
+    // background: var(--oc-btn-colour);
+    // background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+    background: #1eb159;
+    // background: linear-gradient(to right, #ff4b2b, #ff416c);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    color: white;
+    // font-weight: bold;
+    font-size: 1.1rem;
+  }
+}

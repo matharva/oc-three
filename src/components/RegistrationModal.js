@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import "../styles/RegistrationModal.scss";
+
+// Assets
 import Oc from "../assets/tech.png";
+import Payment from "../assets/done.jpg";
 
 // Icons
 import CloseIcon from "@mui/icons-material/Close";
@@ -89,8 +92,30 @@ const TeamModal = () => {
   );
 };
 
+const PaymentSuccessful = ({ setIsRegistered }) => {
+  return (
+    <div className="payment-grid">
+      <div className="payment-title">
+        <div className="payment-img-container">
+          <img src={Payment} alt="" />
+        </div>
+        <h1>Successful Payment</h1>
+      </div>
+      <p>Your payement for event codewars was successfully completed</p>
+      <button
+        className="team-details-btn"
+        onClick={() => setIsRegistered(true)}
+      >
+        Team Details
+      </button>
+    </div>
+  );
+};
+
 const RegistrationModal = ({ isOpen, setIsOpen }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [isPaymentSuccess, setIsPaymentSuccess] = useState(true);
   useEffect(() => {
     if (window.innerWidth > 720) {
       setIsMobile(false);
@@ -129,8 +154,10 @@ const RegistrationModal = ({ isOpen, setIsOpen }) => {
         </div>
         {/* {!isRegistered && isSinglePlayer  ? <SinglePlayer /> : <MultiplePlayers />} */}
 
-        {/* {isRegistered && <TeamModal />} */}
-        <TeamModal />
+        {isRegistered && <TeamModal />}
+        {isPaymentSuccess && (
+          <PaymentSuccessful setIsRegistered={setIsRegistered} />
+        )}
       </Modal>
     </div>
   );
