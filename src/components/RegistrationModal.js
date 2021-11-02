@@ -10,7 +10,7 @@ import Payment from "../assets/done.jpg";
 import CloseIcon from "@mui/icons-material/Close";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
-const MultiplePlayers = () => {
+const MultiplePlayers = ({ setIsPaymentSuccess }) => {
   return (
     <>
       <div className="modal-grid">
@@ -31,7 +31,7 @@ const MultiplePlayers = () => {
   );
 };
 
-const SinglePlayer = () => {
+const SinglePlayer = ({ setIsPaymentSuccess }) => {
   return (
     <div className="modal-grid-one">
       <p>
@@ -62,8 +62,10 @@ const TeamModal = () => {
             <img src={Oc} alt="" />
           </div>
           <div className="items-info">
-            <div className="team-member-item-name">Bhushan</div>
-            <div className="team-member-item-email">bhushan@bhushan.com</div>
+            <div className="team-member-item-name">Atharva Mohite</div>
+            <div className="team-member-item-email">
+              atharvamohite20@gmail.com
+            </div>
           </div>
         </div>
         <div className="team-member-items">
@@ -86,7 +88,8 @@ const TeamModal = () => {
         </div>
       </div>
       <button>
-        <WhatsAppIcon style={{ color: "#25D366" }} /> Join on WhatsApp
+        <WhatsAppIcon style={{ color: "white" }} />
+        Join on WhatsApp
       </button>
     </div>
   );
@@ -137,7 +140,7 @@ const RegistrationModal = ({ isOpen, setIsOpen }) => {
       bottom: "auto",
       padding: 0,
       transform: "translate(-50%, -50%)",
-      height: "50vh",
+      height: "60vh",
       width: `${!isMobile ? "50vw" : "90vw"}`,
     },
   };
@@ -153,10 +156,13 @@ const RegistrationModal = ({ isOpen, setIsOpen }) => {
           <CloseIcon style={isMobile || true ? {} : { color: "white" }} />
         </div>
         {/* {!isRegistered && isSinglePlayer  ? <SinglePlayer /> : <MultiplePlayers />} */}
-
-        {isRegistered && <TeamModal />}
-        {isPaymentSuccess && (
-          <PaymentSuccessful setIsRegistered={setIsRegistered} />
+        {/* <MultiplePlayers /> */}
+        {isRegistered ? (
+          <TeamModal />
+        ) : (
+          isPaymentSuccess && (
+            <PaymentSuccessful setIsRegistered={setIsRegistered} />
+          )
         )}
       </Modal>
     </div>

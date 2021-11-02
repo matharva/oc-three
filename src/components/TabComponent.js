@@ -83,7 +83,12 @@ const TabComponent = ({ tabs, defaultIndex = 0 }) => {
                 <div className="img-icon-container">
                   <img src={tab.icon} alt="" />
                 </div>
-                <motion.span variants={tabTextVariant}>{tab.title}</motion.span>
+                <motion.span
+                  variants={tabTextVariant}
+                  style={index === activeTabIndex ? {} : { color: "white" }}
+                >
+                  {tab.title}
+                </motion.span>
               </a>
             </motion.li>
           ))}

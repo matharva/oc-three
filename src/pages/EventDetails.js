@@ -18,7 +18,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 // Components
 import FaqSection from "../components/FaqSection";
 import RegistrationModal from "../components/RegistrationModal";
-
+import MobileNav from "../components/MobileNav";
+import DesktopNav from "../components/DesktopNav";
 const Description = ({ event }) => {
   return (
     <>
@@ -65,67 +66,83 @@ const EventDetails = ({ event }) => {
   }
 
   return (
-    <div className="event-container">
-      <div className="event-grid">
-        <div className="back-container" onClick={() => history.goBack()}>
-          <ArrowBackIcon />
-        </div>
-        <div className="left-grid">
-          <div className="event-details-grid">
-            <div className="event-title-container">
-              <div className="event-title">Codatron++</div>
-              {/* <div className="event-subtitle">Technical</div> */}
-              {/* <div className="event-interested">
+    <>
+      {/* {window.innerWidth > 720 ? (
+        <>
+          <MobileNav />
+          <DesktopNav />
+        </>
+      ) : null} */}
+      <DesktopNav />
+      <div className="event-container">
+        <MobileNav />
+        <div className="event-grid">
+          <div className="back-container" onClick={() => history.goBack()}>
+            <ArrowBackIcon />
+          </div>
+          <div className="left-grid">
+            <div className="event-details-grid">
+              <div className="event-title-container">
+                <div className="event-title">Codatron++</div>
+                {/* <div className="event-subtitle">Technical</div> */}
+                {/* <div className="event-interested">
                 <ArrowBackIcon />
               </div> */}
-            </div>
-            <div className="event-description">
-              <div className="event-tabs">
-                <div
-                  className={`event-tab-item ${tabState === 0 ? "active" : ""}`}
-                  onClick={() => setTabState(0)}
-                >
-                  Description
+              </div>
+              <div className="event-description">
+                <div className="event-tabs">
+                  <div
+                    className={`event-tab-item ${
+                      tabState === 0 ? "active" : ""
+                    }`}
+                    onClick={() => setTabState(0)}
+                  >
+                    Description
+                  </div>
+                  <div
+                    className={`event-tab-item ${
+                      tabState === 1 ? "active" : ""
+                    }`}
+                    onClick={() => setTabState(1)}
+                  >
+                    Rules
+                  </div>
+                  <div
+                    className={`event-tab-item ${
+                      tabState === 2 ? "active" : ""
+                    }`}
+                    onClick={() => setTabState(2)}
+                  >
+                    FAQ
+                  </div>
                 </div>
-                <div
-                  className={`event-tab-item ${tabState === 1 ? "active" : ""}`}
-                  onClick={() => setTabState(1)}
-                >
-                  Rules
+                <div className="event-content">{tabsContent(event)}</div>
+              </div>
+              <div className="event-register">
+                <div className="reg-amt">
+                  <span>Registration: </span>
+                  <div className="reg-text">
+                    <span>Rs:</span>
+                    {event.registration}
+                  </div>
                 </div>
-                <div
-                  className={`event-tab-item ${tabState === 2 ? "active" : ""}`}
-                  onClick={() => setTabState(2)}
-                >
-                  FAQ
+                <div className="reg-btn-container">
+                  <button className="reg-btn" onClick={() => setIsOpen(true)}>
+                    Register
+                  </button>
                 </div>
               </div>
-              <div className="event-content">{tabsContent(event)}</div>
             </div>
-            <div className="event-register">
-              <div className="reg-amt">
-                <span>Registration: </span>
-                <div className="reg-text">
-                  <span>Rs:</span>
-                  {event.registration}
-                </div>
-              </div>
-              <div className="reg-btn-container">
-                <button className="reg-btn" onClick={() => setIsOpen(true)}>
-                  Register
-                </button>
-              </div>
-            </div>
+            <RegistrationModal isOpen={isOpen} setIsOpen={setIsOpen} />
           </div>
-          <RegistrationModal isOpen={isOpen} setIsOpen={setIsOpen} />
-        </div>
-        <div className="right-grid">
-          <div className="img-container">
-            <img src={CodeWars} alt="" />
+          <div className="right-grid">
+            <div className="img-container">
+              <img src={CodeWars} alt="" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

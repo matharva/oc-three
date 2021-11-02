@@ -3,10 +3,6 @@ import { motion } from "framer-motion";
 import ThreeDCard from "./ThreeDCard";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-// import cardImage from "./assets/card-image.jpg";
-
-// Assets
-import Codewars from "../assets/Codewars.jpg";
 
 const tabContentVariant = {
   active: {

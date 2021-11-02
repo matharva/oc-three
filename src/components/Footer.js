@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router";
 
 // Assets
-import Oc from "../assets/Oculus.png";
+import Download from "../assets/android-download.png";
 
 // Styles
 import "../styles/Footer.scss";
@@ -21,19 +21,15 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-left">
         <div className="footer-logo" onClick={() => history.push("/")}>
-          <img src={Oc} alt="" />
-        </div>
-        <div className="footer-title">SARDAR PATEL INSTITUTE OF TECHNOLOGY</div>
-        <div className="footer-subtitle">
-          Munshi Nagar, Andheri(W), Mumbai-400058
+          <img src={Download} alt="" />
         </div>
       </div>
-      <div className="footer-middle">
+      {/*<div className="footer-middle">
         <div className="footer-nav-item">Events</div>
         <div className="footer-nav-item">Donation Drive</div>
         <div className="footer-nav-item">Sponsors</div>
         <div className="footer-nav-item">Download App</div>
-      </div>
+      </div> */}
       <div className="footer-right">
         <div className="footer-text1">Contact Us</div>
         <div className="footer-text2">+9187654321, +9187654321</div>

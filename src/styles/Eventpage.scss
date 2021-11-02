@@ -147,6 +147,15 @@
         .event-content {
           // border: 2px solid purple;
           grid-area: content-space;
+          @media screen and (max-width: 1600px) {
+            height: 275px;
+
+            // @media screen and (min-width: 1300px) {
+            //   height: 400px;
+            // }
+            // max-height: 70%;
+            overflow: auto;
+          }
           padding: 2rem;
           text-align: justify;
         }
