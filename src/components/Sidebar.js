@@ -47,12 +47,12 @@ const Sidebar = ({ setMenu }) => {
       <div className="sidebar-menu">
         {menuItems.map((item) => {
           return (
-            <Link to={`/${item.path}`}>
-              <div className="sidebar-menu-item">
+            <div className="sidebar-menu-item">
+              <Link to={`/${item.path}`} onClick={() => setMenu(false)}>
                 <div className="sidebar-menu-item-icon"></div>
                 <div className="sidebar-menu-item-title">{item.title}</div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           );
         })}
       </div>
