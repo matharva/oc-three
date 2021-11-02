@@ -127,6 +127,12 @@
   flex-direction: column;
   // border: 2px solid olive;
   height: 100%;
+  overflow: auto;
+
+  @media screen and (max-width: 1920px) {
+    padding-top: 10rem;
+    padding-bottom: 1rem;
+  }
 
   h1 {
     margin-bottom: 2rem;
@@ -164,6 +170,7 @@
       .items-info {
         flex: 0.9;
 
+        flex-direction: column;
         @media screen and (max-width: 720px) {
           flex: 0.85;
           flex-direction: column;
@@ -221,7 +228,7 @@
 
     @media screen and (max-width: 720px) {
       padding: 0.5rem 1rem;
-      // margin-bottom: 1rem;
+      // margin-bottom: 10rem;
     }
   }
 }
