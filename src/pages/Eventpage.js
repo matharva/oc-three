@@ -28,7 +28,7 @@ const Eventpage = () => {
         <TabComponent tabs={tabs} />
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
