@@ -19,8 +19,35 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FaqSection from "../components/FaqSection";
 import RegistrationModal from "../components/RegistrationModal";
 
+const Description = ({ event }) => {
+  return (
+    <>
+      <ShowMoreText lines={6}>{event.description}</ShowMoreText>
+      <div className="section-1">
+        <div className="event-type">
+          <div className="event-img-container">
+            <img src={Technical} alt="" />
+          </div>
+          <div className="event-text">{event.category}</div>
+        </div>
+        <div className="event-date">
+          <div className="event-img-container">
+            <img src={Cal} alt="" />
+          </div>
+          <div className="event-text">{event.date}</div>
+        </div>
+        <div className="event-prize">
+          <div className="event-img-container">
+            <img src={Prize} alt="" />
+          </div>
+          <div className="event-text">{event.prizes}</div>
+        </div>
+      </div>
+    </>
+  );
+};
+
 const EventDetails = ({ event }) => {
-  const { url, path } = useRouteMatch();
   const history = useHistory();
   console.log(event);
   const [tabState, setTabState] = useState(0);
@@ -28,7 +55,7 @@ const EventDetails = ({ event }) => {
 
   function tabsContent() {
     console.log(tabState);
-    if (tabState === 0) return event.description;
+    if (tabState === 0) return <Description event={event} />;
     if (tabState === 1) return event.rules;
     if (tabState === 2) return <FaqSection faq={event.faq} />;
   }
@@ -69,31 +96,7 @@ const EventDetails = ({ event }) => {
                   FAQ
                 </div>
               </div>
-              {console.log(tabsContent())}
-              <div className="event-content">
-                {/* <ShowMoreText lines={6}>{tabsContent()}</ShowMoreText> */}
-                {tabsContent()}
-              </div>
-              <div className="section-1">
-                <div className="event-type">
-                  <div className="event-img-container">
-                    <img src={Technical} alt="" />
-                  </div>
-                  <div className="event-text">{event.category}</div>
-                </div>
-                <div className="event-date">
-                  <div className="event-img-container">
-                    <img src={Cal} alt="" />
-                  </div>
-                  <div className="event-text">{event.date}</div>
-                </div>
-                <div className="event-prize">
-                  <div className="event-img-container">
-                    <img src={Prize} alt="" />
-                  </div>
-                  <div className="event-text">{event.prizes}</div>
-                </div>
-              </div>
+              <div className="event-content">{tabsContent(event)}</div>
             </div>
             <div className="event-register">
               <div className="reg-amt">

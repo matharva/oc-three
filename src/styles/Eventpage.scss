@@ -67,7 +67,7 @@
 
         // // position: relative;
 
-        grid-template-rows: 1.25fr 4.5fr;
+        grid-template-rows: 120px 1fr;
 
         @media screen and (max-width: 1180px) {
           grid-template-rows: 120px 1fr 50px;
@@ -75,7 +75,6 @@
         grid-template-areas:
           "eventName"
           "eventDetails";
-        // "registerBar";
       }
 
       .event-title-container {
