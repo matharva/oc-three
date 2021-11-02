@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory, useRouteMatch } from "react-router";
 import ShowMoreText from "react-show-more-text";
 import Modal from "react-modal";
+import { useAuth } from "../contexts/AppContext";
 
 // Styles
 import "../styles/Eventpage.scss";
@@ -53,6 +54,8 @@ const Description = ({ event }) => {
 };
 
 const EventDetails = ({ event }) => {
+  const { jello } = useAuth();
+  console.log(jello);
   const history = useHistory();
   console.log(event);
   const [tabState, setTabState] = useState(0);
@@ -67,12 +70,6 @@ const EventDetails = ({ event }) => {
 
   return (
     <>
-      {/* {window.innerWidth > 720 ? (
-        <>
-          <MobileNav />
-          <DesktopNav />
-        </>
-      ) : null} */}
       <DesktopNav />
       <div className="event-container">
         <MobileNav />

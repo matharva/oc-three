@@ -12,10 +12,12 @@ import Sponsors from "./pages/Sponsors";
 import ContactUs from "./pages/ContactUs";
 import DonationDrive from "./pages/DonationDrive";
 
+import { AuthProvider } from "./contexts/AppContext";
+
 export default function App() {
   return (
-    <>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Switch>
           <Route exact path="/">
             <Main />
@@ -36,7 +38,7 @@ export default function App() {
             <DonationDrive />
           </Route>
         </Switch>
-      </Router>
-    </>
+      </AuthProvider>
+    </Router>
   );
 }
