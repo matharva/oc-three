@@ -22,7 +22,11 @@ import RegistrationModal from "../components/RegistrationModal";
 const Description = ({ event }) => {
   return (
     <>
-      <ShowMoreText lines={6}>{event.description}</ShowMoreText>
+      {event.description.length > 200 ? (
+        <ShowMoreText lines={6}>{event.description}</ShowMoreText>
+      ) : (
+        event.description
+      )}
       <div className="section-1">
         <div className="event-type">
           <div className="event-img-container">
