@@ -2,7 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import ThreeDCard from "./ThreeDCard";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 // import cardImage from "./assets/card-image.jpg";
+
+// Assets
+import Codewars from "../assets/Codewars.jpg";
 
 const tabContentVariant = {
   active: {
@@ -33,17 +37,7 @@ const cardVariant = {
   },
 };
 
-const cards = [
-  "Yosemite",
-  "New York",
-  "Chicago",
-  "Miami",
-  // "sfvdggfd",
-  // "fdasfgdfsd",
-];
-
-const TabContent = ({ id, active }) => {
-  const history = useHistory();
+const TabContent = ({ id, active, cards }) => {
   console.log("dard", id);
   return (
     <motion.div
@@ -61,11 +55,9 @@ const TabContent = ({ id, active }) => {
             variants={cardVariant}
             className="content-card"
           >
-            {/* <img src={""} alt="view of mountain" />
-          <div className="info">
-          <h3>{`${item}`} - From $800</h3>
-        </div> */}
-            <ThreeDCard />
+            <Link to={`/events/${item.path}`}>
+              <ThreeDCard data={item} />
+            </Link>
           </motion.div>
         ))}
       </div>

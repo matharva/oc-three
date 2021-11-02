@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-// import VanillaTilt from "../external/vanilla-tilt.min.js";
+
+// External Components
 import Tilt from "react-tilt";
-import Oc from "../assets/Codewars.jpg";
+
+// Styles
 import "../styles/ThreeDCard.scss";
 const ThreeDCard = ({ data }) => {
   return (
@@ -15,12 +17,13 @@ const ThreeDCard = ({ data }) => {
       <div
         class="card rgb item"
         style={{
-          background: `url(${Oc}) no-repeat center / cover`,
+          background: `linear-gradient(
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.1)
+          ), url(${data.img}) no-repeat center / cover`,
         }}
       >
-        <div class="card-image card2"></div>
-        {/* <img src={Oc} alt="" /> */}
-        <div class="card-text card2"></div>
+        <div class="card-text card2">{data.name}</div>
       </div>
     </Tilt>
   );

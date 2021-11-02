@@ -9,12 +9,12 @@ import MobileNav from "../components/MobileNav";
 import DesktopNav from "../components/DesktopNav";
 import tabs from "../components/tabs";
 import TabComponent from "../components/TabComponent";
+import Footer from "../components/Footer";
 
 // External Components
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import Footer from "../components/Footer";
 
 const EventDetails = () => {
   const { url } = useRouteMatch();
@@ -29,9 +29,6 @@ const EventDetails = () => {
       </div>
 
       <Footer />
-
-      <Link to="/">back </Link>
-      <Link to={`${url}/codatron`}>Link to codatron here</Link>
     </div>
   );
 };

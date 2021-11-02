@@ -78,7 +78,7 @@ const TabComponent = ({ tabs, defaultIndex = 0 }) => {
               variants={tabVariant}
               animate={activeTabIndex === index ? "active" : "inactive"}
             >
-              <a href={`#${tab.id}`} onClick={() => onTabClick(index)}>
+              <a onClick={() => onTabClick(index)}>
                 {/* {tab.icon} */}
                 <div className="img-icon-container">
                   <img src={tab.icon} alt="" />
@@ -93,6 +93,7 @@ const TabComponent = ({ tabs, defaultIndex = 0 }) => {
             key={tab.id}
             id={`${tab.id}-content`}
             active={activeTabIndex === index}
+            cards={tab.cards}
           />
         ))}
       </div>
