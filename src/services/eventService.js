@@ -1,5 +1,7 @@
 import { refType } from "@mui/utils";
 import firebase from "firebase";
+import {eventDetails} from "../data";
+
 
 const userRef = firebase.firestore().collection('Users');
 const eventRef = firebase.firestore().collection('Events');
@@ -70,8 +72,24 @@ async function createUser(emailId,phoneNumber,name){
 }
 
 
+async function addEvent(){
+  // let newEventQueryRef = eventRef.doc();
+  // console.log('Events is: ',eventDetails[1]);
+  // let data = eventDetails[1];
+
+  // await newEventQueryRef.set(data);
+  // console.log('The new user creat createer: ',newEventQueryRef.get());
+  // let newEvent = await (await newEventQueryRef.get()).data();
+  // console.log('Dard: ',newEvent);
+
+
+  // return newEvent;
+}
+
+
 export const eventService = {
   getEvent,
   getUser,
-  createUser
+  createUser,
+  addEvent
 };

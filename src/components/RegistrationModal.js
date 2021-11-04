@@ -10,7 +10,8 @@ import Payment from "../assets/done.jpg";
 import CloseIcon from "@mui/icons-material/Close";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
-const MultiplePlayers = ({ setIsPaymentSuccess }) => {
+const MultiplePlayers = ({ setPayTypeOpen }) => {
+  console.log("ksejygk")
   return (
     <>
       <div className="modal-grid">
@@ -24,7 +25,10 @@ const MultiplePlayers = ({ setIsPaymentSuccess }) => {
             Once you click on the button, you will be redirected to the Razorpay
             dashboard!
           </p>
-          <button>Create a team</button>
+          <button onClick={()=>{
+            console.log("wkuyehgfuyg")
+            setPayTypeOpen(true);
+          } }>Create a team</button>
         </div>
       </div>
     </>
@@ -43,12 +47,13 @@ const SinglePlayer = ({ setIsPaymentSuccess }) => {
   );
 };
 
-const TeamModal = () => {
+const TeamModal = ({userTeam}) => {
+  console.log('The user team is: ',userTeam);
   return (
     <div className="team-modal">
-      <h1>Team Code: #75948023</h1>
+      <h1>Team Code:{userTeam.code}</h1>
       <div className="team-members">
-        <div className="team-member-items">
+        {/* <div className="team-member-items">
           <div className="team-member-item-img-container">
             <img src={Oc} alt="" />
           </div>
@@ -85,7 +90,23 @@ const TeamModal = () => {
             <div className="team-member-item-name">Bhushan</div>
             <div className="team-member-item-email">bhushan@bhushan.com</div>
           </div>
-        </div>
+        </div> */}
+        {userTeam.members.map((item)=>{
+          return (
+            <>
+              <div className="team-member-items">
+                <div className="team-member-item-img-container">
+                  <img src={Oc} alt="" />
+                </div>
+                <div className="items-info">
+                  <div className="team-member-item-name">{item.name}</div>
+                  <div className="team-member-item-email">{item.emailId}</div>
+                </div>
+            </div>
+            </>
+          )
+        })}
+
       </div>
       <button>
         <WhatsAppIcon style={{ color: "white" }} />
@@ -95,7 +116,7 @@ const TeamModal = () => {
   );
 };
 
-const PaymentSuccessful = ({ setIsRegistered }) => {
+const PaymentSuccessful = ({ setViewTeam }) => {
   return (
     <div className="payment-grid">
       <div className="payment-title">
@@ -107,7 +128,7 @@ const PaymentSuccessful = ({ setIsRegistered }) => {
       <p>Your payement for event codewars was successfully completed</p>
       <button
         className="team-details-btn"
-        onClick={() => setIsRegistered(true)}
+        onClick={() => setViewTeam(true)}
       >
         Team Details
       </button>
@@ -115,10 +136,98 @@ const PaymentSuccessful = ({ setIsRegistered }) => {
   );
 };
 
-const RegistrationModal = ({ isOpen, setIsOpen }) => {
+
+function loadScript(src){
+  return new Promise((resolve)=>{
+    const script = document.createElement('script');
+    script.src = src;
+    document.body.appendChild(script);
+    script.onload=()=>{
+      console.log('done')
+      resolve(true);
+    }
+    script.onerror=()=>{
+      resolve(false);
+    }
+  })
+}
+
+
+
+const ShowPaymentDetails = ({details,eventName,setPaymentDone,setIsPaymentSuccess}) =>{
+  console.log('The details are: ',details);
+
+  async function showRazorpayModal(amount){
+
+    console.log('The result is:',amount);
+    const result = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+    if(!result){
+      alert('Dard');
+      return ;
+    }
+    const data = {
+      event:"divya",
+      amount:parseInt(amount)
+    }
+
+    console.log('The result is:',result,data,eventName);
+    // const resData = await axios.post('https://us-central1-oculus2022-75997.cloudfunctions.net/payment',data)
+
+    // console.log('The resData is: ',resData);
+    setPaymentDone(true);
+    setIsPaymentSuccess(true);
+
+    // const options = {
+    //   "key": resData?.data?.key, // Enter the Key ID generated from the Dashboard
+    //   "amount": resData?.data?.order?.amount,// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    //   "currency": "INR",
+    //   "name": "Dard",
+    //   "description": "Daddy Transaction",
+    //   "image": Daddy,
+    //   "order_id": resData?.data?.order?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    //   "handler": function (response){
+    //       alert(response.razorpay_payment_id);
+    //       alert(response.razorpay_order_id);
+    //       alert(response.razorpay_signature)
+    //   },
+    //   "prefill": {
+    //       "name": "Bhushan",
+    //   },
+    //   "notes": {
+    //       "address": "Razorpay Corporate Office"
+    //   },
+    //   "theme": {
+    //       "color": "#3399cc"
+    //   }
+    // };
+    // console.log('The options are: ',options);
+    // var rzp1 = new window.Razorpay(options);
+
+    // rzp1.open();
+
+  }
+
+
+
+  return(
+    details.map((item)=>{
+      return (
+        <>
+          <button onClick={()=>{showRazorpayModal(item.Fee)}}>Pay {item.Type}</button>
+          <span>{item.Fee}</span>
+          <br/>
+        </>
+      )
+    })
+  )
+}
+
+const RegistrationModal = ({ userTeam,viewTeam, setViewTeam, isOpen, setIsOpen,eventData,paymentDone, setPaymentDone }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
-  const [isPaymentSuccess, setIsPaymentSuccess] = useState(true);
+  const [payTypeOpen,setPayTypeOpen ] = useState(false);
+  const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
+  console.log('The type is: ',eventData,viewTeam);
   useEffect(() => {
     if (window.innerWidth > 720) {
       setIsMobile(false);
@@ -144,26 +253,35 @@ const RegistrationModal = ({ isOpen, setIsOpen }) => {
       width: `${!isMobile ? "50vw" : "90vw"}`,
     },
   };
+  console.log('Pay type: ',payTypeOpen)
   return (
     <div>
       <Modal
         isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
+        onRequestClose={() => {
+          // if(!isRegistered)
+          setPayTypeOpen(false);
+          setIsOpen(false);
+        }}
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <div className="cross-child" onClick={() => setIsOpen(false)}>
+        <div className="cross-child" onClick={() => {
+          setPayTypeOpen(false);
+          setIsOpen(false)
+        }}>
           <CloseIcon style={isMobile || true ? {} : { color: "white" }} />
         </div>
-        {/* {!isRegistered && isSinglePlayer  ? <SinglePlayer /> : <MultiplePlayers />} */}
+        {viewTeam?<TeamModal userTeam = {userTeam}/>:isPaymentSuccess?<PaymentSuccessful setViewTeam={setViewTeam} />:!isRegistered && eventData.isSingle? <SinglePlayer /> : !payTypeOpen?<MultiplePlayers setPayTypeOpen = {setPayTypeOpen}/>:<ShowPaymentDetails details={eventData.Fee} eventName={eventData.Title} setPaymentDone = {setPaymentDone} setIsPaymentSuccess = {setIsPaymentSuccess}/>}
+        {/* {!isRegistered && eventData.isSingle? <SinglePlayer /> : !payTypeOpen?<MultiplePlayers setPayTypeOpen = {setPayTypeOpen}/>:<ShowPaymentDetails details={eventData.Fee} eventName={eventData.Title} setPaymentDone = {setPaymentDone}/>} */}
         {/* <MultiplePlayers /> */}
-        {isRegistered ? (
+        {/* {isRegistered ? (
           <TeamModal />
         ) : (
           isPaymentSuccess && (
             <PaymentSuccessful setIsRegistered={setIsRegistered} />
           )
-        )}
+        )} */}
       </Modal>
     </div>
   );

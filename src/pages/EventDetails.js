@@ -14,6 +14,7 @@ import VSM from "../assets/VSM.jpg";
 import Technical from "../assets/tech.png";
 import Cal from "../assets/calendar.jpg";
 import Prize from "../assets/prize.jpg";
+import Codatronplusplus from "../assets/codatron++.jpg";
 
 // Icons
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -23,7 +24,11 @@ import FaqSection from "../components/FaqSection";
 import RegistrationModal from "../components/RegistrationModal";
 import MobileNav from "../components/MobileNav";
 import DesktopNav from "../components/DesktopNav";
+import LoginContainer from "../components/LoginContainer";
+
+//Data and Services
 import { eventService } from "../services/eventService";
+import { eventDetails } from "../data";
 const Description = ({ event }) => {
   return (
     <>
@@ -49,7 +54,7 @@ const Description = ({ event }) => {
           <div className="event-img-container">
             <img src={Prize} alt="" />
           </div>
-          <div className="event-text">{event.isSingle?event.Fee.Single:event.Fee.Team}</div>
+          <div className="event-text">{event.Prizes}</div>
         </div>
       </div>
     </>
@@ -88,18 +93,26 @@ const map = {
   vsm:{
     Title: 'Virtual Stock Market',
     image:VSM
+  },
+  codatronplusplus:{
+    Title: 'Codatron++',
+    image:Codatronplusplus
   }
 }
 
 const EventDetails = ({ event }) => {
-  const { jello } = useAuth();
-  // console.log(jello);
+  const { jello,currentUser } = useAuth();
+  console.log("Login: ",jello,currentUser);
   const {eventName} = useParams();
   const history = useHistory();
   console.log(eventName);
   const [tabState, setTabState] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [eventData,setEventData] = useState(null);
+  const [paymentDone,setPaymentDone] = useState(false);
+  const [viewTeam,setViewTeam] = useState(false);
+  const [userTeam,setUserTeam] = useState(null);
 
   function tabsContent() {
     console.log(tabState);
@@ -115,11 +128,47 @@ const EventDetails = ({ event }) => {
     setEventData(event);
   },[])
 
+  // Here update all the states that needs to changed once the payment process is done(Not when the user is there in a team only when the user has paid for the event )
+  useEffect(async()=>{
+    console.log('Payment hogaya page reset maaro');
+    setUserTeam({
+      code:"#75948023",
+      members:[{
+        name:"Atharva Mohite",
+        emailId:"atharva.mohite@spit.ac.in"
+      },{
+        name:"BHushan",
+        emailId:"bhuhsna.bhuhsna@gmail.com"
+      },{
+        name:"Param",
+        emailId:"param.patil@spit.ac.in"
+      },{
+        name:"LOLOLOLO",
+        emailId:"LOLOLOLO@spit.ac.in"
+      }]
+    })
+  },[paymentDone]);
+
+  const addEvent = async()=>{
+    let eventAdded = await eventService.addEvent();
+    console.log('The event added is: ',eventAdded);
+  }
+
+  // Here check if user isLogged in or not, if not then let the user login and then render states
+  const registerEvent = ()=>{
+    if(currentUser && currentUser.email){
+      setIsOpen(true);
+    } else{
+      setIsLoginOpen(true);
+    }
+  }
+
   return (
     <>
     {
       eventData?
       <>
+      {!currentUser && <LoginContainer isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />}
       <DesktopNav />
       <div className="event-container">
         <MobileNav />
@@ -174,13 +223,13 @@ const EventDetails = ({ event }) => {
                   </div>
                 </div>
                 <div className="reg-btn-container">
-                  <button className="reg-btn" onClick={() => setIsOpen(true)}>
-                    Register
+                  <button className="reg-btn" onClick={registerEvent}>
+                    {!paymentDone || !currentUser ?"Register":"View Team"}
                   </button>
                 </div>
               </div>
             </div>
-            <RegistrationModal isOpen={isOpen} setIsOpen={setIsOpen} />
+            <RegistrationModal userTeam = {userTeam} viewTeam = {viewTeam} setViewTeam = {setViewTeam} isOpen={isOpen} setIsOpen={setIsOpen} eventData = {eventData} paymentDone = {paymentDone} setPaymentDone={setPaymentDone}/>
           </div>
           <div className="right-grid">
             <div className="img-container">
