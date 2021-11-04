@@ -1,0 +1,50 @@
+GET /events/:eventname - 
+- id
+- type
+- date
+- registration amount
+- cash prize
+- description
+- rules 
+- faq 
+- event name
+
+GET /profile
+- name 
+- email 
+- phone 
+- photoURL
+- isVaccinated
+- college
+- isRegistered
+- extra info (if any)
+- referral code
+
+
+POST /registrationDetails -> add user payment details in DB
+{
+    paymentId, eventName, userId 
+} 
+- return success ya error, so the current payment status can be shown in UI
+
+Payment Flow:
+1. Add a payment document 
+2. Team Code generate (Only if multiple player event)
+3. Store team code and paymentId in registration table with other details
+4. Add teamId to the payment table 
+
+POST /addToTeam -> add user to the team using team code
+{
+    teamCode, userId, eventName(to check if the team code is for that particular event)
+}
+- return nothing
+
+
+POST /userRegistrationDetails -> to get if the user has already paid 
+and if he has then get the payment details
+{
+    userId, eventId
+}
+- teamCode 
+- teamName 
+- team players [{}]

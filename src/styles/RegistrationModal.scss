@@ -53,6 +53,14 @@
     background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
     background: linear-gradient(to right, #ff4b2b, #ff416c);
     //   display: none;
+    h1 {
+      color: white;
+    }
+
+    input {
+      padding: 0.5rem;
+      margin: 1rem 0;
+    }
 
     button {
       cursor: pointer;

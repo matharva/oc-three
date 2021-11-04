@@ -20,6 +20,8 @@ const MultiplePlayers = ({ setIsPaymentSuccess }) => {
           <button>Join</button>
         </div>
         <div className="section-two">
+          <h1>Referral Code</h1>
+          <input type="text" placeholder="Enter referral code..." />
           <p>
             Once you click on the button, you will be redirected to the Razorpay
             dashboard!
@@ -156,14 +158,14 @@ const RegistrationModal = ({ isOpen, setIsOpen }) => {
           <CloseIcon style={isMobile || true ? {} : { color: "white" }} />
         </div>
         {/* {!isRegistered && isSinglePlayer  ? <SinglePlayer /> : <MultiplePlayers />} */}
-        {/* <MultiplePlayers /> */}
-        {isRegistered ? (
+        <MultiplePlayers />
+        {/* {isRegistered ? (
           <TeamModal />
         ) : (
           isPaymentSuccess && (
             <PaymentSuccessful setIsRegistered={setIsRegistered} />
           )
-        )}
+        )} */}
       </Modal>
     </div>
   );
