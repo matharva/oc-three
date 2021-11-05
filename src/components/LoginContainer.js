@@ -4,6 +4,7 @@ import { useHistory, useRouteMatch } from "react-router";
 import firebase from "firebase";
 import { StyledFirebaseAuth } from "react-firebaseui";
 import { useAuth } from "../contexts/AppContext";
+import { eventService } from "../services/eventService";
 // Icons
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -18,23 +19,36 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
     callbacks: {
       signInSuccessWithAuthResult: async (data) => {
         console.log("Data from firebase: ", data);
-        setCurrentUser({
-          name: data.user.displayName,
-          email: data.user.email,
-          photo: data.user.photoURL,
-          phone: data.user.phoneNumber,
-        });
-        setIsOpen(false);
+
+        let user = await eventService.getUser(data.user.email);
+        console.log('The user returned is: ',user);
+        if(!user){
+          user = await eventService.createUser(data.user.email,data.user.phoneNumber,data.user.displayName); 
+          console.log('The new user created is:',user);
+        }
 
         localStorage.setItem(
           "oculus-auth",
           JSON.stringify({
             name: data.user.displayName,
             email: data.user.email,
-            photo: data.user.photoURL,
+            photo: 'https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c',
             phone: data.user.phoneNumber,
+            uid:user.uid
           })
         );
+        setCurrentUser({
+          name: data.user.displayName,
+          email: data.user.email,
+          photo: 'https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c',
+          phone: data.user.phoneNumber,
+          uid:user.uid
+        });
+        setIsOpen(false);
+
+        
+        
+
         // user idhar se ghusao
         // window.location.assign(url);
         // Do not automatically redirect.
@@ -43,7 +57,34 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
     },
   };
 
+  const logout = ()=>{
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+      localStorage.setItem('oculus-auth',null);
+      setCurrentUser(null);
+      setIsOpen(false);
+
+      console.log('The user is signed out');
+    }).catch(function(error) {
+      // An error happened.
+      console.log('An error occured during this process: ',error);
+    });
+  }
+
   useEffect(() => {
+
+    // firebase.auth().signOut().then(function() {
+    //   // Sign-out successful.
+    //   localStorage.setItem('oculus-auth',null);
+    //   setCurrentUser(null);
+    //   setIsOpen(false);
+
+    //   console.log('The user is signed out');
+    // }).catch(function(error) {
+    //   // An error happened.
+    //   console.log('An error occured during this process: ',error);
+    // });
+
     if (window.innerWidth > 720) {
       setIsMobile(false);
     } else setIsMobile(true);
@@ -79,10 +120,12 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
         <div className="cross-child" onClick={() => setIsOpen(false)}>
           <CloseIcon style={isMobile || true ? {} : { color: "white" }} />
         </div>
+        {!currentUser?
         <StyledFirebaseAuth
           uiConfig={uiConfig}
           firebaseAuth={firebase.auth()}
-        />
+        />:<button onClick={logout}>Logout</button>
+        }
       </Modal>
     </div>
   );

@@ -16,7 +16,7 @@ import { useAuth } from "../contexts/AppContext";
 
 const MobileNav = () => {
   const [menu, setMenu] = useState(false);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const history = useHistory();
   const { currentUser, setCurrentUser } = useAuth();
 

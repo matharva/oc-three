@@ -288,3 +288,25 @@
     font-size: 1.1rem;
   }
 }
+
+.payment-success-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+
+  .reg-btn {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    border: 0;
+    // background: var(--oc-btn-colour);
+    background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    color: white;
+    // font-weight: bold;
+    font-size: 1.1rem;
+  }
+}
