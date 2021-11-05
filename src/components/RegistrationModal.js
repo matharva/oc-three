@@ -300,15 +300,17 @@ const ShowPaymentDetails = ({details,eventName,setPaymentDone,setIsPaymentSucces
 
 
   return(
-    details.map((item)=>{
+    <div className="payment-success-modal">
+    {details.map((item)=>{
       return (
         <>
-          <button onClick={()=>{showRazorpayModal(item.Fee)}}>Pay {item.Type}</button>
-          <span>{item.Fee}</span>
+          <button className="reg-btn" onClick={()=>{showRazorpayModal(item.Fee)}}>Pay {item.Type} : {item.Fee}</button>
+          {/* <span>{item.Fee}</span> */}
           <br/>
         </>
       )
-    })
+    })}
+    </div>
   )
 }
 
