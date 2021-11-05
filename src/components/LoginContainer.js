@@ -19,15 +19,7 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
     callbacks: {
       signInSuccessWithAuthResult: async (data) => {
         console.log("Data from firebase: ", data);
-        setCurrentUser({
-          name: data.user.displayName,
-          email: data.user.email,
-          photo: 'https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c',
-          phone: data.user.phoneNumber,
-        });
-        setIsOpen(false);
 
-        
         let user = await eventService.getUser(data.user.email);
         console.log('The user returned is: ',user);
         if(!user){
@@ -42,9 +34,20 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
             email: data.user.email,
             photo: 'https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c',
             phone: data.user.phoneNumber,
-            // user:user
+            uid:user.uid
           })
         );
+        setCurrentUser({
+          name: data.user.displayName,
+          email: data.user.email,
+          photo: 'https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c',
+          phone: data.user.phoneNumber,
+          uid:user.uid
+        });
+        setIsOpen(false);
+
+        
+        
 
         // user idhar se ghusao
         // window.location.assign(url);

@@ -100,12 +100,16 @@ const map = {
   }
 }
 
+
+// Here viewTeam basically means has the user Registered for the event(does it have any document in RegisterTeam collection)
+
+
 const EventDetails = ({ event }) => {
   const { jello,currentUser } = useAuth();
   console.log("Login: ",jello,currentUser);
   const {eventName} = useParams();
   const history = useHistory();
-  console.log(eventName);
+  // console.log(eventName);
   const [tabState, setTabState] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -113,9 +117,10 @@ const EventDetails = ({ event }) => {
   const [paymentDone,setPaymentDone] = useState(false);
   const [viewTeam,setViewTeam] = useState(false);
   const [userTeam,setUserTeam] = useState(null);
+  const [join,setJoin] = useState(null);
 
   function tabsContent() {
-    console.log(tabState);
+    // console.log(tabState);
     if (tabState === 0) return <Description event={eventData} />;
     if (tabState === 1) return <Rules rules = {eventData.rules}/>;
     if (tabState === 2) return <FaqSection faq={eventData.faq} />;
@@ -124,39 +129,105 @@ const EventDetails = ({ event }) => {
   useEffect(async()=>{
     
     let event = await eventService.getEvent(map[eventName].Title);
-    console.log('The eventData is: ',event);
+    console.log("Heyyyyy in useEffect first wala: ",viewTeam,userTeam);
+    setViewTeam(false);
+    setUserTeam(null);
+    setPaymentDone(false);
+    if(currentUser){
+      console.log("Heyyyyy user exists: ",currentUser.uid,eventName)
+      let userRegistrationDetails = await eventService.getUserRegistrationDetails({
+        eventName:map[eventName].Title,
+        userId:currentUser.uid
+      });
+      console.log('The eventData is: ',event,userRegistrationDetails);
+      if(userRegistrationDetails&& userRegistrationDetails.teamDetails){
+        setViewTeam(true);
+        setUserTeam(userRegistrationDetails.teamDetails);
+      } else{
+        setPaymentDone(false);
+        setViewTeam(false);
+        setUserTeam(null);
+      }
+    } else{
+      setPaymentDone(false);
+    }
     setEventData(event);
-  },[])
+  },[currentUser])
 
   // Here update all the states that needs to changed once the payment process is done(Not when the user is there in a team only when the user has paid for the event )
   useEffect(async()=>{
     console.log('Payment hogaya page reset maaro');
-    setUserTeam({
-      code:"#75948023",
-      members:[{
-        name:"Atharva Mohite",
-        emailId:"atharva.mohite@spit.ac.in"
-      },{
-        name:"BHushan",
-        emailId:"bhuhsna.bhuhsna@gmail.com"
-      },{
-        name:"Param",
-        emailId:"param.patil@spit.ac.in"
-      },{
-        name:"LOLOLOLO",
-        emailId:"LOLOLOLO@spit.ac.in"
-      }]
-    })
+    if(currentUser){
+
+      let userRegistrationDetails = await eventService.getUserRegistrationDetails({
+        eventName:map[eventName].Title,
+        userId:currentUser.uid
+      });
+      console.log('The User registration details are',userRegistrationDetails);
+      // setUserTeam({
+      //   code:"#75948023",
+      //   members:[{
+      //     name:"Atharva Mohite",
+      //     emailId:"atharva.mohite@spit.ac.in"
+      //   },{
+      //     name:"BHushan",
+      //     emailId:"bhuhsna.bhuhsna@gmail.com"
+      //   },{
+      //     name:"Param",
+      //     emailId:"param.patil@spit.ac.in"
+      //   },{
+      //     name:"LOLOLOLO",
+      //     emailId:"LOLOLOLO@spit.ac.in"
+      //   }]
+      // })
+      if(userRegistrationDetails && userRegistrationDetails.teamDetails){
+        // setViewTeam(true);
+        setUserTeam(userRegistrationDetails.teamDetails);
+      }
+    }
   },[paymentDone]);
+
+  useEffect(async()=>{
+    console.log('Payment hogaya page reset maaro');
+    if(currentUser){
+
+      let userRegistrationDetails = await eventService.getUserRegistrationDetails({
+        eventName:map[eventName].Title,
+        userId:currentUser.uid
+      });
+      console.log('The eventData is: ',event,userRegistrationDetails);
+      // setUserTeam({
+      //   code:"#75948023",
+      //   members:[{
+      //     name:"Atharva Mohite",
+      //     emailId:"atharva.mohite@spit.ac.in"
+      //   },{
+      //     name:"BHushan",
+      //     emailId:"bhuhsna.bhuhsna@gmail.com"
+      //   },{
+      //     name:"Param",
+      //     emailId:"param.patil@spit.ac.in"
+      //   },{
+      //     name:"LOLOLOLO",
+      //     emailId:"LOLOLOLO@spit.ac.in"
+      //   }]
+      // })
+      if(userRegistrationDetails && userRegistrationDetails.teamDetails){
+        setViewTeam(true);
+        setUserTeam(userRegistrationDetails.teamDetails);
+      }
+    }
+  },[join]);
 
   const addEvent = async()=>{
     let eventAdded = await eventService.addEvent();
     console.log('The event added is: ',eventAdded);
   }
 
-  // Here check if user isLogged in or not, if not then let the user login and then render states
+  // Here check if user isLogged in or not, if not then let the user login and then render states(Show modal if and only is the event registerd by the user is a teamEvent)
   const registerEvent = ()=>{
-    if(currentUser && currentUser.email){
+    if(currentUser && currentUser.email &&((viewTeam && !eventData.isSingle)||!viewTeam)){
+      //Idhar kuch toh (paymentDone and !viewTeam) dalna tha mai bhool gaya exactly kya tha
       setIsOpen(true);
     } else{
       setIsLoginOpen(true);
@@ -224,12 +295,12 @@ const EventDetails = ({ event }) => {
                 </div>
                 <div className="reg-btn-container">
                   <button className="reg-btn" onClick={registerEvent}>
-                    {!paymentDone || !currentUser ?"Register":"View Team"}
+                    {currentUser?currentUser && paymentDone||viewTeam?eventData.isSingle?"Registered":"View Team":"Register":"Register"}
                   </button>
                 </div>
               </div>
             </div>
-            <RegistrationModal userTeam = {userTeam} viewTeam = {viewTeam} setViewTeam = {setViewTeam} isOpen={isOpen} setIsOpen={setIsOpen} eventData = {eventData} paymentDone = {paymentDone} setPaymentDone={setPaymentDone}/>
+            <RegistrationModal userTeam = {userTeam} viewTeam = {viewTeam} setViewTeam = {setViewTeam} isOpen={isOpen} setIsOpen={setIsOpen} eventData = {eventData} paymentDone = {paymentDone} setPaymentDone={setPaymentDone} currentUser={currentUser} setJoin = {setJoin}/>
           </div>
           <div className="right-grid">
             <div className="img-container">

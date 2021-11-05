@@ -1,6 +1,7 @@
 import { refType } from "@mui/utils";
 import firebase from "firebase";
 import {eventDetails} from "../data";
+import axios from "axios";
 
 
 const userRef = firebase.firestore().collection('Users');
@@ -86,10 +87,48 @@ async function addEvent(){
   // return newEvent;
 }
 
+async function postPayment(postData){
+  try{
+    // let url = process.env.OCULUS_API + '/registrationDetails';
+    let url = 'https://oculus-2022.herokuapp.com/registrationDetails/'
+    let data = await axios.post(url,postData);
+    console.log('The post data is: ',data.data);
+    return data.data;
+  } catch(e){
+    console.log(`ERROR OCCURED IN PAYMENT API: ${e}`);
+  }
+}
+
+async function joinUser(postData){
+  try{
+    // let url = process.env.OCULUS_API + '/registrationDetails';
+    let url = 'https://oculus-2022.herokuapp.com/addToTeam/'
+    let data = await axios.post(url,postData);
+    console.log('The post data is: ',data.data);
+    return data.data;
+  } catch(e){
+    console.log(`ERROR OCCURED IN JOIN USER API: ${e}`);
+  }
+}
+
+async function getUserRegistrationDetails(postData){
+  try{
+    // let url = process.env.OCULUS_API + '/registrationDetails';
+    let url = 'https://oculus-2022.herokuapp.com/userRegistrationDetails/'
+    let data = await axios.post(url,postData);
+    console.log('The post data is: ',data.data);
+    return data.data;
+  } catch(e){
+    console.log(`ERROR OCCURED IN USER REGISTRATION API: ${e}`);
+  }
+}
 
 export const eventService = {
   getEvent,
   getUser,
   createUser,
-  addEvent
+  addEvent,
+  postPayment,
+  joinUser,
+  getUserRegistrationDetails
 };
