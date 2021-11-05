@@ -226,10 +226,13 @@ const EventDetails = ({ event }) => {
 
   // Here check if user isLogged in or not, if not then let the user login and then render states(Show modal if and only is the event registerd by the user is a teamEvent)
   const registerEvent = ()=>{
+    console.log('Dard');
     if(currentUser && currentUser.email &&((viewTeam && !eventData.isSingle)||!viewTeam)){
+      console.log('Dard 1');
       //Idhar kuch toh (paymentDone and !viewTeam) dalna tha mai bhool gaya exactly kya tha
       setIsOpen(true);
-    } else{
+    } else if(!currentUser){
+      console.log('Dard 2');
       setIsLoginOpen(true);
     }
   }
