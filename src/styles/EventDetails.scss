@@ -10,6 +10,14 @@
   padding: 0 1.5rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 
+  .profile-img-container {
+    width: 45px;
+    img {
+      border-radius: 50%;
+      width: 100%;
+    }
+  }
+
   .navbar-menu {
     cursor: pointer;
   }

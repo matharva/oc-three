@@ -3,27 +3,29 @@ import { Link, useHistory } from "react-router-dom";
 
 // Assets
 import Oc from "../assets/Oculus.png";
-
-const navbarItems = [
-  {
-    name: "Events",
-    path: "events",
-  },
-  {
-    name: "Sponsors",
-    path: "sponsors",
-  },
-  {
-    name: "Donation Drive",
-    path: "donation-drive",
-  },
-  {
-    name: "Contact Us",
-    path: "contact",
-  },
-];
+import { useAuth } from "../contexts/AppContext";
 
 const DesktopNav = () => {
+  const { currentUser } = useAuth();
+  const navbarItems = [
+    {
+      name: "Events",
+      path: "events",
+    },
+    {
+      name: "Sponsors",
+      path: "sponsors",
+    },
+    {
+      name: "Donation Drive",
+      path: "donation-drive",
+    },
+    {
+      name: `${currentUser ? "Profile" : "Login"}`,
+      path: "contact",
+    },
+  ];
+
   const history = useHistory();
   return (
     <div className="navbar-desktop">

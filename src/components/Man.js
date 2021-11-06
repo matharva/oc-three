@@ -129,7 +129,10 @@ export default function Model({ ...props }) {
           material={nodes.Circle001_3.material}
         />
       </group>
-      <group rotation={[Math.PI / 2, 0, 0]}>
+      <group
+        rotation={[Math.PI / 2, 0, 0]}
+        onClick={() => console.log("gfdgfdsgfgsgfg")}
+      >
         <mesh
           geometry={nodes.upper_Plane003_1.geometry}
           material={nodes.upper_Plane003_1.material}
