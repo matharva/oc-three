@@ -293,7 +293,7 @@ const EventDetails = ({ event }) => {
                   <span>Registration: </span>
                   <div className="reg-text">
                     <span>Rs:</span>
-                    {eventData.isSingle?eventData.Fee.Single:eventData.Fee.Team}
+                    {eventData.isSingle?eventData.Fee[0].Fee:'-'}
                   </div>
                 </div>
                 <div className="reg-btn-container">
