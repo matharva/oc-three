@@ -14,6 +14,8 @@ import DonationDrive from "./pages/DonationDrive";
 
 import { AuthProvider } from "./contexts/AppContext";
 
+import { ChakraProvider } from "@chakra-ui/react";
+
 export default function App() {
   return (
     <Router>

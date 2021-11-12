@@ -73,8 +73,8 @@ const ThreeContainer = () => {
         <Box />
         <Plane />
         {console.log("Before loading model")}
-        <Model />
-        <Watch />
+        {/* <Model />
+        <Watch /> */}
         {console.log("After loading model")}
       </Physics>
       {/* <Suspense fallback={null}> */}

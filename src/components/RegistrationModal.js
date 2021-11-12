@@ -10,6 +10,13 @@ import Payment from "../assets/done.jpg";
 import CloseIcon from "@mui/icons-material/Close";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { eventService } from "../services/eventService";
+import {
+  FormControl,
+  FormHelperText,
+  FormLabel,
+} from "@chakra-ui/form-control";
+import { Input } from "@chakra-ui/input";
+import { Form, Button } from "react-bootstrap";
 
 const MultiplePlayers = ({
   setPayTypeOpen,
@@ -437,14 +444,6 @@ const ShowPaymentDetails = ({
           value={paymentType}
           onChange={paymentHandler}
         >
-          {/* <option value="javascript">JavaScript</option>
-          <option value="php">PHP</option>
-          <option value="java">Java</option>
-          <option value="golang">Golang</option>
-          <option value="python">Python</option>
-          <option value="c#">C#</option>
-          <option value="C++">C++</option>
-          <option value="erlang">Erlang</option> */}
           {details.map((item) => {
             return (
               <>
@@ -457,6 +456,11 @@ const ShowPaymentDetails = ({
           })}
         </select>
         <br />
+        {/* <FormControl id="email">
+          <FormLabel>Email address</FormLabel>
+          <Input type="email" />
+          <FormHelperText>We'll never share your email.</FormHelperText>
+        </FormControl> */}
         <input
           type="text"
           placeholder="Contact number"
@@ -556,12 +560,13 @@ const ShowJoinTeamDetails = ({
 
   return (
     <div className="payment-success-modal">
+      <h2 style={{ paddingBottom: "2rem" }}>Fill in these details</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        <input
+        {/* <input
           type="text"
           placeholder="Enter your team code..."
           onChange={(e) => {
@@ -584,7 +589,49 @@ const ShowJoinTeamDetails = ({
           placeholder="Enter referral code..."
           value={refCode}
           onChange={refCodeHandler}
-        />
+        /> */}
+        <Form>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label style={{ fontWeight: "bold" }}>Team Code </Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter Team Code"
+              onChange={(e) => {
+                setCode(e.target.value);
+              }}
+              value={code}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label style={{ fontWeight: "bold" }}>
+              Phone Number{" "}
+            </Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter Phone Submit"
+              value={phoneNumber}
+              onChange={phoneHandler}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label style={{ fontWeight: "bold" }}>
+              Referal Code{" "}
+            </Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter Referal Code"
+              value={refCode}
+              onChange={refCodeHandler}
+            />
+          </Form.Group>
+
+          {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label="Check me out" />
+          </Form.Group> */}
+          {/* <Button variant="primary" type="submit">
+            Submit
+          </Button> */}
+        </Form>
         <br />
         <button
           className="reg-btn"
