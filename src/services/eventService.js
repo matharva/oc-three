@@ -33,7 +33,7 @@ async function getUser(emailId){
   // return 1;
 }
 
-async function createUser(emailId,phoneNumber,name){
+async function createUser(emailId,phoneNumber,name,uid){
   // console.log('The data is: ',emailId,phoneNumber,name);
   // userRef.add({
   //   college:"",
@@ -43,7 +43,7 @@ async function createUser(emailId,phoneNumber,name){
   // }).then(docRef=>{
   //   console.log("Document written with ID: ", docRef.id);
   // })
-  let newUserRef = userRef.doc();
+  let newUserRef = userRef.doc(uid);
 
   // let querySnapShot = await newUserRef.set({
   //   college:"",
