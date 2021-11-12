@@ -40,7 +40,7 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
             email: data.user.email,
             photo:
               "https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c",
-            phone: data.user.phoneNumber,
+            phoneNumber: user.phoneNumber,
             uid: user.uid,
           })
         );
@@ -49,7 +49,7 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
           email: data.user.email,
           photo:
             "https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c",
-          phone: data.user.phoneNumber,
+          phoneNumber: user.phoneNumber,
           uid: user.uid,
         });
         setIsOpen(false);
