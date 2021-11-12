@@ -1,0 +1,146 @@
+[debug] [2021-11-06T17:52:46.937Z] ----------------------------------------------------------------------
+[debug] [2021-11-06T17:52:46.939Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\HP\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-11-06T17:52:46.940Z] CLI Version:   9.21.0
+[debug] [2021-11-06T17:52:46.940Z] Platform:      win32
+[debug] [2021-11-06T17:52:46.940Z] Node Version:  v14.17.1
+[debug] [2021-11-06T17:52:46.944Z] Time:          Sat Nov 06 2021 23:22:46 GMT+0530 (India Standard Time)
+[debug] [2021-11-06T17:52:46.944Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-11-06T17:52:47.008Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-11-06T17:52:47.008Z] > authorizing via signed-in user (atharvamohite20@gmail.com)
+[debug] [2021-11-06T17:52:47.008Z] [iam] checking project oc-three for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-11-06T17:52:47.010Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/oc-three:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-11-06T17:52:48.523Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 06 Nov 2021 17:52:50 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1330","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-06T17:52:48.524Z] > refreshing access token with scopes: []
+[debug] [2021-11-06T17:52:48.525Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-06T17:52:48.690Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","date":"Sat, 06 Nov 2021 17:52:50 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-06T17:52:48.700Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/oc-three [none]
+[debug] [2021-11-06T17:52:49.109Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/oc-three 200
+[debug] [2021-11-06T17:52:49.109Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/oc-three {"projectId":"oc-three","projectNumber":"432705363980","displayName":"oc-three","name":"projects/oc-three","resources":{"hostingSite":"oc-three"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'oc-three'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-11-06T17:52:49.113Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-11-06T17:52:49.113Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-06T17:52:49.264Z] <<< HTTP RESPONSE 200 {"date":"Sat, 06 Nov 2021 17:52:50 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-06T17:52:49.272Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/oc-three/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-11-06T17:52:51.210Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 06 Nov 2021 17:52:52 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[oc-three]: beginning deploy... 
+[info] i  hosting[oc-three]: found 42 files in build 
+[debug] [2021-11-06T17:52:52.298Z] > refreshing access token with scopes: []
+[debug] [2021-11-06T17:52:52.298Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-06T17:52:52.301Z] [hosting] hash cache [YnVpbGQ] stored for 42 files
+[debug] [2021-11-06T17:52:52.301Z] [hosting][hash queue][FINAL] {"max":1064,"min":6,"avg":50.857142857142854,"active":0,"complete":42,"success":42,"errored":0,"retried":0,"total":42,"elapsed":1074}
+[debug] [2021-11-06T17:52:52.453Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Sat, 06 Nov 2021 17:52:54 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-06T17:52:52.462Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/oc-three/versions/b94ee3fd88404288:populateFiles [none]
+[debug] [2021-11-06T17:52:52.462Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/oc-three/versions/b94ee3fd88404288:populateFiles {"files":{"/favicon.ico":"eae62e993eb980ec8a25058c39d5a51feab118bd2100c4deebb2a9c158ec11f9","/logo192.png":"3ee59515172ee198f3be375979df15ac5345183e656720a381b8872b2a39dc8b","/logo512.png":"ee7e2f3fdb8209c4b6fd7bef6ba50d1b9dba30a25bb5c3126df057e1cb6f5331","/man.glb":"9cf8fa12ef396e9435956110396b5ea4098dc72150d958c4313dd71dde1dfd9f","/manifest.json":"aff3449bdc238776f5d6d967f19ec491b36aed5fb7f23ccff6500736fd58494a","/robots.txt":"bfe106a3fb878dc83461c86818bf74fc1bdc7f28538ba613cd3e775516ce8b49","/asset-manifest.json":"908401c176cdae01c1633d4757715a2d99e6b2ad6fe7211ee0b0d0c5dacce9b5","/index.html":"17c8768831460a84c0ee3fe4d3f92167724b85bdf15cb437ee77f935a1da2292","/static/css/main.a7a08146.chunk.css":"dda5003dd1b4d372e60e35d5995d80f19b019d28c9ba2465848cf2fd500dccac","/static/js/2.aac40f8b.chunk.js.LICENSE.txt":"2dad1d915bf2e64ea4fe0660cf84a47b0cfbdaab9b213f9f241dd6eaba46c4f0","/static/css/2.0d8e00c5.chunk.css":"d3148002e635329854e31ce11bea5d0c005a1c8cedd0e6a554f2594a47028b4e","/static/css/main.a7a08146.chunk.css.map":"952cd588195f78a4ef6919aac632e54855dd91daf3d8e6ef1b1fd7fadf03d165","/static/js/3.2bf650ed.chunk.js":"ab6cac3ad8482bab037d09bb23a71d6dcefc9fcfbbc4777df12a01819bf28d75","/static/js/3.2bf650ed.chunk.js.map":"1ec9d4d16844ab59ca2a43220d3e91f303b3b35ff35a885193c67b547ba32c9f","/static/js/runtime-main.4c2bc7f9.js":"1242807df73f5a913f59d8dd4685eaad456e6c027f8ff55e57c3b6911f6b95a6","/static/js/main.c49f9cfe.chunk.js":"33bd45c87651e25cc1450334bf4483ecc2d6f15d73373730d416cea910a99a34","/static/js/runtime-main.4c2bc7f9.js.map":"dde8c3090c74b02be554e46488301d7e2207efc5b707b803868792375018e51a","/static/media/Acoustique.b34f67ff.png":"7e0684f5119960d21bab62691f38a06ff61a64d4c03a0cf66c2d65daf8941a62","/static/media/done.46c68df3.jpg":"b300816a8fe445976bbc0599490178a7827eb8a7ad684704aa2c839184923f4d","/static/media/android-download.4cf5e004.png":"b76eba6b61a73bdb0a019fd46b0ecaeaf32117d0300c69314400c605bfdd6f26","/static/media/prize.78fdf62e.jpg":"7a00ee309a5b519b54b6d88fe36b3d0aa0e158ae18d3573235bf7b23eebf7337","/static/css/2.0d8e00c5.chunk.css.map":"c9fb11fbfab79e8daa1e760fa15df0079452b6b68820a9b92acafb2d21769273","/static/js/main.c49f9cfe.chunk.js.map":"843d283bafe16cde05972998ca6cead9e6634f4de81b5c88da6822d9672e4e3f","/static/media/tech.a5368928.png":"4f52c763082fd3e40a79b52f68db95c73807960607433fdfbb92c2d4b503f3ee","/static/media/calendar.38f81910.jpg":"59757863c844ed2ddf39d378d33966fbb8a2a88a5efc911975e5d5220966f7e7","/static/media/Codatron.30d834a0.jpg":"1663357a3794e57402c68cf9111d7e8cf0730191f36d2a7be77f42bcce3a3cf3","/static/media/Codewars.c30415c0.jpg":"d443561f51e4c4650448eafdc2e407d993e32a98a83ca7e3201b5e7376ef1a5d","/static/media/AelanEJang.72372fd4.jpg":"9ec0764bf6639e1d9681c54b16ee085fc64c5a502df7f8e8a4bd7ecfc273ebe3","/static/media/IPL.ad01f75a.jpg":"e84c4fc43accbcdc760c42c47825649fc2dc36be7869dff3de77e678cf0bbed6","/static/media/OnlineGaming.3e815b42.jpg":"c15d04ebcdb15bf334eaa389dfc7d2b75326ea70483f244e323bc3e4b9717e8a","/static/media/VSM.6c4c7722.jpg":"0e026e7b061d2a3f9d7aeed4c8a669a065d60d15880141925104cec55359af75","/static/media/ShortCircuit.a930b88d.jpg":"e5f563f4fa5c04657d98c6bdb567fa2c0ec41f32b11e488a43e69df6c97f668c","/static/media/Sargam.b57e70c1.jpg":"f35f393d384ea847d47e39b7dab75fdaa3feb74f90e7cb14bf10d4520f6a8e4a","/static/media/VirtualTreasure.e50caefa.jpg":"6af414d35563b03f5926f05a15ba632e6ea31a787267f94fa062ec3981cb8fda","/static/media/codatron++.f042af9a.jpg":"253209a9cfb9cb40245b0d9b58cbf3b448a9c313fbcc9ee011c96ff4a8246be8","/static/media/hackathon.2c5f68fe.jpg":"7b5cc6fcb666239fa48e251419ce9091e7e5ee7e783ac9866e0e668f8f9cc3f3","/static/media/Oculus.78f249cc.png":"bd5ff84aa87baaa71df32df9b1ae17e2bc56b61d599a7502995262088e71f2a5","/static/media/WOB.bcae1736.png":"61e24f31108d748c3b0545fc6c07311c1370decba727d222b2f6ae4aca11ca50","/static/media/Startathon.a7993bba.jpg":"7743ccf4045fc6760a61d090bb08500929d5ecc2f79d4c326ba4c22e90ef661f","/static/media/Pronite.0cd9290d.png":"83032bda91c323e611395536a50558fbe3c9004b557cc8dbb0828743968ddf56","/static/js/2.aac40f8b.chunk.js":"ad8b73c722835e45691b1ae220ad314de01e9c50b714476047814715b3cd8549","/static/js/2.aac40f8b.chunk.js.map":"3ce45f689394e8c4f115229c6223e936e0641283c427911d145a2e42a8f8df69"}}
+[debug] [2021-11-06T17:52:54.225Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/oc-three/versions/b94ee3fd88404288:populateFiles 200
+[debug] [2021-11-06T17:52:54.225Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/oc-three/versions/b94ee3fd88404288:populateFiles {"uploadRequiredHashes":["843d283bafe16cde05972998ca6cead9e6634f4de81b5c88da6822d9672e4e3f","17c8768831460a84c0ee3fe4d3f92167724b85bdf15cb437ee77f935a1da2292","908401c176cdae01c1633d4757715a2d99e6b2ad6fe7211ee0b0d0c5dacce9b5","33bd45c87651e25cc1450334bf4483ecc2d6f15d73373730d416cea910a99a34"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files"}
+[debug] [2021-11-06T17:52:54.227Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/843d283bafe16cde05972998ca6cead9e6634f4de81b5c88da6822d9672e4e3f [none]
+[debug] [2021-11-06T17:52:54.227Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/843d283bafe16cde05972998ca6cead9e6634f4de81b5c88da6822d9672e4e3f [stream]
+[debug] [2021-11-06T17:52:54.229Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/17c8768831460a84c0ee3fe4d3f92167724b85bdf15cb437ee77f935a1da2292 [none]
+[debug] [2021-11-06T17:52:54.229Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/17c8768831460a84c0ee3fe4d3f92167724b85bdf15cb437ee77f935a1da2292 [stream]
+[debug] [2021-11-06T17:52:54.230Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/908401c176cdae01c1633d4757715a2d99e6b2ad6fe7211ee0b0d0c5dacce9b5 [none]
+[debug] [2021-11-06T17:52:54.230Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/908401c176cdae01c1633d4757715a2d99e6b2ad6fe7211ee0b0d0c5dacce9b5 [stream]
+[debug] [2021-11-06T17:52:54.231Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/33bd45c87651e25cc1450334bf4483ecc2d6f15d73373730d416cea910a99a34 [none]
+[debug] [2021-11-06T17:52:54.231Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/33bd45c87651e25cc1450334bf4483ecc2d6f15d73373730d416cea910a99a34 [stream]
+[debug] [2021-11-06T17:52:54.233Z] [hosting][populate queue][FINAL] {"max":1930,"min":1930,"avg":1930,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1936}
+[debug] [2021-11-06T17:52:54.233Z] [hosting] uploads queued: 4
+[debug] [2021-11-06T17:52:56.386Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/17c8768831460a84c0ee3fe4d3f92167724b85bdf15cb437ee77f935a1da2292 200
+[debug] [2021-11-06T17:52:56.386Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/17c8768831460a84c0ee3fe4d3f92167724b85bdf15cb437ee77f935a1da2292 [stream]
+[debug] [2021-11-06T17:52:57.016Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/33bd45c87651e25cc1450334bf4483ecc2d6f15d73373730d416cea910a99a34 200
+[debug] [2021-11-06T17:52:57.016Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/33bd45c87651e25cc1450334bf4483ecc2d6f15d73373730d416cea910a99a34 [stream]
+[debug] [2021-11-06T17:52:57.118Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/843d283bafe16cde05972998ca6cead9e6634f4de81b5c88da6822d9672e4e3f 200
+[debug] [2021-11-06T17:52:57.119Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/843d283bafe16cde05972998ca6cead9e6634f4de81b5c88da6822d9672e4e3f [stream]
+[debug] [2021-11-06T17:52:57.138Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/908401c176cdae01c1633d4757715a2d99e6b2ad6fe7211ee0b0d0c5dacce9b5 200
+[debug] [2021-11-06T17:52:57.138Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/oc-three/versions/b94ee3fd88404288/files/908401c176cdae01c1633d4757715a2d99e6b2ad6fe7211ee0b0d0c5dacce9b5 [stream]
+[debug] [2021-11-06T17:52:57.138Z] [hosting][upload queue][FINAL] {"max":2912,"min":2160,"avg":2688.75,"active":0,"complete":4,"success":4,"errored":0,"retried":0,"total":4,"elapsed":2912}
+[info] +  hosting[oc-three]: file upload complete 
+[debug] [2021-11-06T17:52:57.139Z] [hosting] deploy completed after 5928ms
+[debug] [2021-11-06T17:52:57.143Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "oc-three"
+    },
+    "site": "oc-three",
+    "version": "sites/oc-three/versions/b94ee3fd88404288"
+  }
+]
+[info] i  hosting[oc-three]: finalizing version... 
+[debug] [2021-11-06T17:52:57.145Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-11-06T17:52:57.145Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-06T17:52:57.306Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Sat, 06 Nov 2021 17:52:58 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-06T17:52:57.313Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/oc-three/versions/b94ee3fd88404288?updateMask=status  
+ {"status":"FINALIZED"}
+[debug] [2021-11-06T17:53:08.903Z] <<< HTTP RESPONSE 503 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sat, 06 Nov 2021 17:53:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-06T17:53:08.903Z] <<< HTTP RESPONSE BODY {"error":{"code":503,"message":"The service is currently unavailable.","status":"UNAVAILABLE"}}
+[error] 
+[error] Error: HTTP Error: 503, The service is currently unavailable.
+[debug] [2021-11-06T17:53:09.055Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 503,
+      "message": "The service is currently unavailable.",
+      "status": "UNAVAILABLE"
+    }
+  },
+  "response": {
+    "statusCode": 503,
+    "body": {
+      "error": {
+        "code": 503,
+        "message": "The service is currently unavailable.",
+        "status": "UNAVAILABLE"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Sat, 06 Nov 2021 17:53:10 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": "?updateMask=status",
+        "query": "updateMask=status",
+        "pathname": "/v1beta1/sites/oc-three/versions/b94ee3fd88404288",
+        "path": "/v1beta1/sites/oc-three/versions/b94ee3fd88404288?updateMask=status",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/oc-three/versions/b94ee3fd88404288?updateMask=status"
+      },
+      "method": "PATCH"
+    }
+  }
+}

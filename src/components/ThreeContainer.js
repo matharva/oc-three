@@ -8,7 +8,7 @@ import { Physics, usePlane, useBox } from "@react-three/cannon";
 // 3 Model
 // import Model from "./Mandir";
 import Model from "./Man";
-
+import Watch from "./Watchman";
 // Styles
 import "../styles/ThreeContainer.scss";
 
@@ -74,6 +74,7 @@ const ThreeContainer = () => {
         <Plane />
         {console.log("Before loading model")}
         <Model />
+        <Watch />
         {console.log("After loading model")}
       </Physics>
       {/* <Suspense fallback={null}> */}

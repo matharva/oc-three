@@ -201,17 +201,15 @@ const TeamModal = ({ userTeam }) => {
         </div> */}
         {userTeam.member.map((item) => {
           return (
-            <>
-              <div className="team-member-items">
-                <div className="team-member-item-img-container">
-                  <img src={Oc} alt="" />
-                </div>
-                <div className="items-info">
-                  <div className="team-member-item-name">{"Param Patil"}</div>
-                  <div className="team-member-item-email">{item}</div>
-                </div>
+            <div className="team-member-items" key={item.uid}>
+              <div className="team-member-item-img-container">
+                <img src={Oc} alt="" />
               </div>
-            </>
+              <div className="items-info">
+                <div className="team-member-item-name">{item.name}</div>
+                <div className="team-member-item-email">{item.email}</div>
+              </div>
+            </div>
           );
         })}
       </div>
