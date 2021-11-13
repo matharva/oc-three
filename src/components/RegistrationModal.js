@@ -237,7 +237,7 @@ const SinglePlayer = ({
         <div className="form-btn-div">
           <button
             onClick={() => {
-              // showRazorpayModal(eventData.Fee[0].Fee);
+              showRazorpayModal(eventData.Fee[0].Fee);
               console.log("The data is: ", phoneNumber, refCode);
             }}
           >
@@ -332,7 +332,9 @@ const PaymentSuccessful = ({ eventData, setViewTeam }) => {
         </div>
         <h1>Successful Payment</h1>
       </div>
-      <p>Your payement for event codewars was successfully completed</p>
+      <p>
+        Your payement for event {eventData.Title} was successfully completed
+      </p>
       {!eventData.isSingle && (
         <button className="team-details-btn" onClick={() => setViewTeam(true)}>
           Team Details
