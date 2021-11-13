@@ -100,11 +100,15 @@
     cursor: pointer;
     background: transparent;
     border-radius: 50px;
-    padding: 1rem 3rem;
+    padding: 0.5rem 3.5rem;
     border: 1px solid white;
     color: white;
+    // width: 50%;
+    // height: 50%;
+    // align-items: center;
+    // justify-content: center;
     // font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;
 
     &:active {
       outline: none;
@@ -118,6 +122,13 @@
     text-align: center;
     width: 70%;
     margin-bottom: 1rem;
+  }
+
+  .single-pay-form-div {
+    display: grid;
+    // max-width: 200px;
+    min-width: 300px;
+    color: white;
   }
 }
 
@@ -138,7 +149,7 @@
   overflow: auto;
 
   @media screen and (max-width: 1920px) {
-    padding-top: 10rem;
+    padding-top: 5.5rem;
     padding-bottom: 1rem;
   }
 
@@ -309,4 +320,13 @@
     // font-weight: bold;
     font-size: 1.1rem;
   }
+}
+
+.form-btn-div {
+  display: grid;
+  // border-radius: 2px solid red;
+  // width: 50%;
+  // height: 100px;
+  align-items: center;
+  justify-content: center;
 }

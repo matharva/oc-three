@@ -175,8 +175,10 @@ const SinglePlayer = ({
       <p>
         Once you click on the button, you will be redirected to the Razorpay
         dashboard!
-        <form onSubmit={(e) => e.preventDefault()}>
-          <input
+      </p>
+      <form onSubmit={(e) => e.preventDefault()}>
+        <div className="single-pay-form-div">
+          {/* <input
             type="text"
             placeholder="Enter referral code..."
             value={refCode}
@@ -188,17 +190,62 @@ const SinglePlayer = ({
             value={phoneNumber}
             onChange={phoneHandler}
             required
-          ></input>
+          ></input> */}
+          <Form>
+            {/* <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label style={{ fontWeight: "bold" }}>Team Code </Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter Team Code"
+                onChange={(e) => {
+                  setCode(e.target.value);
+                }}
+                value={code}
+              />
+            </Form.Group> */}
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label style={{ fontWeight: "bold" }}>
+                Phone Number{" "}
+              </Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter Phone Number"
+                value={phoneNumber}
+                onChange={phoneHandler}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label style={{ fontWeight: "bold" }}>
+                Referal Code{" "}
+              </Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter Referal Code"
+                value={refCode}
+                onChange={refCodeHandler}
+              />
+            </Form.Group>
+
+            {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label="Check me out" />
+          </Form.Group> */}
+            {/* <Button variant="primary" type="submit">
+            Submit
+          </Button> */}
+          </Form>
+        </div>
+        <div className="form-btn-div">
           <button
             onClick={() => {
-              showRazorpayModal(eventData.Fee[0].Fee);
-              console.log(("The data is: ", phoneNumber, refCode));
+              // showRazorpayModal(eventData.Fee[0].Fee);
+              console.log("The data is: ", phoneNumber, refCode);
             }}
           >
-            Pay
+            PAY
           </button>
-        </form>
-      </p>
+        </div>
+      </form>
+      {/* </p> */}
     </div>
   );
 };
@@ -259,10 +306,11 @@ const TeamModal = ({ userTeam }) => {
                   <div className="team-member-item-email">{item.email}</div>
                 </div>
               </div>
-              <div className="items-info">
+
+              {/* <div className="items-info">
                 <div className="team-member-item-name">{item.name}</div>
                 <div className="team-member-item-email">{item.email}</div>
-              </div>
+              </div> */}
             </>
           );
         })}
@@ -410,16 +458,6 @@ const ShowPaymentDetails = ({
   const paymentHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    // setRegisterForm((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     [name]: {
-    //       ...prevState[name],
-    //       value: value,
-    //       dirty: true,
-    //     },
-    //   };
-    // });
     setPaymentType(value);
   };
 
@@ -431,12 +469,18 @@ const ShowPaymentDetails = ({
 
   return (
     <div className="payment-success-modal">
+      <h2
+        style={{ paddingBottom: "2rem", fontWeight: "bold" }}
+        className="form-header"
+      >
+        FILL IN THESE DETAILS
+      </h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        <select
+        {/* <select
           name="type"
           id="paymentType"
           required
@@ -456,11 +500,6 @@ const ShowPaymentDetails = ({
           })}
         </select>
         <br />
-        {/* <FormControl id="email">
-          <FormLabel>Email address</FormLabel>
-          <Input type="email" />
-          <FormHelperText>We'll never share your email.</FormHelperText>
-        </FormControl> */}
         <input
           type="text"
           placeholder="Contact number"
@@ -475,32 +514,86 @@ const ShowPaymentDetails = ({
           value={refCode}
           onChange={refCodeHandler}
         />
-        <br />
-        <button
-          className="reg-btn"
-          onClick={() => {
-            showRazorpayModal();
-            console.log("The register form is: ", phoneNumber, paymentType);
-          }}
-        >
-          Proceed
-        </button>
-      </form>
-      {/* {details.map((item) => {
-        return (
-          <>
-            <button
-              className="reg-btn"
-              onClick={() => {
-                showRazorpayModal(item.Fee);
-              }}
+        <br /> */}
+        <Form>
+          <Form.Group className="mb-3" controlId="">
+            <Form.Label style={{ fontWeight: "bold" }}>
+              Payment Type{" "}
+            </Form.Label>
+            <Form.Select
+              aria-label="Default select example"
+              size="lg"
+              name="type"
+              id="paymentType"
+              required
+              placeholder="Choose Payment type"
+              value={paymentType}
+              onChange={paymentHandler}
             >
-              Pay {item.Type} : {item.Fee}
-            </button>
-            <br />
-          </>
-        );
-      })} */}
+              <option>Select Team Options</option>
+              {/* <option value="1"></option>
+              <option value="2">Two</option>
+              <option value="3">Three</option> */}
+              {details.map((item) => {
+                return (
+                  <>
+                    <option
+                      value={`${item.Type}`}
+                    >{`${item.Type}: ${item.Fee}`}</option>
+                    {/* <br /> */}
+                  </>
+                );
+              })}
+            </Form.Select>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label style={{ fontWeight: "bold" }}>
+              Phone Number{" "}
+            </Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter Phone Number"
+              value={phoneNumber}
+              onChange={phoneHandler}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label style={{ fontWeight: "bold" }}>
+              Referal Code{" "}
+            </Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter Referal Code"
+              value={refCode}
+              onChange={refCodeHandler}
+            />
+          </Form.Group>
+
+          {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label="Check me out" />
+          </Form.Group> */}
+          {/* <Button variant="primary" type="submit">
+            Submit
+          </Button> */}
+        </Form>
+        <div className="form-btn-div">
+          <button
+            className="reg-btn"
+            onClick={() => {
+              showRazorpayModal();
+              console.log(
+                "The register form is: ",
+                phoneNumber,
+                paymentType,
+                refCode
+              );
+            }}
+          >
+            Proceed
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
@@ -560,7 +653,12 @@ const ShowJoinTeamDetails = ({
 
   return (
     <div className="payment-success-modal">
-      <h2 style={{ paddingBottom: "2rem" }}>Fill in these details</h2>
+      <h2
+        style={{ paddingBottom: "2rem", fontWeight: "bold" }}
+        className="form-header"
+      >
+        FILL IN THESE DETAILS
+      </h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -608,7 +706,7 @@ const ShowJoinTeamDetails = ({
             </Form.Label>
             <Form.Control
               type="email"
-              placeholder="Enter Phone Submit"
+              placeholder="Enter Phone Number"
               value={phoneNumber}
               onChange={phoneHandler}
             />
@@ -632,16 +730,18 @@ const ShowJoinTeamDetails = ({
             Submit
           </Button> */}
         </Form>
-        <br />
-        <button
-          className="reg-btn"
-          onClick={() => {
-            joinUser();
-            console.log("The register form is: ", phoneNumber, code);
-          }}
-        >
-          Confirm
-        </button>
+        {/* <br /> */}
+        <div className="form-btn-div">
+          <button
+            className="reg-btn"
+            onClick={() => {
+              joinUser();
+              console.log("The register form is: ", phoneNumber, code);
+            }}
+          >
+            Confirm
+          </button>
+        </div>
       </form>
       {message}
       {/* {details.map((item) => {
@@ -711,7 +811,7 @@ const RegistrationModal = ({
       bottom: "auto",
       padding: 0,
       transform: "translate(-50%, -50%)",
-      height: "60vh",
+      height: "80vh",
       width: `${!isMobile ? "50vw" : "90vw"}`,
     },
   };

@@ -257,6 +257,48 @@
           }
         }
       }
+
+      .event-register-single {
+        // display: grid;
+        // align-items: center;
+
+        @media screen and (max-width: 720px) {
+          position: fixed;
+          box-shadow: 0px -8px 8px -10px rgba(0, 0, 0, 0.5);
+        }
+        // border: 2px solid orange;
+
+        height: 5rem;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        // padding: 0 1rem;
+        align-items: center;
+        justify-content: center;
+
+        background: white;
+
+        .reg-btn-container {
+          flex: 1;
+          display: flex;
+          // border: 2px solid black;
+          align-items: center;
+          justify-content: center;
+
+          .reg-btn {
+            cursor: pointer;
+            border: 0;
+            // background: var(--oc-btn-colour);
+            background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            color: white;
+            // font-weight: bold;
+            font-size: 1.1rem;
+          }
+        }
+      }
     }
 
     .right-grid {
