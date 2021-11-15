@@ -74,6 +74,7 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
         setIsOpen(false);
 
         console.log("The user is signed out");
+        history.push("/");
       })
       .catch(function (error) {
         // An error happened.

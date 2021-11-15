@@ -15,6 +15,7 @@ import DonationDrive from "./pages/DonationDrive";
 import { AuthProvider } from "./contexts/AppContext";
 
 import { ChakraProvider } from "@chakra-ui/react";
+import Profile from "./pages/Profile.js";
 
 export default function App() {
   return (
@@ -38,6 +39,9 @@ export default function App() {
           </Route>
           <Route path="/donation-drive">
             <DonationDrive />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
         </Switch>
       </AuthProvider>
