@@ -19,32 +19,34 @@ import Profile from "./pages/Profile.js";
 
 export default function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>
-          <Route path="/events/:eventName">
-            <EventDetails event={eventDetails[0]} />
-          </Route>
-          <Route path="/events">
-            <Eventpage />
-          </Route>
-          <Route path="/sponsors">
-            <Sponsors />
-          </Route>
-          <Route path="/contact">
-            <ContactUs />
-          </Route>
-          <Route path="/donation-drive">
-            <DonationDrive />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-        </Switch>
-      </AuthProvider>
-    </Router>
+    <ChakraProvider>
+      <Router>
+        <AuthProvider>
+          <Switch>
+            <Route exact path="/">
+              <Main />
+            </Route>
+            <Route path="/events/:eventName">
+              <EventDetails event={eventDetails[0]} />
+            </Route>
+            <Route path="/events">
+              <Eventpage />
+            </Route>
+            <Route path="/sponsors">
+              <Sponsors />
+            </Route>
+            <Route path="/contact">
+              <ContactUs />
+            </Route>
+            <Route path="/donation-drive">
+              <DonationDrive />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+          </Switch>
+        </AuthProvider>
+      </Router>
+    </ChakraProvider>
   );
 }
