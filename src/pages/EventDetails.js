@@ -17,7 +17,7 @@ import Prize from "../assets/prize.jpg";
 import Codatronplusplus from "../assets/codatron++.jpg";
 
 // Icons
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 
 // Components
 import FaqSection from "../components/FaqSection";
@@ -29,6 +29,21 @@ import LoginContainer from "../components/LoginContainer";
 //Data and Services
 import { eventService } from "../services/eventService";
 import { eventDetails } from "../data";
+
+import { Container } from "@chakra-ui/react";
+
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import {
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  Icon,
+} from "@chakra-ui/react";
+
+import { MdCheckCircle } from "react-icons/md";
+import { IoMdArrowRoundBack } from "react-icons/io";
 const Description = ({ event }) => {
   return (
     <>
@@ -62,23 +77,35 @@ const Description = ({ event }) => {
 };
 
 const Rules = ({ rules }) => {
-  console.log("Rules: ", rules);
   return (
     <>
-      {/* {rules.map(i=>{
-        // console.log('The rule is: ',rule);
-        
-          `${i})`<br/>
-        
-      })} */}
-      {rules.map((rule, i) => {
+      {/* {rules.map((rule, i) => {
         return (
           <>
             {i + 1}) {rule}
             <br />
           </>
         );
-      })}
+      })} */}
+      <List spacing={3}>
+        <ListItem>
+          <ListIcon as={MdCheckCircle} color="green.500" />
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit
+        </ListItem>
+        <ListItem>
+          <ListIcon as={MdCheckCircle} color="green.500" />
+          Assumenda, quia temporibus eveniet a libero incidunt suscipit
+        </ListItem>
+        <ListItem>
+          <ListIcon as={MdCheckCircle} color="green.500" />
+          Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
+        </ListItem>
+        {/* You can also use custom icons from react-icons */}
+        <ListItem>
+          <ListIcon as={MdCheckCircle} color="green.500" />
+          Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
+        </ListItem>
+      </List>
     </>
   );
 };
@@ -201,6 +228,7 @@ const EventDetails = ({ event }) => {
       //     name:"BHushan",
       //     emailId:"bhuhsna.bhuhsna@gmail.com"
       //   },{
+
       //     name:"Param",
       //     emailId:"param.patil@spit.ac.in"
       //   },{
@@ -249,7 +277,7 @@ const EventDetails = ({ event }) => {
             <MobileNav />
             <div className="event-grid">
               <div className="back-container" onClick={() => history.goBack()}>
-                <ArrowBackIcon />
+                <Icon as={IoMdArrowRoundBack} w={6} h={6} />
               </div>
               <div className="left-grid">
                 <div className="event-details-grid">
@@ -260,7 +288,7 @@ const EventDetails = ({ event }) => {
                 <ArrowBackIcon />
               </div> */}
                   </div>
-                  <div className="event-description">
+                  {/* <div className="event-description">
                     <div className="event-tabs">
                       <div
                         className={`event-tab-item ${
@@ -290,7 +318,27 @@ const EventDetails = ({ event }) => {
                     <div className="event-content">
                       {tabsContent(eventData)}
                     </div>
-                  </div>
+                  </div> */}
+                  <Container maxW="container.xl">
+                    <Tabs isFitted variant="enclosed" colorScheme="green">
+                      <TabList>
+                        <Tab>Description</Tab>
+                        <Tab>Rules</Tab>
+                        <Tab>FaqSection</Tab>
+                      </TabList>
+                      <TabPanels>
+                        <TabPanel>
+                          <Description event={eventData} />
+                        </TabPanel>
+                        <TabPanel>
+                          <Rules rules={eventData.rules} />
+                        </TabPanel>
+                        <TabPanel>
+                          <FaqSection faq={eventData.faq} />
+                        </TabPanel>
+                      </TabPanels>
+                    </Tabs>
+                  </Container>
                   {eventData.isSingle ? (
                     <div className="event-register">
                       <div className="reg-amt">

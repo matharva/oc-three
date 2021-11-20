@@ -4,8 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "../styles/Main.scss";
 
 // Icons
-import MenuIcon from "@mui/icons-material/Menu";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 
 // Assets
 import Oc from "../assets/Oculus.png";
@@ -13,6 +12,8 @@ import Oc from "../assets/Oculus.png";
 // Components
 import ThreeContainer from "../components/ThreeContainer";
 import Sidebar from "../components/Sidebar";
+import DesktopNav from "../components/DesktopNav";
+import MobileNav from "../components/MobileNav";
 
 const Main = () => {
   const boxRef = useRef(null);
@@ -23,20 +24,25 @@ const Main = () => {
     console.log(centerRef);
   }, [boxRef, centerRef]);
   return (
-    <div className="main-container">
-      <div className="menu-container">
-        <MenuIcon onClick={() => setMenu(true)} />
+    <div className="main_wrapper">
+      <DesktopNav />
+      <MobileNav />
+      <div className="main-container">
+        {/* <div className="menu-container">
+        <PhoneIcon onClick={() => setMenu(true)} />
         <div className="nav-img-container">
           <img src={Oc} alt="" />
         </div>
         <div className="account-icon">
-          <AccountCircleIcon />
+          <PhoneIcon />
         </div>
-      </div>
-      {menu ? <Sidebar setMenu={setMenu} /> : null}
-      <div className="model-box" ref={centerRef}>
-        <ThreeContainer />
-        {/* <div className="marker"></div> */}
+      </div> */}
+        {/* <div className="" style={{ padding: "2rem" }}> */}
+        <div className="model-box" ref={centerRef}>
+          <ThreeContainer />
+          {/* <div className="marker"></div> */}
+        </div>
+        {/* </div> */}
       </div>
     </div>
   );

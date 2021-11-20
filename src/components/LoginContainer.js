@@ -6,7 +6,7 @@ import { StyledFirebaseAuth } from "react-firebaseui";
 import { useAuth } from "../contexts/AppContext";
 import { eventService } from "../services/eventService";
 // Icons
-import CloseIcon from "@mui/icons-material/Close";
+import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 import "../styles/loginModal.scss";
 
 const LoginContainer = ({ isOpen, setIsOpen }) => {
@@ -128,7 +128,7 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
         contentLabel="Example Modal"
       >
         <div className="cross-child" onClick={() => setIsOpen(false)}>
-          <CloseIcon style={isMobile || true ? {} : { color: "white" }} />
+          <PhoneIcon style={isMobile || true ? {} : { color: "white" }} />
         </div>
         {!currentUser ? (
           <StyledFirebaseAuth

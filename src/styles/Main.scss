@@ -1,10 +1,18 @@
+.main_wrapper {
+  overflow: hidden;
+}
+
 .main-container {
   width: 100vw;
-  height: 100vh;
-  position: relative;
   overflow: hidden;
+  height: 91.5vh;
+
+  @media screen and (max-width: 720px) {
+    height: 95vh;
+  }
+  position: relative;
   // border: 1px solid orange;
-  padding: 2rem;
+  padding: 1.5rem;
 
   // cross browser
   -webkit-touch-callout: none;
@@ -16,7 +24,7 @@
 
   @media screen and (max-width: 720px) {
     padding: 0.5rem;
-    padding-bottom: 5rem;
+    // padding-bottom: 5rem;
   }
 
   .menu-container {

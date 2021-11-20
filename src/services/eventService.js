@@ -1,4 +1,3 @@
-import { refType } from "@mui/utils";
 import firebase from "firebase";
 import { eventDetails } from "../data";
 import axios from "axios";

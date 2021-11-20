@@ -8,12 +8,7 @@ import Download from "../assets/android-download.png";
 import "../styles/Footer.scss";
 
 // Icons
-import InstagramIcon from "@mui/icons-material/Instagram";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 
 const Footer = () => {
   const history = useHistory();
@@ -36,22 +31,22 @@ const Footer = () => {
         <div className="footer-text3">Join Us On</div>
         <div className="footer-icon-container">
           <div className="footer-icon">
-            <InstagramIcon />
+            <PhoneIcon />
           </div>
           <div className="footer-icon">
-            <FacebookIcon />
+            <PhoneIcon />
           </div>
           <div className="footer-icon">
-            <LinkedInIcon />
+            <PhoneIcon />
           </div>
           <div className="footer-icon">
-            <YouTubeIcon />
+            <PhoneIcon />
           </div>
           <div className="footer-icon">
-            <WhatsAppIcon />
+            <PhoneIcon />
           </div>
           <div className="footer-icon">
-            <TwitterIcon />
+            <PhoneIcon />
           </div>
         </div>
       </div>

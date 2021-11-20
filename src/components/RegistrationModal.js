@@ -7,8 +7,7 @@ import Oc from "../assets/tech.png";
 import Payment from "../assets/done.jpg";
 
 // Icons
-import CloseIcon from "@mui/icons-material/Close";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 import { eventService } from "../services/eventService";
 import {
   FormControl,
@@ -316,7 +315,7 @@ const TeamModal = ({ userTeam }) => {
         })}
       </div>
       <button>
-        <WhatsAppIcon style={{ color: "white" }} />
+        <PhoneIcon style={{ color: "white" }} />
         Join on WhatsApp
       </button>
     </div>
@@ -846,7 +845,7 @@ const RegistrationModal = ({
             setIsOpen(false);
           }}
         >
-          <CloseIcon style={isMobile || true ? {} : { color: "white" }} />
+          <PhoneIcon style={isMobile || true ? {} : { color: "white" }} />
         </div>
         {viewTeam ? (
           <TeamModal userTeam={userTeam} />
