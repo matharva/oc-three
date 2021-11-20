@@ -33,7 +33,7 @@ const tabs = [
     title: "Technical",
     id: "flights",
     icon: tech,
-    color: "#63a7c7",
+    color: "",
     content: TabContent,
     cards: [
       {

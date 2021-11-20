@@ -77,6 +77,14 @@ const TabComponent = ({ tabs, defaultIndex = 0 }) => {
               role="presentation"
               variants={tabVariant}
               animate={activeTabIndex === index ? "active" : "inactive"}
+              style={{
+                color: "white",
+                backdropFilter: "blur(16px) saturate(180%)",
+                // -webkit-backdrop-filter: blur(16px) saturate(180%);
+                backgroundColor: "rgba(17, 25, 40, 0.75)",
+                borderRadius: "12px",
+                border: "1px solid rgba(255, 255, 255, 0.125)",
+              }}
             >
               <a onClick={() => onTabClick(index)}>
                 {/* {tab.icon} */}

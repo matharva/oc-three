@@ -122,7 +122,13 @@ export default function DesktopNav() {
         px={100}
         py={2}
         display={{ md: "block", base: "none" }}
-        style={{ boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.2)" }}
+        style={{
+          boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.2)",
+          // backgroundImage:
+          //   "linear-gradient(to LEFT, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
+          background: "rgb(40, 20, 58)",
+          color: "white",
+        }}
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
