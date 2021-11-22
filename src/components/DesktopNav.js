@@ -26,6 +26,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 // // Assets
 import Oc from "../assets/Oculus.png";
 import { DUMMY_USER_ICON } from "../constants";
+import UserMenu from "./UserMenu";
 
 const navbarItems = [
   {
@@ -41,54 +42,6 @@ const navbarItems = [
     path: "donation-drive",
   },
 ];
-
-const UserMenu = () => {
-  const { currentUser } = useAuth();
-
-  const menuItems = [
-    {
-      title: "Profile",
-      path: "/path",
-    },
-    {
-      title: `${currentUser ? "Logout" : "Login"}`,
-      path: "/path",
-    },
-  ];
-
-  return (
-    <>
-      <Flex alignItems={"center"}>
-        <Menu>
-          {/* Menu Icon */}
-          <MenuButton
-            as={Button}
-            rounded={"full"}
-            variant={"link"}
-            cursor={"pointer"}
-            minW={0}
-          >
-            <Avatar
-              size={"sm"}
-              src={currentUser ? currentUser.photoURL : DUMMY_USER_ICON}
-            />
-          </MenuButton>
-
-          {/* Menu Dropdown*/}
-          <MenuList>
-            {menuItems.map((item) => {
-              return (
-                <MenuItem style={{ color: "black" }}>
-                  <Link to={`/${item.path}`}>{item.title}</Link>
-                </MenuItem>
-              );
-            })}
-          </MenuList>
-        </Menu>
-      </Flex>
-    </>
-  );
-};
 
 const NavContent = () => {
   return (
