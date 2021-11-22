@@ -3,11 +3,11 @@ import Modal from "react-modal";
 import { useHistory, useRouteMatch } from "react-router";
 import firebase from "firebase";
 import { StyledFirebaseAuth } from "react-firebaseui";
-import { useAuth } from "../contexts/AppContext";
-import { eventService } from "../services/eventService";
+import { useAuth } from "../../contexts/AppContext";
+import { eventService } from "../../services/eventService";
 // Icons
 import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
-import "../styles/loginModal.scss";
+import "../../styles/loginModal.scss";
 
 const LoginContainer = ({ isOpen, setIsOpen }) => {
   const [isMobile, setIsMobile] = useState(false);

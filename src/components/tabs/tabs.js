@@ -2,31 +2,31 @@
 import TabContent from "./TabContent";
 
 // Assets
-import tech from "../assets/tech.png";
+import tech from "../../assets/tech.png";
 
 // Technical Events
-import Codewars from "../assets/Codewars.jpg";
-import CodatronPlusPlus from "../assets/codatron++.jpg";
-import Codatron from "../assets/Codatron.jpg";
-import Startathon from "../assets/Startathon.jpg";
-import VSM from "../assets/VSM.jpg";
+import Codewars from "../../assets/Codewars.jpg";
+import CodatronPlusPlus from "../../assets/codatron++.jpg";
+import Codatron from "../../assets/Codatron.jpg";
+import Startathon from "../../assets/Startathon.jpg";
+import VSM from "../../assets/VSM.jpg";
 
 // Cultural
-import AEJ from "../assets/AelanEJang.jpg";
-import Sargam from "../assets/Sargam.jpg";
+import AEJ from "../../assets/AelanEJang.jpg";
+import Sargam from "../../assets/Sargam.jpg";
 
 // Pronites
-import PR from "../assets/Pronite.png";
-import WOB from "../assets/WOB.png";
+import PR from "../../assets/Pronite.png";
+import WOB from "../../assets/WOB.png";
 
 // Fun events
-import IPL from "../assets/IPL.jpg";
-import OnlineGaming from "../assets/OnlineGaming.jpg";
-import VirtualTreasure from "../assets/VirtualTreasure.jpg";
+import IPL from "../../assets/IPL.jpg";
+import OnlineGaming from "../../assets/OnlineGaming.jpg";
+import VirtualTreasure from "../../assets/VirtualTreasure.jpg";
 
 // Preevents
-import ShortCircuit from "../assets/ShortCircuit.jpg";
-import Hackathon from "../assets/hackathon.jpg";
+import ShortCircuit from "../../assets/ShortCircuit.jpg";
+import Hackathon from "../../assets/hackathon.jpg";
 
 const tabs = [
   {

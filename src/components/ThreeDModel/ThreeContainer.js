@@ -10,7 +10,7 @@ import { Physics, usePlane, useBox } from "@react-three/cannon";
 import Model from "./Man";
 import Watch from "./Watchman";
 // Styles
-import "../styles/ThreeContainer.scss";
+import "../../styles/ThreeContainer.scss";
 
 function Box() {
   const [ref, api] = useBox(() => ({ mass: 1, position: [0, 2, 0] }));

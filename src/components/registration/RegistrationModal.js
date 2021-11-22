@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import "../styles/RegistrationModal.scss";
+import "../../styles/RegistrationModal.scss";
 
 // Assets
-import Oc from "../assets/tech.png";
-import Payment from "../assets/done.jpg";
+import Oc from "../../assets/tech.png";
+import Payment from "../../assets/done.jpg";
 
 // Icons
 import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
-import { eventService } from "../services/eventService";
+import { eventService } from "../../services/eventService";
 import {
   FormControl,
   FormHelperText,

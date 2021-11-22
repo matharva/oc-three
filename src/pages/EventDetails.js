@@ -20,11 +20,11 @@ import Codatronplusplus from "../assets/codatron++.jpg";
 import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 
 // Components
-import FaqSection from "../components/FaqSection";
-import RegistrationModal from "../components/RegistrationModal";
-import MobileNav from "../components/MobileNav";
-import DesktopNav from "../components/DesktopNav";
-import LoginContainer from "../components/LoginContainer";
+import FaqSection from "../components/event/FaqSection";
+import RegistrationModal from "../components/registration/RegistrationModal";
+import MobileNav from "../components/navigation/MobileNav";
+import DesktopNav from "../components/navigation/DesktopNav";
+import LoginContainer from "../components/registration/LoginContainer";
 
 //Data and Services
 import { eventService } from "../services/eventService";

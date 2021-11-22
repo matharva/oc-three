@@ -1,8 +1,8 @@
 import React from "react";
 
 // Components
-import MobileNav from "../components/MobileNav";
-import DesktopNav from "../components/DesktopNav";
+import MobileNav from "../components/navigation/MobileNav";
+import DesktopNav from "../components/navigation/DesktopNav";
 import Footer from "../components/Footer";
 
 const ContactUs = () => {

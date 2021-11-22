@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Tilt from "react-tilt";
 
 // Styles
-import "../styles/ThreeDCard.scss";
+import "../../styles/ThreeDCard.scss";
 const ThreeDCard = ({ data }) => {
   return (
     <Tilt

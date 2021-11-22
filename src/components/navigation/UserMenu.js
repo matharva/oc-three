@@ -16,8 +16,8 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { DUMMY_USER_ICON } from "../constants";
-import { useAuth } from "../contexts/AppContext";
+import { DUMMY_USER_ICON } from "../../constants";
+import { useAuth } from "../../contexts/AppContext";
 
 const UserMenu = () => {
   const { currentUser } = useAuth();

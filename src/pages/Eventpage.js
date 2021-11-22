@@ -5,10 +5,10 @@ import { Link, useRouteMatch } from "react-router-dom";
 import "../styles/EventDetails.scss";
 
 // Components
-import MobileNav from "../components/MobileNav";
-import DesktopNav from "../components/DesktopNav";
-import tabs from "../components/tabs";
-import TabComponent from "../components/TabComponent";
+import MobileNav from "../components/navigation/MobileNav";
+import DesktopNav from "../components/navigation/DesktopNav";
+import tabs from "../components/tabs/tabs";
+import TabComponent from "../components/tabs/TabComponent";
 import Footer from "../components/Footer";
 
 // External Components

@@ -2,8 +2,8 @@ import React from "react";
 
 import "../styles/Profile.scss";
 
-import MobileNav from "../components/MobileNav";
-import DesktopNav from "../components/DesktopNav";
+import MobileNav from "../components/navigation/MobileNav";
+import DesktopNav from "../components/navigation/DesktopNav";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 
 const Profile = () => {

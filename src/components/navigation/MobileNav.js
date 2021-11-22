@@ -1,52 +1,7 @@
-// import React, { useState } from "react";
-// import { useHistory, useRouteMatch } from "react-router";
+import React from "react";
+import { Link } from "react-router-dom";
 
-// // Icons
-// import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
-
-// // Assets
-// import Oc from "../assets/Oculus.png";
-
-// // Components
-// import Sidebar from "../components/Sidebar";
-
-// import LoginContainer from "./LoginContainer";
-// import { useAuth } from "../contexts/AppContext";
-
-// const MobileNav = () => {
-//   const [menu, setMenu] = useState(false);
-//   const [isOpen, setIsOpen] = useState(false);
-//   const history = useHistory();
-//   const { currentUser, setCurrentUser } = useAuth();
-
-//   return (
-//     <>
-//       <div className="navbar-mobile">
-//         <div className="navbar-menu">
-//           <PhoneIcon onClick={() => setMenu(true)} />
-//         </div>
-//         <div className="nav-logo" onClick={() => history.push("/")}>
-//           <img src={Oc} alt="" />
-//         </div>
-//         <div className="account" onClick={() => setIsOpen(true)}>
-//           {currentUser ? (
-//             <div className="profile-img-container">
-//               <img src={currentUser.photo} alt="" />
-//             </div>
-//           ) : (
-//             <PhoneIcon />
-//           )}
-//         </div>
-//       </div>
-//       <LoginContainer isOpen={isOpen} setIsOpen={setIsOpen} />
-//       {menu ? <Sidebar setMenu={setMenu} /> : null}
-//     </>
-//   );
-// };
-
-// export default MobileNav;
-
-import React, { ReactNode } from "react";
+// Components
 import {
   IconButton,
   Box,
@@ -56,19 +11,13 @@ import {
   useColorModeValue,
   Drawer,
   DrawerContent,
-  Text,
   useDisclosure,
-  BoxProps,
-  FlexProps,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  Avatar,
-  Button,
   Image,
 } from "@chakra-ui/react";
+import UserMenu from "./UserMenu";
+
+// Assets
+import Oc from "../../assets/Oculus.png";
 import {
   FiHome,
   FiTrendingUp,
@@ -77,14 +26,6 @@ import {
   FiSettings,
   FiMenu,
 } from "react-icons/fi";
-import { IconType } from "react-icons";
-import { ReactText } from "react";
-import UserMenu from "./UserMenu";
-// import { Link } from "react-router-dom";
-
-// // Assets
-import Oc from "../assets/Oculus.png";
-import { Link } from "react-router-dom";
 
 const LinkItems = [
   { name: "Events", path: "events", icon: FiHome },

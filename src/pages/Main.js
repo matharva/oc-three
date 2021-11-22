@@ -10,10 +10,9 @@ import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 import Oc from "../assets/Oculus.png";
 
 // Components
-import ThreeContainer from "../components/ThreeContainer";
-import Sidebar from "../components/Sidebar";
-import DesktopNav from "../components/DesktopNav";
-import MobileNav from "../components/MobileNav";
+import ThreeContainer from "../components/ThreeDModel/ThreeContainer";
+import DesktopNav from "../components/navigation/DesktopNav";
+import MobileNav from "../components/navigation/MobileNav";
 
 const Main = () => {
   const boxRef = useRef(null);

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ThreeDCard from "./ThreeDCard";
+import ThreeDCard from "../event/ThreeDCard";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 

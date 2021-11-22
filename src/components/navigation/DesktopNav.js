@@ -1,31 +1,11 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-// // Assets
-// import Oc from "../assets/Oculus.png";
-import { useAuth } from "../contexts/AppContext";
+//  Assets
+import Oc from "../../assets/Oculus.png";
 
-import {
-  Box,
-  Flex,
-  Avatar,
-  HStack,
-  IconButton,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
-  Stack,
-  Image,
-} from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-// // Assets
-import Oc from "../assets/Oculus.png";
-import { DUMMY_USER_ICON } from "../constants";
+// Components
+import { Box, Flex, HStack, Image } from "@chakra-ui/react";
 import UserMenu from "./UserMenu";
 
 const navbarItems = [
@@ -63,7 +43,7 @@ const NavContent = () => {
         <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
           {navbarItems.map((item) => {
             return (
-              <Link onClick={item.fn} to={`/${item.path}`}>
+              <Link to={`/${item.path}`}>
                 <div className="nav-item">{item.name}</div>
               </Link>
             );
