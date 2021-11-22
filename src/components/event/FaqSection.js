@@ -23,31 +23,9 @@ import "react-accessible-accordion/dist/fancy-example.css";
 
 const FaqSection = ({ faq }) => {
   return (
-    // <Accordion>
-    //   {faq.map((item) => {
-    //     return (
-    //       <AccordionItem style={{}}>
-    //         <AccordionItemHeading>
-    //           <AccordionItemButton>{item.question}</AccordionItemButton>
-    //         </AccordionItemHeading>
-    //         <AccordionItemPanel>
-    //           <p>{item.answer}</p>
-    //         </AccordionItemPanel>
-    //       </AccordionItem>
-    //     );
-    //   })}
-    // </Accordion>
-    <Accordion allowToggle style={{ marginTop: "3rem" }}>
+    <Accordion allowToggle>
       {faq.map((item) => {
         return (
-          // <AccordionItem style={{}}>
-          //   <AccordionItemHeading>
-          //     <AccordionItemButton></AccordionItemButton>
-          //   </AccordionItemHeading>
-          //   <AccordionItemPanel>
-          //     <p></p>
-          //   </AccordionItemPanel>
-          // </AccordionItem>
           <AccordionItem>
             <h2>
               <AccordionButton onSelect={() => {}} style={{ padding: "1rem" }}>

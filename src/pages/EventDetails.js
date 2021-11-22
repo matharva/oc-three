@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams, useRouteMatch } from "react-router";
-import ShowMoreText from "react-show-more-text";
 import Modal from "react-modal";
 import { useAuth } from "../contexts/AppContext";
 
@@ -11,16 +10,13 @@ import "../styles/Eventpage.scss";
 import CodeWars from "../assets/Codewars.jpg";
 import IPL from "../assets/IPL.jpg";
 import VSM from "../assets/VSM.jpg";
-import Technical from "../assets/tech.png";
-import Cal from "../assets/calendar.jpg";
-import Prize from "../assets/prize.jpg";
+
 import Codatronplusplus from "../assets/codatron++.jpg";
 
 // Icons
 import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 
 // Components
-import FaqSection from "../components/event/FaqSection";
 import RegistrationModal from "../components/registration/RegistrationModal";
 import MobileNav from "../components/navigation/MobileNav";
 import DesktopNav from "../components/navigation/DesktopNav";
@@ -28,87 +24,12 @@ import LoginContainer from "../components/registration/LoginContainer";
 
 //Data and Services
 import { eventService } from "../services/eventService";
-import { eventDetails } from "../data";
 
-import { Container } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/react";
 
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import {
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
-  Icon,
-} from "@chakra-ui/react";
-
-import { MdCheckCircle } from "react-icons/md";
 import { IoMdArrowRoundBack } from "react-icons/io";
-const Description = ({ event }) => {
-  return (
-    <>
-      {event.Description.length > 200 ? (
-        <ShowMoreText lines={6}>{event.Description}</ShowMoreText>
-      ) : (
-        event.Description
-      )}
-      <div className="section-1">
-        <div className="event-type">
-          <div className="event-img-container">
-            <img src={Technical} alt="" />
-          </div>
-          <div className="event-text">{"Techincal"}</div>
-        </div>
-        <div className="event-date">
-          <div className="event-img-container">
-            <img src={Cal} alt="" />
-          </div>
-          <div className="event-text">{event.Date}</div>
-        </div>
-        <div className="event-prize">
-          <div className="event-img-container">
-            <img src={Prize} alt="" />
-          </div>
-          <div className="event-text">{event.Prizes}</div>
-        </div>
-      </div>
-    </>
-  );
-};
 
-const Rules = ({ rules }) => {
-  return (
-    <>
-      {/* {rules.map((rule, i) => {
-        return (
-          <>
-            {i + 1}) {rule}
-            <br />
-          </>
-        );
-      })} */}
-      <List spacing={3}>
-        <ListItem>
-          <ListIcon as={MdCheckCircle} color="green.500" />
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit
-        </ListItem>
-        <ListItem>
-          <ListIcon as={MdCheckCircle} color="green.500" />
-          Assumenda, quia temporibus eveniet a libero incidunt suscipit
-        </ListItem>
-        <ListItem>
-          <ListIcon as={MdCheckCircle} color="green.500" />
-          Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
-        </ListItem>
-        {/* You can also use custom icons from react-icons */}
-        <ListItem>
-          <ListIcon as={MdCheckCircle} color="green.500" />
-          Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
-        </ListItem>
-      </List>
-    </>
-  );
-};
+import EventContent from "../components/event/EventContent";
 
 const map = {
   ipl: {
@@ -141,13 +62,6 @@ const EventDetails = ({ event }) => {
   const [viewTeam, setViewTeam] = useState(false);
   const [userTeam, setUserTeam] = useState(null);
   const [join, setJoin] = useState(null);
-
-  function tabsContent() {
-    // console.log(tabState);
-    if (tabState === 0) return <Description event={eventData} />;
-    if (tabState === 1) return <Rules rules={eventData.rules} />;
-    if (tabState === 2) return <FaqSection faq={eventData.faq} />;
-  }
 
   useEffect(async () => {
     let event = await eventService.getEvent(map[eventName].Title);
@@ -283,62 +197,8 @@ const EventDetails = ({ event }) => {
                 <div className="event-details-grid">
                   <div className="event-title-container">
                     <div className="event-title">{eventData.Title}</div>
-                    {/* <div className="event-subtitle">Technical</div> */}
-                    {/* <div className="event-interested">
-                <ArrowBackIcon />
-              </div> */}
                   </div>
-                  {/* <div className="event-description">
-                    <div className="event-tabs">
-                      <div
-                        className={`event-tab-item ${
-                          tabState === 0 ? "active" : ""
-                        }`}
-                        onClick={() => setTabState(0)}
-                      >
-                        Description
-                      </div>
-                      <div
-                        className={`event-tab-item ${
-                          tabState === 1 ? "active" : ""
-                        }`}
-                        onClick={() => setTabState(1)}
-                      >
-                        Rules
-                      </div>
-                      <div
-                        className={`event-tab-item ${
-                          tabState === 2 ? "active" : ""
-                        }`}
-                        onClick={() => setTabState(2)}
-                      >
-                        FAQ
-                      </div>
-                    </div>
-                    <div className="event-content">
-                      {tabsContent(eventData)}
-                    </div>
-                  </div> */}
-                  <Container maxW="container.xl">
-                    <Tabs isFitted variant="enclosed" colorScheme="green">
-                      <TabList>
-                        <Tab>Description</Tab>
-                        <Tab>Rules</Tab>
-                        <Tab>FaqSection</Tab>
-                      </TabList>
-                      <TabPanels>
-                        <TabPanel>
-                          <Description event={eventData} />
-                        </TabPanel>
-                        <TabPanel>
-                          <Rules rules={eventData.rules} />
-                        </TabPanel>
-                        <TabPanel>
-                          <FaqSection faq={eventData.faq} />
-                        </TabPanel>
-                      </TabPanels>
-                    </Tabs>
-                  </Container>
+                  <EventContent eventData={eventData} />
                   {eventData.isSingle ? (
                     <div className="event-register">
                       <div className="reg-amt">
