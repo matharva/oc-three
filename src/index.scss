@@ -33,3 +33,25 @@ body {
   // background-color: rgb(40, 20, 58);
   // background: rgb(30, 30, 35);
 }
+
+@media (min-width: 768px) {
+  .container {
+    width: 940px;
+  }
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.rte {
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+  P {
+    margin: 1rem;
+  }
+}
