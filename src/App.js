@@ -18,6 +18,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Profile from "./pages/Profile.js";
 
 import { extendTheme } from "@chakra-ui/react";
+import PrivacyPolicy from "./pages/PrivacyPolicy.js";
 // import "./styles.css";
 
 // const theme = extendTheme({
@@ -61,6 +62,9 @@ export default function App() {
             </Route>
             <Route path="/profile">
               <Profile />
+            </Route>
+            <Route path="/privacy">
+              <PrivacyPolicy />
             </Route>
           </Switch>
         </Router>
