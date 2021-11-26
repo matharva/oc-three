@@ -17,11 +17,29 @@ import { AuthProvider } from "./contexts/AppContext";
 import { ChakraProvider } from "@chakra-ui/react";
 import Profile from "./pages/Profile.js";
 
+import { extendTheme } from "@chakra-ui/react";
+// import "./styles.css";
+
+// const theme = extendTheme({
+//   components: {
+//     Modal: {
+//       baseStyle: (props) => ({
+//         dialog: {
+//           maxWidth: ["95%", "95%", "95%"],
+//           minWidth: "95%",
+//           bg: "linear-gradient(to right, #ff4b2b, #ff416c)",
+//         },
+//       }),
+//     },
+//   },
+// });
+
 export default function App() {
   return (
+    // <ChakraProvider theme={theme}>
     <ChakraProvider>
-      <Router>
-        <AuthProvider>
+      <AuthProvider>
+        <Router>
           <Switch>
             <Route exact path="/">
               <Main />
@@ -45,8 +63,8 @@ export default function App() {
               <Profile />
             </Route>
           </Switch>
-        </AuthProvider>
-      </Router>
+        </Router>
+      </AuthProvider>
     </ChakraProvider>
   );
 }

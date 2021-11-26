@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import "../../styles/RegistrationModal.scss";
 
 // Assets
@@ -16,6 +16,29 @@ import {
 } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Form, Button } from "react-bootstrap";
+
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+} from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
+
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
+import { useAuth } from "../../contexts/AppContext";
 
 const MultiplePlayers = ({
   setPayTypeOpen,
@@ -252,51 +275,87 @@ const SinglePlayer = ({
 const TeamModal = ({ userTeam }) => {
   console.log("The user team is: ", userTeam);
   return (
-    <div className="team-modal">
-      <h1>Team Code:{userTeam.TeamCode}</h1>
-      <div className="team-members">
-        {/* <div className="team-member-items">
-          <div className="team-member-item-img-container">
-            <img src={Oc} alt="" />
-          </div>
-          <div className="items-info">
-            <div className="team-member-item-name">Bhushan</div>
-            <div className="team-member-item-email">bhushan@bhushan.com</div>
-          </div>
-        </div>
-        <div className="team-member-items">
-          <div className="team-member-item-img-container">
-            <img src={Oc} alt="" />
-          </div>
-          <div className="items-info">
-            <div className="team-member-item-name">Atharva Mohite</div>
-            <div className="team-member-item-email">
-              atharvamohite20@gmail.com
-            </div>
-          </div>
-        </div>
-        <div className="team-member-items">
-          <div className="team-member-item-img-container">
-            <img src={Oc} alt="" />
-          </div>
-          <div className="items-info">
-            <div className="team-member-item-name">Bhushan</div>
-            <div className="team-member-item-email">bhushan@bhushan.com</div>
-          </div>
-        </div>
-        <div className="team-member-items">
-          <div className="team-member-item-img-container">
-            <img src={Oc} alt="" />
-          </div>
-          <div className="items-info">
-            <div className="team-member-item-name">Bhushan</div>
-            <div className="team-member-item-email">bhushan@bhushan.com</div>
-          </div>
-        </div> */}
+    // <div className="team-modal">
+    //   <h1>Team Code:{userTeam.TeamCode}</h1>
+    //   <div className="team-members">
+    //     {/* <div className="team-member-items">
+    //       <div className="team-member-item-img-container">
+    //         <img src={Oc} alt="" />
+    //       </div>
+    //       <div className="items-info">
+    //         <div className="team-member-item-name">Bhushan</div>
+    //         <div className="team-member-item-email">bhushan@bhushan.com</div>
+    //       </div>
+    //     </div>
+    //     <div className="team-member-items">
+    //       <div className="team-member-item-img-container">
+    //         <img src={Oc} alt="" />
+    //       </div>
+    //       <div className="items-info">
+    //         <div className="team-member-item-name">Atharva Mohite</div>
+    //         <div className="team-member-item-email">
+    //           atharvamohite20@gmail.com
+    //         </div>
+    //       </div>
+    //     </div>
+    //     <div className="team-member-items">
+    //       <div className="team-member-item-img-container">
+    //         <img src={Oc} alt="" />
+    //       </div>
+    //       <div className="items-info">
+    //         <div className="team-member-item-name">Bhushan</div>
+    //         <div className="team-member-item-email">bhushan@bhushan.com</div>
+    //       </div>
+    //     </div>
+    //     <div className="team-member-items">
+    //       <div className="team-member-item-img-container">
+    //         <img src={Oc} alt="" />
+    //       </div>
+    //       <div className="items-info">
+    //         <div className="team-member-item-name">Bhushan</div>
+    //         <div className="team-member-item-email">bhushan@bhushan.com</div>
+    //       </div>
+    //     </div> */}
+    //     {userTeam.member.map((item) => {
+    //       return (
+    //         <>
+    //           <div className="team-member-items">
+    //             <div className="team-member-item-img-container">
+    //               <img src={Oc} alt="" />
+    //             </div>
+    //             <div className="items-info">
+    //               <div className="team-member-item-name">{item.name}</div>
+    //               <div className="team-member-item-email">{item.email}</div>
+    //             </div>
+    //           </div>
+
+    //           {/* <div className="items-info">
+    //             <div className="team-member-item-name">{item.name}</div>
+    //             <div className="team-member-item-email">{item.email}</div>
+    //           </div> */}
+    //         </>
+    //       );
+    //     })}
+    //   </div>
+    //   <button>
+    //     <PhoneIcon style={{ color: "white" }} />
+    //     Join on WhatsApp
+    //   </button>
+    // </div>
+    <Table variant="simple">
+      {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
+      <Thead>
+        <Tr>
+          <Th>To convert</Th>
+          <Th>Name</Th>
+          <Th>Email</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
         {userTeam.member.map((item) => {
           return (
             <>
-              <div className="team-member-items">
+              {/* <div className="team-member-items">
                 <div className="team-member-item-img-container">
                   <img src={Oc} alt="" />
                 </div>
@@ -304,7 +363,12 @@ const TeamModal = ({ userTeam }) => {
                   <div className="team-member-item-name">{item.name}</div>
                   <div className="team-member-item-email">{item.email}</div>
                 </div>
-              </div>
+              </div> */}
+              <Tr>
+                <Td>Blah</Td>
+                <Td>{item.name}</Td>
+                <Td>{item.email}</Td>
+              </Tr>
 
               {/* <div className="items-info">
                 <div className="team-member-item-name">{item.name}</div>
@@ -313,12 +377,25 @@ const TeamModal = ({ userTeam }) => {
             </>
           );
         })}
-      </div>
-      <button>
-        <PhoneIcon style={{ color: "white" }} />
-        Join on WhatsApp
-      </button>
-    </div>
+        {/* <Tr>
+          <Td>feet</Td>
+          <Td>centimetres (cm)</Td>
+          <Td isNumeric>30.48</Td>
+        </Tr>
+        <Tr>
+          <Td>yards</Td>
+          <Td>metres (m)</Td>
+          <Td isNumeric>0.91444</Td>
+        </Tr> */}
+      </Tbody>
+      {/* <Tfoot>
+        <Tr>
+          <Th>To convert</Th>
+          <Th>into</Th>
+          <Th isNumeric>multiply by</Th>
+        </Tr>
+      </Tfoot> */}
+    </Table>
   );
 };
 
@@ -768,7 +845,6 @@ const RegistrationModal = ({
   userTeam,
   viewTeam,
   setViewTeam,
-  isOpen,
   setIsOpen,
   eventData,
   paymentDone,
@@ -817,9 +893,71 @@ const RegistrationModal = ({
     },
   };
   console.log("Pay type: ", payTypeOpen);
+  const { isOpen, onOpen, onClose, setModalContent } = useAuth();
   return (
     <div>
       <Modal
+        onClose={() => {
+          if (paymentDone) {
+            setViewTeam(true);
+          }
+
+          setPayTypeOpen(false);
+          setJoinTypeOpen(false);
+          onClose();
+        }}
+        isOpen={isOpen}
+        scrollBehavior="inside"
+        isCentered
+        size="xl"
+      >
+        <ModalOverlay />
+        <ModalContent h={"50vh"} p={0} m={0} w={"95%"}>
+          <ModalCloseButton />
+          <ModalBody p={0} m={0}>
+            {viewTeam ? (
+              <TeamModal userTeam={userTeam} />
+            ) : isPaymentSuccess ? (
+              <PaymentSuccessful
+                eventData={eventData}
+                setViewTeam={setViewTeam}
+              />
+            ) : eventData.isSingle ? (
+              <SinglePlayer
+                setPaymentDone={setPaymentDone}
+                setIsPaymentSuccess={setIsPaymentSuccess}
+                eventData={eventData}
+                currentUser={currentUser}
+              />
+            ) : !payTypeOpen ? (
+              <MultiplePlayers
+                setPayTypeOpen={setPayTypeOpen}
+                eventData={eventData}
+                currentUser={currentUser}
+                setJoin={setJoin}
+                setIsOpen={setIsOpen}
+                setJoinTypeOpen={setJoinTypeOpen}
+              />
+            ) : joinTypeOpen ? (
+              <ShowJoinTeamDetails
+                eventData={eventData}
+                currentUser={currentUser}
+                setJoin={setJoin}
+                setIsOpen={setIsOpen}
+              />
+            ) : (
+              <ShowPaymentDetails
+                details={eventData.Fee}
+                eventName={eventData.Title}
+                setPaymentDone={setPaymentDone}
+                setIsPaymentSuccess={setIsPaymentSuccess}
+                currentUser={currentUser}
+              />
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+      {/* <Modal
         isOpen={isOpen}
         onRequestClose={() => {
           // if(!isRegistered)
@@ -847,52 +985,9 @@ const RegistrationModal = ({
         >
           <PhoneIcon style={isMobile || true ? {} : { color: "white" }} />
         </div>
-        {viewTeam ? (
-          <TeamModal userTeam={userTeam} />
-        ) : isPaymentSuccess ? (
-          <PaymentSuccessful eventData={eventData} setViewTeam={setViewTeam} />
-        ) : eventData.isSingle ? (
-          <SinglePlayer
-            setPaymentDone={setPaymentDone}
-            setIsPaymentSuccess={setIsPaymentSuccess}
-            eventData={eventData}
-            currentUser={currentUser}
-          />
-        ) : !payTypeOpen ? (
-          <MultiplePlayers
-            setPayTypeOpen={setPayTypeOpen}
-            eventData={eventData}
-            currentUser={currentUser}
-            setJoin={setJoin}
-            setIsOpen={setIsOpen}
-            setJoinTypeOpen={setJoinTypeOpen}
-          />
-        ) : joinTypeOpen ? (
-          <ShowJoinTeamDetails
-            eventData={eventData}
-            currentUser={currentUser}
-            setJoin={setJoin}
-            setIsOpen={setIsOpen}
-          />
-        ) : (
-          <ShowPaymentDetails
-            details={eventData.Fee}
-            eventName={eventData.Title}
-            setPaymentDone={setPaymentDone}
-            setIsPaymentSuccess={setIsPaymentSuccess}
-            currentUser={currentUser}
-          />
-        )}
-        {/* {!isRegistered && eventData.isSingle? <SinglePlayer /> : !payTypeOpen?<MultiplePlayers setPayTypeOpen = {setPayTypeOpen}/>:<ShowPaymentDetails details={eventData.Fee} eventName={eventData.Title} setPaymentDone = {setPaymentDone}/>} */}
-        {/* <MultiplePlayers /> */}
-        {/* {isRegistered ? (
-          <TeamModal />
-        ) : (
-          isPaymentSuccess && (
-            <PaymentSuccessful setIsRegistered={setIsRegistered} />
-          )
-        )} */}
-      </Modal>
+
+        
+      </Modal> */}
     </div>
   );
 };

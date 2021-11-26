@@ -1,5 +1,7 @@
 .modal-grid {
   display: grid;
+  // margin: 2rem;
+
   @media screen and (max-width: 720px) {
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
@@ -96,6 +98,7 @@
   flex-direction: column;
   background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
   background: linear-gradient(to right, #ff4b2b, #ff416c);
+  padding: 5rem;
   button {
     cursor: pointer;
     background: transparent;

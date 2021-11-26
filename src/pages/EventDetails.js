@@ -49,7 +49,7 @@ const map = {
 // Here viewTeam basically means has the user Registered for the event(does it have any document in RegisterTeam collection)
 
 const EventDetails = ({ event }) => {
-  const { jello, currentUser } = useAuth();
+  const { jello, currentUser, onOpen } = useAuth();
   console.log("Login: ", jello, currentUser);
   const { eventName } = useParams();
   const history = useHistory();
@@ -62,6 +62,7 @@ const EventDetails = ({ event }) => {
   const [viewTeam, setViewTeam] = useState(false);
   const [userTeam, setUserTeam] = useState(null);
   const [join, setJoin] = useState(null);
+  // const {} = useAuth()
 
   useEffect(async () => {
     let event = await eventService.getEvent(map[eventName].Title);
@@ -209,7 +210,13 @@ const EventDetails = ({ event }) => {
                         </div>
                       </div>
                       <div className="reg-btn-container">
-                        <button className="reg-btn" onClick={registerEvent}>
+                        <button
+                          className="reg-btn"
+                          onClick={() => {
+                            registerEvent();
+                            onOpen();
+                          }}
+                        >
                           {currentUser
                             ? (currentUser && paymentDone) || viewTeam
                               ? eventData.isSingle
@@ -223,7 +230,13 @@ const EventDetails = ({ event }) => {
                   ) : (
                     <div className="event-register-single">
                       <div className="reg-btn-container">
-                        <button className="reg-btn" onClick={registerEvent}>
+                        <button
+                          className="reg-btn"
+                          onClick={() => {
+                            registerEvent();
+                            onOpen();
+                          }}
+                        >
                           {currentUser
                             ? (currentUser && paymentDone) || viewTeam
                               ? eventData.isSingle
