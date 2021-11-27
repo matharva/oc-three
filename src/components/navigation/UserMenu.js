@@ -1,35 +1,50 @@
 import {
-  Box,
   Flex,
   Avatar,
-  HStack,
-  IconButton,
   Button,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
-  Stack,
-  Image,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { DUMMY_USER_ICON } from "../../constants";
 import { useAuth } from "../../contexts/AppContext";
+import { useLocation } from "react-router-dom";
 
 const UserMenu = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, onOpen } = useAuth();
+  const location = useLocation();
+  console.log(location);
 
   const menuItems = [
     {
       title: "Profile",
-      path: "/path",
+      path: "/profile",
+      fn: () => {},
     },
     {
-      title: `${currentUser ? "Logout" : "Login"}`,
-      path: "/path",
+      title: "Privacy Policy",
+      path: "/privacy",
+      fn: () => {},
+    },
+    {
+      title: `Logout`,
+      path: `${location.pathname}`,
+      fn: () => onOpen(),
+    },
+  ];
+
+  const loginMenuItems = [
+    {
+      title: "Privacy Policy",
+      path: "/privacy",
+      fn: () => {},
+    },
+    {
+      title: `Login`,
+      path: `${location.pathname}`,
+      fn: () => onOpen(),
     },
   ];
 
@@ -53,13 +68,21 @@ const UserMenu = () => {
 
           {/* Menu Dropdown*/}
           <MenuList>
-            {menuItems.map((item) => {
-              return (
-                <MenuItem style={{ color: "black" }}>
-                  <Link to={`/${item.path}`}>{item.title}</Link>
-                </MenuItem>
-              );
-            })}
+            {!currentUser
+              ? loginMenuItems.map((item) => {
+                  return (
+                    <MenuItem style={{ color: "black" }} onClick={item.fn}>
+                      <Link to={`${item.path}`}>{item.title}</Link>
+                    </MenuItem>
+                  );
+                })
+              : menuItems.map((item) => {
+                  return (
+                    <MenuItem style={{ color: "black" }}>
+                      <Link to={`/${item.path}`}>{item.title}</Link>
+                    </MenuItem>
+                  );
+                })}
           </MenuList>
         </Menu>
       </Flex>

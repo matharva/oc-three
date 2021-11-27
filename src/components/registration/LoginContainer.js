@@ -122,7 +122,7 @@ const NotificationIcon = createIcon({
   ),
 });
 
-const LoginContainer = ({ isOpen, setIsOpen }) => {
+const LoginContainer = ({ isOpen, onOpen, onClose }) => {
   const [isMobile, setIsMobile] = useState(false);
   const history = useHistory();
   const { currentUser, setCurrentUser } = useAuth();
@@ -165,7 +165,7 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
           phoneNumber: user.phoneNumber,
           uid: user.uid,
         });
-        setIsOpen(false);
+        onClose();
 
         // user idhar se ghusao
         // window.location.assign(url);
@@ -184,7 +184,7 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
         // Sign-out successful.
         localStorage.setItem("oculus-auth", null);
         setCurrentUser(null);
-        setIsOpen(false);
+        onClose();
 
         console.log("The user is signed out");
         history.push("/");
@@ -234,48 +234,38 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
   };
   return (
     <div>
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
-        style={customStyles}
-        contentLabel="Example Modal"
+      <Stack
+        boxShadow={"2xl"}
+        bg={useColorModeValue("white", "gray.700")}
+        rounded={"xl"}
+        p={10}
+        spacing={8}
+        align={"center"}
       >
-        <Stack
-          boxShadow={"2xl"}
-          bg={useColorModeValue("white", "gray.700")}
-          rounded={"xl"}
-          p={10}
-          spacing={8}
-          align={"center"}
-        >
-          {/* <Icon as={NotificationIcon} w={24} h={24} /> */}
+        {/* <Icon as={NotificationIcon} w={24} h={24} /> */}
 
-          <Box style={{ width: "200px" }}>
-            <Image
-              w="100%"
-              src={`https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?size=338&ext=jpg`}
-              alt="Segun Adebayo"
-            />
-          </Box>
-          <Image></Image>
-          <Stack align={"center"} spacing={2}>
-            <Heading
-              textTransform={"uppercase"}
-              fontSize={"3xl"}
-              color={useColorModeValue("gray.800", "gray.200")}
-            >
-              Login before you proceed
-            </Heading>
-            <Text fontSize={"lg"} color={"gray.500"}>
-              It'll take just a second
-            </Text>
-          </Stack>
-          <Stack
-            spacing={4}
-            direction={{ base: "column", md: "row" }}
-            w={"full"}
+        <Box style={{ width: "200px" }}>
+          <Image
+            w="100%"
+            src={`https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?size=338&ext=jpg`}
+            alt="Segun Adebayo"
+          />
+        </Box>
+        <Image></Image>
+        <Stack align={"center"} spacing={2}>
+          <Heading
+            textTransform={"uppercase"}
+            fontSize={"3xl"}
+            color={useColorModeValue("gray.800", "gray.200")}
           >
-            {/* <Button
+            Login before you proceed
+          </Heading>
+          <Text fontSize={"lg"} color={"gray.500"}>
+            It'll take just a second
+          </Text>
+        </Stack>
+        <Stack spacing={4} direction={{ base: "column", md: "row" }} w={"full"}>
+          {/* <Button
               w={"full"}
               maxW={"md"}
               variant={"outline"}
@@ -285,24 +275,23 @@ const LoginContainer = ({ isOpen, setIsOpen }) => {
                 <Text>Sign in with Google</Text>
               </Center>
             </Button> */}
-            <div className="cross-child" onClick={() => setIsOpen(false)}>
-              <CloseIcon style={isMobile || true ? {} : { color: "white" }} />
+          <div className="cross-child" onClick={onClose}>
+            <CloseIcon style={isMobile || true ? {} : { color: "white" }} />
+          </div>
+          {!currentUser ? (
+            <StyledFirebaseAuth
+              uiConfig={uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
+          ) : (
+            <div className="logout-div">
+              <button className="logout-btn" onClick={logout}>
+                Logout
+              </button>
             </div>
-            {!currentUser ? (
-              <StyledFirebaseAuth
-                uiConfig={uiConfig}
-                firebaseAuth={firebase.auth()}
-              />
-            ) : (
-              <div className="logout-div">
-                <button className="logout-btn" onClick={logout}>
-                  Logout
-                </button>
-              </div>
-            )}
-          </Stack>
+          )}
         </Stack>
-      </Modal>
+      </Stack>
     </div>
   );
 };

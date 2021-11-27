@@ -1,32 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import Modal from "react-modal";
 import "../../styles/RegistrationModal.scss";
-
-// Assets
-import Oc from "../../assets/tech.png";
-import Payment from "../../assets/done.jpg";
-import { Heading } from "@chakra-ui/react";
-// Icons
-import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
-import { eventService } from "../../services/eventService";
-
-import { Input } from "@chakra-ui/input";
-import { Form, Button } from "react-bootstrap";
-
-import { useClipboard } from "@chakra-ui/react";
-
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-} from "@chakra-ui/react";
-import { useDisclosure } from "@chakra-ui/react";
-
 import {
   Modal,
   ModalOverlay,
@@ -43,6 +17,7 @@ import SinglePlayer from "./ModalContent/SinglePlayer";
 import MultiplePlayers from "./ModalContent/MultiplePlayers";
 import ShowJoinTeamDetails from "./ModalContent/ShowJoinTeamDetails";
 import ShowPaymentDetails from "./ModalContent/ShowPaymentDetails";
+import LoginContainer from "./LoginContainer";
 
 const RegistrationModal = ({
   userTeam,
@@ -73,103 +48,95 @@ const RegistrationModal = ({
     setIsPaymentSuccess(false);
   }, [currentUser]);
 
+  function renderComponent() {
+    if (!currentUser) return <LoginContainer />;
+
+    if (viewTeam) {
+      // return TeamModal
+    } else {
+      if (isPaymentSuccess) {
+        // return PaymentSuccessful
+      } else {
+        if (eventData.isSingle) {
+          // return SinglePlayer
+        } else {
+          if (!payTypeOpen) {
+            // return MultiplePlayers
+          } else {
+            if (joinTypeOpen) {
+              // return ShowJoinTeamDetails
+            } else {
+              // return ShowPaymentDetails;
+            }
+          }
+        }
+      }
+    }
+  }
+
   console.log("Pay type: ", payTypeOpen);
   const { isOpen, onOpen, onClose, setModalContent } = useAuth();
   return (
-    <div>
-      <Modal
-        onClose={() => {
-          if (paymentDone) {
-            setViewTeam(true);
-          }
-
-          setPayTypeOpen(false);
-          setJoinTypeOpen(false);
-          onClose();
-        }}
-        isOpen={isOpen}
-        scrollBehavior="inside"
-        isCentered
-        size="xl"
-      >
-        <ModalOverlay />
-        <ModalContent h={"50vh"} p={0} m={0} w={"95%"}>
-          <ModalCloseButton />
-          <ModalBody p={0} m={0}>
-            {viewTeam ? (
-              <TeamModal userTeam={userTeam} />
-            ) : isPaymentSuccess ? (
-              <PaymentSuccessful
-                eventData={eventData}
-                setViewTeam={setViewTeam}
-              />
-            ) : eventData.isSingle ? (
-              <SinglePlayer
-                setPaymentDone={setPaymentDone}
-                setIsPaymentSuccess={setIsPaymentSuccess}
-                eventData={eventData}
-                currentUser={currentUser}
-              />
-            ) : !payTypeOpen ? (
-              <MultiplePlayers
-                setPayTypeOpen={setPayTypeOpen}
-                eventData={eventData}
-                currentUser={currentUser}
-                setJoin={setJoin}
-                setIsOpen={setIsOpen}
-                setJoinTypeOpen={setJoinTypeOpen}
-              />
-            ) : joinTypeOpen ? (
-              <ShowJoinTeamDetails
-                eventData={eventData}
-                currentUser={currentUser}
-                setJoin={setJoin}
-                setIsOpen={setIsOpen}
-              />
-            ) : (
-              <ShowPaymentDetails
-                details={eventData.Fee}
-                eventName={eventData.Title}
-                setPaymentDone={setPaymentDone}
-                setIsPaymentSuccess={setIsPaymentSuccess}
-                currentUser={currentUser}
-              />
-            )}
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-      {/* <Modal
-        isOpen={isOpen}
-        onRequestClose={() => {
-          // if(!isRegistered)
-          if (paymentDone) {
-            setViewTeam(true);
-          }
-
-          setPayTypeOpen(false);
-          setJoinTypeOpen(false);
-          setIsOpen(false);
-        }}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <div
-          className="cross-child"
-          onClick={() => {
-            if (paymentDone) {
-              setViewTeam(true);
-            }
-            setPayTypeOpen(false);
-            setJoinTypeOpen(false);
-            setIsOpen(false);
-          }}
-        >
-          <PhoneIcon style={isMobile || true ? {} : { color: "white" }} />
-        </div>
-
-        
-      </Modal> */}
-    </div>
+    <Modal
+      onClose={() => {
+        if (paymentDone) {
+          setViewTeam(true);
+        }
+        setPayTypeOpen(false);
+        setJoinTypeOpen(false);
+        onClose();
+      }}
+      isOpen={isOpen}
+      scrollBehavior="inside"
+      isCentered
+      size="xl"
+    >
+      <ModalOverlay />
+      <ModalContent h={"50vh"} p={0} m={0} w={"95%"}>
+        <ModalCloseButton />
+        <ModalBody p={0} m={0}>
+          {viewTeam ? (
+            <TeamModal userTeam={userTeam} />
+          ) : isPaymentSuccess ? (
+            <PaymentSuccessful
+              eventData={eventData}
+              setViewTeam={setViewTeam}
+            />
+          ) : eventData.isSingle ? (
+            <SinglePlayer
+              setPaymentDone={setPaymentDone}
+              setIsPaymentSuccess={setIsPaymentSuccess}
+              eventData={eventData}
+              currentUser={currentUser}
+            />
+          ) : !payTypeOpen ? (
+            <MultiplePlayers
+              setPayTypeOpen={setPayTypeOpen}
+              eventData={eventData}
+              currentUser={currentUser}
+              setJoin={setJoin}
+              setIsOpen={setIsOpen}
+              setJoinTypeOpen={setJoinTypeOpen}
+            />
+          ) : joinTypeOpen ? (
+            <ShowJoinTeamDetails
+              eventData={eventData}
+              currentUser={currentUser}
+              setJoin={setJoin}
+              setIsOpen={setIsOpen}
+            />
+          ) : (
+            <ShowPaymentDetails
+              details={eventData.Fee}
+              eventName={eventData.Title}
+              setPaymentDone={setPaymentDone}
+              setIsPaymentSuccess={setIsPaymentSuccess}
+              currentUser={currentUser}
+            />
+          )}
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   );
 };
 
