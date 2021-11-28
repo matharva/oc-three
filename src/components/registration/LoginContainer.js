@@ -122,10 +122,10 @@ const NotificationIcon = createIcon({
   ),
 });
 
-const LoginContainer = ({ isOpen, onOpen, onClose }) => {
+const LoginContainer = () => {
   const [isMobile, setIsMobile] = useState(false);
   const history = useHistory();
-  const { currentUser, setCurrentUser } = useAuth();
+  const { currentUser, setCurrentUser, onClose } = useAuth();
   const { url } = useRouteMatch();
   const uiConfig = {
     signInFlow: "popup",
@@ -152,6 +152,7 @@ const LoginContainer = ({ isOpen, onOpen, onClose }) => {
             name: data.user.displayName,
             email: data.user.email,
             photo:
+              data.user.photoURL ||
               "https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c",
             phoneNumber: user.phoneNumber,
             uid: user.uid,
@@ -161,6 +162,7 @@ const LoginContainer = ({ isOpen, onOpen, onClose }) => {
           name: data.user.displayName,
           email: data.user.email,
           photo:
+            data.user.photoURL ||
             "https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c",
           phoneNumber: user.phoneNumber,
           uid: user.uid,
@@ -201,98 +203,67 @@ const LoginContainer = ({ isOpen, onOpen, onClose }) => {
     //   localStorage.setItem('oculus-auth',null);
     //   setCurrentUser(null);
     //   setIsOpen(false);
-
     //   console.log('The user is signed out');
     // }).catch(function(error) {
     //   // An error happened.
     //   console.log('An error occured during this process: ',error);
     // });
-
-    if (window.innerWidth > 720) {
-      setIsMobile(false);
-    } else setIsMobile(true);
-    const resizeListener = () => {
-      if (window.innerWidth > 720) {
-        setIsMobile(false);
-      } else setIsMobile(true);
-    };
-    window.addEventListener("resize", resizeListener);
-    return () => window.removeEventListener("resize", resizeListener);
   }, []);
 
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      padding: 0,
-      transform: "translate(-50%, -50%)",
-      height: "60vh",
-      width: `${!isMobile ? "50vw" : "90vw"}`,
-    },
-  };
   return (
-    <div>
-      <Stack
-        boxShadow={"2xl"}
-        bg={useColorModeValue("white", "gray.700")}
-        rounded={"xl"}
-        p={10}
-        spacing={8}
-        align={"center"}
-      >
-        {/* <Icon as={NotificationIcon} w={24} h={24} /> */}
+    <Stack
+      boxShadow={"2xl"}
+      bg={useColorModeValue("white", "gray.700")}
+      rounded={"xl"}
+      p={10}
+      spacing={8}
+      align={"center"}
+    >
+      {/* Login Image */}
+      <Box style={{ width: "198px" }}>
+        <Image
+          w="100%"
+          src={`https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?size=338&ext=jpg`}
+          alt="Segun Adebayo"
+        />
+      </Box>
 
-        <Box style={{ width: "200px" }}>
-          <Image
-            w="100%"
-            src={`https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?size=338&ext=jpg`}
-            alt="Segun Adebayo"
-          />
-        </Box>
-        <Image></Image>
-        <Stack align={"center"} spacing={2}>
-          <Heading
-            textTransform={"uppercase"}
-            fontSize={"3xl"}
-            color={useColorModeValue("gray.800", "gray.200")}
-          >
-            Login before you proceed
-          </Heading>
-          <Text fontSize={"lg"} color={"gray.500"}>
-            It'll take just a second
-          </Text>
-        </Stack>
-        <Stack spacing={4} direction={{ base: "column", md: "row" }} w={"full"}>
-          {/* <Button
-              w={"full"}
-              maxW={"md"}
-              variant={"outline"}
-              leftIcon={<FcGoogle />}
-            >
-              <Center>
-                <Text>Sign in with Google</Text>
-              </Center>
-            </Button> */}
-          <div className="cross-child" onClick={onClose}>
-            <CloseIcon style={isMobile || true ? {} : { color: "white" }} />
-          </div>
-          {!currentUser ? (
-            <StyledFirebaseAuth
-              uiConfig={uiConfig}
-              firebaseAuth={firebase.auth()}
-            />
-          ) : (
-            <div className="logout-div">
-              <button className="logout-btn" onClick={logout}>
-                Logout
-              </button>
-            </div>
-          )}
-        </Stack>
+      <Stack align={"center"} spacing={2}>
+        <Heading
+          textTransform={"uppercase"}
+          fontSize={"3xl"}
+          color={useColorModeValue("gray.800", "gray.200")}
+        >
+          Login before you proceed
+        </Heading>
+        <Text fontSize={"lg"} color={"gray.500"}>
+          It'll take just a second
+        </Text>
       </Stack>
-    </div>
+      {/* Login Image */}
+
+      {/* Google Login Button */}
+      <Stack
+        spacing={4}
+        direction={{ base: "column", md: "row" }}
+        w={"full"}
+        display="flex"
+        justifyContent="center"
+      >
+        {!currentUser ? (
+          <StyledFirebaseAuth
+            uiConfig={uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
+        ) : (
+          <div className="logout-div">
+            <button className="logout-btn" onClick={logout}>
+              Logout
+            </button>
+          </div>
+        )}
+      </Stack>
+    </Stack>
   );
 };
 

@@ -1,6 +1,5 @@
 import { useDisclosure } from "@chakra-ui/hooks";
 import React, { useContext, useState, useEffect } from "react";
-import ModalContainer from "../components/registration/ModalContainer";
 import { auth } from "../firebase";
 
 const AuthContext = React.createContext();
@@ -34,7 +33,6 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={value}>
       {!loading && children}
-      {/* <ModalContainer modalContent={modalContent} /> */}
     </AuthContext.Provider>
   );
 };

@@ -12,7 +12,7 @@ import IPL from "../assets/IPL.jpg";
 import VSM from "../assets/VSM.jpg";
 
 import Codatronplusplus from "../assets/codatron++.jpg";
-
+import { Button, ButtonGroup } from "@chakra-ui/react";
 // Icons
 import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 
@@ -184,9 +184,9 @@ const EventDetails = ({ event }) => {
     <>
       {eventData ? (
         <>
-          {!currentUser && (
+          {/* {!currentUser && (
             <LoginContainer isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
-          )}
+          )} */}
           <DesktopNav />
           <div className="event-container">
             <MobileNav />
@@ -210,7 +210,7 @@ const EventDetails = ({ event }) => {
                         </div>
                       </div>
                       <div className="reg-btn-container">
-                        <button
+                        {/* <button
                           className="reg-btn"
                           onClick={() => {
                             registerEvent();
@@ -224,7 +224,8 @@ const EventDetails = ({ event }) => {
                                 : "View Team"
                               : "Register"
                             : "Register"}
-                        </button>
+                        </button> */}
+                        <Button colorScheme="teal">Button</Button>
                       </div>
                     </div>
                   ) : (
@@ -246,6 +247,17 @@ const EventDetails = ({ event }) => {
                             : "Register"}
                         </button>
                       </div>
+                      {/* <Button
+                        size="lg"
+                        style={{
+                          background:
+                            "linear-gradient(to right, #ff4b2b, #ff416c)",
+                          color: "white",
+                          fontWeight: "normal",
+                        }}
+                      >
+                        Button
+                      </Button> */}
                     </div>
                   )}
                 </div>
@@ -253,8 +265,6 @@ const EventDetails = ({ event }) => {
                   userTeam={userTeam}
                   viewTeam={viewTeam}
                   setViewTeam={setViewTeam}
-                  isOpen={isOpen}
-                  setIsOpen={setIsOpen}
                   eventData={eventData}
                   paymentDone={paymentDone}
                   setPaymentDone={setPaymentDone}

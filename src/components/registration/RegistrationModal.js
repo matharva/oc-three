@@ -52,21 +52,54 @@ const RegistrationModal = ({
     if (!currentUser) return <LoginContainer />;
 
     if (viewTeam) {
-      // return TeamModal
+      return <TeamModal userTeam={userTeam} />;
     } else {
       if (isPaymentSuccess) {
-        // return PaymentSuccessful
+        return (
+          <PaymentSuccessful eventData={eventData} setViewTeam={setViewTeam} />
+        );
       } else {
         if (eventData.isSingle) {
-          // return SinglePlayer
+          return (
+            <SinglePlayer
+              setPaymentDone={setPaymentDone}
+              setIsPaymentSuccess={setIsPaymentSuccess}
+              eventData={eventData}
+              currentUser={currentUser}
+            />
+          );
         } else {
           if (!payTypeOpen) {
-            // return MultiplePlayers
+            return (
+              <MultiplePlayers
+                setPayTypeOpen={setPayTypeOpen}
+                eventData={eventData}
+                currentUser={currentUser}
+                setJoin={setJoin}
+                setIsOpen={setIsOpen}
+                setJoinTypeOpen={setJoinTypeOpen}
+              />
+            );
           } else {
             if (joinTypeOpen) {
-              // return ShowJoinTeamDetails
+              return (
+                <ShowJoinTeamDetails
+                  eventData={eventData}
+                  currentUser={currentUser}
+                  setJoin={setJoin}
+                  setIsOpen={setIsOpen}
+                />
+              );
             } else {
-              // return ShowPaymentDetails;
+              return (
+                <ShowPaymentDetails
+                  details={eventData.Fee}
+                  eventName={eventData.Title}
+                  setPaymentDone={setPaymentDone}
+                  setIsPaymentSuccess={setIsPaymentSuccess}
+                  currentUser={currentUser}
+                />
+              );
             }
           }
         }
@@ -74,28 +107,28 @@ const RegistrationModal = ({
     }
   }
 
-  console.log("Pay type: ", payTypeOpen);
+  function handleClose() {
+    if (paymentDone) {
+      setViewTeam(true);
+    }
+    setPayTypeOpen(false);
+    setJoinTypeOpen(false);
+    onClose();
+  }
   const { isOpen, onOpen, onClose, setModalContent } = useAuth();
   return (
     <Modal
-      onClose={() => {
-        if (paymentDone) {
-          setViewTeam(true);
-        }
-        setPayTypeOpen(false);
-        setJoinTypeOpen(false);
-        onClose();
-      }}
+      onClose={handleClose}
       isOpen={isOpen}
       scrollBehavior="inside"
       isCentered
       size="xl"
     >
       <ModalOverlay />
-      <ModalContent h={"50vh"} p={0} m={0} w={"95%"}>
+      <ModalContent h="500px" w={"95%"}>
         <ModalCloseButton />
         <ModalBody p={0} m={0}>
-          {viewTeam ? (
+          {/* {viewTeam ? (
             <TeamModal userTeam={userTeam} />
           ) : isPaymentSuccess ? (
             <PaymentSuccessful
@@ -133,7 +166,8 @@ const RegistrationModal = ({
               setIsPaymentSuccess={setIsPaymentSuccess}
               currentUser={currentUser}
             />
-          )}
+          )} */}
+          {renderComponent()}
         </ModalBody>
       </ModalContent>
     </Modal>

@@ -16,6 +16,7 @@ const UserMenu = () => {
   const { currentUser, onOpen } = useAuth();
   const location = useLocation();
   console.log(location);
+  console.log(currentUser);
 
   const menuItems = [
     {
@@ -62,7 +63,7 @@ const UserMenu = () => {
           >
             <Avatar
               size={"sm"}
-              src={currentUser ? currentUser.photoURL : DUMMY_USER_ICON}
+              src={currentUser ? currentUser.photo : DUMMY_USER_ICON}
             />
           </MenuButton>
 
