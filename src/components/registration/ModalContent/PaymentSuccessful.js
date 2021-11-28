@@ -9,9 +9,7 @@ const PaymentSuccessful = ({ eventData, setViewTeam }) => {
         </div>
         <h1>Successful Payment</h1>
       </div>
-      <p>
-        Your payement for event {eventData.Title} was successfully completed
-      </p>
+      <p>Your payment for event {eventData.Title} was successfully completed</p>
       {!eventData.isSingle && (
         <button className="team-details-btn" onClick={() => setViewTeam(true)}>
           Team Details

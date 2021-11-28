@@ -1,4 +1,6 @@
 import { Form, Button } from "react-bootstrap";
+import Oculus from "../../../assets/Oculus.png";
+import axios from "axios";
 import {
   FormControl,
   FormHelperText,
@@ -28,6 +30,8 @@ const SinglePlayer = ({
   setIsPaymentSuccess,
   eventData,
   currentUser,
+  handleClose,
+  onOpen,
 }) => {
   const [phoneNumber, setPhoneNumber] = useState(currentUser.phoneNumber);
   const [refCode, setRefCode] = useState(null);
@@ -42,58 +46,61 @@ const SinglePlayer = ({
       return;
     }
     const data = {
-      event: "divya",
+      event: eventData.Title,
       amount: parseInt(amount),
     };
 
     console.log("The result is:", result, data, eventData);
-    // const resData = await axios.post('https://us-central1-oculus2022-75997.cloudfunctions.net/payment',data)
+    const resData = await axios.post(
+      "https://us-central1-oculus2022-75997.cloudfunctions.net/payment",
+      data
+    );
 
-    // console.log('The resData is: ',resData);
+    handleClose();
+    console.log("The resData is: ", resData);
 
     let updatedUser = await eventService.setUserPhoneNumber(
       phoneNumber,
       currentUser
     );
     if (updatedUser.phoneNumber) {
-      let paymentData = await eventService.postPayment({
-        paymentId: "1234568",
-        eventName: eventData.Title,
-        userId: currentUser.uid,
-      });
-
-      if (paymentData) {
-        setPaymentDone(true);
-        setIsPaymentSuccess(true);
-      }
-
-      // const options = {
-      //   "key": resData?.data?.key, // Enter the Key ID generated from the Dashboard
-      //   "amount": resData?.data?.order?.amount,// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      //   "currency": "INR",
-      //   "name": "Dard",
-      //   "description": "Daddy Transaction",
-      //   "image": Daddy,
-      //   "order_id": resData?.data?.order?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      //   "handler": function (response){
-      //       alert(response.razorpay_payment_id);
-      //       alert(response.razorpay_order_id);
-      //       alert(response.razorpay_signature)
-      //   },
-      //   "prefill": {
-      //       "name": "Bhushan",
-      //   },
-      //   "notes": {
-      //       "address": "Razorpay Corporate Office"
-      //   },
-      //   "theme": {
-      //       "color": "#3399cc"
-      //   }
-      // };
-      // console.log('The options are: ',options);
-      // var rzp1 = new window.Razorpay(options);
-
-      // rzp1.open();
+      const options = {
+        key: resData?.data?.key, // Enter the Key ID generated from the Dashboard
+        amount: resData?.data?.order?.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: "INR",
+        name: eventData.Title,
+        description: `${eventData.Title} Transaction`,
+        image: Oculus,
+        order_id: resData?.data?.order?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        handler: async function (response) {
+          let paymentData = await eventService.postPayment({
+            paymentId: response.razorpay_payment_id,
+            eventName: eventData.Title,
+            userId: currentUser.uid,
+            teamName: "Single Player",
+            inviteCode: refCode,
+          });
+          if (paymentData) {
+            setPaymentDone(true);
+            setIsPaymentSuccess(true);
+          }
+          onOpen();
+        },
+        prefill: {
+          name: currentUser.name,
+          contact: currentUser.phoneNumber,
+          email: currentUser.email,
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+      console.log("The options are: ", options);
+      var rzp1 = new window.Razorpay(options);
+      rzp1.open();
     }
   }
 
@@ -177,7 +184,7 @@ const SinglePlayer = ({
           <button
             onClick={() => {
               showRazorpayModal(eventData.Fee[0].Fee);
-              console.log("The data is: ", phoneNumber, refCode);
+              console.log("The data is: ", phoneNumber, refCode, eventData);
             }}
           >
             PAY

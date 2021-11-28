@@ -1,6 +1,7 @@
 import firebase from "firebase";
 import { eventDetails } from "../data";
 import axios from "axios";
+import randomString from "randomstring";
 
 const userRef = firebase.firestore().collection("Users");
 const eventRef = firebase.firestore().collection("Events");
@@ -56,6 +57,8 @@ async function createUser(emailId, phoneNumber, name, uid) {
     name: name,
     phoneNumber: phoneNumber,
     uid: newUserRef.id,
+    inviteCode: randomString.generate(7),
+    invited: 0,
   };
 
   //  newUserRef.set(data).then(user=>{
@@ -128,6 +131,8 @@ async function getUserRegistrationDetails(postData) {
     console.log(`ERROR OCCURED IN USER REGISTRATION API: ${e}`);
   }
 }
+
+console.log("The code is: ", randomString.generate(6));
 
 export const eventService = {
   getEvent,
