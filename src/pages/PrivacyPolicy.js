@@ -137,7 +137,7 @@ const PrivacyPolicy = () => {
             <p>
               If you would like to: access, correct, amend or delete any
               personal information we have about you, log into your account and
-              update your address, or, email us at atharvamohite20@gmail.com and
+              update your address, or, email us at oculus_thefest@spit.ac.in and
               we will be happy to sort it out for you.
             </p>
           </div>
