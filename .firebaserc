@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "oc-three"
-  }
+    "oc": "oculus2022-75997",
+    "default": "oculus2022-75997"
+  },
+  "targets": {}
 }
