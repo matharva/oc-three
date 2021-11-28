@@ -31,6 +31,7 @@ const LinkItems = [
   { name: "Events", path: "events", icon: FiHome },
   { name: "Sponsors", path: "sponsors", icon: FiTrendingUp },
   { name: "Donation Drive", path: "donation-drive", icon: FiCompass },
+  { name: "Privacy Policy", path: "privacy", icon: FiCompass },
   // { name: "Favourites", icon: FiStar },
   // { name: "Settings", icon: FiSettings },
 ];
