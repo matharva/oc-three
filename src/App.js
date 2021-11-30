@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Data
 import { eventDetails } from "./data.js";
@@ -17,7 +17,7 @@ import { AuthProvider } from "./contexts/AppContext";
 import { ChakraProvider } from "@chakra-ui/react";
 import Profile from "./pages/Profile.js";
 
-import { extendTheme } from "@chakra-ui/react";
+// import { extendTheme } from "@chakra-ui/react";
 import PrivacyPolicy from "./pages/PrivacyPolicy.js";
 import Terms from "./pages/Terms.js";
 import RefundPolicy from "./pages/RefundPolicy.js";

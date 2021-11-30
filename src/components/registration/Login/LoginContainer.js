@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Modal from "react-modal";
-import { useHistory, useRouteMatch } from "react-router";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router";
 import firebase from "firebase";
 import { StyledFirebaseAuth } from "react-firebaseui";
 import { useAuth } from "../../../contexts/AppContext";
@@ -10,20 +9,13 @@ import { PhoneIcon, AddIcon, WarningIcon, CloseIcon } from "@chakra-ui/icons";
 import "../../../styles/loginModal.scss";
 
 import {
-  Flex,
   Stack,
   Heading,
   Text,
-  Input,
-  Button,
-  Icon,
   useColorModeValue,
-  createIcon,
   Image,
   Box,
-  Center,
 } from "@chakra-ui/react";
-import { FcGoogle } from "react-icons/fc";
 
 const LoginContainer = () => {
   const history = useHistory();
