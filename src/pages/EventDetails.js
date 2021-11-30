@@ -131,6 +131,7 @@ const EventDetails = ({ event }) => {
     }
   }, [paymentDone]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     console.log("Payment hogaya page reset maaro");
     if (currentUser) {
@@ -162,7 +163,7 @@ const EventDetails = ({ event }) => {
         setUserTeam(userRegistrationDetails.teamDetails);
       }
     }
-  }, [join]);
+  }, [currentUser, event, eventName, join]);
 
   const addEvent = async () => {
     let eventAdded = await eventService.addEvent();

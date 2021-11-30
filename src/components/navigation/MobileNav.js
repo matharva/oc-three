@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 // Components
 import {
@@ -27,18 +27,50 @@ import {
   FiMenu,
 } from "react-icons/fi";
 
-const LinkItems = [
-  { name: "Events", path: "events", icon: FiHome },
-  { name: "Sponsors", path: "sponsors", icon: FiTrendingUp },
-  { name: "Donation Drive", path: "donation-drive", icon: FiCompass },
-  { name: "Privacy Policy", path: "privacy", icon: FiCompass },
-  { name: "Refund Policy", path: "refund-policy", icon: FiCompass },
-  { name: "Terms and Condition", path: "termsnconditions", icon: FiCompass },
-  // { name: "Favourites", icon: FiStar },
-  // { name: "Settings", icon: FiSettings },
-];
-
 const SidebarContent = ({ onClose, ...rest }) => {
+  const history = useHistory();
+
+  const LinkItems = [
+    {
+      name: "Events",
+      path: "events",
+      icon: FiHome,
+      fn: () => history.push("/events"),
+    },
+    {
+      name: "Sponsors",
+      path: "sponsors",
+      icon: FiTrendingUp,
+      fn: () => history.push("/sponsors"),
+    },
+    {
+      name: "Donation Drive",
+      path: "donation-drive",
+      icon: FiCompass,
+      fn: () => history.push("/donation-drive"),
+    },
+    {
+      name: "Privacy Policy",
+      path: "privacy",
+      icon: FiCompass,
+      fn: () => history.push("/privacy"),
+    },
+    {
+      name: "Refund Policy",
+      path: "refund-policy",
+      icon: FiCompass,
+      fn: () => history.push("/refund-policy"),
+    },
+    {
+      name: "Terms and Condition",
+      path: "termsnconditions",
+      icon: FiCompass,
+      fn: () => history.push("/termsnconditions"),
+    },
+    // { name: "Favourites", icon: FiStar },
+    // { name: "Settings", icon: FiSettings },
+  ];
+
   return (
     <Box
       bg={useColorModeValue("white", "gray.900")}
@@ -59,7 +91,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <Link to={link.path}>
+        <Link to={link.path} onClick={link.fn}>
           <NavItem key={link.name} icon={link.icon}>
             {link.name}
           </NavItem>
