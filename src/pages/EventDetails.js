@@ -62,6 +62,7 @@ const EventDetails = ({ event }) => {
   const [viewTeam, setViewTeam] = useState(false);
   const [userTeam, setUserTeam] = useState(null);
   const [join, setJoin] = useState(null);
+  const [load, setLoad] = useState(false);
   // const {} = useAuth()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -87,12 +88,15 @@ const EventDetails = ({ event }) => {
         setViewTeam(false);
         setUserTeam(null);
       }
+      setLoad(true);
     } else {
       setPaymentDone(false);
+      setLoad(true);
     }
     setEventData(event);
   }, [currentUser]);
 
+  console.log("The load is: ", load);
   // Here update all the states that needs to changed once the payment process is done(Not when the user is there in a team only when the user has paid for the event )
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
@@ -169,16 +173,19 @@ const EventDetails = ({ event }) => {
   const registerEvent = () => {
     console.log("Dard");
     if (
+      load &&
       currentUser &&
       currentUser.email &&
       ((viewTeam && !eventData.isSingle) || !viewTeam)
     ) {
       console.log("Dard 1");
       //Idhar kuch toh (paymentDone and !viewTeam) dalna tha mai bhool gaya exactly kya tha
-      setIsOpen(true);
+      // setIsOpen(true);
+      onOpen();
     } else if (!currentUser) {
       console.log("Dard 2");
-      setIsLoginOpen(true);
+      // setIsLoginOpen(true);
+      onOpen();
     }
   };
 
@@ -212,11 +219,10 @@ const EventDetails = ({ event }) => {
                         </div>
                       </div>
                       <div className="reg-btn-container">
-                        {/* <button
+                        <button
                           className="reg-btn"
                           onClick={() => {
                             registerEvent();
-                            onOpen();
                           }}
                         >
                           {currentUser
@@ -226,8 +232,8 @@ const EventDetails = ({ event }) => {
                                 : "View Team"
                               : "Register"
                             : "Register"}
-                        </button> */}
-                        <Button colorScheme="teal">Button</Button>
+                        </button>
+                        {/* <Button colorScheme="teal">Button</Button> */}
                       </div>
                     </div>
                   ) : (
@@ -237,8 +243,9 @@ const EventDetails = ({ event }) => {
                           className="reg-btn"
                           onClick={() => {
                             registerEvent();
-                            onOpen();
+                            // onOpen();
                           }}
+                          disabled={!load}
                         >
                           {currentUser
                             ? (currentUser && paymentDone) || viewTeam

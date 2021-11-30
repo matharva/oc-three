@@ -38,6 +38,7 @@ const ShowJoinTeamDetails = ({
         teamCode: code,
         userId: currentUser.uid,
         eventName: eventData.Title,
+        inviteCode: refCode,
       });
       if (!joinData.Message.includes("unsuccessfully")) {
         setJoin(true);
@@ -146,7 +147,7 @@ const ShowJoinTeamDetails = ({
             className="reg-btn"
             onClick={() => {
               joinUser();
-              console.log("The register form is: ", phoneNumber, code);
+              console.log("The register form is: ", phoneNumber, code, refCode);
             }}
           >
             Confirm

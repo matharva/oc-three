@@ -1,4 +1,6 @@
 import { Form, Button } from "react-bootstrap";
+import axios from "axios";
+import Oculus from "../../../assets/Oculus.png";
 import {
   FormControl,
   FormHelperText,
@@ -29,6 +31,7 @@ const ShowPaymentDetails = ({
   setPaymentDone,
   setIsPaymentSuccess,
   currentUser,
+  handleClose,
 }) => {
   console.log("The details are: ", details, currentUser);
 
@@ -44,7 +47,7 @@ const ShowPaymentDetails = ({
 
   async function showRazorpayModal() {
     const amount = details.filter((i) => i.Type == paymentType)[0].Fee;
-    console.log("The result is:", amount);
+    console.log("The result is:", amount, eventName);
     const result = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
@@ -53,7 +56,7 @@ const ShowPaymentDetails = ({
       return;
     }
     const data = {
-      event: "divya",
+      event: eventName,
       amount: parseInt(amount),
     };
 
@@ -64,44 +67,51 @@ const ShowPaymentDetails = ({
       currentUser
     );
     if (updatedUser.phoneNumber) {
-      // const resData = await axios.post('https://us-central1-oculus2022-75997.cloudfunctions.net/payment',data)
-      // console.log('The resData is: ',resData);
-      let paymentData = await eventService.postPayment({
-        paymentId: "1234567",
-        eventName: eventName,
-        userId: currentUser.uid,
-      });
-      console.log("The payment data is: ", paymentData);
-      if (paymentData.registrationDetails) {
-        setPaymentDone(true);
-        setIsPaymentSuccess(true);
-      }
-      // const options = {
-      //   "key": resData?.data?.key, // Enter the Key ID generated from the Dashboard
-      //   "amount": resData?.data?.order?.amount,// Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      //   "currency": "INR",
-      //   "name": "Dard",
-      //   "description": "Daddy Transaction",
-      //   "image": Daddy,
-      //   "order_id": resData?.data?.order?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      //   "handler": function (response){
-      //       alert(response.razorpay_payment_id);
-      //       alert(response.razorpay_order_id);
-      //       alert(response.razorpay_signature)
-      //   },
-      //   "prefill": {
-      //       "name": "Bhushan",
-      //   },
-      //   "notes": {
-      //       "address": "Razorpay Corporate Office"
-      //   },
-      //   "theme": {
-      //       "color": "#3399cc"
-      //   }
-      // };
-      // console.log('The options are: ',options);
-      // var rzp1 = new window.Razorpay(options);
-      // rzp1.open();
+      console.log("The data is: ", updatedUser);
+      const resData = await axios.post(
+        "https://us-central1-oculus2022-75997.cloudfunctions.net/payment",
+        data
+      );
+      handleClose();
+      console.log("The resData is: ", resData);
+      //
+      const options = {
+        key: resData?.data?.key, // Enter the Key ID generated from the Dashboard
+        amount: resData?.data?.order?.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: "INR",
+        name: eventName,
+        description: `${eventName} Transaction`,
+        image: Oculus,
+        order_id: resData?.data?.order?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        handler: async function (response) {
+          let paymentData = await eventService.postPayment({
+            paymentId: response.razorpay_payment_id,
+            eventName: eventName,
+            userId: currentUser.uid,
+            teamName: "Dardadad",
+            inviteCode: refCode,
+          });
+          console.log("The payment data is: ", paymentData);
+          if (paymentData.registrationDetails) {
+            setPaymentDone(true);
+            setIsPaymentSuccess(true);
+          }
+        },
+        prefill: {
+          name: currentUser.name,
+          contact: currentUser.phoneNumber,
+          email: currentUser.email,
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+      console.log("The options are: ", options);
+      var rzp1 = new window.Razorpay(options);
+      rzp1.open();
     }
   }
 
@@ -252,7 +262,8 @@ const ShowPaymentDetails = ({
                 "The register form is: ",
                 phoneNumber,
                 paymentType,
-                refCode
+                refCode,
+                eventName
               );
             }}
           >

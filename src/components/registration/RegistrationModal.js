@@ -35,6 +35,8 @@ const RegistrationModal = ({
   const [payTypeOpen, setPayTypeOpen] = useState(false);
   const [joinTypeOpen, setJoinTypeOpen] = useState(false);
 
+  const { isOpen, onOpen, onClose, setModalContent } = useAuth();
+
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
   console.log("The type is: ", eventData, viewTeam);
   useEffect(() => {
@@ -48,10 +50,19 @@ const RegistrationModal = ({
     setIsPaymentSuccess(false);
   }, [currentUser]);
 
+  function handleClose() {
+    if (paymentDone) {
+      setViewTeam(true);
+    }
+    setPayTypeOpen(false);
+    setJoinTypeOpen(false);
+    onClose();
+  }
+
   function renderComponent() {
     if (!currentUser) return <LoginContainer />;
 
-    if (viewTeam) {
+    if (viewTeam && !eventData.isSingle) {
       return <TeamModal userTeam={userTeam} />;
     } else {
       if (isPaymentSuccess) {
@@ -66,6 +77,8 @@ const RegistrationModal = ({
               setIsPaymentSuccess={setIsPaymentSuccess}
               eventData={eventData}
               currentUser={currentUser}
+              handleClose={handleClose}
+              onOpen={onOpen}
             />
           );
         } else {
@@ -98,6 +111,7 @@ const RegistrationModal = ({
                   setPaymentDone={setPaymentDone}
                   setIsPaymentSuccess={setIsPaymentSuccess}
                   currentUser={currentUser}
+                  handleClose={handleClose}
                 />
               );
             }
@@ -107,15 +121,6 @@ const RegistrationModal = ({
     }
   }
 
-  function handleClose() {
-    if (paymentDone) {
-      setViewTeam(true);
-    }
-    setPayTypeOpen(false);
-    setJoinTypeOpen(false);
-    onClose();
-  }
-  const { isOpen, onOpen, onClose, setModalContent } = useAuth();
   return (
     <Modal
       onClose={handleClose}
