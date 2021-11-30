@@ -13,6 +13,7 @@ import Oc from "../assets/Oculus.png";
 import ThreeContainer from "../components/ThreeDModel/ThreeContainer";
 import DesktopNav from "../components/navigation/DesktopNav";
 import MobileNav from "../components/navigation/MobileNav";
+import Footer from "../components/Footer";
 
 const Main = () => {
   const boxRef = useRef(null);
@@ -27,22 +28,11 @@ const Main = () => {
       <DesktopNav />
       <MobileNav />
       <div className="main-container">
-        {/* <div className="menu-container">
-        <PhoneIcon onClick={() => setMenu(true)} />
-        <div className="nav-img-container">
-          <img src={Oc} alt="" />
-        </div>
-        <div className="account-icon">
-          <PhoneIcon />
-        </div>
-      </div> */}
-        {/* <div className="" style={{ padding: "2rem" }}> */}
         <div className="model-box" ref={centerRef}>
           <ThreeContainer />
-          {/* <div className="marker"></div> */}
         </div>
-        {/* </div> */}
       </div>
+      <Footer />
     </div>
   );
 };

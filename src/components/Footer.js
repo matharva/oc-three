@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router";
+import { useHistory, Link } from "react-router-dom";
 
 // Assets
 import Download from "../assets/android-download.png";
@@ -56,14 +56,12 @@ import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 
 // export default Footer;
 
-import { ReactNode } from "react";
 import {
   Box,
   Container,
   Stack,
   SimpleGrid,
   Text,
-  Link,
   VisuallyHidden,
   chakra,
   useColorModeValue,
@@ -115,19 +113,18 @@ export default function Footer() {
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={8}>
           <Stack align={"center"}>
-            <ListHeader>Company</ListHeader>
-            <Link href={"#"}>About Us</Link>
-            <Link href={"#"}>Blog</Link>
-            <Link href={"#"}>Careers</Link>
-            <Link href={"#"}>Contact Us</Link>
+            <ListHeader>Oculus</ListHeader>
+            <Link to="/">About Us</Link>
+            {/* <Link to="">Blog</Link>
+            <Link to="">Careers</Link> */}
+            <Link to="/">Contact Us</Link>
           </Stack>
 
           <Stack align={"center"}>
             <ListHeader>Legal</ListHeader>
-            <Link href={"#"}>Cookies Policy</Link>
-            <Link href={"#"}>Privacy Policy</Link>
-            <Link href={"#"}>Terms of Service</Link>
-            <Link href={"#"}>Law Enforcement</Link>
+            <Link to="/privacy">Privacy Policy</Link>
+            <Link to="/termsnconditions">Terms and Conditions</Link>
+            <Link to="/refund-policy">Refund Policy</Link>
           </Stack>
 
           <Stack align={"center"}>
