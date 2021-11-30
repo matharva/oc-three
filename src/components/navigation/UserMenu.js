@@ -30,6 +30,16 @@ const UserMenu = () => {
       fn: () => {},
     },
     {
+      title: "Refund Policy",
+      path: "/refund-policy",
+      fn: () => {},
+    },
+    {
+      title: "Terms and Condition",
+      path: "/termsnconditions",
+      fn: () => {},
+    },
+    {
       title: `Logout`,
       path: `${location.pathname}`,
       fn: () => onOpen(),
@@ -40,6 +50,16 @@ const UserMenu = () => {
     {
       title: "Privacy Policy",
       path: "/privacy",
+      fn: () => {},
+    },
+    {
+      title: "Refund Policy",
+      path: "/refund-policy",
+      fn: () => {},
+    },
+    {
+      title: "Terms and Condition",
+      path: "/termsnconditions",
       fn: () => {},
     },
     {

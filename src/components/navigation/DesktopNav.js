@@ -21,10 +21,6 @@ const navbarItems = [
     name: "Donation Drive",
     path: "donation-drive",
   },
-  {
-    name: "Privacy Policy",
-    path: "privacy",
-  },
 ];
 
 const NavContent = () => {

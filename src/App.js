@@ -19,6 +19,8 @@ import Profile from "./pages/Profile.js";
 
 import { extendTheme } from "@chakra-ui/react";
 import PrivacyPolicy from "./pages/PrivacyPolicy.js";
+import Terms from "./pages/Terms.js";
+import RefundPolicy from "./pages/RefundPolicy.js";
 // import "./styles.css";
 
 // const theme = extendTheme({
@@ -65,6 +67,12 @@ export default function App() {
             </Route>
             <Route path="/privacy">
               <PrivacyPolicy />
+            </Route>
+            <Route path="/termsnconditions">
+              <Terms />
+            </Route>
+            <Route path="/refund-policy">
+              <RefundPolicy />
             </Route>
           </Switch>
         </Router>

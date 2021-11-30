@@ -32,6 +32,8 @@ const LinkItems = [
   { name: "Sponsors", path: "sponsors", icon: FiTrendingUp },
   { name: "Donation Drive", path: "donation-drive", icon: FiCompass },
   { name: "Privacy Policy", path: "privacy", icon: FiCompass },
+  { name: "Refund Policy", path: "refund-policy", icon: FiCompass },
+  { name: "Terms and Condition", path: "termsnconditions", icon: FiCompass },
   // { name: "Favourites", icon: FiStar },
   // { name: "Settings", icon: FiSettings },
 ];
@@ -118,9 +120,11 @@ const NavbarContent = ({ onOpen, ...rest }) => {
       />
 
       {/* Oculus Image */}
-      <Box boxSize="150px" style={{ height: "40px" }}>
-        <Image w="100%" src={Oc} alt="Segun Adebayo" />
-      </Box>
+      <Link to="/">
+        <Box boxSize="150px" style={{ height: "40px" }}>
+          <Image w="100%" src={Oc} alt="Segun Adebayo" />
+        </Box>
+      </Link>
 
       <UserMenu />
     </Flex>

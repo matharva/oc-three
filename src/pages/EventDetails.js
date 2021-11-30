@@ -64,6 +64,7 @@ const EventDetails = ({ event }) => {
   const [join, setJoin] = useState(null);
   // const {} = useAuth()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     let event = await eventService.getEvent(map[eventName].Title);
     console.log("Heyyyyy in useEffect first wala: ", viewTeam, userTeam);
@@ -93,6 +94,7 @@ const EventDetails = ({ event }) => {
   }, [currentUser]);
 
   // Here update all the states that needs to changed once the payment process is done(Not when the user is there in a team only when the user has paid for the event )
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     console.log("Payment hogaya page reset maaro");
     if (currentUser) {
