@@ -37,10 +37,19 @@ import RefundPolicy from "./pages/RefundPolicy.js";
 //   },
 // });
 
+import { Global, css } from "@emotion/react";
+const GlobalStyles = css`
+  .js-focus-visible :focus:not([data-focus-visible-added]) {
+    outline: none;
+    box-shadow: none;
+  }
+`;
+
 export default function App() {
   return (
     // <ChakraProvider theme={theme}>
     <ChakraProvider>
+      {/* <Global styles={GlobalStyles}> */}
       <AuthProvider>
         <Router>
           <Switch>
@@ -77,6 +86,7 @@ export default function App() {
           </Switch>
         </Router>
       </AuthProvider>
+      {/* </Global> */}
     </ChakraProvider>
   );
 }
