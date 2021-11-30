@@ -5,8 +5,6 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
@@ -17,7 +15,7 @@ import SinglePlayer from "./ModalContent/SinglePlayer";
 import MultiplePlayers from "./ModalContent/MultiplePlayers";
 import ShowJoinTeamDetails from "./ModalContent/ShowJoinTeamDetails";
 import ShowPaymentDetails from "./ModalContent/ShowPaymentDetails";
-import LoginContainer from "./LoginContainer";
+import LoginContainer from "./Login/LoginContainer";
 
 const RegistrationModal = ({
   userTeam,
@@ -133,7 +131,18 @@ const RegistrationModal = ({
       <ModalContent h="500px" w={"95%"}>
         <ModalCloseButton />
         <ModalBody p={0} m={0}>
-          {/* {viewTeam ? (
+          {renderComponent()}
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  );
+};
+
+export default RegistrationModal;
+
+// eslint-disable-next-line no-lone-blocks
+{
+  /* {viewTeam ? (
             <TeamModal userTeam={userTeam} />
           ) : isPaymentSuccess ? (
             <PaymentSuccessful
@@ -171,12 +180,5 @@ const RegistrationModal = ({
               setIsPaymentSuccess={setIsPaymentSuccess}
               currentUser={currentUser}
             />
-          )} */}
-          {renderComponent()}
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  );
-};
-
-export default RegistrationModal;
+          )} */
+}

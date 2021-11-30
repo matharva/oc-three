@@ -20,7 +20,7 @@ import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 import RegistrationModal from "../components/registration/RegistrationModal";
 import MobileNav from "../components/navigation/MobileNav";
 import DesktopNav from "../components/navigation/DesktopNav";
-import LoginContainer from "../components/registration/LoginContainer";
+import LoginContainer from "../components/registration/Login/LoginContainer";
 
 //Data and Services
 import { eventService } from "../services/eventService";
@@ -53,9 +53,7 @@ const EventDetails = ({ event }) => {
   console.log("Login: ", jello, currentUser);
   const { eventName } = useParams();
   const history = useHistory();
-  // console.log(eventName);
-  const [tabState, setTabState] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
+
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [eventData, setEventData] = useState(null);
   const [paymentDone, setPaymentDone] = useState(false);

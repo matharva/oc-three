@@ -38,6 +38,7 @@ import RefundPolicy from "./pages/RefundPolicy.js";
 // });
 
 import { Global, css } from "@emotion/react";
+import LoginModal from "./components/registration/Login/LoginModal.js";
 const GlobalStyles = css`
   .js-focus-visible :focus:not([data-focus-visible-added]) {
     outline: none;
@@ -85,6 +86,7 @@ export default function App() {
             </Route>
           </Switch>
         </Router>
+        <LoginModal />
       </AuthProvider>
       {/* </Global> */}
     </ChakraProvider>

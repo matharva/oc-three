@@ -14,6 +14,11 @@ export const AuthProvider = ({ children }) => {
 
   const [modalContent, setModalContent] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isLoginModalOpen,
+    onOpen: onLoginModalOpen,
+    onClose: onLoginModalClose,
+  } = useDisclosure();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("oculus-auth"));
@@ -29,6 +34,9 @@ export const AuthProvider = ({ children }) => {
     onOpen,
     onClose,
     setModalContent,
+    isLoginModalOpen,
+    onLoginModalOpen,
+    onLoginModalClose,
   };
   return (
     <AuthContext.Provider value={value}>

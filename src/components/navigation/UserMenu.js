@@ -13,7 +13,7 @@ import { useAuth } from "../../contexts/AppContext";
 import { useLocation } from "react-router-dom";
 
 const UserMenu = () => {
-  const { currentUser, onOpen } = useAuth();
+  const { currentUser, onLoginModalOpen } = useAuth();
   const location = useLocation();
   console.log(location);
   console.log(currentUser);
@@ -42,7 +42,7 @@ const UserMenu = () => {
     {
       title: `Logout`,
       path: `${location.pathname}`,
-      fn: () => onOpen(),
+      fn: () => onLoginModalOpen(),
     },
   ];
 
@@ -65,7 +65,7 @@ const UserMenu = () => {
     {
       title: `Login`,
       path: `${location.pathname}`,
-      fn: () => onOpen(),
+      fn: () => onLoginModalOpen(),
     },
   ];
 
