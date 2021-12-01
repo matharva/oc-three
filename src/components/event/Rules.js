@@ -6,11 +6,11 @@ const Rules = ({ rules }) => {
   return (
     <>
       <List spacing={3}>
-        {rules.map((rule, i) => {
+        {rules.map((rule) => {
           return (
-            <ListItem>
+            <ListItem key={rule.id}>
               <ListIcon as={MdCheckCircle} color="green.500" />
-              {rule}
+              {rule.text}
             </ListItem>
           );
         })}

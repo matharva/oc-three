@@ -6,6 +6,9 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  MenuDivider,
+  Center,
+  Box,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { DUMMY_USER_ICON } from "../../constants";
@@ -71,12 +74,44 @@ const UserMenu = () => {
               </>
             ) : (
               <>
-                <MenuItem
+                {/* <MenuItem
                   style={{ color: "black" }}
                   onClick={() => onLoginModalOpen()}
-                >
-                  <Link to="/profile">Profile</Link>
-                </MenuItem>
+                > */}
+                <Box style={{ color: "black" }}>
+                  <Center>
+                    <Avatar
+                      size={"2xl"}
+                      src={
+                        currentUser?.photo ||
+                        "https://avatars.dicebear.com/api/male/username.svg"
+                      }
+                    />
+                  </Center>
+                  <br />
+                  <Center>
+                    <p style={{ fontWeight: "bold" }}>{currentUser?.name}</p>
+                  </Center>
+
+                  <Center>
+                    <p style={{ fontWeight: "bold", margin: "0.5rem 0" }}>
+                      Referral Code:{" "}
+                      <span style={{ fontWeight: "normal" }}>
+                        {currentUser?.referralCode || "fafdsafds"}
+                      </span>
+                    </p>
+                  </Center>
+                  <Center>
+                    <p style={{ fontWeight: "bold" }}>
+                      Referral Score:{" "}
+                      <span style={{ fontWeight: "normal" }}>
+                        {currentUser?.referralCount || "5"}
+                      </span>
+                    </p>
+                  </Center>
+                </Box>
+                <MenuDivider />
+                {/* </MenuItem> */}
                 {menuItems.map((item) => {
                   return (
                     <MenuItem style={{ color: "black" }}>
