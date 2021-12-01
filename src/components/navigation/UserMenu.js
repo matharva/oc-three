@@ -20,25 +20,6 @@ const UserMenu = () => {
 
   const menuItems = [
     {
-      title: "Profile",
-      path: "/profile",
-    },
-    {
-      title: "Privacy Policy",
-      path: "/privacy",
-    },
-    {
-      title: "Refund Policy",
-      path: "/refund-policy",
-    },
-    {
-      title: "Terms and Condition",
-      path: "/termsnconditions",
-    },
-  ];
-
-  const loginMenuItems = [
-    {
       title: "Privacy Policy",
       path: "/privacy",
     },
@@ -74,7 +55,7 @@ const UserMenu = () => {
           <MenuList>
             {!currentUser ? (
               <>
-                {loginMenuItems.map((item) => {
+                {menuItems.map((item) => {
                   return (
                     <MenuItem style={{ color: "black" }}>
                       <Link to={item.path}>{item.title}</Link>
@@ -90,6 +71,12 @@ const UserMenu = () => {
               </>
             ) : (
               <>
+                <MenuItem
+                  style={{ color: "black" }}
+                  onClick={() => onLoginModalOpen()}
+                >
+                  <Link to="/profile">Profile</Link>
+                </MenuItem>
                 {menuItems.map((item) => {
                   return (
                     <MenuItem style={{ color: "black" }}>

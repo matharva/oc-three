@@ -39,6 +39,8 @@ import RefundPolicy from "./pages/RefundPolicy.js";
 
 import { Global, css } from "@emotion/react";
 import LoginModal from "./components/registration/Login/LoginModal.js";
+import MarketPlace from "./pages/MarketPlace.js";
+import Merchandise from "./pages/Merchandise.js";
 const GlobalStyles = css`
   .js-focus-visible :focus:not([data-focus-visible-added]) {
     outline: none;
@@ -83,6 +85,12 @@ export default function App() {
             </Route>
             <Route path="/refund-policy">
               <RefundPolicy />
+            </Route>
+            <Route path="/marketplace">
+              <MarketPlace />
+            </Route>
+            <Route path="/merch">
+              <Merchandise />
             </Route>
           </Switch>
         </Router>

@@ -50,6 +50,18 @@ const SidebarContent = ({ onClose, ...rest }) => {
       fn: () => history.push("/donation-drive"),
     },
     {
+      name: "Market Place",
+      path: "marketplace",
+      icon: FiCompass,
+      fn: () => history.push("/marketplace"),
+    },
+    {
+      name: "Merchandise",
+      path: "merch",
+      icon: FiCompass,
+      fn: () => history.push("/merch"),
+    },
+    {
       name: "Privacy Policy",
       path: "privacy",
       icon: FiCompass,
