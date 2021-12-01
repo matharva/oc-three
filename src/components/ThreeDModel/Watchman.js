@@ -7,9 +7,7 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 
 export default function Watch({ ...props }) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF(
-    "/collegebuild&watchman.glb"
-  );
+  const { nodes, materials, animations } = useGLTF("/compressed.glb");
   const { actions } = useAnimations(animations, group);
   return (
     <group ref={group} {...props} dispose={null}>

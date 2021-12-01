@@ -1,16 +1,73 @@
 import React, { Suspense, useRef } from "react";
 
 // Three imports
-import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { Physics, usePlane, useBox } from "@react-three/cannon";
 
 // 3 Model
 // import Model from "./Mandir";
 import Model from "./Man";
-import Watch from "./Watchman";
+// import Model from "./Final";
+
+// import Watch from "./Watchman";
+// import Compressed from "./Compressed";
+// import CollegeBuilding from "./CollegeBuilding";
 // Styles
 import "../../styles/ThreeContainer.scss";
+
+import * as THREE from "three";
+import { useState, useMemo } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import randomColor from "randomcolor";
+import CameraControls from "camera-controls";
+
+CameraControls.install({ THREE });
+const randomPos = (min = 5, max = -5) => Math.random() * (max - min) + min;
+
+function Controls({
+  zoom,
+  focus,
+  pos = new THREE.Vector3(),
+  look = new THREE.Vector3(),
+}) {
+  const camera = useThree((state) => state.camera);
+  const gl = useThree((state) => state.gl);
+  const controls = useMemo(() => new CameraControls(camera, gl.domElement), []);
+  return useFrame((state, delta) => {
+    zoom ? pos.set(focus.x, focus.y, focus.z) : pos.set(-50, 0, 0);
+    // console.log(object)
+    // zoom ? pos.set(-20, 0, 0) : pos.set(-50, 0, 0);
+    // zoom ? look.set(focus.x, focus.y, focus.z - 0.2) : look.set(0, 0, 4);
+
+    state.camera.position.lerp(pos, 0.9);
+    state.camera.updateProjectionMatrix();
+    // console.log(delta);
+
+    controls.setLookAt(
+      state.camera.position.x,
+      state.camera.position.y,
+      state.camera.position.z,
+      look.x,
+      look.y,
+      look.z,
+      true
+    );
+    return controls.update(delta);
+  });
+}
+
+function Cloud({ momentsData, zoomToView }) {
+  return momentsData.map(({ position, color }, i) => (
+    <mesh
+      key={i}
+      position={position}
+      onClick={(e) => zoomToView(e.object.position)}
+    >
+      <boxGeometry args={[0.1, 0.08, 0.003]} />
+      <meshStandardMaterial color={color} />
+    </mesh>
+  ));
+}
 
 function Box() {
   const [ref, api] = useBox(() => ({ mass: 1, position: [0, 2, 0] }));
@@ -53,28 +110,60 @@ function Plane() {
 }
 
 const ThreeContainer = () => {
-  const ref = useRef(null);
+  const [zoom, setZoom] = useState(false);
+  const [focus, setFocus] = useState({});
+  // const momentsArray = useMemo(
+  //   () =>
+  //     Array.from({ length: 500 }, () => ({
+  //       color: randomColor(),
+  //       position: [randomPos(), randomPos(), randomPos()],
+  //     })),
+  //   []
+  // );
+  // return (
+  //   <Canvas linear camera={{ position: [0, 0, 5] }}>
+  //     <ambientLight />
+  //     <directionalLight position={[150, 150, 150]} intensity={0.55} />
+  //     {/* <Cloud
+  //       momentsData={momentsArray}
+  //       zoomToView={(focusRef) => (setZoom(!zoom), setFocus(focusRef))}
+  //     /> */}
+
+  //     {/* <Model /> */}
+  //     <Controls zoom={zoom} focus={focus} />
+  //   </Canvas>
+  // );
 
   return (
     <Canvas>
       <OrbitControls />
       <Stars />
-      <spotLight position={[10, 15, 10]} angle={0.3} />
+      <spotLight position={[100, 150, 100]} angle={0.3} />
       <ambientLight intensity={0.5} />
       <Physics>
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Plane />
+        {/* <Box />
+          <Box />
+          <Box />
+          <Box />
+          <Box />
+          <Box />
+          <Box />
+          <Box />
+          <Box />
+          <Plane /> */}
         {console.log("Before loading model")}
-        {/* <Model />
-        <Watch /> */}
+        <Model
+          zoomToView={(focusRef) => {
+            console.log(focusRef);
+            setZoom(!zoom);
+            setFocus(focusRef);
+          }}
+        />
+
+        <Controls zoom={zoom} focus={focus} />
+        {/* <Watch /> */}
+        {/* <Compressed /> */}
+        {/* <CollegeBuilding /> */}
         {console.log("After loading model")}
       </Physics>
       {/* <Suspense fallback={null}> */}
@@ -85,3 +174,5 @@ const ThreeContainer = () => {
 };
 
 export default ThreeContainer;
+
+// const ref = useRef(null);
