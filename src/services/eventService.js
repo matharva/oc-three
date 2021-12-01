@@ -86,14 +86,16 @@ async function setUserPhoneNumber(phoneNumber, currentUser) {
 }
 
 async function addEvent() {
-  // let newEventQueryRef = eventRef.doc();
-  // console.log('Events is: ',eventDetails[1]);
-  // let data = eventDetails[1];
-  // await newEventQueryRef.set(data);
-  // console.log('The new user creat createer: ',newEventQueryRef.get());
-  // let newEvent = await (await newEventQueryRef.get()).data();
-  // console.log('Dard: ',newEvent);
-  // return newEvent;
+  // for (let i = 0; i < eventDetails.length; i++) {
+  //   let newEventQueryRef = eventRef.doc();
+  //   console.log("Events is: ", eventDetails[i]);
+  //   let data = eventDetails[i];
+  //   await newEventQueryRef.set(data);
+  //   console.log("The new user creat createer: ", newEventQueryRef.get());
+  //   let newEvent = await (await newEventQueryRef.get()).data();
+  //   console.log("Dard: ", newEvent);
+  //   // return newEvent;
+  // }
 }
 
 async function postPayment(postData) {
