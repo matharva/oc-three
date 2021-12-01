@@ -22,27 +22,18 @@ const UserMenu = () => {
     {
       title: "Profile",
       path: "/profile",
-      fn: () => {},
     },
     {
       title: "Privacy Policy",
       path: "/privacy",
-      fn: () => {},
     },
     {
       title: "Refund Policy",
       path: "/refund-policy",
-      fn: () => {},
     },
     {
       title: "Terms and Condition",
       path: "/termsnconditions",
-      fn: () => {},
-    },
-    {
-      title: `Logout`,
-      path: `${location.pathname}`,
-      fn: () => onLoginModalOpen(),
     },
   ];
 
@@ -50,22 +41,14 @@ const UserMenu = () => {
     {
       title: "Privacy Policy",
       path: "/privacy",
-      fn: () => {},
     },
     {
       title: "Refund Policy",
       path: "/refund-policy",
-      fn: () => {},
     },
     {
       title: "Terms and Condition",
       path: "/termsnconditions",
-      fn: () => {},
-    },
-    {
-      title: `Login`,
-      path: `${location.pathname}`,
-      fn: () => onLoginModalOpen(),
     },
   ];
 
@@ -89,21 +72,39 @@ const UserMenu = () => {
 
           {/* Menu Dropdown*/}
           <MenuList>
-            {!currentUser
-              ? loginMenuItems.map((item) => {
-                  return (
-                    <MenuItem style={{ color: "black" }} onClick={item.fn}>
-                      <Link to={`${item.path}`}>{item.title}</Link>
-                    </MenuItem>
-                  );
-                })
-              : menuItems.map((item) => {
+            {!currentUser ? (
+              <>
+                {loginMenuItems.map((item) => {
                   return (
                     <MenuItem style={{ color: "black" }}>
-                      <Link to={`/${item.path}`}>{item.title}</Link>
+                      <Link to={item.path}>{item.title}</Link>
                     </MenuItem>
                   );
                 })}
+                <MenuItem
+                  style={{ color: "black" }}
+                  onClick={() => onLoginModalOpen()}
+                >
+                  Login
+                </MenuItem>
+              </>
+            ) : (
+              <>
+                {menuItems.map((item) => {
+                  return (
+                    <MenuItem style={{ color: "black" }}>
+                      <Link to={item.path}>{item.title}</Link>
+                    </MenuItem>
+                  );
+                })}
+                <MenuItem
+                  style={{ color: "black" }}
+                  onClick={() => onLoginModalOpen()}
+                >
+                  Logout
+                </MenuItem>
+              </>
+            )}
           </MenuList>
         </Menu>
       </Flex>
