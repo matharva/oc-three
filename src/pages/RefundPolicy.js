@@ -16,15 +16,7 @@ const RefundPolicy = () => {
             <p>
               If, for any reason, You are not completely satisfied with a
               purchase We invite You to review our policy on refunds and
-              returns. This Return and Refund Policy has been created with the
-              help of the{" "}
-              <a
-                href="https://www.termsfeed.com/return-refund-policy-generator/"
-                target="_blank"
-              >
-                Return and Refund Policy Generator
-              </a>
-              .
+              returns.
             </p>
             <p>
               The following terms are applicable for any products that You

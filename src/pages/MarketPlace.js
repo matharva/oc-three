@@ -1,5 +1,6 @@
 import { Container, SimpleGrid, Stack } from "@chakra-ui/layout";
 import React from "react";
+import Footer from "../components/Footer";
 import ProductTwo from "../components/merch/ProductTwo";
 import DesktopNav from "../components/navigation/DesktopNav";
 import MobileNav from "../components/navigation/MobileNav";
@@ -17,6 +18,7 @@ const MarketPlace = () => {
           <ProductTwo />
         </SimpleGrid>
       </Container>
+      <Footer />
     </div>
   );
 };

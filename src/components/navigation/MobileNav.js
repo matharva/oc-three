@@ -61,24 +61,24 @@ const SidebarContent = ({ onClose, ...rest }) => {
       icon: FiCompass,
       fn: () => history.push("/merch"),
     },
-    {
-      name: "Privacy Policy",
-      path: "privacy",
-      icon: FiCompass,
-      fn: () => history.push("/privacy"),
-    },
-    {
-      name: "Refund Policy",
-      path: "refund-policy",
-      icon: FiCompass,
-      fn: () => history.push("/refund-policy"),
-    },
-    {
-      name: "Terms and Condition",
-      path: "termsnconditions",
-      icon: FiCompass,
-      fn: () => history.push("/termsnconditions"),
-    },
+    // {
+    //   name: "Privacy Policy",
+    //   path: "privacy",
+    //   icon: FiCompass,
+    //   fn: () => history.push("/privacy"),
+    // },
+    // {
+    //   name: "Refund Policy",
+    //   path: "refund-policy",
+    //   icon: FiCompass,
+    //   fn: () => history.push("/refund-policy"),
+    // },
+    // {
+    //   name: "Terms and Condition",
+    //   path: "termsnconditions",
+    //   icon: FiCompass,
+    //   fn: () => history.push("/termsnconditions"),
+    // },
     // { name: "Favourites", icon: FiStar },
     // { name: "Settings", icon: FiSettings },
   ];

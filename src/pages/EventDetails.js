@@ -54,7 +54,6 @@ const EventDetails = ({ event }) => {
   const { eventName } = useParams();
   const history = useHistory();
 
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [eventData, setEventData] = useState(null);
   const [paymentDone, setPaymentDone] = useState(false);
   const [viewTeam, setViewTeam] = useState(false);
@@ -91,6 +90,7 @@ const EventDetails = ({ event }) => {
       setPaymentDone(false);
       setLoad(true);
     }
+    console.log("Event data: ", event);
     setEventData(event);
   }, [currentUser]);
 
