@@ -14,6 +14,7 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
+import Footer from "../components/Footer";
 
 const Merchandise = () => {
   const [product, setProduct] = useState([
@@ -62,12 +63,6 @@ const Merchandise = () => {
         <DesktopNav />
         <Container as={Stack} maxW={"6xl"} py={10}>
           <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={8}>
-            {/* <Product /> */}
-            {/* <Product /> */}
-            {/* <Product /> */}
-            {/* <Product /> */}
-            {/* <Product /> */}
-
             {product.map((item) => {
               return (
                 <Product
@@ -81,6 +76,7 @@ const Merchandise = () => {
             })}
           </SimpleGrid>
         </Container>
+        <Footer />
       </div>
       <Modal
         onClose={onClose}

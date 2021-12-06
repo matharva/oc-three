@@ -114,10 +114,10 @@ export default function Footer() {
         <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={8}>
           <Stack align={"center"}>
             <ListHeader>Oculus</ListHeader>
-            <Link to="/">About Us</Link>
+            <Link to="/aboutus">About Us</Link>
             {/* <Link to="">Blog</Link>
             <Link to="">Careers</Link> */}
-            <Link to="/">Contact Us</Link>
+            {/* <Link to="/">Contact Us</Link> */}
           </Stack>
 
           <Stack align={"center"}>

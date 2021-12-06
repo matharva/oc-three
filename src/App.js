@@ -41,6 +41,7 @@ import { Global, css } from "@emotion/react";
 import LoginModal from "./components/registration/Login/LoginModal.js";
 import MarketPlace from "./pages/MarketPlace.js";
 import Merchandise from "./pages/Merchandise.js";
+import AboutUs from "./pages/AboutUs.js";
 const GlobalStyles = css`
   .js-focus-visible :focus:not([data-focus-visible-added]) {
     outline: none;
@@ -91,6 +92,9 @@ export default function App() {
             </Route>
             <Route path="/merch">
               <Merchandise />
+            </Route>
+            <Route path="/aboutus">
+              <AboutUs />
             </Route>
           </Switch>
         </Router>

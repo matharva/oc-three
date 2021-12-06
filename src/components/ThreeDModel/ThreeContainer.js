@@ -7,6 +7,10 @@ import { Physics, usePlane, useBox } from "@react-three/cannon";
 // 3 Model
 // import Model from "./Mandir";
 import Model from "./Man";
+import Model2 from "./Clg";
+import Model3 from "./Clg2";
+import Model4 from "./Clg3";
+import Model5 from "./Clg4";
 // import Model from "./Final";
 
 // import Watch from "./Watchman";
@@ -43,15 +47,15 @@ function Controls({
     state.camera.updateProjectionMatrix();
     // console.log(delta);
 
-    controls.setLookAt(
-      state.camera.position.x,
-      state.camera.position.y,
-      state.camera.position.z,
-      look.x,
-      look.y,
-      look.z,
-      true
-    );
+    // controls.setLookAt(
+    //   state.camera.position.x,
+    //   state.camera.position.y,
+    //   state.camera.position.z,
+    //   look.x,
+    //   look.y,
+    //   look.z,
+    //   true
+    // );
     return controls.update(delta);
   });
 }
@@ -141,6 +145,8 @@ const ThreeContainer = () => {
       <spotLight position={[100, 150, 100]} angle={0.3} />
       <ambientLight intensity={0.5} />
       <Physics>
+        <Model5 />
+        {/* <Model2 /> */}
         {/* <Box />
           <Box />
           <Box />
@@ -152,13 +158,13 @@ const ThreeContainer = () => {
           <Box />
           <Plane /> */}
         {console.log("Before loading model")}
-        <Model
+        {/* <Model
           zoomToView={(focusRef) => {
             console.log(focusRef);
             setZoom(!zoom);
             setFocus(focusRef);
           }}
-        />
+        /> */}
 
         <Controls zoom={zoom} focus={focus} />
         {/* <Watch /> */}
