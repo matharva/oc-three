@@ -79,9 +79,9 @@ function Plane() {
   //   // ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
   // });
   return (
-    <mesh ref={group} rotation={[-Math.PI / 2, 0, 0]}>
-      <planeBufferGeometry attach="geometry" args={[100, 100]} />
-      <meshLambertMaterial attach="material" color="lightblue" />
+    <mesh ref={group} rotation={[-Math.PI / 2, 0, 0]} position={[0, -10, 0]}>
+      <planeBufferGeometry attach="geometry" args={[1300, 1000]} />
+      <meshLambertMaterial attach="material" />
     </mesh>
   );
 }
@@ -199,14 +199,17 @@ const ThreeContainer = () => {
 
   return (
     <Canvas camera={{ fov: 75, position: [-100, 10, 20] }}>
+      <color attach="background" args={["#ffffffde"]} />
+
       {/* <OrbitControls /> */}
       <MapControls />
-      <Stars />
+      {/* <Stars /> */}
       <spotLight position={[100, 150, 100]} angle={0.3} />
       <ambientLight intensity={0.5} />
       <Physics>
         <Model />
         {/* <Model2 /> */}
+        <Plane />
         {/* <Box /> */}
         {/* <Model
           zoomToView={(focusRef) => {
