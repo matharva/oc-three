@@ -9,6 +9,7 @@ import { Physics, usePlane, useBox } from "@react-three/cannon";
 // import Model from "./Mandir";
 import Model from "./Man";
 import Watch from "./Watchman";
+import Building from "./Building";
 // Styles
 import "../../styles/ThreeContainer.scss";
 
@@ -45,9 +46,9 @@ function Plane() {
   //   // ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
   // });
   return (
-    <mesh ref={group} rotation={[-Math.PI / 2, 0, 0]}>
-      <planeBufferGeometry attach="geometry" args={[100, 100]} />
-      <meshLambertMaterial attach="material" color="lightblue" />
+    <mesh ref={group} rotation={[-Math.PI / 2, 0, 0]} position={[0, -10, 0]}>
+      <planeBufferGeometry attach="geometry" args={[1300, 1300]} />
+      <meshLambertMaterial attach="material" color="" />
     </mesh>
   );
 }
@@ -56,25 +57,20 @@ const ThreeContainer = () => {
   const ref = useRef(null);
 
   return (
-    <Canvas>
+    <Canvas camera={{ fov: 45, position: [10, 10, 10] }}>
+      <color attach="background" args={["white"]} />
       <OrbitControls />
-      <Stars />
+      {/* <Stars /> */}
       <spotLight position={[10, 15, 10]} angle={0.3} />
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={1} />
       <Physics>
         <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
+
         <Plane />
         {console.log("Before loading model")}
         {/* <Model />
         <Watch /> */}
+        <Building />
         {console.log("After loading model")}
       </Physics>
       {/* <Suspense fallback={null}> */}
