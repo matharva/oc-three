@@ -15,8 +15,8 @@ import { DragControls } from "three/examples/jsm/controls/DragControls";
 // import Model5 from "./Clg4";
 // import Model6 from "./Clg5";
 // import Model from "./Final";
-// import Model from "./Compressed10_clg5";
-import Model from "./Clg5";
+import Model from "./Compressed10_clg5";
+// import Model from "./Clg5";
 
 // import Watch from "./Watchman";
 // import Compressed from "./Compressed";
@@ -110,6 +110,7 @@ function Controls({
       // mousePos = [event.offsetX, event.offsetY];
       // cameraPos = camera.position;
       console.log("In mouse down");
+      console.log("Priotam ", camera.position);
       setMouseDown(true);
       setMousePos([event.offsetX, event.offsetY]);
       setCameraPos(camera.position);
@@ -122,6 +123,7 @@ function Controls({
     }
     document.addEventListener("mousemove", onMouseMove, false);
     function onMouseMove(event) {
+      console.log("Priotam ", camera.position);
       if (mouseDown) {
         console.log("In mouse over");
         // scale factor takes into account the current FOV
@@ -196,16 +198,16 @@ const ThreeContainer = () => {
   // );
 
   return (
-    <Canvas>
+    <Canvas camera={{ fov: 75, position: [-100, 10, 20] }}>
       {/* <OrbitControls /> */}
       <MapControls />
       <Stars />
       <spotLight position={[100, 150, 100]} angle={0.3} />
       <ambientLight intensity={0.5} />
       <Physics>
-        {/* <Model /> */}
+        <Model />
         {/* <Model2 /> */}
-        <Box />
+        {/* <Box /> */}
         {/* <Model
           zoomToView={(focusRef) => {
             console.log(focusRef);
