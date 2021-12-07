@@ -5,6 +5,7 @@ import randomString from "randomstring";
 
 const userRef = firebase.firestore().collection("Users");
 const eventRef = firebase.firestore().collection("Events");
+const sponserRef = firebase.firestore().collection("Sponsers");
 
 async function getEvent(name) {
   // Get event and
@@ -134,7 +135,22 @@ async function getUserRegistrationDetails(postData) {
   }
 }
 
+async function getSponsers() {
+  try {
+    let item = [];
+    let querySnapShot = await sponserRef.get();
+    querySnapShot.forEach((doc) => {
+      // console.log('The user data is: ',doc.data())
+      item.push(doc.data());
+    });
+    return item[0].Sponsers;
+  } catch (e) {
+    console.log("The getSponser is: ", e);
+  }
+}
+
 console.log("The code is: ", randomString.generate(6));
+// console.log("The sponsers are: ", getSponsers());
 
 export const eventService = {
   getEvent,
@@ -145,4 +161,5 @@ export const eventService = {
   postPayment,
   joinUser,
   getUserRegistrationDetails,
+  getSponsers,
 };

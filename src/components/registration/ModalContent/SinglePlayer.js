@@ -73,13 +73,24 @@ const SinglePlayer = ({
         image: Oculus,
         order_id: resData?.data?.order?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         handler: async function (response) {
-          let paymentData = await eventService.postPayment({
-            paymentId: response.razorpay_payment_id,
-            eventName: eventData.Title,
-            userId: currentUser.uid,
-            teamName: "Single Player",
-            inviteCode: refCode,
-          });
+          let paymentBody;
+          if (refCode) {
+            paymentBody = {
+              paymentId: response.razorpay_payment_id,
+              eventName: eventData.Title,
+              userId: currentUser.uid,
+              teamName: "Single Player",
+              inviteCode: refCode,
+            };
+          } else {
+            paymentBody = {
+              paymentId: response.razorpay_payment_id,
+              eventName: eventData.Title,
+              userId: currentUser.uid,
+              teamName: "Single Player",
+            };
+          }
+          let paymentData = await eventService.postPayment(paymentBody);
           if (paymentData) {
             setPaymentDone(true);
             setIsPaymentSuccess(true);

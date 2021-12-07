@@ -123,7 +123,7 @@ function Controls({
     }
     document.addEventListener("mousemove", onMouseMove, false);
     function onMouseMove(event) {
-      console.log("Priotam ", camera.position);
+      // console.log("Priotam ", camera.position);
       if (mouseDown) {
         console.log("In mouse over");
         // scale factor takes into account the current FOV
@@ -203,6 +203,8 @@ const ThreeContainer = () => {
 
       {/* <OrbitControls /> */}
       <MapControls />
+      {/* <Plane /> */}
+
       {/* <Stars /> */}
       {/* <spotLight position={[100, 150, 100]} angle={0.3} /> */}
       <ambientLight intensity={0.5} />
