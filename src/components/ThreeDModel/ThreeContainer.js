@@ -70,8 +70,8 @@ function Plane() {
   //   // ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
   // });
   return (
-    <mesh ref={group} rotation={[-Math.PI / 2, 0, 0]} position={[0, -10, 0]}>
-      <planeBufferGeometry attach="geometry" args={[1300, 1000]} />
+    <mesh ref={group} rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
+      <planeBufferGeometry attach="geometry" args={[1300, 1300]} />
       <meshLambertMaterial attach="material" />
     </mesh>
   );
@@ -86,6 +86,8 @@ function Controls({
 }) {
   const camera = useThree((state) => state.camera);
   const gl = useThree((state) => state.gl);
+  const controlsRef = useRef();
+
   const controls = useMemo(() => new CameraControls(camera, gl.domElement), []);
   const [mouseDown, setMouseDown] = useState(false);
   const [mousePos, setMousePos] = useState([0, 0]);
@@ -94,73 +96,86 @@ function Controls({
   useEffect(() => {
     // var mousePos = [0, 0];
     // var cameraPos = 0;
-
-    document.addEventListener("mousedown", onMouseDown, false);
-    function onMouseDown(event) {
-      // semouseDown = true;
-      // mousePos = [event.offsetX, event.offsetY];
-      // cameraPos = camera.position;
-      console.log("In mouse down");
-      console.log("Priotam ", camera.position);
-      setMouseDown(true);
-      setMousePos([event.offsetX, event.offsetY]);
-      setCameraPos(camera.position);
-    }
-    document.addEventListener("mouseup", onMouseUp, false);
-    function onMouseUp(event) {
-      console.log("In mouse up");
-      // mouseDown = false;
-      setMouseDown(false);
-    }
-    document.addEventListener("mousemove", onMouseMove, false);
-    function onMouseMove(event) {
-      // console.log("Priotam ", camera.position);
-      if (mouseDown) {
-        console.log("In mouse over");
-        // scale factor takes into account the current FOV
-        let scale = Math.tan(((camera.fov / 2) * Math.PI) / 180) / 1.5;
-        let dx = mousePos[0] - event.offsetX;
-        let dz = mousePos[1] - event.offsetY;
-        let x = cameraPos.x + scale * dx;
-        let z = cameraPos.z - scale * dz;
-        camera.position.x = x;
-        camera.position.z = z;
-        // mousePos = [event.offsetX, event.offsetY];
-        // cameraPos = camera.position;
-        setMousePos([event.offsetX, event.offsetY]);
-        setCameraPos(camera.position);
+    controlsRef.current.addEventListener("change", function () {
+      console.log("Helllo: ", this.target);
+      if (this.target.x > 100) {
+        this.target.x = 100;
+        camera.position.x = 100;
       }
-    }
+      // else if (this.target.y > 10) {
+      //   this.target.y = 10;
+      //   camera.position.y = 10;
+      // }
+    });
+    // document.addEventListener("mousedown", onMouseDown, false);
+    // function onMouseDown(event) {
+    //   // semouseDown = true;
+    //   // mousePos = [event.offsetX, event.offsetY];
+    //   // cameraPos = camera.position;
+    //   console.log("In mouse down");
+    //   console.log("Priotam ", camera.position);
+    //   setMouseDown(true);
+    //   setMousePos([event.offsetX, event.offsetY]);
+    //   setCameraPos(camera.position);
+    // }
+    // document.addEventListener("mouseup", onMouseUp, false);
+    // function onMouseUp(event) {
+    //   console.log("In mouse up");
+    //   // mouseDown = false;
+    //   setMouseDown(false);
+    // }
+    // document.addEventListener("mousemove", onMouseMove, false);
+    // function onMouseMove(event) {
+    //   // console.log("Priotam ", camera.position);
+    //   if (mouseDown) {
+    //     console.log("In mouse over");
+    //     // scale factor takes into account the current FOV
+    //     let scale = Math.tan(((camera.fov / 2) * Math.PI) / 180) / 1.5;
+    //     let dx = mousePos[0] - event.offsetX;
+    //     let dz = mousePos[1] - event.offsetY;
+    //     let x = cameraPos.x + scale * dx;
+    //     let z = cameraPos.z - scale * dz;
+    //     camera.position.x = x;
+    //     camera.position.z = z;
+    //     // mousePos = [event.offsetX, event.offsetY];
+    //     // cameraPos = camera.position;
+    //     setMousePos([event.offsetX, event.offsetY]);
+    //     setCameraPos(camera.position);
+    //   }
+    // }
 
-    controls.setLookAt(
-      camera.position.x,
-      camera.position.y,
-      camera.position.z,
-      100,
-      100,
-      40,
-      true
-    );
-  }, []);
-  return useFrame((state, delta) => {
-    // zoom ? pos.set(focus.x, focus.y, focus.z) : pos.set(-50, 0, 0);
-    // console.log("pritam");
-    // // zoom ? pos.set(-20, 0, 0) : pos.set(-50, 0, 0);
-    // // zoom ? look.set(focus.x, focus.y, focus.z - 0.2) : look.set(0, 0, 4);
-    // state.camera.position.lerp(pos, 0.1);
-    // state.camera.updateProjectionMatrix();
-    // // console.log(delta);
     // controls.setLookAt(
-    //   state.camera.position.x,
-    //   state.camera.position.y,
-    //   state.camera.position.z,
-    //   look.x,
-    //   look.y,
-    //   look.z,
+    //   camera.position.x,
+    //   camera.position.y,
+    //   camera.position.z,
+    //   100,
+    //   100,
+    //   40,
     //   true
     // );
-    // return controls.update(delta);
-  });
+  }, []);
+  // return useFrame((state, delta) => {
+  //   // zoom ? pos.set(focus.x, focus.y, focus.z) : pos.set(-50, 0, 0);
+  //   // console.log("pritam");
+  //   // // zoom ? pos.set(-20, 0, 0) : pos.set(-50, 0, 0);
+  //   // // zoom ? look.set(focus.x, focus.y, focus.z - 0.2) : look.set(0, 0, 4);
+  //   // state.camera.position.lerp(pos, 0.1);
+  //   // state.camera.updateProjectionMatrix();
+  //   // // console.log(delta);
+  //   // controls.setLookAt(
+  //   //   state.camera.position.x,
+  //   //   state.camera.position.y,
+  //   //   state.camera.position.z,
+  //   //   look.x,
+  //   //   look.y,
+  //   //   look.z,
+  //   //   true
+  //   // );
+  //   // return controls.update(delta);
+  // });
+  return (
+    <MapControls ref={controlsRef} enableZoom={false} enableRotate={true} />
+  );
 }
 
 const ThreeContainer = () => {
@@ -201,7 +216,6 @@ const ThreeContainer = () => {
       <color attach="background" args={["#ffffffde"]} />
 
       {/* <OrbitControls /> */}
-      <MapControls />
       {/* <Plane /> */}
 
       {/* <Stars /> */}
