@@ -20,6 +20,7 @@ import { useState, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import randomColor from "randomcolor";
 import CameraControls from "camera-controls";
+import { useHistory } from "react-router";
 
 CameraControls.install({ THREE });
 const randomPos = (min = 5, max = -5) => Math.random() * (max - min) + min;
@@ -37,16 +38,20 @@ function Cloud({ momentsData, zoomToView }) {
   ));
 }
 
-function Box() {
-  const [ref, api] = useBox(() => ({ mass: 1, position: [0, 2, 0] }));
+function Box({ history }) {
+  const [ref, api] = useBox(() => ({ mass: 1, position: [200, 2, 0] }));
+  // const history = useHistory();
+  // console.log("history in box", history);
 
   return (
     <mesh
       onClick={() => {
         api.velocity.set(0, 2, 0);
-        console.log("dard");
+        // console.log("dard", history);
+
+        history.push("/events/vsm");
       }}
-      position={[0, 2, 0]}
+      position={[200, 2, 0]}
     >
       <boxBufferGeometry attach="geometry" />
       <meshLambertMaterial attach="material" color="hotpink" />
@@ -95,42 +100,54 @@ function Controls({
     // var mousePos = [0, 0];
     // var cameraPos = 0;
 
-    document.addEventListener("mousedown", onMouseDown, false);
-    function onMouseDown(event) {
-      // semouseDown = true;
-      // mousePos = [event.offsetX, event.offsetY];
-      // cameraPos = camera.position;
-      console.log("In mouse down");
-      console.log("Priotam ", camera.position);
-      setMouseDown(true);
-      setMousePos([event.offsetX, event.offsetY]);
-      setCameraPos(camera.position);
-    }
-    document.addEventListener("mouseup", onMouseUp, false);
-    function onMouseUp(event) {
-      console.log("In mouse up");
-      // mouseDown = false;
-      setMouseDown(false);
-    }
-    document.addEventListener("mousemove", onMouseMove, false);
-    function onMouseMove(event) {
-      // console.log("Priotam ", camera.position);
-      if (mouseDown) {
-        console.log("In mouse over");
-        // scale factor takes into account the current FOV
-        let scale = Math.tan(((camera.fov / 2) * Math.PI) / 180) / 1.5;
-        let dx = mousePos[0] - event.offsetX;
-        let dz = mousePos[1] - event.offsetY;
-        let x = cameraPos.x + scale * dx;
-        let z = cameraPos.z - scale * dz;
-        camera.position.x = x;
-        camera.position.z = z;
-        // mousePos = [event.offsetX, event.offsetY];
-        // cameraPos = camera.position;
-        setMousePos([event.offsetX, event.offsetY]);
-        setCameraPos(camera.position);
-      }
-    }
+    // document.addEventListener("mousedown", onMouseDown, false);
+    // function onMouseDown(event) {
+    //   // semouseDown = true;
+    //   // mousePos = [event.offsetX, event.offsetY];
+    //   // cameraPos = camera.position;
+    //   // console.log("In mouse down");
+    //   // console.log("Priotam ", camera.position);
+    //   setMouseDown(true);
+    //   setMousePos([event.offsetX, event.offsetY]);
+    //   setCameraPos(camera.position);
+    // }
+    // document.addEventListener("mouseup", onMouseUp, false);
+    // function onMouseUp(event) {
+    //   // console.log("In mouse up");
+    //   // mouseDown = false;
+    //   setMouseDown(false);
+    // }
+    // document.addEventListener("mousemove", onMouseMove, false);
+    // function onMouseMove(event) {
+    //   console.log("mouseDown: ", mouseDown);
+    //   // if (mouseDown) {
+    //   console.log("Priotam ", camera.position);
+    //   // console.log("In mouse over");
+    //   // scale factor takes into account the current FOV
+    //   // -159.98782517224788, y: 27.20748283999603, z: -74.03173144531576
+    //   // let x, z;
+    //   // let scale = Math.tan(((camera.fov / 2) * Math.PI) / 180) / 1.5;
+    //   // // console.log("Event: ", event.offsetX, event.offsetY);
+    //   // // console.log("mouse: ", mousePos[0], mousePos[1]);
+    //   // let dx = mousePos[0] - event.offsetX;
+    //   // let dz = mousePos[1] - event.offsetY;
+    //   // console.log("scale: ", dx, dz, scale);
+    //   // // if (cameraPos.x > -189 && cameraPos.x < -140) {
+    //   // // console.log("Inside if: ", x);
+    //   // x = camera.position.x + scale * dx;
+    //   // // }
+    //   // z = camera.position.z - scale * dz;
+    //   // camera.position.x = x;
+    //   // camera.position.z = z;
+    //   if (camera.position.x)
+    //     console.log("Position: ", camera.position.x, camera.position.z);
+    //   // mousePos = [event.offsetX, event.offsetY];
+    //   // cameraPos = camera.position;
+    //   setMousePos([event.offsetX, event.offsetY]);
+    //   console.log("log before fuckup: ", camera.position);
+    //   setCameraPos(camera.position);
+    //   // }
+    // }
 
     controls.setLookAt(
       camera.position.x,
@@ -160,20 +177,41 @@ function Controls({
     //   true
     // );
     // return controls.update(delta);
+    if (camera.position.x < -189 || camera.position.x > 450) {
+      // camera.position.x = -180;
+      // controls.setLookAt(
+      //   -180,
+      //   camera.position.y,
+      //   camera.position.z,
+      //   100,
+      //   100,
+      //   40,
+      //   true
+      // );
+      state.camera.position.lerp(
+        pos.set(-133.28478152975168, 17.18832728416738, 7.1358817968347665),
+        0.1
+      );
+      state.camera.lookAt(
+        // pos.set(-133.28478152975168, 17.18832728416738, 7.1358817968347665)
+        0,
+        0,
+        0
+      );
+      state.camera.updateProjectionMatrix();
+      console.log("Inside", camera.position);
+    }
   });
 }
 
 const ThreeContainer = () => {
   const [zoom, setZoom] = useState(false);
   const [focus, setFocus] = useState({});
-  const [delay, setDelay] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      console.log("Timeout is over");
-      setDelay(true);
-    }, 1000);
-  }, []);
+  const history = useHistory();
+
+  // console.log("History  in three container: ", history);
+
   // const momentsArray = useMemo(
   //   () =>
   //     Array.from({ length: 500 }, () => ({
@@ -205,14 +243,14 @@ const ThreeContainer = () => {
       {/* <Plane /> */}
 
       {/* <Stars /> */}
-      {/* <spotLight position={[100, 150, 100]} angle={0.3} /> */}
+      <spotLight position={[100, 2000, 100]} angle={0.3} />
       <ambientLight intensity={0.5} />
       <Physics>
         <Model />
 
         {/* <Model2 /> */}
         <Plane />
-        {/* <Box /> */}
+        <Box history={history} />
         {/* <Model
           zoomToView={(focusRef) => {
             console.log(focusRef);
