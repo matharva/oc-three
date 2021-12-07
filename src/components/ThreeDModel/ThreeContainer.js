@@ -198,13 +198,13 @@ const ThreeContainer = () => {
   // );
 
   return (
-    <Canvas camera={{ fov: 75, position: [-100, 10, 20] }}>
+    <Canvas camera={{ fov: 75, position: [-100, 20, 20] }}>
       <color attach="background" args={["#ffffffde"]} />
 
       {/* <OrbitControls /> */}
       <MapControls />
       {/* <Stars /> */}
-      <spotLight position={[100, 150, 100]} angle={0.3} />
+      {/* <spotLight position={[100, 150, 100]} angle={0.3} /> */}
       <ambientLight intensity={0.5} />
       <Physics>
         <Model />
