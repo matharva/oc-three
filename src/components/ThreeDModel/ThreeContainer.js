@@ -5,6 +5,7 @@ import { OrbitControls, Stars } from "@react-three/drei";
 import { Physics, usePlane, useBox } from "@react-three/cannon";
 import { MapControls, Stats } from "@react-three/drei";
 import { DragControls } from "three/examples/jsm/controls/DragControls";
+import { Sky, Cloud } from "@react-three/drei";
 
 // import Model from "./Clg_tree";
 import Model from "./Compressed_withoutgrass";
@@ -25,18 +26,18 @@ import { useHistory } from "react-router";
 CameraControls.install({ THREE });
 const randomPos = (min = 5, max = -5) => Math.random() * (max - min) + min;
 
-function Cloud({ momentsData, zoomToView }) {
-  return momentsData.map(({ position, color }, i) => (
-    <mesh
-      key={i}
-      position={position}
-      onClick={(e) => zoomToView(e.object.position)}
-    >
-      <boxGeometry args={[0.1, 0.08, 0.003]} />
-      <meshStandardMaterial color={color} />
-    </mesh>
-  ));
-}
+// function Cloud({ momentsData, zoomToView }) {
+//   return momentsData.map(({ position, color }, i) => (
+//     <mesh
+//       key={i}
+//       position={position}
+//       onClick={(e) => zoomToView(e.object.position)}
+//     >
+//       <boxGeometry args={[0.1, 0.08, 0.003]} />
+//       <meshStandardMaterial color={color} />
+//     </mesh>
+//   ));
+// }
 
 function Box({ history }) {
   const [ref, api] = useBox(() => ({ mass: 1, position: [200, 2, 0] }));
@@ -139,21 +140,21 @@ function Controls({
       // }
       // if()
 
-      if (camera.position.x > X_MAX) {
-        camera.position.x = X_MAX;
-      }
+      // if (camera.position.x > X_MAX) {
+      //   camera.position.x = X_MAX;
+      // }
 
-      if (camera.position.x < X_MIN) {
-        camera.position.x = X_MIN;
-      }
+      // if (camera.position.x < X_MIN) {
+      //   camera.position.x = X_MIN;
+      // }
 
-      if (camera.position.z > Z_MAX) {
-        camera.position.z = Z_MAX;
-      }
+      // if (camera.position.z > Z_MAX) {
+      //   camera.position.z = Z_MAX;
+      // }
 
-      if (camera.position.z < Z_MIN) {
-        camera.position.z = Z_MIN;
-      }
+      // if (camera.position.z < Z_MIN) {
+      //   camera.position.z = Z_MIN;
+      // }
     });
 
     // scope
@@ -271,7 +272,7 @@ const ThreeContainer = () => {
   // );
 
   return (
-    <Canvas camera={{ fov: 75, position: [-100, 20, 20] }}>
+    <Canvas camera={{ fov: 75, position: [107, 34, 234] }}>
       <color attach="background" args={["#FFffff"]} />
 
       {/* <OrbitControls /> */}
@@ -286,6 +287,21 @@ const ThreeContainer = () => {
       />
       <ambientLight intensity={0.5} />
       <Physics>
+        <Sky
+          distance={450000}
+          sunPosition={[5, 1, 0]}
+          inclination={0}
+          azimuth={0.15}
+          turbidity={9.4}
+          // mieDirectionalG={0.83}
+        />
+        <Cloud
+          opacity={0.5}
+          speed={0.4} // Rotation speed
+          width={10} // Width of the full cloud
+          depth={1.5} // Z-dir depth
+          segments={20} // Number of particles
+        />
         <Model />
 
         {/* <Model2 /> */}

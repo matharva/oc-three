@@ -1,2 +1,2 @@
-npm run build 
-firebase deploy
+call npm run build 
+call firebase deploy
