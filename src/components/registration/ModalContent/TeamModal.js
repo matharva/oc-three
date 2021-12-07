@@ -22,7 +22,7 @@ const TeamModal = ({ userTeam }) => {
         <span onClick={onCopy}>{userTeam?.TeamCode || "team Code"}</span>
       </Heading>
       <Heading size="md" textAlign="center" pb="5">
-        Team Members
+        Team Members : {userTeam?.TeamName}
       </Heading>
       <Table variant="striped" colorScheme="orange" size={"lg"}>
         {/* <TableCaption placement="top" pb="5"> */}

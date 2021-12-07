@@ -12,7 +12,8 @@ const ShowJoinTeamDetails = ({
   eventData,
   currentUser,
   setJoin,
-  setIsOpen,
+  // onOpen,
+  handleClose,
 }) => {
   // console.log("The details are: ", details, currentUser);
 
@@ -38,11 +39,13 @@ const ShowJoinTeamDetails = ({
         teamCode: code,
         userId: currentUser.uid,
         eventName: eventData.Title,
-        inviteCode: refCode,
+        // inviteCode: refCode,
       });
       if (!joinData.Message.includes("unsuccessfully")) {
         setJoin(true);
-        setIsOpen(false);
+        // setIsOpen(false);
+        // onOpen();
+        handleClose();
       } else {
         setMessage(joinData.Message);
       }
@@ -122,7 +125,7 @@ const ShowJoinTeamDetails = ({
               onChange={phoneHandler}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label style={{ fontWeight: "bold" }}>
               Referal Code{" "}
             </Form.Label>
@@ -132,7 +135,7 @@ const ShowJoinTeamDetails = ({
               value={refCode}
               onChange={refCodeHandler}
             />
-          </Form.Group>
+          </Form.Group> */}
 
           {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />

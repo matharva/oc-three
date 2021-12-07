@@ -98,7 +98,8 @@ const RegistrationModal = ({
                   eventData={eventData}
                   currentUser={currentUser}
                   setJoin={setJoin}
-                  setIsOpen={setIsOpen}
+                  // onOpen={onOpen}
+                  handleClose={handleClose}
                 />
               );
             } else {
