@@ -101,15 +101,18 @@ function Controls({
   useEffect(() => {
     // var mousePos = [0, 0];
     // var cameraPos = 0;
+    const X_MAX = 460;
+    const X_MIN = -180;
     controlsRef.current.addEventListener("change", function () {
       console.log("Helllo: ", this.target);
-      if (this.target.x > 100) {
-        this.target.x = 100;
-        camera.position.x = 100;
-      }
-      // else if (this.target.y > 10) {
-      //   this.target.y = 10;
-      //   camera.position.y = 10;
+      // x: 464.39466702417036, y: -2.7066189946258425e-15, z: -188.44906333264237
+      // if (this.target.x > X_MAX) {
+      //   this.target.x = X_MAX;
+      //   camera.position.x = X_MAX;
+      // }
+      // if (this.target.x < X_MIN) {
+      //   this.target.x = X_MIN;
+      //   camera.position.x = X_MIN;
       // }
     });
     // document.addEventListener("mousedown", onMouseDown, false);
