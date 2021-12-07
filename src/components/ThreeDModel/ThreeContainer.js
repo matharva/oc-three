@@ -103,8 +103,20 @@ function Controls({
     // var cameraPos = 0;
     const X_MAX = 460;
     const X_MIN = -180;
+    const Z_MIN = -450;
+    const Z_MAX = 600;
+
+    var minPan = new THREE.Vector3(-100, -2, -300);
+    var maxPan = new THREE.Vector3(500, 2, 400);
+    var _v = new THREE.Vector3();
     controlsRef.current.addEventListener("change", function () {
-      console.log("Helllo: ", camera.min);
+      console.log("Helllo: ", camera);
+      // controls.targe
+
+      _v.copy(this.target);
+      this.target.clamp(minPan, maxPan);
+      _v.sub(this.target);
+      camera.position.sub(_v);
       // console.log("Camera: ", camera.rotation);
       // x: 464.39466702417036, y: -2.7066189946258425e-15, z: -188.44906333264237
       // if (this.target.x > X_MAX) {
@@ -126,7 +138,25 @@ function Controls({
       //   // camera.position.y = -1 * camera.position.y;
       // }
       // if()
+
+      if (camera.position.x > X_MAX) {
+        camera.position.x = X_MAX;
+      }
+
+      if (camera.position.x < X_MIN) {
+        camera.position.x = X_MIN;
+      }
+
+      if (camera.position.z > Z_MAX) {
+        camera.position.z = Z_MAX;
+      }
+
+      if (camera.position.z < Z_MIN) {
+        camera.position.z = Z_MIN;
+      }
     });
+
+    // scope
     // document.addEventListener("mousedown", onMouseDown, false);
     // function onMouseDown(event) {
     //   // semouseDown = true;
@@ -205,6 +235,7 @@ function Controls({
       // maxPolarAngle={Math.PI}
       maxPolarAngle={1.5}
       minPolarAngle={0.9}
+      maxDistance={300}
     />
   );
 }
