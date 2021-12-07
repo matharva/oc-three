@@ -6,16 +6,7 @@ import { Physics, usePlane, useBox } from "@react-three/cannon";
 import { MapControls, Stats } from "@react-three/drei";
 import { DragControls } from "three/examples/jsm/controls/DragControls";
 
-// 3 Model
-// import Model from "./Mandir";
-// import Model from "./Man";
-// import Model2 from "./Clg";
-// import Model3 from "./Clg2";
-// import Model4 from "./Clg3";
-// import Model5 from "./Clg4";
-// import Model6 from "./Clg5";
-// import Model from "./Final";
-import Model from "./Compressed10_clg5";
+import Model from "./Compressed_grass";
 // import Model from "./Clg5";
 
 // import Watch from "./Watchman";
@@ -175,6 +166,14 @@ function Controls({
 const ThreeContainer = () => {
   const [zoom, setZoom] = useState(false);
   const [focus, setFocus] = useState({});
+  const [delay, setDelay] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log("Timeout is over");
+      setDelay(true);
+    }, 1000);
+  }, []);
   // const momentsArray = useMemo(
   //   () =>
   //     Array.from({ length: 500 }, () => ({
@@ -210,6 +209,7 @@ const ThreeContainer = () => {
       <ambientLight intensity={0.5} />
       <Physics>
         <Model />
+
         {/* <Model2 /> */}
         <Plane />
         {/* <Box /> */}
