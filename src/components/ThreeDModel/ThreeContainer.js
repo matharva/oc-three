@@ -6,8 +6,8 @@ import { Physics, usePlane, useBox } from "@react-three/cannon";
 import { MapControls, Stats } from "@react-three/drei";
 import { DragControls } from "three/examples/jsm/controls/DragControls";
 
-import Model from "./Compressed_grass";
-// import Model from "./Clg5";
+// import Model from "./Clg_tree";
+import Model from "./Compressed_withoutgrass";
 
 // import Watch from "./Watchman";
 // import Compressed from "./Compressed";
@@ -104,7 +104,8 @@ function Controls({
     const X_MAX = 460;
     const X_MIN = -180;
     controlsRef.current.addEventListener("change", function () {
-      console.log("Helllo: ", this.target);
+      console.log("Helllo: ", camera.min);
+      // console.log("Camera: ", camera.rotation);
       // x: 464.39466702417036, y: -2.7066189946258425e-15, z: -188.44906333264237
       // if (this.target.x > X_MAX) {
       //   this.target.x = X_MAX;
@@ -114,6 +115,17 @@ function Controls({
       //   this.target.x = X_MIN;
       //   camera.position.x = X_MIN;
       // }
+
+      // if (this.target.y >= 10) {
+      //   camera.position.y = this.target.y;
+      // }
+
+      // if (this.target.y < 1) {
+      //   // this.target.y = 1;
+      //   camera.position.y = 10;
+      //   // camera.position.y = -1 * camera.position.y;
+      // }
+      // if()
     });
     // document.addEventListener("mousedown", onMouseDown, false);
     // function onMouseDown(event) {
@@ -184,7 +196,16 @@ function Controls({
   //   // return controls.update(delta);
   // });
   return (
-    <MapControls ref={controlsRef} enableZoom={false} enableRotate={true} />
+    <MapControls
+      ref={controlsRef}
+      enableZoom={false}
+      enableRotate={true}
+      // maxAzimuthAngle={Math.PI}
+      // minAzimuthAngle={Math.PI}
+      // maxPolarAngle={Math.PI}
+      maxPolarAngle={1.5}
+      minPolarAngle={0.9}
+    />
   );
 }
 
@@ -220,13 +241,18 @@ const ThreeContainer = () => {
 
   return (
     <Canvas camera={{ fov: 75, position: [-100, 20, 20] }}>
-      <color attach="background" args={["#ffffffde"]} />
+      <color attach="background" args={["#FFffff"]} />
 
       {/* <OrbitControls /> */}
       {/* <Plane /> */}
 
       {/* <Stars /> */}
-      <spotLight position={[100, 2000, 100]} angle={0.3} />
+      <spotLight
+        position={[100, 2500, 100]}
+        angle={0.7}
+        color={"#FFFFFF"}
+        castShadow={true}
+      />
       <ambientLight intensity={0.5} />
       <Physics>
         <Model />
