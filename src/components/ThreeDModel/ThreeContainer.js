@@ -76,8 +76,8 @@ function Plane() {
   //   // ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
   // });
   return (
-    <mesh ref={group} rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
-      <planeBufferGeometry attach="geometry" args={[1300, 1300]} />
+    <mesh ref={group} rotation={[-Math.PI / 2, 0, 0]} position={[150, -2, 100]}>
+      <planeBufferGeometry attach="geometry" args={[1100, 1100]} />
       <meshLambertMaterial attach="material" />
     </mesh>
   );
