@@ -26,6 +26,7 @@ import {
   FiSettings,
   FiMenu,
 } from "react-icons/fi";
+import { OC_GRADIENT } from "../../services/helpers";
 
 const SidebarContent = ({ onClose, ...rest }) => {
   const history = useHistory();
@@ -123,7 +124,7 @@ const NavItem = ({ icon, children, ...rest }) => {
       role="group"
       cursor="pointer"
       _hover={{
-        bg: "cyan.400",
+        bg: OC_GRADIENT,
         color: "white",
       }}
       {...rest}
