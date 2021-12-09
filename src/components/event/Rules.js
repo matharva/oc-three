@@ -1,4 +1,4 @@
-import { List, ListIcon, ListItem } from "@chakra-ui/layout";
+import { List, ListIcon, ListItem, Box } from "@chakra-ui/layout";
 import React from "react";
 import { MdCheckCircle } from "react-icons/md";
 
@@ -31,6 +31,19 @@ const Rules = ({ rules }) => {
           <ListIcon as={MdCheckCircle} color="green.500" />
           Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
         </ListItem>
+        <ListItem>
+          <ListIcon as={MdCheckCircle} color="green.500" />
+          Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
+        </ListItem>
+        <ListItem>
+          <ListIcon as={MdCheckCircle} color="green.500" />
+          Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
+        </ListItem>
+        <ListItem>
+          <ListIcon as={MdCheckCircle} color="green.500" />
+          Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
+        </ListItem>
+        <Box padding={2}></Box>
       </List>
     </>
   );
