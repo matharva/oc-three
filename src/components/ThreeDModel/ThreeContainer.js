@@ -241,7 +241,7 @@ function Controls({
   );
 }
 
-const ThreeContainer = () => {
+const ThreeContainer = ({ setLoading }) => {
   const [zoom, setZoom] = useState(false);
   const [focus, setFocus] = useState({});
 
@@ -302,18 +302,10 @@ const ThreeContainer = () => {
           depth={1.5} // Z-dir depth
           segments={20} // Number of particles
         />
-        <Model />
+        <Model setLoading={setLoading} />
 
-        {/* <Model2 /> */}
         <Plane />
         <Box history={history} />
-        {/* <Model
-          zoomToView={(focusRef) => {
-            console.log(focusRef);
-            setZoom(!zoom);
-            setFocus(focusRef);
-          }}
-        /> */}
 
         <Controls zoom={zoom} focus={focus} />
       </Physics>

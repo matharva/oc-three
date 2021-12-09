@@ -167,6 +167,7 @@ const EventDetails = ({ event }) => {
     let eventAdded = await eventService.addEvent();
     console.log("The event added is: ", eventAdded);
   };
+  // addEvent();
 
   // Here check if user isLogged in or not, if not then let the user login and then render states(Show modal if and only is the event registerd by the user is a teamEvent)
   const registerEvent = () => {
