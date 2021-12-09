@@ -30,21 +30,7 @@ import { Icon } from "@chakra-ui/react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 import EventContent from "../components/event/EventContent";
-
-const map = {
-  ipl: {
-    Title: "IPL Auction",
-    image: IPL,
-  },
-  vsm: {
-    Title: "Virtual Stock Market",
-    image: VSM,
-  },
-  codatronplusplus: {
-    Title: "Codatron++",
-    image: Codatronplusplus,
-  },
-};
+import { map } from "../services/helpers";
 
 // Here viewTeam basically means has the user Registered for the event(does it have any document in RegisterTeam collection)
 
@@ -106,24 +92,8 @@ const EventDetails = ({ event }) => {
           userId: currentUser.uid,
         });
       console.log("The User registration details are", userRegistrationDetails);
-      // setUserTeam({
-      //   code:"#75948023",
-      //   members:[{
-      //     name:"Atharva Mohite",
-      //     emailId:"atharva.mohite@spit.ac.in"
-      //   },{
-      //     name:"BHushan",
-      //     emailId:"bhuhsna.bhuhsna@gmail.com"
-      //   },{
-      //     name:"Param",
-      //     emailId:"param.patil@spit.ac.in"
-      //   },{
-      //     name:"LOLOLOLO",
-      //     emailId:"LOLOLOLO@spit.ac.in"
-      //   }]
-      // })
+
       if (userRegistrationDetails && userRegistrationDetails.teamDetails) {
-        // setViewTeam(true);
         setUserTeam(userRegistrationDetails.teamDetails);
       }
     }
@@ -139,23 +109,7 @@ const EventDetails = ({ event }) => {
           userId: currentUser.uid,
         });
       console.log("The eventData is: ", event, userRegistrationDetails);
-      // setUserTeam({
-      //   code:"#75948023",
-      //   members:[{
-      //     name:"Atharva Mohite",
-      //     emailId:"atharva.mohite@spit.ac.in"
-      //   },{
-      //     name:"BHushan",
-      //     emailId:"bhuhsna.bhuhsna@gmail.com"
-      //   },{
 
-      //     name:"Param",
-      //     emailId:"param.patil@spit.ac.in"
-      //   },{
-      //     name:"LOLOLOLO",
-      //     emailId:"LOLOLOLO@spit.ac.in"
-      //   }]
-      // })
       if (userRegistrationDetails && userRegistrationDetails.teamDetails) {
         setViewTeam(true);
         setUserTeam(userRegistrationDetails.teamDetails);
@@ -167,7 +121,6 @@ const EventDetails = ({ event }) => {
     let eventAdded = await eventService.addEvent();
     console.log("The event added is: ", eventAdded);
   };
-  // addEvent();
 
   // Here check if user isLogged in or not, if not then let the user login and then render states(Show modal if and only is the event registerd by the user is a teamEvent)
   const registerEvent = () => {
@@ -283,7 +236,7 @@ const EventDetails = ({ event }) => {
               </div>
               <div className="right-grid">
                 <div className="img-container">
-                  <img src={map[eventName].image} alt="" />
+                  <img src={eventData.BgImg || map[eventName].image} alt="" />
                 </div>
               </div>
             </div>

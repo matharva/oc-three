@@ -88,26 +88,26 @@ async function setUserPhoneNumber(phoneNumber, currentUser) {
 
 async function addEvent() {
   // for (let i = 0; i < eventDetails.length; i++) {
-  let newEventQueryRef = eventRef.doc();
-  // console.log("Events is: ", eventDetails[i]);
-  let data = {
-    Data: "14 Mar",
-    Description: "",
-    Title: "Model United Nations",
-    Fee: [{ Fee: "60", Type: "Team(2)" }],
-    Category: "Pre-Events",
-    Prizes: "Rs. 10000",
-    rules: [],
-    faq: [],
-    isSingle: false,
-    max: 2,
-  };
-  await newEventQueryRef.set(data);
-  console.log("The new user creat createer: ", newEventQueryRef.get());
-  let newEvent = await (await newEventQueryRef.get()).data();
-  console.log("Dard: ", newEvent);
-  // return newEvent;
-  // }
+  // let newEventQueryRef = eventRef.doc();
+  // // console.log("Events is: ", eventDetails[i]);
+  // let data = {
+  //   Data: "14 Mar",
+  //   Description: "",
+  //   Title: "Model United Nations",
+  //   Fee: [{ Fee: "60", Type: "Team(2)" }],
+  //   Category: "Pre-Events",
+  //   Prizes: "Rs. 10000",
+  //   rules: [],
+  //   faq: [],
+  //   isSingle: false,
+  //   max: 2,
+  // };
+  // await newEventQueryRef.set(data);
+  // console.log("The new user creat createer: ", newEventQueryRef.get());
+  // let newEvent = await (await newEventQueryRef.get()).data();
+  // console.log("Dard: ", newEvent);
+  // // return newEvent;
+  // // }
 }
 
 async function postPayment(postData) {

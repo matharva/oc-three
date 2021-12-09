@@ -28,12 +28,11 @@ const RegistrationModal = ({
   currentUser,
   setJoin,
 }) => {
-  // const [isMobile, setIsMobile] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [payTypeOpen, setPayTypeOpen] = useState(false);
   const [joinTypeOpen, setJoinTypeOpen] = useState(false);
 
-  const { isOpen, onOpen, onClose, setModalContent } = useAuth();
+  const { isOpen, onOpen, onClose } = useAuth();
 
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
   console.log("The type is: ", eventData, viewTeam);
@@ -140,46 +139,3 @@ const RegistrationModal = ({
 };
 
 export default RegistrationModal;
-
-// eslint-disable-next-line no-lone-blocks
-{
-  /* {viewTeam ? (
-            <TeamModal userTeam={userTeam} />
-          ) : isPaymentSuccess ? (
-            <PaymentSuccessful
-              eventData={eventData}
-              setViewTeam={setViewTeam}
-            />
-          ) : eventData.isSingle ? (
-            <SinglePlayer
-              setPaymentDone={setPaymentDone}
-              setIsPaymentSuccess={setIsPaymentSuccess}
-              eventData={eventData}
-              currentUser={currentUser}
-            />
-          ) : !payTypeOpen ? (
-            <MultiplePlayers
-              setPayTypeOpen={setPayTypeOpen}
-              eventData={eventData}
-              currentUser={currentUser}
-              setJoin={setJoin}
-              setIsOpen={setIsOpen}
-              setJoinTypeOpen={setJoinTypeOpen}
-            />
-          ) : joinTypeOpen ? (
-            <ShowJoinTeamDetails
-              eventData={eventData}
-              currentUser={currentUser}
-              setJoin={setJoin}
-              setIsOpen={setIsOpen}
-            />
-          ) : (
-            <ShowPaymentDetails
-              details={eventData.Fee}
-              eventName={eventData.Title}
-              setPaymentDone={setPaymentDone}
-              setIsPaymentSuccess={setIsPaymentSuccess}
-              currentUser={currentUser}
-            />
-          )} */
-}

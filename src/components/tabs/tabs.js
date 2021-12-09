@@ -116,7 +116,7 @@ const tabs = [
       {
         name: "Short Circuit",
         img: ShortCircuit,
-        path: "shortcurcuit",
+        path: "shortcircuit",
       },
       {
         name: "SPIT Hackathon",
