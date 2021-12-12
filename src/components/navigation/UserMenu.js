@@ -97,7 +97,7 @@ const UserMenu = () => {
                     <p style={{ fontWeight: "bold", margin: "0.5rem 0" }}>
                       Referral Code:{" "}
                       <span style={{ fontWeight: "normal" }}>
-                        {currentUser?.referralCode || "fafdsafds"}
+                        {currentUser?.inviteCode || "fafdsafds"}
                       </span>
                     </p>
                   </Center>
@@ -105,7 +105,9 @@ const UserMenu = () => {
                     <p style={{ fontWeight: "bold" }}>
                       Referral Score:{" "}
                       <span style={{ fontWeight: "normal" }}>
-                        {currentUser?.referralCount || "5"}
+                        {/* {currentUser?.invited || "5"}
+                         */}
+                        {currentUser.invited}
                       </span>
                     </p>
                   </Center>

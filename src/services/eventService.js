@@ -5,6 +5,7 @@ import randomString from "randomstring";
 
 const userRef = firebase.firestore().collection("Users");
 const eventRef = firebase.firestore().collection("Events");
+const sponserRef = firebase.firestore().collection("Sponsers");
 
 async function getEvent(name) {
   // Get event and
@@ -87,15 +88,26 @@ async function setUserPhoneNumber(phoneNumber, currentUser) {
 
 async function addEvent() {
   // for (let i = 0; i < eventDetails.length; i++) {
-  //   let newEventQueryRef = eventRef.doc();
-  //   console.log("Events is: ", eventDetails[i]);
-  //   let data = eventDetails[i];
-  //   await newEventQueryRef.set(data);
-  //   console.log("The new user creat createer: ", newEventQueryRef.get());
-  //   let newEvent = await (await newEventQueryRef.get()).data();
-  //   console.log("Dard: ", newEvent);
-  //   // return newEvent;
-  // }
+  // let newEventQueryRef = eventRef.doc();
+  // // console.log("Events is: ", eventDetails[i]);
+  // let data = {
+  //   Data: "14 Mar",
+  //   Description: "",
+  //   Title: "Model United Nations",
+  //   Fee: [{ Fee: "60", Type: "Team(2)" }],
+  //   Category: "Pre-Events",
+  //   Prizes: "Rs. 10000",
+  //   rules: [],
+  //   faq: [],
+  //   isSingle: false,
+  //   max: 2,
+  // };
+  // await newEventQueryRef.set(data);
+  // console.log("The new user creat createer: ", newEventQueryRef.get());
+  // let newEvent = await (await newEventQueryRef.get()).data();
+  // console.log("Dard: ", newEvent);
+  // // return newEvent;
+  // // }
 }
 
 async function postPayment(postData) {
@@ -134,7 +146,22 @@ async function getUserRegistrationDetails(postData) {
   }
 }
 
+async function getSponsers() {
+  try {
+    let item = [];
+    let querySnapShot = await sponserRef.get();
+    querySnapShot.forEach((doc) => {
+      // console.log('The user data is: ',doc.data())
+      item.push(doc.data());
+    });
+    return item[0].Sponsers;
+  } catch (e) {
+    console.log("The getSponser is: ", e);
+  }
+}
+
 console.log("The code is: ", randomString.generate(6));
+// console.log("The sponsers are: ", getSponsers());
 
 export const eventService = {
   getEvent,
@@ -145,4 +172,5 @@ export const eventService = {
   postPayment,
   joinUser,
   getUserRegistrationDetails,
+  getSponsers,
 };

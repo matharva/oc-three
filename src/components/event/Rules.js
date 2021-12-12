@@ -1,6 +1,7 @@
-import { List, ListIcon, ListItem } from "@chakra-ui/layout";
+import { List, ListIcon, ListItem, Box } from "@chakra-ui/layout";
 import React from "react";
 import { MdCheckCircle } from "react-icons/md";
+import { OC_GRADIENT } from "../../services/helpers";
 
 const Rules = ({ rules }) => {
   return (
@@ -9,28 +10,13 @@ const Rules = ({ rules }) => {
         {rules.map((rule) => {
           return (
             <ListItem key={rule.id}>
-              <ListIcon as={MdCheckCircle} color="green.500" />
+              <ListIcon as={MdCheckCircle} color={"green.400"} />
               {rule.text}
             </ListItem>
           );
         })}
-        <ListItem>
-          <ListIcon as={MdCheckCircle} color="green.500" />
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit
-        </ListItem>
-        <ListItem>
-          <ListIcon as={MdCheckCircle} color="green.500" />
-          Assumenda, quia temporibus eveniet a libero incidunt suscipit
-        </ListItem>
-        <ListItem>
-          <ListIcon as={MdCheckCircle} color="green.500" />
-          Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
-        </ListItem>
-        {/* You can also use custom icons from react-icons */}
-        <ListItem>
-          <ListIcon as={MdCheckCircle} color="green.500" />
-          Quidem, ipsam illum quis sed voluptatum quae eum fugit earum
-        </ListItem>
+
+        <Box padding={2}></Box>
       </List>
     </>
   );

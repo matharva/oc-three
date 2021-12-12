@@ -2,7 +2,23 @@ import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import { motion } from "framer-motion";
 import "../../styles/TabComponent.scss";
-import { useHistory } from "react-router";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useRef } from "react";
+
+function Box() {
+  const boxRef = useRef();
+  useFrame(() => {
+    boxRef.current.rotation.y += 0.01;
+    boxRef.current.rotation.x += 0.01;
+  });
+
+  return (
+    <mesh position={[0, 0, 0]} scale={[3, 3, 3]} ref={boxRef}>
+      <boxBufferGeometry attach="geometry" />
+      <meshLambertMaterial attach="material" color="hotpink" />
+    </mesh>
+  );
+}
 
 const tabVariant = {
   active: {
@@ -78,18 +94,16 @@ const TabComponent = ({ tabs, defaultIndex = 0 }) => {
               variants={tabVariant}
               animate={activeTabIndex === index ? "active" : "inactive"}
               style={{
-                // color: "white",
-                // backdropFilter: "blur(16px) saturate(180%)",
-                // // -webkit-backdrop-filter: blur(16px) saturate(180%);
-                // backgroundColor: "rgba(17, 25, 40, 0.75)",
-                // borderRadius: "12px",
                 border: "1px solid rgba(255, 255, 255, 0.125)",
               }}
             >
               <a onClick={() => onTabClick(index)}>
-                {/* {tab.icon} */}
                 <div className="img-icon-container">
                   <img src={tab.icon} alt="" />
+                  {/* <Canvas style={{ width: "30px", height: "30px" }}>
+                    <ambientLight intensity={0.5} />
+                    <Box />
+                  </Canvas> */}
                 </div>
                 <motion.span
                   variants={tabTextVariant}

@@ -23,23 +23,29 @@ import "react-accessible-accordion/dist/fancy-example.css";
 
 const FaqSection = ({ faq }) => {
   return (
-    <Accordion allowToggle>
-      {faq.map((item) => {
-        return (
-          <AccordionItem>
-            <h2>
-              <AccordionButton onSelect={() => {}} style={{ padding: "1rem" }}>
-                <Box flex="1" textAlign="left">
-                  {item.question}
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>{item.answer}</AccordionPanel>
-          </AccordionItem>
-        );
-      })}
-    </Accordion>
+    <>
+      <Accordion allowToggle>
+        {faq.map((item) => {
+          return (
+            <AccordionItem>
+              <h2>
+                <AccordionButton
+                  onSelect={() => {}}
+                  style={{ padding: "1rem" }}
+                >
+                  <Box flex="1" textAlign="left">
+                    {item.question}
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4}>{item.answer}</AccordionPanel>
+            </AccordionItem>
+          );
+        })}
+      </Accordion>
+      <Box padding={2}></Box>
+    </>
   );
 };
 

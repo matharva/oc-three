@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 
 // Styles
 import "../styles/Main.scss";
@@ -14,22 +14,33 @@ import ThreeContainer from "../components/ThreeDModel/ThreeContainer";
 import DesktopNav from "../components/navigation/DesktopNav";
 import MobileNav from "../components/navigation/MobileNav";
 import Footer from "../components/Footer";
+import { CircularProgress, Spinner } from "@chakra-ui/react";
+
+const CustomLoader = () => {
+  return (
+    <div className="loader">
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    </div>
+  );
+};
 
 const Main = () => {
-  const boxRef = useRef(null);
-  const centerRef = useRef(null);
-  const [menu, setMenu] = useState(false);
-  useEffect(() => {
-    console.log(boxRef);
-    console.log(centerRef);
-  }, [boxRef, centerRef]);
+  const [loading, setLoading] = useState(true);
+
   return (
     <div className="main_wrapper">
       <DesktopNav />
       <MobileNav />
       <div className="main-container">
-        <div className="model-box" ref={centerRef}>
-          <ThreeContainer />
+        <div className="model-box">
+          {loading && <CustomLoader />}
+          <ThreeContainer setLoading={setLoading} />
         </div>
       </div>
       <Footer />

@@ -49,6 +49,8 @@ const LoginContainer = () => {
               "https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c",
             phoneNumber: user.phoneNumber,
             uid: user.uid,
+            inviteCode: user.inviteCode,
+            invited: user.invited,
           })
         );
         setCurrentUser({
@@ -59,6 +61,8 @@ const LoginContainer = () => {
             "https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c",
           phoneNumber: user.phoneNumber,
           uid: user.uid,
+          inviteCode: user.inviteCode,
+          invited: user.invited,
         });
         onClose();
 

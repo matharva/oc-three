@@ -42,6 +42,7 @@ const ShowPaymentDetails = ({
   const [phoneNumber, setPhoneNumber] = useState(currentUser.phoneNumber);
   const [paymentType, setPaymentType] = useState(details[0].Type);
   const [refCode, setRefCode] = useState(null);
+  const [teamName, setTeamName] = useState(null);
 
   useEffect(() => {}, []);
 
@@ -84,13 +85,24 @@ const ShowPaymentDetails = ({
         image: Oculus,
         order_id: resData?.data?.order?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         handler: async function (response) {
-          let paymentData = await eventService.postPayment({
-            paymentId: response.razorpay_payment_id,
-            eventName: eventName,
-            userId: currentUser.uid,
-            teamName: "Dardadad",
-            inviteCode: refCode,
-          });
+          let paymentBody;
+          if (refCode) {
+            paymentBody = {
+              paymentId: response.razorpay_payment_id,
+              eventName: eventName,
+              userId: currentUser.uid,
+              teamName: teamName,
+              inviteCode: refCode,
+            };
+          } else {
+            paymentBody = {
+              paymentId: response.razorpay_payment_id,
+              eventName: eventName,
+              userId: currentUser.uid,
+              teamName: teamName,
+            };
+          }
+          let paymentData = await eventService.postPayment(paymentBody);
           console.log("The payment data is: ", paymentData);
           if (paymentData.registrationDetails) {
             setPaymentDone(true);
@@ -141,6 +153,12 @@ const ShowPaymentDetails = ({
     const name = e.target.name;
     const value = e.target.value;
     setRefCode(value);
+  };
+
+  const teamNameHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setTeamName(value);
   };
 
   return (
@@ -222,13 +240,22 @@ const ShowPaymentDetails = ({
               })}
             </Form.Select>
           </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label style={{ fontWeight: "bold" }}>Team Name </Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Team Name"
+              value={teamName}
+              onChange={teamNameHandler}
+            />
+          </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label style={{ fontWeight: "bold" }}>
               Phone Number{" "}
             </Form.Label>
             <Form.Control
-              type="email"
+              type="text"
               placeholder="Enter Phone Number"
               value={phoneNumber}
               onChange={phoneHandler}
@@ -239,7 +266,7 @@ const ShowPaymentDetails = ({
               Referal Code{" "}
             </Form.Label>
             <Form.Control
-              type="email"
+              type="text"
               placeholder="Enter Referal Code"
               value={refCode}
               onChange={refCodeHandler}
@@ -263,6 +290,7 @@ const ShowPaymentDetails = ({
                 phoneNumber,
                 paymentType,
                 refCode,
+                teamName,
                 eventName
               );
             }}

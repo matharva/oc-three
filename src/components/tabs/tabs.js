@@ -27,41 +27,16 @@ import VirtualTreasure from "../../assets/VirtualTreasure.jpg";
 // Preevents
 import ShortCircuit from "../../assets/ShortCircuit.jpg";
 import Hackathon from "../../assets/hackathon.jpg";
+import { EVENT_DATA } from "../../services/helpers";
 
 const tabs = [
   {
     title: "Technical",
-    id: "flights",
+    id: "hotels",
     icon: tech,
     color: "#63a7c7",
     content: TabContent,
-    cards: [
-      {
-        name: "CodeWars",
-        img: Codewars,
-        path: "codewars",
-      },
-      {
-        name: "Codatron++",
-        img: CodatronPlusPlus,
-        path: "codatronplusplus",
-      },
-      {
-        name: "Codatron",
-        img: Codatron,
-        path: "codatron",
-      },
-      {
-        name: "Startathon",
-        img: Startathon,
-        path: "startathon",
-      },
-      {
-        name: "VSM",
-        img: VSM,
-        path: "vsm",
-      },
-    ],
+    cards: EVENT_DATA.filter((x) => x.type === "Technical"),
   },
   {
     title: "Fun",
@@ -69,61 +44,23 @@ const tabs = [
     icon: tech,
     color: "#63a7c7",
     content: TabContent,
-    cards: [
-      {
-        name: "IPL Auction",
-        img: IPL,
-        path: "ipl",
-      },
-      {
-        name: "Online Gaming",
-        img: OnlineGaming,
-        path: "onlinegaming",
-      },
-      {
-        name: "Virtual Treasure Hunt",
-        img: VirtualTreasure,
-        path: "virtualtreasure",
-      },
-    ],
+    cards: EVENT_DATA.filter((x) => x.type === "Fun"),
   },
-  {
-    title: "Pronites",
-    id: "reservations",
-    icon: tech,
-    color: "#63a7c7",
-    content: TabContent,
-    cards: [
-      {
-        name: "Pronite",
-        img: PR,
-        path: "pronite",
-      },
-      {
-        name: "WOB",
-        img: WOB,
-        path: "wob",
-      },
-    ],
-  },
+  // {
+  //   title: "Pronites",
+  //   id: "reservations",
+  //   icon: tech,
+  //   color: "#63a7c7",
+  //   content: TabContent,
+  //   cards: EVENT_DATA.filter((x) => x.type === "Pronites"),
+  // },
   {
     title: "Pre-events",
     id: "offers",
     icon: tech,
     color: "#63a7c7",
     content: TabContent,
-    cards: [
-      {
-        name: "Short Circuit",
-        img: ShortCircuit,
-        path: "shortcurcuit",
-      },
-      {
-        name: "SPIT Hackathon",
-        img: Hackathon,
-        path: "hackathon",
-      },
-    ],
+    cards: EVENT_DATA.filter((x) => x.type === "Pre-events"),
   },
   {
     title: "Cultural",
@@ -131,19 +68,9 @@ const tabs = [
     icon: tech,
     color: "#63a7c7",
     content: TabContent,
-    cards: [
-      {
-        name: "AelanEJang",
-        img: AEJ,
-        path: "aej",
-      },
-      {
-        name: "Sargam",
-        img: Sargam,
-        path: "sargam",
-      },
-    ],
+    cards: EVENT_DATA.filter((x) => x.type === "Cultural"),
   },
 ];
 
+// console.log(tab);
 export default tabs;
