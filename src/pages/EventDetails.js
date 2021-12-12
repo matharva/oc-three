@@ -9,14 +9,12 @@ import "../styles/Eventpage.scss";
 import RegistrationModal from "../components/registration/RegistrationModal";
 import MobileNav from "../components/navigation/MobileNav";
 import DesktopNav from "../components/navigation/DesktopNav";
+import CustomLoader from "../components/Customloader";
 
 //Data and Services
 import { eventService } from "../services/eventService";
-
 import { Icon } from "@chakra-ui/react";
-
 import { IoMdArrowRoundBack } from "react-icons/io";
-
 import EventContent from "../components/event/EventContent";
 import { EVENT_DATA } from "../services/helpers";
 
@@ -34,6 +32,7 @@ const EventDetails = ({ event }) => {
   const [userTeam, setUserTeam] = useState(null);
   const [join, setJoin] = useState(null);
   const [load, setLoad] = useState(false);
+  const [loading, setLoading] = useState(true);
   // const {} = useAuth()
 
   const currentEvent = EVENT_DATA.filter((x) => x.path === eventName)[0];
@@ -232,7 +231,11 @@ const EventDetails = ({ event }) => {
             </div>
           </div>
         </>
-      ) : null}
+      ) : (
+        <div className="loader-div">
+          <CustomLoader />
+        </div>
+      )}
     </>
   );
 };

@@ -14,21 +14,8 @@ import ThreeContainer from "../components/ThreeDModel/ThreeContainer";
 import DesktopNav from "../components/navigation/DesktopNav";
 import MobileNav from "../components/navigation/MobileNav";
 import Footer from "../components/Footer";
+import CustomLoader from "../components/Customloader";
 import { CircularProgress, Spinner } from "@chakra-ui/react";
-
-const CustomLoader = () => {
-  return (
-    <div className="loader">
-      <Spinner
-        thickness="4px"
-        speed="0.65s"
-        emptyColor="gray.200"
-        color="blue.500"
-        size="xl"
-      />
-    </div>
-  );
-};
 
 const Main = () => {
   const [loading, setLoading] = useState(true);
