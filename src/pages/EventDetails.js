@@ -6,21 +6,9 @@ import { useAuth } from "../contexts/AppContext";
 // Styles
 import "../styles/Eventpage.scss";
 
-// Assests
-import CodeWars from "../assets/Codewars.jpg";
-import IPL from "../assets/IPL.jpg";
-import VSM from "../assets/VSM.jpg";
-
-import Codatronplusplus from "../assets/codatron++.jpg";
-import { Button, ButtonGroup } from "@chakra-ui/react";
-// Icons
-import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
-
-// Components
 import RegistrationModal from "../components/registration/RegistrationModal";
 import MobileNav from "../components/navigation/MobileNav";
 import DesktopNav from "../components/navigation/DesktopNav";
-import LoginContainer from "../components/registration/Login/LoginContainer";
 
 //Data and Services
 import { eventService } from "../services/eventService";
@@ -30,7 +18,7 @@ import { Icon } from "@chakra-ui/react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 import EventContent from "../components/event/EventContent";
-import { map } from "../services/helpers";
+import { EVENT_DATA } from "../services/helpers";
 
 // Here viewTeam basically means has the user Registered for the event(does it have any document in RegisterTeam collection)
 
@@ -48,9 +36,11 @@ const EventDetails = ({ event }) => {
   const [load, setLoad] = useState(false);
   // const {} = useAuth()
 
+  const currentEvent = EVENT_DATA.filter((x) => x.path === eventName)[0];
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
-    let event = await eventService.getEvent(map[eventName].Title);
+    let event = await eventService.getEvent(currentEvent.name);
     console.log("Heyyyyy in useEffect first wala: ", viewTeam, userTeam);
     setViewTeam(false);
     setUserTeam(null);
@@ -59,7 +49,7 @@ const EventDetails = ({ event }) => {
       console.log("Heyyyyy user exists: ", currentUser.uid, eventName);
       let userRegistrationDetails =
         await eventService.getUserRegistrationDetails({
-          eventName: map[eventName].Title,
+          eventName: currentEvent.name,
           userId: currentUser.uid,
         });
       console.log("The eventData is: ", event, userRegistrationDetails);
@@ -88,7 +78,7 @@ const EventDetails = ({ event }) => {
     if (currentUser) {
       let userRegistrationDetails =
         await eventService.getUserRegistrationDetails({
-          eventName: map[eventName].Title,
+          eventName: currentEvent.name,
           userId: currentUser.uid,
         });
       console.log("The User registration details are", userRegistrationDetails);
@@ -105,7 +95,7 @@ const EventDetails = ({ event }) => {
     if (currentUser) {
       let userRegistrationDetails =
         await eventService.getUserRegistrationDetails({
-          eventName: map[eventName].Title,
+          eventName: currentEvent.name,
           userId: currentUser.uid,
         });
       console.log("The eventData is: ", event, userRegistrationDetails);
@@ -236,15 +226,13 @@ const EventDetails = ({ event }) => {
               </div>
               <div className="right-grid">
                 <div className="img-container">
-                  <img src={eventData.BgImg || map[eventName].image} alt="" />
+                  <img src={eventData.BgImg || currentEvent.img} alt="" />
                 </div>
               </div>
             </div>
           </div>
         </>
-      ) : (
-        ""
-      )}
+      ) : null}
     </>
   );
 };

@@ -41,40 +41,116 @@ export const IMAGES = {
   Sargam,
 };
 
-export const map = {
-  ipl: {
-    Title: "IPL Auction",
-    image: IMAGES.IPL,
-    firestoreImg: "",
+export const EVENT_DATA = [
+  // Technical
+  {
+    name: "CodeWars",
+    img: Codewars,
+    path: "codewars",
+    type: "Technical",
   },
-  vsm: {
-    Title: "Virtual Stock Market",
-    image: IMAGES.VSM,
+  {
+    name: "Codatron++",
+    img: CodatronPlusPlus,
+    path: "codatronplusplus",
+    type: "Technical",
   },
-  codatronplusplus: {
-    Title: "Codatron++",
-    image: IMAGES.CodatronPlusPlus,
+  {
+    name: "Codatron",
+    img: Codatron,
+    path: "codatron",
+    type: "Technical",
   },
-  sargam: {
-    Title: "Sargam",
-    image: IMAGES.Sargam,
+  {
+    name: "Startathon",
+    img: Startathon,
+    path: "startathon",
+    type: "Technical",
   },
-  carinval: {
-    Title: "Carnival",
-    image: IMAGES.Sargam,
+  {
+    name: "Virtual Stock Market",
+    img: VSM,
+    path: "vsm",
+    type: "Technical",
   },
-  aej: {
-    Title: "Aelan-e-Jung",
-    image: IMAGES.AEJ,
+  // Fun
+  {
+    name: "IPL Auction",
+    img: IPL,
+    path: "ipl",
+    type: "Fun",
   },
-  mun: {
-    Title: "Model United Nations",
-    image: IMAGES.Sargam,
+  {
+    name: "Online Gaming",
+    img: OnlineGaming,
+    path: "onlinegaming",
+    type: "Fun",
   },
-  shortcircuit: {
-    Title: "Short Circuit",
-    image: IMAGES.ShortCircuit,
+  {
+    name: "Virtual Treasure Hunt",
+    img: VirtualTreasure,
+    path: "virtualtreasure",
+    type: "Fun",
   },
-};
+  // Cultural
+
+  {
+    name: "AelanEJang",
+    img: AEJ,
+    path: "aej",
+    type: "Cultural",
+  },
+  {
+    name: "Sargam",
+    img: Sargam,
+    path: "sargam",
+    type: "Cultural",
+  },
+  {
+    name: "WOB",
+    img: WOB,
+    path: "wob",
+    type: "Cultural",
+  },
+
+  // Prevents
+  {
+    name: "Short Circuit",
+    img: ShortCircuit,
+    path: "shortcircuit",
+    type: "Pre-events",
+  },
+  {
+    name: "SPIT Hackathon",
+    img: Hackathon,
+    path: "hackathon",
+    type: "Pre-events",
+  },
+];
 
 export const OC_GRADIENT = "linear-gradient(to right, #ff4b2b, #ff416c)";
+
+// CULTURAL
+// Aelan-e-Jung ->
+// Sargam
+// WOB
+// Abhinaya
+// Carnival
+// Open Mic
+
+// TECHNICAL
+// Oculus Coding League
+// Short Circuit / Hardware
+// VSM
+
+// FUN
+// IPL
+// E-sports
+// Paintball
+// Footpool
+// Human Foosball
+
+// PRE-EVENTS
+// SPIT Hackathon
+// Advert Einstein
+// Tech Race
