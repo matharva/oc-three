@@ -225,7 +225,7 @@ const EventDetails = ({ event }) => {
               </div>
               <div className="right-grid">
                 <div className="img-container">
-                  <img src={eventData.BgImg || currentEvent.img} alt="" />
+                  <img src={currentEvent.img} alt="" />
                 </div>
               </div>
             </div>
