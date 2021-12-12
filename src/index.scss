@@ -33,15 +33,17 @@ body {
 #root {
   // background-color: rgb(40, 20, 58);
   // background: rgb(30, 30, 35);
+  background: #090b17;
+  color: white;
 }
 
 .translations-content-container {
-  color: #000;
+  color: white;
   font-size: 16px;
   line-height: 28px;
 
   .container {
-    color: #000;
+    color: white;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 16px;
     line-height: 28px;
@@ -52,7 +54,7 @@ body {
   }
 
   h1 {
-    color: #000;
+    color: white;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 40px;
     line-height: 60px;
@@ -74,7 +76,7 @@ body {
   }
 
   h2 {
-    color: #000;
+    color: white;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight: 700;
     font-size: 32px;
@@ -82,7 +84,7 @@ body {
   }
 
   h3 {
-    color: #000;
+    color: white;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 24px;
     line-height: 36px;

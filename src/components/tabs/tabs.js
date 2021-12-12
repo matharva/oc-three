@@ -4,37 +4,17 @@ import TabContent from "./TabContent";
 // Assets
 import tech from "../../assets/tech.png";
 
-// Technical Events
-import Codewars from "../../assets/Codewars.jpg";
-import CodatronPlusPlus from "../../assets/codatron++.jpg";
-import Codatron from "../../assets/Codatron.jpg";
-import Startathon from "../../assets/Startathon.jpg";
-import VSM from "../../assets/VSM.jpg";
-
-// Cultural
-import AEJ from "../../assets/AelanEJang.jpg";
-import Sargam from "../../assets/Sargam.jpg";
-
-// Pronites
-import PR from "../../assets/Pronite.png";
-import WOB from "../../assets/WOB.png";
-
-// Fun events
-import IPL from "../../assets/IPL.jpg";
-import OnlineGaming from "../../assets/OnlineGaming.jpg";
-import VirtualTreasure from "../../assets/VirtualTreasure.jpg";
-
-// Preevents
-import ShortCircuit from "../../assets/ShortCircuit.jpg";
-import Hackathon from "../../assets/hackathon.jpg";
-import { EVENT_DATA } from "../../services/helpers";
+import { EVENT_DATA, OC_BG } from "../../services/helpers";
 
 const tabs = [
   {
     title: "Technical",
     id: "hotels",
     icon: tech,
-    color: "#63a7c7",
+    // color: "#63a7c7",
+    // color: "#15202B",
+    color:
+      "linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
     content: TabContent,
     cards: EVENT_DATA.filter((x) => x.type === "Technical"),
   },
@@ -42,7 +22,8 @@ const tabs = [
     title: "Fun",
     id: "hotels",
     icon: tech,
-    color: "#63a7c7",
+    color:
+      "linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
     content: TabContent,
     cards: EVENT_DATA.filter((x) => x.type === "Fun"),
   },
@@ -55,10 +36,11 @@ const tabs = [
   //   cards: EVENT_DATA.filter((x) => x.type === "Pronites"),
   // },
   {
-    title: "Pre-events",
+    title: "Pre-Events",
     id: "offers",
     icon: tech,
-    color: "#63a7c7",
+    color:
+      "linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
     content: TabContent,
     cards: EVENT_DATA.filter((x) => x.type === "Pre-events"),
   },
@@ -66,7 +48,8 @@ const tabs = [
     title: "Cultural",
     id: "offers",
     icon: tech,
-    color: "#63a7c7",
+    color:
+      "linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
     content: TabContent,
     cards: EVENT_DATA.filter((x) => x.type === "Cultural"),
   },

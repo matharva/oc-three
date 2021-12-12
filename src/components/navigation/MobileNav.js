@@ -26,7 +26,7 @@ import {
   FiSettings,
   FiMenu,
 } from "react-icons/fi";
-import { OC_GRADIENT } from "../../services/helpers";
+import { OC_BG, OC_GRADIENT } from "../../services/helpers";
 
 const SidebarContent = ({ onClose, ...rest }) => {
   const history = useHistory();
@@ -86,9 +86,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
   return (
     <Box
-      bg={useColorModeValue("white", "gray.900")}
-      borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+      // bg={useColorModeValue("white", "gray.900")}
+      bg={OC_BG}
+      color="white"
+      // borderRight="1px"
+      // borderRightColor={useColorModeValue("gray.200", "gray.700")}
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
@@ -151,9 +153,12 @@ const NavbarContent = ({ onOpen, ...rest }) => {
       px={{ base: 4, md: 24 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue("white", "gray.900")}
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+      // bg={useColorModeValue("white", "gray.900")}
+      style={{
+        boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.2)",
+        color: "white",
+      }}
+      bg={OC_BG}
       justifyContent="space-between"
       {...rest}
     >
@@ -180,7 +185,8 @@ export default function MobileNav({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box
-      bg={useColorModeValue("gray.100", "gray.900")}
+      // bg={useColorModeValue("gray.100", "gray.900")}
+
       display={{ md: "none", base: "block" }}
     >
       <SidebarContent

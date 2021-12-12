@@ -7,6 +7,7 @@ import Oc from "../../assets/Oculus.png";
 // Components
 import { Box, Flex, HStack, Image } from "@chakra-ui/react";
 import UserMenu from "./UserMenu";
+import { OC_BG_DARK } from "../../services/helpers";
 
 const navbarItems = [
   {
@@ -51,7 +52,7 @@ const NavContent = () => {
         <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
           {navbarItems.map((item) => {
             return (
-              <Link to={`/${item.path}`} style={{ color: "black" }}>
+              <Link to={`/${item.path}`}>
                 <div className="nav-item">{item.name}</div>
               </Link>
             );
@@ -74,6 +75,7 @@ export default function DesktopNav() {
         //   "linear-gradient(to LEFT, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
         color: "white",
       }}
+      bg={OC_BG_DARK}
     >
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <NavContent />
@@ -82,72 +84,3 @@ export default function DesktopNav() {
     </Box>
   );
 }
-
-// import LoginContainer from "./LoginContainer";
-
-// const DesktopNav = () => {
-//   const { currentUser } = useAuth();
-//   const [isOpen, setIsOpen] = useState(false);
-//   const navbarItems = [
-//     {
-//       name: "Events",
-//       path: "events",
-//     },
-//     {
-//       name: "Sponsors",
-//       path: "sponsors",
-//     },
-//     {
-//       name: "Donation Drive",
-//       path: "donation-drive",
-//     },
-//     // {
-//     //   name: `${currentUser ? "Profile" : "Login"}`,
-//     //   path: "profile",
-//     // },
-//     // {
-//     //   name: `Logout`,
-//     //   path: "",
-//     //   fn: () => setIsOpen(true),
-//     // },
-//   ];
-
-//   const history = useHistory();
-//   return (
-//     <>
-//       <div className="navbar-desktop">
-//         <div className="nav-logo" onClick={() => history.push("/")}>
-//           <img src={Oc} alt="" />
-//         </div>
-//         <div className="nav-items">
-//           {navbarItems.map((item) => {
-//             return (
-//               <Link onClick={item.fn} to={`/${item.path}`}>
-//                 <div className="nav-item">{item.name}</div>
-//               </Link>
-//             );
-//           })}
-
-//           {currentUser ? (
-//             <>
-//               <Link to={`/profile`}>
-//                 <div className="nav-item">Profile</div>
-//               </Link>
-
-//               <div className="nav-item" onClick={() => setIsOpen(true)}>
-//                 Logout
-//               </div>
-//             </>
-//           ) : (
-//             <div className="nav-item" onClick={() => setIsOpen(true)}>
-//               Login
-//             </div>
-//           )}
-//         </div>
-//       </div>
-//       <LoginContainer isOpen={isOpen} setIsOpen={setIsOpen} />
-//     </>
-//   );
-// };
-
-// export default DesktopNav;

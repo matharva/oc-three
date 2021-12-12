@@ -23,25 +23,14 @@ import VirtualTreasure from "../assets/VirtualTreasure.jpg";
 import ShortCircuit from "../assets/ShortCircuit.jpg";
 import Hackathon from "../assets/hackathon.jpg";
 
-export const IMAGES = {
-  Codewars,
-  CodatronPlusPlus,
-  Codatron,
-  Startathon,
-  VSM,
-  PR,
-  WOB,
-  IPL,
-  OnlineGaming,
-  VirtualTreasure,
-  ShortCircuit,
-  Hackathon,
-  AEJ,
-  Sargam,
-};
+export const OC_GRADIENT =
+  "linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)";
+
+export const OC_BG = "rgb(30, 30, 35);";
+export const OC_BG_DARK = "#15202B";
 
 export const EVENT_DATA = [
-  // Technical
+  /////////////////////////////////////////// Tech
   // {
   //   name: "Code Wars",
   //   img: Codewars,
@@ -72,13 +61,45 @@ export const EVENT_DATA = [
     path: "vsm",
     type: "Technical",
   },
-  // Fun
+
+  /////////////////////////////////////////// Fun
   {
     name: "IPL Auction",
     img: IPL,
     path: "ipl",
     type: "Fun",
   },
+  {
+    name: "Model United Nations",
+    img: WOB,
+    path: "mun",
+    type: "Fun",
+  },
+  {
+    name: "Paintball",
+    img: WOB,
+    path: "paintball",
+    type: "Fun",
+  },
+  {
+    name: "Human Foosball",
+    img: WOB,
+    path: "foosball",
+    type: "Fun",
+  },
+  {
+    name: "E-Sports",
+    img: WOB,
+    path: "e-sports",
+    type: "Fun",
+  },
+  {
+    name: "Footpool",
+    img: WOB,
+    path: "footpool",
+    type: "Fun",
+  },
+
   // {
   //   name: "Online Gaming",
   //   img: OnlineGaming,
@@ -92,12 +113,23 @@ export const EVENT_DATA = [
   //   type: "Fun",
   // },
 
-
   // Prevents
   {
     name: "Short Circuit",
     img: ShortCircuit,
     path: "shortcircuit",
+    type: "Pre-events",
+  },
+  {
+    name: "Advert Einstein",
+    img: WOB,
+    path: "advert",
+    type: "Pre-events",
+  },
+  {
+    name: "Tech Race",
+    img: WOB,
+    path: "techrace",
     type: "Pre-events",
   },
   {
@@ -126,11 +158,25 @@ export const EVENT_DATA = [
     path: "wob",
     type: "Cultural",
   },
-
-  
+  {
+    name: "Abhinaya",
+    img: WOB,
+    path: "abhinaya",
+    type: "Cultural",
+  },
+  {
+    name: "Carnival",
+    img: WOB,
+    path: "carnival",
+    type: "Cultural",
+  },
+  {
+    name: "Open Mic",
+    img: WOB,
+    path: "openmic",
+    type: "Cultural",
+  },
 ];
-
-export const OC_GRADIENT = "linear-gradient(to right, #ff4b2b, #ff416c)";
 
 // CULTURAL
 // Aelan-e-Jung ->

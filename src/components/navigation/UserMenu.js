@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { DUMMY_USER_ICON } from "../../constants";
 import { useAuth } from "../../contexts/AppContext";
 import { useLocation } from "react-router-dom";
+import { OC_BG } from "../../services/helpers";
 
 const UserMenu = () => {
   const { currentUser, onLoginModalOpen } = useAuth();
@@ -55,19 +56,29 @@ const UserMenu = () => {
           </MenuButton>
 
           {/* Menu Dropdown*/}
-          <MenuList>
+          <MenuList bg={OC_BG}>
             {!currentUser ? (
               <>
                 {menuItems.map((item) => {
                   return (
-                    <MenuItem style={{ color: "black" }}>
-                      <Link to={item.path}>{item.title}</Link>
-                    </MenuItem>
+                    <Link to={item.path}>
+                      <MenuItem
+                        _hover={{
+                          bg: "transparent",
+                          color: "white",
+                        }}
+                      >
+                        {item.title}
+                      </MenuItem>
+                    </Link>
                   );
                 })}
                 <MenuItem
-                  style={{ color: "black" }}
                   onClick={() => onLoginModalOpen()}
+                  _hover={{
+                    bg: "transparent",
+                    color: "white",
+                  }}
                 >
                   Login
                 </MenuItem>
@@ -116,13 +127,21 @@ const UserMenu = () => {
                 {/* </MenuItem> */}
                 {menuItems.map((item) => {
                   return (
-                    <MenuItem style={{ color: "black" }}>
+                    <MenuItem
+                      _hover={{
+                        bg: "transparent",
+                        color: "white",
+                      }}
+                    >
                       <Link to={item.path}>{item.title}</Link>
                     </MenuItem>
                   );
                 })}
                 <MenuItem
-                  style={{ color: "black" }}
+                  _hover={{
+                    bg: "transparent",
+                    color: "white",
+                  }}
                   onClick={() => onLoginModalOpen()}
                 >
                   Logout

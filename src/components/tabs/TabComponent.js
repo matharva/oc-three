@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import "../../styles/TabComponent.scss";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useRef } from "react";
+import { OC_BG } from "../../services/helpers";
 
 function Box() {
   const boxRef = useRef();
@@ -51,6 +52,7 @@ const tabTextVariant = {
   inactive: {
     opacity: 0,
     x: -30,
+    // display: "none",
     transition: {
       type: "tween",
       duration: 0.3,
@@ -90,24 +92,39 @@ const TabComponent = ({ tabs, defaultIndex = 0 }) => {
             <motion.li
               key={tab.id}
               className={cn("tab", { active: activeTabIndex === index })}
-              role="presentation"
+              // role="presentation"
               variants={tabVariant}
               animate={activeTabIndex === index ? "active" : "inactive"}
               style={{
-                border: "1px solid rgba(255, 255, 255, 0.125)",
+                // border: "1px solid red",
+                backgroundColor: "transparent",
+                // backgroundImage:
+                //   " linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
+                borderRadius: "10px",
+                overflow: "hidden",
               }}
             >
               <a onClick={() => onTabClick(index)}>
                 <div className="img-icon-container">
-                  <img src={tab.icon} alt="" />
-                  {/* <Canvas style={{ width: "30px", height: "30px" }}>
+                  {/* <img src={tab.icon} alt="" /> */}
+                  <Canvas style={{ width: "30px", height: "30px" }}>
                     <ambientLight intensity={0.5} />
                     <Box />
-                  </Canvas> */}
+                  </Canvas>
                 </div>
                 <motion.span
                   variants={tabTextVariant}
-                  style={index === activeTabIndex ? {} : { color: "white" }}
+                  style={
+                    index === activeTabIndex
+                      ? {
+                          color:
+                            "linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
+                          // display: "none",
+                        }
+                      : {
+                          display: "none",
+                        }
+                  }
                 >
                   {tab.title}
                 </motion.span>
