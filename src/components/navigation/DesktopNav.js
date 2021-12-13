@@ -52,7 +52,7 @@ const NavContent = () => {
         <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
           {navbarItems.map((item) => {
             return (
-              <Link to={`/${item.path}`}>
+              <Link to={`/${item.path}`} style={{ color: "white" }}>
                 <div className="nav-item">{item.name}</div>
               </Link>
             );

@@ -58,7 +58,11 @@
     .nav-item {
       margin: 0 0.5rem;
       cursor: pointer;
-      color: black;
+      // color: black;
+
+      // &:hover {
+      //   color: white;
+      // }
     }
     a {
       text-decoration: none;
