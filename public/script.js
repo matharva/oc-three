@@ -66,7 +66,9 @@ class Environment {
       1,
       10000
     );
-    this.camera.position.set(0, 0, 100);
+    if (window.innerWidth > 720) {
+      this.camera.position.set(0, 0, 100);
+    } else this.camera.position.set(0, 0, 175);
   }
 
   createRenderer() {
@@ -113,7 +115,7 @@ class CreateParticles {
     this.buttom = false;
 
     this.data = {
-      text: "FUTURE\nIS NOW",
+      text: "OCULUS\n   2022",
       amount: 1500,
       particleSize: 1,
       particleColor: 0xffffff,
@@ -146,9 +148,9 @@ class CreateParticles {
     document.addEventListener("mouseup", this.onMouseUp.bind(this));
   }
 
-  onMouseDown() {
-    // this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    // this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  onMouseDown(event) {
+    this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
     const vector = new THREE.Vector3(this.mouse.x, this.mouse.y, 0.5);
     vector.unproject(this.camera);
@@ -168,9 +170,9 @@ class CreateParticles {
     this.data.ease = 0.05;
   }
 
-  onMouseMove() {
-    // this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    // this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  onMouseMove(event) {
+    this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
   }
 
   render(level) {

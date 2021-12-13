@@ -66,12 +66,12 @@ function Controls() {
 
 const ThreeContainer = ({ setLoading }) => {
   const history = useHistory();
-  const data = false;
+  const data = true;
 
   return (
     <>
       {data ? (
-        <div id="magic">Hello</div>
+        <div id="magic" style={{ height: "100%" }}></div>
       ) : (
         <Canvas camera={{ fov: 75, position: [107, 34, 234] }}>
           <color attach="background" args={["#FFffff"]} />
