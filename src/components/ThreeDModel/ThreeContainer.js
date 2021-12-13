@@ -5,7 +5,7 @@ import { Physics } from "@react-three/cannon";
 import { MapControls } from "@react-three/drei";
 import { Sky, Cloud } from "@react-three/drei";
 
-// import Model from "./Compressed_clg";
+// import Model from "./Compressed_clg2";
 import Model from "./Compressed_withoutgrass";
 
 // Styles
@@ -66,41 +66,48 @@ function Controls() {
 
 const ThreeContainer = ({ setLoading }) => {
   const history = useHistory();
+  const data = false;
 
   return (
-    <Canvas camera={{ fov: 75, position: [107, 34, 234] }}>
-      <color attach="background" args={["#FFffff"]} />
-      <spotLight
-        position={[100, 2500, 100]}
-        angle={0.7}
-        color={"#FFFFFF"}
-        castShadow={true}
-      />
-      <ambientLight intensity={0.5} />
-      <Physics>
-        <Sky
-          distance={450000}
-          sunPosition={[5, 1, 0]}
-          inclination={0}
-          azimuth={0.15}
-          turbidity={9.4}
-          // mieDirectionalG={0.83}
-        />
-        <Cloud
-          opacity={0.5}
-          speed={0.4} // Rotation speed
-          width={10} // Width of the full cloud
-          depth={1.5} // Z-dir depth
-          segments={20} // Number of particles
-        />
-        <Model setLoading={setLoading} />
+    <>
+      {data ? (
+        <div id="magic">Hello</div>
+      ) : (
+        <Canvas camera={{ fov: 75, position: [107, 34, 234] }}>
+          <color attach="background" args={["#FFffff"]} />
+          <spotLight
+            position={[100, 2500, 100]}
+            angle={0.7}
+            color={"#FFFFFF"}
+            castShadow={true}
+          />
+          <ambientLight intensity={0.5} />
+          <Physics>
+            <Sky
+              distance={450000}
+              sunPosition={[5, 1, 0]}
+              inclination={0}
+              azimuth={0.15}
+              turbidity={9.4}
+              // mieDirectionalG={0.83}
+            />
+            <Cloud
+              opacity={0.5}
+              speed={0.4} // Rotation speed
+              width={10} // Width of the full cloud
+              depth={1.5} // Z-dir depth
+              segments={20} // Number of particles
+            />
+            <Model setLoading={setLoading} />
 
-        <Plane />
-        <Box history={history} />
+            <Plane />
+            <Box history={history} />
 
-        <Controls />
-      </Physics>
-    </Canvas>
+            <Controls />
+          </Physics>
+        </Canvas>
+      )}
+    </>
   );
 };
 
