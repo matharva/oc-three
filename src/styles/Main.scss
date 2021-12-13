@@ -13,6 +13,7 @@
   position: relative;
   // border: 1px solid orange;
   padding: 1.5rem;
+  transform: translateX(-0.8%);
 
   // cross browser
   -webkit-touch-callout: none;
@@ -30,7 +31,7 @@
   .menu-container {
     position: absolute;
     top: 50%;
-    left: 3px;
+    left: 2px;
     cursor: pointer;
 
     @media screen and (max-width: 720px) {
@@ -70,4 +71,24 @@
   width: 200px;
   top: 0;
   border-radius: 50%;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
 }

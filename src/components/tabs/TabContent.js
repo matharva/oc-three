@@ -50,9 +50,15 @@ const TabContent = ({ id, active, cards }) => {
             variants={cardVariant}
             className="content-card"
           >
-            <Link to={`/events/${item.path}`}>
-              <ThreeDCard data={item} />
-            </Link>
+            {item.complete ? (
+              <Link to={`/events/${item.path}`}>
+                <ThreeDCard data={item} />
+              </Link>
+            ) : (
+              <>
+                <ThreeDCard data={item} />
+              </>
+            )}
           </motion.div>
         ))}
       </div>
