@@ -247,7 +247,7 @@ const EventDetails = ({ event }) => {
               </div>
             </div>
           </div>
-          <Footer />
+          {window.innerWidth > 720 ? <Footer /> : <></>}
         </>
       ) : (
         <div className="loader-div">
