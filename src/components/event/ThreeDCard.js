@@ -6,6 +6,7 @@ import Tilt from "react-tilt";
 // Styles
 import "../../styles/ThreeDCard.scss";
 const ThreeDCard = ({ data }) => {
+  console.log("Data from three card: ", data);
   return (
     <Tilt
       options={{
@@ -16,13 +17,19 @@ const ThreeDCard = ({ data }) => {
     >
       <div
         class="card rgb item"
-        style={{
-          background: `linear-gradient(
-          rgba(0, 0, 0, 0.3),
-          rgba(0, 0, 0, 0.1)
-          ), url(${data.img}) no-repeat center / cover`,
-        }}
+        style={
+          data.complete
+            ? {
+                background: `linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.1)
+            ), url(${data.img}) no-repeat center / cover`,
+              }
+            : { background: "black" }
+        }
       >
+        {!data.complete && <div className="comingsoon">Coming Soon..</div>}
+
         <div class="card-text card2">{data.name}</div>
       </div>
     </Tilt>
