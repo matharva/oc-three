@@ -1,27 +1,57 @@
 // Technical Events
 import Codewars from "../assets/Codewars.jpg";
-import CodatronPlusPlus from "../assets/codatron++.jpg";
+import CodatronPlusPlus from "../assets/codatron++Home.jpg";
+import CodatronPlusPlus2 from "../assets/codatron++Detail.jpg";
 import Codatron from "../assets/Codatron.jpg";
 import Startathon from "../assets/Startathon.jpg";
-import VSM from "../assets/VSM.jpg";
+import VSM from "../assets/VSM_Home.jpg";
+import VSM2 from "../assets/VSM_Detail.jpg";
+import MUN from "../assets/mun_Home.jpg";
+import MUN2 from "../assets/mun_Detail.jpg";
+import Esports from "../assets/esports_Home.jpg";
+import Esports2 from "../assets/esports_Detail.jpg";
+import AdvertEinsten from "../assets/wob.jpg";
+import AdvertEinsten2 from "../assets/wob.jpg";
+import HumanFoosball from "../assets/wob.jpg";
+import HumanFoosball2 from "../assets/wob.jpg";
+import Footpool from "../assets/wob.jpg";
+import Footpool2 from "../assets/wob.jpg";
+import Paintball from "../assets/wob.jpg";
+import Paintball2 from "../assets/wob.jpg";
+import TechRace from "../assets/wob.jpg";
+import TechRace2 from "../assets/wob.jpg";
 
 // Cultural
-import AEJ from "../assets/AelanEJang.jpg";
-import Sargam from "../assets/Sargam.jpg";
-
+import AEJ from "../assets/aej_Home.jpg";
+import AEJ2 from "../assets/aej_Detail.jpg";
+import Sargam from "../assets/sargam_Home.jpg";
+import Sargam2 from "../assets/sargam_Detail.jpg";
 // Pronites
 import PR from "../assets/Pronite.png";
 // import WOB from "../assets/WOB.png";
 import WOB from "../assets/wob.jpg";
+import WOB2 from "../assets/wob.jpg";
+
+import Abhinaya from "../assets/abhinaya_Home.jpg";
+import Abhinaya2 from "../assets/abhinaya_Detail.jpg";
+
+import Carnival from "../assets/wob.jpg";
+import Carnival2 from "../assets/wob.jpg";
+
+import OpenMic from "../assets/openmic_Home.jpg";
+import OpenMic2 from "../assets/openmic_Detail.jpg";
 
 // Fun events
-import IPL from "../assets/IPL.jpg";
+import IPL from "../assets/IPL_Home.jpg";
+import IPL2 from "../assets/IPL_Home.jpg";
 import OnlineGaming from "../assets/OnlineGaming.jpg";
 import VirtualTreasure from "../assets/VirtualTreasure.jpg";
 
 // Preevents
-import ShortCircuit from "../assets/ShortCircuit.jpg";
-import Hackathon from "../assets/hackathon.jpg";
+import ShortCircuit from "../assets/shortcircuit_Home.jpg";
+import ShortCircuit2 from "../assets/shortcircuit_Detail.jpg";
+import Hackathon from "../assets/hackathon_Home.jpg";
+import Hackathon2 from "../assets/hackathon_Detail.jpg";
 
 export const OC_GRADIENT =
   "linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)";
@@ -42,6 +72,7 @@ export const EVENT_DATA = [
     img: CodatronPlusPlus,
     path: "codatronplusplus",
     type: "Technical",
+    detailImg: CodatronPlusPlus2,
   },
   // {
   //   name: "Codatron",
@@ -60,6 +91,7 @@ export const EVENT_DATA = [
     img: VSM,
     path: "vsm",
     type: "Technical",
+    detailImg: VSM2,
   },
 
   /////////////////////////////////////////// Fun
@@ -68,36 +100,42 @@ export const EVENT_DATA = [
     img: IPL,
     path: "ipl",
     type: "Fun",
+    detailImg: IPL2,
   },
   {
     name: "Model United Nations",
-    img: WOB,
+    img: MUN,
     path: "mun",
     type: "Fun",
+    detailImg: MUN2,
   },
   {
     name: "Paintball",
-    img: WOB,
+    img: Paintball,
     path: "paintball",
     type: "Fun",
+    detailImg: Paintball2,
   },
   {
     name: "Human Foosball",
-    img: WOB,
+    img: HumanFoosball,
     path: "foosball",
     type: "Fun",
+    detailImg: HumanFoosball2,
   },
   {
     name: "E-Sports",
-    img: WOB,
+    img: Esports,
     path: "e-sports",
     type: "Fun",
+    detailImg: Esports2,
   },
   {
     name: "Footpool",
-    img: WOB,
+    img: Footpool,
     path: "footpool",
     type: "Fun",
+    detailImg: Footpool2,
   },
 
   // {
@@ -119,24 +157,28 @@ export const EVENT_DATA = [
     img: ShortCircuit,
     path: "shortcircuit",
     type: "Pre-events",
+    detailImg: ShortCircuit2,
   },
   {
     name: "Advert Einstein",
-    img: WOB,
+    img: AdvertEinsten,
     path: "advert",
     type: "Pre-events",
+    detailImg: AdvertEinsten2,
   },
   {
     name: "Tech Race",
-    img: WOB,
+    img: TechRace,
     path: "techrace",
     type: "Pre-events",
+    detailImg: TechRace2,
   },
   {
     name: "SPIT-Hackathon",
     img: Hackathon,
     path: "hackathon",
     type: "Pre-events",
+    detailImg: Hackathon2,
   },
 
   // Cultural
@@ -145,36 +187,42 @@ export const EVENT_DATA = [
     img: AEJ,
     path: "aej",
     type: "Cultural",
+    detailImg: AEJ2,
   },
   {
     name: "Sargam",
     img: Sargam,
     path: "sargam",
     type: "Cultural",
+    detailImg: Sargam2,
   },
   {
     name: "War Of Branches",
     img: WOB,
     path: "wob",
     type: "Cultural",
+    detailImg: WOB2,
   },
   {
     name: "Abhinaya",
-    img: WOB,
+    img: Abhinaya,
     path: "abhinaya",
     type: "Cultural",
+    detailImg: Abhinaya2,
   },
   {
     name: "Carnival",
-    img: WOB,
+    img: Carnival,
     path: "carnival",
     type: "Cultural",
+    detailImg: Carnival2,
   },
   {
     name: "Open Mic",
-    img: WOB,
+    img: OpenMic,
     path: "openmic",
     type: "Cultural",
+    detailImg: OpenMic2,
   },
 ];
 

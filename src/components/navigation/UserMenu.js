@@ -56,7 +56,7 @@ const UserMenu = () => {
           </MenuButton>
 
           {/* Menu Dropdown*/}
-          <MenuList bg={OC_BG}>
+          <MenuList bg={""}>
             {!currentUser ? (
               <>
                 {menuItems.map((item) => {
@@ -64,8 +64,9 @@ const UserMenu = () => {
                     <Link to={item.path}>
                       <MenuItem
                         _hover={{
-                          bg: "transparent",
-                          color: "white",
+                          //
+                          // backgroundColor: "red",
+                          color: "black",
                         }}
                       >
                         {item.title}
@@ -76,8 +77,9 @@ const UserMenu = () => {
                 <MenuItem
                   onClick={() => onLoginModalOpen()}
                   _hover={{
-                    bg: "transparent",
-                    color: "white",
+                    //
+                    // backgroundColor: "red",
+                    color: "black",
                   }}
                 >
                   Login
@@ -89,7 +91,7 @@ const UserMenu = () => {
                   style={{ color: "black" }}
                   onClick={() => onLoginModalOpen()}
                 > */}
-                <Box style={{ color: "black" }}>
+                <Box style={{ color: "white" }}>
                   <Center>
                     <Avatar
                       size={"2xl"}
@@ -129,8 +131,9 @@ const UserMenu = () => {
                   return (
                     <MenuItem
                       _hover={{
-                        bg: "transparent",
-                        color: "white",
+                        //
+                        // backgroundColor: "red",
+                        color: "black",
                       }}
                     >
                       <Link to={item.path}>{item.title}</Link>
@@ -139,8 +142,9 @@ const UserMenu = () => {
                 })}
                 <MenuItem
                   _hover={{
-                    bg: "transparent",
-                    color: "white",
+                    //
+                    // backgroundColor: "red",
+                    color: "black",
                   }}
                   onClick={() => onLoginModalOpen()}
                 >

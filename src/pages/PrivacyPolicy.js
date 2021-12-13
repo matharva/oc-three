@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../components/Footer";
 import DesktopNav from "../components/navigation/DesktopNav";
 import MobileNav from "../components/navigation/MobileNav";
 
@@ -674,6 +675,7 @@ const PrivacyPolicy = () => {
       <MobileNav />
       <DesktopNav />
       <NewPolicy />
+      <Footer />
     </div>
   );
 };

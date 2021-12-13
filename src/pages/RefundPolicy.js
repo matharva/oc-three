@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../components/Footer";
 import DesktopNav from "../components/navigation/DesktopNav";
 import MobileNav from "../components/navigation/MobileNav";
 
@@ -181,6 +182,7 @@ const RefundPolicy = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
