@@ -44,7 +44,10 @@ const FaqSection = ({ faq }) => {
           );
         })}
       </Accordion>
-      <Box padding={2}></Box>
+      <Box
+        // style={{ paddingBottom: "5rem" }}
+        paddingBottom={{ base: "5rem", lg: "0rem" }}
+      ></Box>
     </>
   );
 };

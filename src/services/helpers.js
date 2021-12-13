@@ -72,6 +72,7 @@ export const EVENT_DATA = [
     img: CodatronPlusPlus,
     path: "codatronplusplus",
     type: "Technical",
+    complete: false,
     detailImg: CodatronPlusPlus2,
   },
   // {
@@ -91,6 +92,7 @@ export const EVENT_DATA = [
     img: VSM,
     path: "vsm",
     type: "Technical",
+    complete: true,
     detailImg: VSM2,
   },
 
@@ -100,6 +102,7 @@ export const EVENT_DATA = [
     img: IPL,
     path: "ipl",
     type: "Fun",
+    complete: false,
     detailImg: IPL2,
   },
   {
@@ -107,6 +110,7 @@ export const EVENT_DATA = [
     img: MUN,
     path: "mun",
     type: "Fun",
+    complete: true,
     detailImg: MUN2,
   },
   {
@@ -114,6 +118,7 @@ export const EVENT_DATA = [
     img: Paintball,
     path: "paintball",
     type: "Fun",
+    complete: false,
     detailImg: Paintball2,
   },
   {
@@ -121,6 +126,7 @@ export const EVENT_DATA = [
     img: HumanFoosball,
     path: "foosball",
     type: "Fun",
+    complete: false,
     detailImg: HumanFoosball2,
   },
   {
@@ -128,6 +134,7 @@ export const EVENT_DATA = [
     img: Esports,
     path: "e-sports",
     type: "Fun",
+    complete: false,
     detailImg: Esports2,
   },
   {
@@ -135,6 +142,7 @@ export const EVENT_DATA = [
     img: Footpool,
     path: "footpool",
     type: "Fun",
+    complete: false,
     detailImg: Footpool2,
   },
 
@@ -157,6 +165,7 @@ export const EVENT_DATA = [
     img: ShortCircuit,
     path: "shortcircuit",
     type: "Pre-events",
+    complete: true,
     detailImg: ShortCircuit2,
   },
   {
@@ -164,6 +173,7 @@ export const EVENT_DATA = [
     img: AdvertEinsten,
     path: "advert",
     type: "Pre-events",
+    complete: false,
     detailImg: AdvertEinsten2,
   },
   {
@@ -171,6 +181,7 @@ export const EVENT_DATA = [
     img: TechRace,
     path: "techrace",
     type: "Pre-events",
+    complete: true,
     detailImg: TechRace2,
   },
   {
@@ -178,6 +189,7 @@ export const EVENT_DATA = [
     img: Hackathon,
     path: "hackathon",
     type: "Pre-events",
+    complete: false,
     detailImg: Hackathon2,
   },
 
@@ -187,6 +199,7 @@ export const EVENT_DATA = [
     img: AEJ,
     path: "aej",
     type: "Cultural",
+    complete: true,
     detailImg: AEJ2,
   },
   {
@@ -194,6 +207,7 @@ export const EVENT_DATA = [
     img: Sargam,
     path: "sargam",
     type: "Cultural",
+    complete: true,
     detailImg: Sargam2,
   },
   {
@@ -201,6 +215,7 @@ export const EVENT_DATA = [
     img: WOB,
     path: "wob",
     type: "Cultural",
+    complete: false,
     detailImg: WOB2,
   },
   {
@@ -208,6 +223,7 @@ export const EVENT_DATA = [
     img: Abhinaya,
     path: "abhinaya",
     type: "Cultural",
+    complete: false,
     detailImg: Abhinaya2,
   },
   {
@@ -215,6 +231,7 @@ export const EVENT_DATA = [
     img: Carnival,
     path: "carnival",
     type: "Cultural",
+    complete: false,
     detailImg: Carnival2,
   },
   {
@@ -222,6 +239,7 @@ export const EVENT_DATA = [
     img: OpenMic,
     path: "openmic",
     type: "Cultural",
+    complete: false,
     detailImg: OpenMic2,
   },
 ];
