@@ -26,7 +26,7 @@ import {
   FiSettings,
   FiMenu,
 } from "react-icons/fi";
-import { OC_BG, OC_GRADIENT } from "../../services/helpers";
+import { OC_BG, OC_BG_DARK, OC_GRADIENT } from "../../services/helpers";
 
 const SidebarContent = ({ onClose, ...rest }) => {
   const history = useHistory();
@@ -87,7 +87,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
       // bg={useColorModeValue("white", "gray.900")}
-      bg={OC_BG}
+      bg={OC_BG_DARK}
       color="white"
       // borderRight="1px"
       // borderRightColor={useColorModeValue("gray.200", "gray.700")}
@@ -158,7 +158,7 @@ const NavbarContent = ({ onOpen, ...rest }) => {
         boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.2)",
         color: "white",
       }}
-      bg={OC_BG}
+      bg={OC_BG_DARK}
       justifyContent="space-between"
       {...rest}
     >

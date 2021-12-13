@@ -16,6 +16,7 @@ import MultiplePlayers from "./ModalContent/MultiplePlayers";
 import ShowJoinTeamDetails from "./ModalContent/ShowJoinTeamDetails";
 import ShowPaymentDetails from "./ModalContent/ShowPaymentDetails";
 import LoginContainer from "./Login/LoginContainer";
+import { OC_BG } from "../../services/helpers";
 
 const RegistrationModal = ({
   userTeam,
