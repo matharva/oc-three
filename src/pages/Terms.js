@@ -1,6 +1,7 @@
 import React from "react";
 import DesktopNav from "../components/navigation/DesktopNav";
 import MobileNav from "../components/navigation/MobileNav";
+import Footer from "../components/Footer";
 
 const Terms = () => {
   return (
@@ -305,6 +306,7 @@ const Terms = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

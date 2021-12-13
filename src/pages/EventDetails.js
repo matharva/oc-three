@@ -242,13 +242,12 @@ const EventDetails = ({ event }) => {
               </div>
               <div className="right-grid">
                 <div className="img-container">
-                  {/* <img src={eventData.BgImg || currentEvent.img} alt="" /> */}
-                  <img src={EVENT_DATA[1].img} alt="" />
+                  <img src={currentEvent.detailImg || eventData.BgImg} alt="" />
                 </div>
               </div>
             </div>
           </div>
-          <Footer />
+          {window.innerWidth > 720 ? <Footer /> : <></>}
         </>
       ) : (
         <div className="loader-div">

@@ -7,6 +7,7 @@ import { eventService } from "../../../services/eventService";
 // Icons
 import { PhoneIcon, AddIcon, WarningIcon, CloseIcon } from "@chakra-ui/icons";
 import "../../../styles/loginModal.scss";
+import { OC_BG_DARK } from "../../../services/helpers";
 
 import {
   Stack,
@@ -110,7 +111,8 @@ const LoginContainer = () => {
   return (
     <Stack
       boxShadow={"2xl"}
-      bg={useColorModeValue("white", "gray.700")}
+      // bg={useColorModeValue("white", "gray.700")}
+      bg={OC_BG_DARK}
       rounded={"xl"}
       p={10}
       spacing={8}
@@ -129,7 +131,8 @@ const LoginContainer = () => {
         <Heading
           textTransform={"uppercase"}
           fontSize={"3xl"}
-          color={useColorModeValue("gray.800", "gray.200")}
+          // color={useColorModeValue("white.800", "white.200")}
+          color={"white"}
         >
           Login before you proceed
         </Heading>
