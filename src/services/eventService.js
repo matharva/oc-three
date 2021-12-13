@@ -7,7 +7,7 @@ const userRef = firebase.firestore().collection("Users");
 const eventRef = firebase.firestore().collection("Events");
 const sponserRef = firebase.firestore().collection("Sponsers");
 
-const API_URL = "http://localhost:8000"
+const API_URL = "http://localhost:8000";
 // const API_URL = "https://oculus-2022.herokuapp.com"
 
 async function getEvent(name) {
@@ -115,9 +115,9 @@ async function addEvent() {
 
 async function postPayment(postData) {
   try {
-    let url = process.env.REACT_APP_OCULUS_API + '/registrationDetails';
-    console.log(url);
-    // let url = "https://oculus-2022.herokuapp.com/registrationDetails/";
+    // let url = process.env.REACT_APP_OCULUS_API + '/registrationDetails';
+    // console.log(url);
+    let url = "https://oculus-2022.herokuapp.com/registrationDetails/";
     let data = await axios.post(url, postData);
     console.log("The post data is: ", data.data);
     return data.data;
@@ -128,9 +128,9 @@ async function postPayment(postData) {
 
 async function joinUser(postData) {
   try {
-    let url = process.env.REACT_APP_OCULUS_API + '/registrationDetails';
-    console.log(url);
-    // let url = "https://oculus-2022.herokuapp.com/addToTeam/";
+    // let url = process.env.REACT_APP_OCULUS_API + '/registrationDetails';
+    // console.log(url);
+    let url = "https://oculus-2022.herokuapp.com/addToTeam/";
     let data = await axios.post(url, postData);
     console.log("The post data is: ", data.data);
     return data.data;
@@ -141,9 +141,9 @@ async function joinUser(postData) {
 
 async function getUserRegistrationDetails(postData) {
   try {
-    let url = process.env.REACT_APP_OCULUS_API + '/registrationDetails';
-    console.log(url);
-    // let url = "https://oculus-2022.herokuapp.com/userRegistrationDetails/";
+    // let url = process.env.REACT_APP_OCULUS_API + '/registrationDetails';
+    // console.log(url);
+    let url = "https://oculus-2022.herokuapp.com/userRegistrationDetails/";
     let data = await axios.post(url, postData);
     console.log("The post data is: ", data.data);
     return data.data;

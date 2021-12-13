@@ -17,6 +17,7 @@ import { Icon } from "@chakra-ui/react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import EventContent from "../components/event/EventContent";
 import { EVENT_DATA } from "../services/helpers";
+import Footer from "../components/Footer";
 
 // Here viewTeam basically means has the user Registered for the event(does it have any document in RegisterTeam collection)
 
@@ -151,7 +152,8 @@ const EventDetails = ({ event }) => {
                     <div className="event-title">{eventData.Title}</div>
                   </div>
                   <EventContent eventData={eventData} />
-                  {eventData.isSingle ? (
+                  {/* <EventRegisterFooter /> */}
+                  {/* {eventData.isSingle ? (
                     <div className="event-register">
                       <div className="reg-amt">
                         <span>Registration: </span>
@@ -175,7 +177,6 @@ const EventDetails = ({ event }) => {
                               : "Register"
                             : "Register"}
                         </button>
-                        {/* <Button colorScheme="teal">Button</Button> */}
                       </div>
                     </div>
                   ) : (
@@ -185,7 +186,6 @@ const EventDetails = ({ event }) => {
                           className="reg-btn"
                           onClick={() => {
                             registerEvent();
-                            // onOpen();
                           }}
                           disabled={!load}
                         >
@@ -198,19 +198,36 @@ const EventDetails = ({ event }) => {
                             : "Register"}
                         </button>
                       </div>
-                      {/* <Button
-                        size="lg"
-                        style={{
-                          background:
-                            "linear-gradient(to right, #ff4b2b, #ff416c)",
-                          color: "white",
-                          fontWeight: "normal",
+                    </div>
+                  )} */}
+
+                  <div className="event-register">
+                    <div className="reg-amt">
+                      <span>Date: </span>
+                      <div className="reg-text">
+                        {/* <span>Date:</span> */}
+                        Feb 13-14
+                        {/* {eventData.isSingle ? eventData.Fee[0].Fee : ""} */}
+                      </div>
+                    </div>
+                    <div className="reg-btn-container">
+                      <button
+                        className="reg-btn"
+                        onClick={() => {
+                          registerEvent();
                         }}
                       >
-                        Button
-                      </Button> */}
+                        {currentUser
+                          ? (currentUser && paymentDone) || viewTeam
+                            ? eventData.isSingle
+                              ? "Registered"
+                              : "View Team"
+                            : "Register"
+                          : "Register"}
+                      </button>
+                      {/* <Button colorScheme="teal">Button</Button> */}
                     </div>
-                  )}
+                  </div>
                 </div>
                 <RegistrationModal
                   userTeam={userTeam}
@@ -225,11 +242,13 @@ const EventDetails = ({ event }) => {
               </div>
               <div className="right-grid">
                 <div className="img-container">
-                  <img src={eventData.BgImg || currentEvent.img} alt="" />
+                  {/* <img src={eventData.BgImg || currentEvent.img} alt="" /> */}
+                  <img src={EVENT_DATA[1].img} alt="" />
                 </div>
               </div>
             </div>
           </div>
+          <Footer />
         </>
       ) : (
         <div className="loader-div">
