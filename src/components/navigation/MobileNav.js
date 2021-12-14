@@ -26,6 +26,9 @@ import {
   FiSettings,
   FiMenu,
 } from "react-icons/fi";
+import { MdOutlinePayment } from "react-icons/md";
+import { BiDonateHeart } from "react-icons/bi";
+import { BsCart3, BsCart4 } from "react-icons/bs";
 import { OC_BG, OC_BG_DARK, OC_GRADIENT } from "../../services/helpers";
 
 const SidebarContent = ({ onClose, ...rest }) => {
@@ -41,27 +44,27 @@ const SidebarContent = ({ onClose, ...rest }) => {
     {
       name: "Sponsors",
       path: "sponsors",
-      icon: FiTrendingUp,
+      icon: MdOutlinePayment,
       fn: () => history.push("/sponsors"),
     },
     {
       name: "Donation Drive",
       path: "donation-drive",
-      icon: FiCompass,
+      icon: BiDonateHeart,
       fn: () => history.push("/donation-drive"),
     },
-    {
-      name: "Market Place",
-      path: "marketplace",
-      icon: FiCompass,
-      fn: () => history.push("/marketplace"),
-    },
-    {
-      name: "Merchandise",
-      path: "merch",
-      icon: FiCompass,
-      fn: () => history.push("/merch"),
-    },
+    // {
+    //   name: "Market Place",
+    //   path: "marketplace",
+    //   icon: BsCart3,
+    //   fn: () => history.push("/marketplace"),
+    // },
+    // {
+    //   name: "Merchandise",
+    //   path: "merch",
+    //   icon: BsCart4,
+    //   fn: () => history.push("/merch"),
+    // },
     // {
     //   name: "Privacy Policy",
     //   path: "privacy",

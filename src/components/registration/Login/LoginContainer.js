@@ -131,30 +131,20 @@ const LoginContainer = () => {
       </Box>
       {!currentUser ? (
         <Stack align={"center"} spacing={2}>
-          <Heading
-            textTransform={"uppercase"}
-            fontSize={"3xl"}
-            // color={useColorModeValue("white.800", "white.200")}
-            color={"white"}
-          >
+          <Heading fontSize={"3xl"} color={"white"} textAlign={"center"}>
             Login before you proceed
           </Heading>
-          <Text fontSize={"lg"} color={"gray.500"}>
+          <Text fontSize={"lg"} color={"gray.500"} textAlign={"center"}>
             It'll take just a second
           </Text>
         </Stack>
       ) : (
         <>
           <Stack align={"center"} spacing={2}>
-            <Heading
-              textTransform={"uppercase"}
-              fontSize={"3xl"}
-              // color={useColorModeValue("white.800", "white.200")}
-              color={"white"}
-            >
+            <Heading fontSize={"3xl"} color={"white"} textAlign={"center"}>
               Logout
             </Heading>
-            <Text fontSize={"lg"} color={"gray.500"}>
+            <Text fontSize={"lg"} color={"gray.500"} textAlign={"center"}>
               さようなら
             </Text>
           </Stack>

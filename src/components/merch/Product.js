@@ -157,8 +157,8 @@ export default function Product({
           />
         </Box>
         <Stack pt={10} align={"center"}>
-          <Text color={"gray.500"} fontSize={"sm"} textTransform={"uppercase"}>
-            {item.brand}
+          <Text color={"gray.500"} fontSize={"sm"}>
+            {item?.brand}
           </Text>
           <Heading fontSize={"2xl"} fontFamily={"body"} fontWeight={500}>
             {item.item}
