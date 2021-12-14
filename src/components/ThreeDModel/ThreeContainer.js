@@ -6,9 +6,9 @@ import { Physics } from "@react-three/cannon";
 import { MapControls } from "@react-three/drei";
 import { Sky, Cloud } from "@react-three/drei";
 
-import Model from "./Compressed_collegealag";
+// import Model from "./Compressed_collegealag";
 // import Model from "./Temp";
-// import Model from "./Compressed_withoutgrass";
+import Model from "./Compressed_newcollege";
 
 // Styles
 import "../../styles/ThreeContainer.scss";
@@ -37,9 +37,8 @@ function Box({ history }) {
         kernelSize={KernelSize.SMALL} // The blur kernel size. Has no effect if blur is disabled.
         blur={false} // Whether the god rays should be blurred to reduce artifacts.
       /> */}
-      <pointLight position={[0, 20, 0]} />
 
-      <mesh position={[200, 2, 0]} onClick={() => history.push("/events/vsm")}>
+      <mesh position={[200, 0, 0]} onClick={() => history.push("/events/vsm")}>
         <boxBufferGeometry attach="geometry" />
         <meshLambertMaterial
           attach="material"
@@ -159,35 +158,289 @@ const ThreeContainer = ({ loading, setLoading }) => {
           {data ? (
             <color attach="background" args={["black"]} />
           ) : (
-            <color attach="background" args={["#FFffff"]} />
+            <color attach="background" args={["black"]} />
             // <></>
           )}
-          <spotLight
-            position={[100, 2500, 100]}
-            angle={0.7}
-            color={"#FFFFFF"}
-            castShadow={true}
+          <ambientLight intensity={1} color={"#0357a6"} />
+          {/*  /////////////////////////// EVENTS //////////////////////////////////////*/}
+          {/* IPL  */}
+          <pointLight
+            position={[165, 50, 100]}
+            distance={50}
+            intensity={3}
+            color={"#ffe692"}
           />
-          <ambientLight intensity={0.5} />
+          {/* IPL  */}
+          {/* VSM */}
+          <pointLight
+            position={[45, 10, 220]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          {/* VSM */}
 
-          {/* <pointLight />  */}
-          <pointLight position={[10, 10, 10]} />
-          <rectAreaLight
-            height={2}
-            width={20}
-            intensity={1}
-            position={[0, 6, 0]}
-            color={"red"}
+          {/* OCL  */}
+          <pointLight intensity={2} distance={100} position={[170, 1, -20]} />
+          {/* OCL  */}
+
+          {/*  /////////////////////////// EVENTS //////////////////////////////////////*/}
+          {/* Street Lights */}
+
+          {/* College Right */}
+          <pointLight
+            intensity={2}
+            position={[60, 10, -70]}
+            distance={50}
+            color={"#ffe692"}
           />
+          <pointLight
+            intensity={2}
+            position={[10, 10, -70]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[-40, 10, -70]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          {/* College Right */}
+
+          {/* College Front */}
+          <pointLight
+            intensity={2}
+            position={[-90, 10, -60]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[-90, 10, -10]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[-90, 10, 40]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[-90, 10, 90]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          {/* College Front */}
+
+          {/* College Left */}
+          <pointLight
+            intensity={2}
+            position={[60, 10, 140]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[10, 10, 140]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[-40, 10, 140]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[-90, 10, 140]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          {/* College Left */}
+
+          {/* Cabin and gate */}
+          <pointLight
+            intensity={3}
+            position={[240, 10, 430]}
+            distance={80}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={3}
+            position={[300, 10, 430]}
+            distance={80}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={3}
+            position={[240, 10, 480]}
+            distance={80}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={3}
+            position={[300, 10, 480]}
+            distance={80}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={3}
+            position={[240, 10, 530]}
+            distance={80}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={3}
+            position={[300, 10, 530]}
+            distance={80}
+            color={"#ffe692"}
+          />
+          {/* Cabin and gate */}
+
+          {/* Mandir Straight */}
+          <pointLight
+            intensity={2}
+            position={[260, 10, 70]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[260, 10, 120]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[260, 10, 170]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[260, 10, 220]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[230, 10, 270]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[230, 10, 320]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[230, 10, 370]}
+            distance={80}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[200, 10, 370]}
+            distance={80}
+            color={"#ffe692"}
+          />
+          {/* Mandir Straight */}
+
+          {/* Mandir Left */}
+          <pointLight
+            intensity={2}
+            position={[205, 10, 20]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[165, 10, 20]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[125, 10, 20]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          {/* Mandir Left */}
+
+          {/* College Straight Line */}
+          <pointLight
+            intensity={2}
+            position={[105, 10, -30]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[105, 10, 20]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[105, 10, 70]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[105, 10, 120]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[105, 10, 170]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[105, 10, 220]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[135, 10, 240]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[165, 10, 260]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            position={[195, 10, 280]}
+            distance={50}
+            color={"#ffe692"}
+          />
+
+          {/* College Straight Line */}
+          {/* Street Lights */}
+
           {/* <RectArealightWithHelper /> */}
           <Physics>
-            <Sky
+            {/* <Sky
               distance={450000}
               sunPosition={[5, 1, 0]}
               inclination={0}
               azimuth={0.15}
               turbidity={9.4}
-            />
+            /> */}
+            {/* <pointLight position={[200, 0, 0]} /> */}
             <Cloud
               opacity={0.5}
               speed={0.4} // Rotation speed
@@ -197,7 +450,7 @@ const ThreeContainer = ({ loading, setLoading }) => {
             />
             <Model setLoading={setLoading} />
 
-            <Plane />
+            {/* <Plane /> */}
 
             <Box history={history} />
 
