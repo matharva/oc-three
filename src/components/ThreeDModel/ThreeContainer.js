@@ -105,38 +105,44 @@ function Controls() {
 
 const ThreeContainer = ({ loading, setLoading }) => {
   const history = useHistory();
+  // const data = true;
   const [data, setData] = useState(true);
 
   return (
     <>
       {data ? (
-        <div id="magic" style={{ height: "100%" }}>
+        <div id="magic" style={{ height: "100%", zIndex: "10" }}>
           {/* Hello */}
           <div
-            style={{
-              position: "absolute",
-              top: "70%",
-              left: "50%",
-              backgroundColor: "transparent",
-              transform: "translateX(-50%)",
-              borderRadius: "20px",
-              border: "1px solid white",
-              padding: "1.5%",
-            }}
-            // className="loader-div"
+            // style={{
+            //   position: "absolute",
+            //   top: "70%",
+            //   left: "50%",
+            //   backgroundColor: "transparent",
+            //   transform: "translateX(-50%)",
+            //   borderRadius: "20px",
+            //   border: "1px solid white",
+            //   padding: "1.5%",
+            // }}
+            className={!loading ? "testDiv" : ""}
+            // id="testDiv"
           >
             {loading ? (
-              <button
-                disabled
-                onClick={() => {
-                  console.log("Not loaded: ", loading);
-                }}
-              >
-                Go To College
-              </button>
+              // <button
+              //   // disabled
+              //   className="testDiv-btn"
+              //   onClick={() => {
+              //     console.log("Not loaded: ", loading);
+              //     // setData(false);
+              //   }}
+              // >
+              //   Go To College
+              // </button>
+              <></>
             ) : (
               <button
                 // disabled={!loading}
+                className="testDiv-btn"
                 onClick={() => {
                   console.log("loaded");
                   setData(false);
@@ -148,49 +154,57 @@ const ThreeContainer = ({ loading, setLoading }) => {
           </div>
         </div>
       ) : null}
-      <Canvas camera={{ fov: 75, position: [107, 34, 234] }}>
-        <color attach="background" args={["#FFffff"]} />
-        {/* <spotLight
-          position={[100, 2500, 100]}
-          angle={0.7}
-          color={"#FFFFFF"}
-          castShadow={true}
-        />*/}
-        <ambientLight intensity={0.1} />
-
-        {/* <pointLight />  */}
-        {/* <rectAreaLight
-          height={2}
-          width={20}
-          intensity={1}
-          position={[0, 6, 0]}
-          color={"red"}
-        /> */}
-        {/* <RectArealightWithHelper /> */}
-        <Physics>
-          {/* <Sky
-            distance={450000}
-            sunPosition={[5, 1, 0]}
-            inclination={0}
-            azimuth={0.15}
-            turbidity={9.4}
-          /> */}
-          <Cloud
-            opacity={0.5}
-            speed={0.4} // Rotation speed
-            width={10} // Width of the full cloud
-            depth={1.5} // Z-dir depth
-            segments={20} // Number of particles
+      <div className={data ? " canvaDiv canvaBefore" : "canvaDiv canvaAfter"}>
+        <Canvas camera={{ fov: 75, position: [107, 34, 234] }}>
+          {data ? (
+            <color attach="background" args={["black"]} />
+          ) : (
+            <color attach="background" args={["#FFffff"]} />
+            // <></>
+          )}
+          <spotLight
+            position={[100, 2500, 100]}
+            angle={0.7}
+            color={"#FFFFFF"}
+            castShadow={true}
           />
-          {/* <Model setLoading={setLoading} /> */}
+          <ambientLight intensity={0.5} />
 
-          <Plane />
+          {/* <pointLight />  */}
+          <pointLight position={[10, 10, 10]} />
+          <rectAreaLight
+            height={2}
+            width={20}
+            intensity={1}
+            position={[0, 6, 0]}
+            color={"red"}
+          />
+          {/* <RectArealightWithHelper /> */}
+          <Physics>
+            <Sky
+              distance={450000}
+              sunPosition={[5, 1, 0]}
+              inclination={0}
+              azimuth={0.15}
+              turbidity={9.4}
+            />
+            <Cloud
+              opacity={0.5}
+              speed={0.4} // Rotation speed
+              width={10} // Width of the full cloud
+              depth={1.5} // Z-dir depth
+              segments={20} // Number of particles
+            />
+            <Model setLoading={setLoading} />
 
-          <Box history={history} />
+            <Plane />
 
-          <Controls />
-        </Physics>
-      </Canvas>
+            <Box history={history} />
+
+            <Controls />
+          </Physics>
+        </Canvas>
+      </div>
     </>
   );
 };

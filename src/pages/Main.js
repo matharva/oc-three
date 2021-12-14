@@ -17,7 +17,7 @@ import Footer from "../components/Footer";
 import CustomLoader from "../components/Customloader";
 
 const Main = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   return (
     <div className="main_wrapper">
@@ -25,7 +25,7 @@ const Main = () => {
       <MobileNav />
       <div className="main-container">
         <div className="model-box">
-          {loading && <CustomLoader />}
+          {/* {loading && <CustomLoader />} */}
           <ThreeContainer loading={loading} setLoading={setLoading} />
         </div>
       </div>
