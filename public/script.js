@@ -182,14 +182,15 @@ class CreateParticles {
     this.data.ease = 0.01;
     // this.onMouseDown(event);
   }
-  onTouchEnd() {
-    console.log("Touch End");
+  onTouchEnd(event) {
+    console.log("Touch End", event);
     this.onMouseUp();
-  }
-
-  onLongPress(event) {
-    console.log("Long Press: ", event);
-    this.onMouseDown(event);
+    const boundary = { clientX: 200, clientY: 550 };
+    if (
+      event.changedTouches[0].clientX > boundary.clientX ||
+      event.changedTouches[0].clientY > boundary.clientY
+    )
+      this.onMouseMove(boundary);
   }
 
   onMouseDown(event) {
