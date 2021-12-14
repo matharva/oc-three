@@ -170,8 +170,10 @@ const EventDetails = ({ event }) => {
                         colorScheme={"teal"}
                         size="lg"
                         variant={"solid"}
+                        disabled
+                        opacity={0.5}
                         onClick={() => {
-                          registerEvent();
+                          // registerEvent();
                         }}
                       >
                         {currentUser
