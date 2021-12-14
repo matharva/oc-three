@@ -6,9 +6,9 @@ import { Physics } from "@react-three/cannon";
 import { MapControls } from "@react-three/drei";
 import { Sky, Cloud } from "@react-three/drei";
 
-import Model from "./Compressed_collegealag";
+// import Model from "./Compressed_collegealag";
 // import Model from "./Temp";
-// import Model from "./Compressed_withoutgrass";
+import Model from "./Compressed_newcollege";
 
 // Styles
 import "../../styles/ThreeContainer.scss";
@@ -37,9 +37,9 @@ function Box({ history }) {
         kernelSize={KernelSize.SMALL} // The blur kernel size. Has no effect if blur is disabled.
         blur={false} // Whether the god rays should be blurred to reduce artifacts.
       /> */}
-      <pointLight position={[0, 20, 0]} />
+      <pointLight intensity={2} distance={100} position={[170, 1, -20]} />
 
-      <mesh position={[200, 2, 0]} onClick={() => history.push("/events/vsm")}>
+      <mesh position={[200, 0, 0]} onClick={() => history.push("/events/vsm")}>
         <boxBufferGeometry attach="geometry" />
         <meshLambertMaterial
           attach="material"
@@ -159,35 +159,56 @@ const ThreeContainer = ({ loading, setLoading }) => {
           {data ? (
             <color attach="background" args={["black"]} />
           ) : (
-            <color attach="background" args={["#FFffff"]} />
+            <color attach="background" args={["black"]} />
             // <></>
           )}
-          <spotLight
-            position={[100, 2500, 100]}
-            angle={0.7}
-            color={"#FFFFFF"}
-            castShadow={true}
-          />
-          <ambientLight intensity={0.5} />
 
+          <ambientLight intensity={1} color={"#0357a6"} />
+          <pointLight
+            position={[165, 1, 100]}
+            distance={50}
+            intensity={3}
+            color={"#ffe692"}
+          />
+          <pointLight
+            position={[105, 10, 120]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            position={[105, 10, 170]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            position={[105, 10, 220]}
+            distance={50}
+            color={"#ffe692"}
+          />
+          <pointLight
+            position={[45, 10, 220]}
+            distance={50}
+            color={"#ffe692"}
+          />
           {/* <pointLight />  */}
-          <pointLight position={[10, 10, 10]} />
+          {/* <pointLight position={[10, 10, 10]} />
           <rectAreaLight
             height={2}
             width={20}
             intensity={1}
             position={[0, 6, 0]}
             color={"red"}
-          />
+          /> */}
           {/* <RectArealightWithHelper /> */}
           <Physics>
-            <Sky
+            {/* <Sky
               distance={450000}
               sunPosition={[5, 1, 0]}
               inclination={0}
               azimuth={0.15}
               turbidity={9.4}
-            />
+            /> */}
+            {/* <pointLight position={[200, 0, 0]} /> */}
             <Cloud
               opacity={0.5}
               speed={0.4} // Rotation speed
@@ -197,7 +218,7 @@ const ThreeContainer = ({ loading, setLoading }) => {
             />
             <Model setLoading={setLoading} />
 
-            <Plane />
+            {/* <Plane /> */}
 
             <Box history={history} />
 
