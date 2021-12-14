@@ -1,6 +1,7 @@
 import { useDisclosure } from "@chakra-ui/hooks";
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../firebase";
+import { eventService } from "../services/eventService";
 
 const AuthContext = React.createContext();
 
@@ -20,10 +21,29 @@ export const AuthProvider = ({ children }) => {
     onClose: onLoginModalClose,
   } = useDisclosure();
 
-  useEffect(() => {
+  useEffect(async () => {
     const user = JSON.parse(localStorage.getItem("oculus-auth"));
     console.log("Current User", user);
-    if (user) setCurrentUser(user);
+    if (user) {
+      let newUserData = await eventService.getUser(user.email);
+      newUserData.photo = user.photo;
+      localStorage.setItem(
+        "oculus-auth",
+        JSON.stringify({
+          name: newUserData.name,
+          email: newUserData.email,
+          photo:
+            newUserData.photo ||
+            "https://lh3.googleusercontent.com/a/AATXAJygoxwXt-1TfxCyFDFo5aDfky3OiPFnVSGJcVRp=s96-c",
+          phoneNumber: newUserData.phoneNumber,
+          uid: newUserData.uid,
+          inviteCode: newUserData.inviteCode,
+          invited: newUserData.invited,
+        })
+      );
+      console.log("lol", newUserData);
+      setCurrentUser(newUserData);
+    }
   }, []);
 
   const value = {

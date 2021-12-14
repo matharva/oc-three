@@ -49,10 +49,20 @@ const ShowPaymentDetails = ({
   const [paymentType, setPaymentType] = useState(details[0].Type);
   const [refCode, setRefCode] = useState(null);
   const [teamName, setTeamName] = useState(null);
+  const [error, setError] = useState("");
+  const [teamError, setTeamError] = useState("");
 
   useEffect(() => {}, []);
 
   async function showRazorpayModal() {
+    if (error.length) {
+      return;
+    }
+
+    if (teamName.length <= 3) {
+      return;
+    }
+
     const amount = details.filter((i) => i.Type == paymentType)[0].Fee;
     console.log("The result is:", amount, eventName);
     const result = await loadScript(
@@ -136,6 +146,26 @@ const ShowPaymentDetails = ({
   const phoneHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+    console.log("hehehehe: ", value);
+    let isValid = true;
+    if (value) {
+      var pattern = new RegExp(/^[0-9\b]+$/);
+
+      if (!pattern.test(value)) {
+        isValid = false;
+
+        setError("Please enter only number.");
+        // errors["phone"] = ;
+      } else if (value.length != 10) {
+        isValid = false;
+        setError("Please enter valid phone number.");
+
+        // errors["phone"] = ;
+      }
+    }
+    if (isValid) {
+      setError("");
+    }
     // setRegisterForm((prevState) => {
     //   return {
     //     ...prevState,
@@ -164,6 +194,13 @@ const ShowPaymentDetails = ({
   const teamNameHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+
+    if (value.length <= 3) {
+      setTeamError("Team name must be greater than 3");
+    } else {
+      setTeamError("");
+    }
+
     setTeamName(value);
   };
 
@@ -237,7 +274,7 @@ const ShowPaymentDetails = ({
             </Select>
           </FormControl>
 
-          <FormControl id="email" marginBottom={"1.5rem"}>
+          <FormControl id="email" marginBottom={"1.5rem"} isRequired>
             <FormLabel color={"white"}>Team name: </FormLabel>
             <Input
               type="text"
@@ -245,7 +282,7 @@ const ShowPaymentDetails = ({
               onChange={teamNameHandler}
               color={"white"}
             />
-            {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
+            <FormHelperText>{teamError.length ? teamError : ""}</FormHelperText>
           </FormControl>
 
           {/* <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -270,7 +307,7 @@ const ShowPaymentDetails = ({
             />
           </Form.Group> */}
 
-          <FormControl id="contactNumber" marginBottom={"1.5rem"}>
+          <FormControl id="contactNumber" marginBottom={"1.5rem"} isRequired>
             <FormLabel color={"white"}>Phone Number: </FormLabel>
             <Input
               type="number"
@@ -278,8 +315,18 @@ const ShowPaymentDetails = ({
               onChange={phoneHandler}
               color={"white"}
             />
+            {/* <PhoneNumberInput
+              value={phoneNumber}
+              options={countryOptions}
+              placeholder="Enter phone number"
+              onChange={phoneHandler}
+            /> */}
             <FormHelperText>
-              We need it to add you to the respective event groups
+              {/* {}
+               */}
+              {error.length
+                ? error
+                : "We need it to add you to the respective event groups"}
             </FormHelperText>
           </FormControl>
 
