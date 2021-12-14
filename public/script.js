@@ -143,10 +143,9 @@ class CreateParticles {
   }
 
   bindEvents() {
-    // document.addEventListener("mousedown", this.onMouseDown.bind(this));
-    // document.addEventListener("mousemove", this.onMouseMove.bind(this));
-    // document.addEventListener("mouseup", this.onMouseUp.bind(this));
-    // document.addEventListener("long-press", this.onLongPress.bind(this));
+    document.addEventListener("mousedown", this.onMouseDown.bind(this));
+    document.addEventListener("mousemove", this.onMouseMove.bind(this));
+    document.addEventListener("mouseup", this.onMouseUp.bind(this));
     document.addEventListener(
       "touchstart",
       this.onTouchStart.bind(this),
@@ -156,8 +155,6 @@ class CreateParticles {
     document.addEventListener("touchmove", this.onTouchMove.bind(this), false);
   }
   onTouchMove(event) {
-    // console.log("Touch Move", event);
-    // console.log("In mouse down: ", event.changedTouches[0].clientX);
     this.mouse.x =
       (event.changedTouches[0].clientX / window.innerWidth) * 2 - 1;
     this.mouse.y =
@@ -165,7 +162,6 @@ class CreateParticles {
   }
 
   onTouchStart(event) {
-    console.log("Touch start", event);
     this.mouse.x =
       (event.changedTouches[0].clientX / window.innerWidth) * 2 - 1;
     this.mouse.y =
@@ -180,10 +176,8 @@ class CreateParticles {
     const pos = this.particles.geometry.attributes.position;
     this.buttom = true;
     this.data.ease = 0.01;
-    // this.onMouseDown(event);
   }
   onTouchEnd(event) {
-    console.log("Touch End", event);
     this.onMouseUp();
     const boundary = { clientX: 200, clientY: 550 };
     if (
@@ -194,7 +188,6 @@ class CreateParticles {
   }
 
   onMouseDown(event) {
-    console.log("In mouse down: ", event.clientX);
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     const vector = new THREE.Vector3(this.mouse.x, this.mouse.y, 0.5);
@@ -210,7 +203,6 @@ class CreateParticles {
   }
 
   onMouseUp() {
-    console.log("In mouse up");
     this.buttom = false;
     this.data.ease = 0.05;
   }
@@ -218,17 +210,6 @@ class CreateParticles {
   onMouseMove(event) {
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    // if (window.innerWidth > 720) {
-    //   setTimeout(() => {
-    //     this.onMouseDown(event);
-    //     setTimeout(() => {
-    //       this.onMouseUp();
-    //     }, 2000);
-    //   }, 1000);
-    // }
-    // document.addEventListener("long-press", function (e) {
-    //   console.log(e.target);
-    // });
   }
 
   render(level) {
