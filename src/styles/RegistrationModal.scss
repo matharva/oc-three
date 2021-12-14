@@ -91,27 +91,27 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  // background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+  // background: linear-gradient(to right, #ff4b2b, #ff416c);
   padding: 5rem;
-  button {
-    cursor: pointer;
-    background: transparent;
-    border-radius: 50px;
-    padding: 0.5rem 3.5rem;
-    border: 1px solid white;
-    color: white;
-    // width: 50%;
-    // height: 50%;
-    // align-items: center;
-    // justify-content: center;
-    // font-weight: 600;
-    font-size: 1rem;
+  // button {
+  //   cursor: pointer;
+  //   background: transparent;
+  //   border-radius: 50px;
+  //   padding: 0.5rem 3.5rem;
+  //   border: 1px solid white;
+  //   color: white;
+  //   // width: 50%;
+  //   // height: 50%;
+  //   // align-items: center;
+  //   // justify-content: center;
+  //   // font-weight: 600;
+  //   font-size: 1rem;
 
-    &:active {
-      outline: none;
-    }
-  }
+  //   &:active {
+  //     outline: none;
+  //   }
+  // }
 
   p {
     font-size: 0.9rem;

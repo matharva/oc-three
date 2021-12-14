@@ -30,6 +30,7 @@ const ShowJoinTeamDetails = ({
   const [code, setCode] = useState("");
   const [message, setMessage] = useState("");
   const [refCode, setRefCode] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {}, []);
 
@@ -60,6 +61,27 @@ const ShowJoinTeamDetails = ({
   const phoneHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+
+    console.log("hehehehe: ", value);
+    let isValid = true;
+    if (value) {
+      var pattern = new RegExp(/^[0-9\b]+$/);
+
+      if (!pattern.test(value)) {
+        isValid = false;
+
+        setError("Please enter only number.");
+        // errors["phone"] = ;
+      } else if (value.length != 10) {
+        isValid = false;
+        setError("Please enter valid phone number.");
+
+        // errors["phone"] = ;
+      }
+    }
+    if (isValid) {
+      setError("");
+    }
 
     setPhoneNumber(value);
   };
@@ -123,7 +145,7 @@ const ShowJoinTeamDetails = ({
             />
           </Form.Group> */}
 
-          <FormControl id="teamCode" marginBottom={"1.5rem"}>
+          <FormControl id="teamCode" isRequired marginBottom={"1.5rem"}>
             <FormLabel color={"white"}>Team Code: </FormLabel>
             <Input
               type="text"
@@ -148,7 +170,7 @@ const ShowJoinTeamDetails = ({
             />
           </Form.Group> */}
 
-          <FormControl id="contactNumber" marginBottom={"1.5rem"}>
+          <FormControl id="contactNumber" isRequired marginBottom={"1.5rem"}>
             <FormLabel color={"white"}>Phone Number: </FormLabel>
             <Input
               type="number"
@@ -157,7 +179,9 @@ const ShowJoinTeamDetails = ({
               color={"white"}
             />
             <FormHelperText>
-              We need it to add you to the respective event groups
+              {error.length
+                ? error
+                : "We need it to add you to the respective event groups"}
             </FormHelperText>
           </FormControl>
           {/* <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -181,7 +205,15 @@ const ShowJoinTeamDetails = ({
         </>
         {/* <br /> */}
         <div className="form-btn-div">
-          <Button colorScheme={"teal"} variant={"solid"} padding="0.5rem 1rem">
+          <Button
+            colorScheme={"teal"}
+            variant={"solid"}
+            padding="0.5rem 1rem"
+            onClick={() => {
+              // joinUser();
+              console.log("The register form is: ", phoneNumber, code, refCode);
+            }}
+          >
             Confirm
           </Button>
           {/* <button

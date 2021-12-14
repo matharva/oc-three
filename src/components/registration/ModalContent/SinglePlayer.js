@@ -1,11 +1,13 @@
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import Oculus from "../../../assets/Oculus.png";
 import axios from "axios";
 import {
   FormControl,
   FormHelperText,
   FormLabel,
-} from "@chakra-ui/form-control";
+  Input,
+  Button,
+} from "@chakra-ui/react";
 
 import React, { useEffect, useState } from "react";
 import { eventService } from "../../../services/eventService";
@@ -35,6 +37,7 @@ const SinglePlayer = ({
 }) => {
   const [phoneNumber, setPhoneNumber] = useState(currentUser.phoneNumber);
   const [refCode, setRefCode] = useState(null);
+  const [error, setError] = useState("");
 
   async function showRazorpayModal(amount) {
     console.log("The result is:", amount);
@@ -118,6 +121,28 @@ const SinglePlayer = ({
   const phoneHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+
+    console.log("hehehehe: ", value);
+    let isValid = true;
+    if (value) {
+      var pattern = new RegExp(/^[0-9\b]+$/);
+
+      if (!pattern.test(value)) {
+        isValid = false;
+
+        setError("Please enter only number.");
+        // errors["phone"] = ;
+      } else if (value.length != 10) {
+        isValid = false;
+        setError("Please enter valid phone number.");
+
+        // errors["phone"] = ;
+      }
+    }
+    if (isValid) {
+      setError("");
+    }
+
     setPhoneNumber(value);
   };
 
@@ -148,8 +173,8 @@ const SinglePlayer = ({
             onChange={phoneHandler}
             required
           ></input> */}
-          <Form>
-            {/* <Form.Group className="mb-3" controlId="formBasicEmail">
+          {/* <Form> */}
+          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label style={{ fontWeight: "bold" }}>Team Code </Form.Label>
               <Form.Control
                 type="email"
@@ -160,7 +185,7 @@ const SinglePlayer = ({
                 value={code}
               />
             </Form.Group> */}
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label style={{ fontWeight: "bold" }}>
                 Phone Number{" "}
               </Form.Label>
@@ -170,8 +195,8 @@ const SinglePlayer = ({
                 value={phoneNumber}
                 onChange={phoneHandler}
               />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            </Form.Group> */}
+          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label style={{ fontWeight: "bold" }}>
                 Referal Code{" "}
               </Form.Label>
@@ -181,25 +206,73 @@ const SinglePlayer = ({
                 value={refCode}
                 onChange={refCodeHandler}
               />
-            </Form.Group>
+            </Form.Group> */}
+          <FormControl id="referralCode" marginBottom={"1.5rem"}>
+            <FormLabel color={"white"}>Referral Code: </FormLabel>
+            <Input
+              type="text"
+              value={refCode}
+              onChange={refCodeHandler}
+              color={"white"}
+            />
+            <FormHelperText>To get referral points</FormHelperText>
+          </FormControl>
 
-            {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <FormControl id="contactNumber" marginBottom={"1.5rem"} isRequired>
+            <FormLabel color={"white"}>Phone Number: </FormLabel>
+            <Input
+              type="number"
+              value={phoneNumber}
+              onChange={phoneHandler}
+              color={"white"}
+            />
+            {/* <PhoneNumberInput
+              value={phoneNumber}
+              options={countryOptions}
+              placeholder="Enter phone number"
+              onChange={phoneHandler}
+            /> */}
+            <FormHelperText>
+              {/* {}
+               */}
+              {error.length
+                ? error
+                : "We need it to add you to the respective event groups"}
+            </FormHelperText>
+          </FormControl>
+
+          {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
           </Form.Group> */}
-            {/* <Button variant="primary" type="submit">
+          {/* <Button variant="primary" type="submit">
             Submit
           </Button> */}
-          </Form>
+          {/* </Form> */}
         </div>
         <div className="form-btn-div">
-          <button
+          {/* <button
             onClick={() => {
-              showRazorpayModal(eventData.Fee[0].Fee);
+              // showRazorpayModal(eventData.Fee[0].Fee);
               console.log("The data is: ", phoneNumber, refCode, eventData);
             }}
           >
             PAY
-          </button>
+          </button> */}
+
+          <Button
+            colorScheme={"teal"}
+            variant={"solid"}
+            onClick={() => {
+              // showRazorpayModal(eventData.Fee[0].Fee);
+              console.log("The data is: ", phoneNumber, refCode, eventData);
+            }}
+            // padding="0.5rem 1rem"
+            // padding={"1rem"}
+            size="lg"
+            marginBottom={"1.5rem"}
+          >
+            Pay
+          </Button>
         </div>
       </form>
       {/* </p> */}
