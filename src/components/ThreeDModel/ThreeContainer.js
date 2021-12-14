@@ -154,7 +154,10 @@ const ThreeContainer = ({ loading, setLoading }) => {
         </div>
       ) : null}
       <div className={data ? " canvaDiv canvaBefore" : "canvaDiv canvaAfter"}>
-        <Canvas camera={{ fov: 75, position: [107, 34, 234] }}>
+        <Canvas
+          camera={{ fov: 75, position: [107, 34, 234] }}
+          onClick={(e) => console.log("Location: ", e)}
+        >
           {data ? (
             <color attach="background" args={["black"]} />
           ) : (
@@ -180,8 +183,28 @@ const ThreeContainer = ({ loading, setLoading }) => {
           {/* VSM */}
 
           {/* OCL  */}
-          <pointLight intensity={2} distance={100} position={[170, 1, -20]} />
+          <pointLight
+            intensity={2}
+            distance={100}
+            position={[170, 1, -20]}
+            color={"red"}
+          />
           {/* OCL  */}
+
+          {/* Sabhagruha */}
+          <pointLight
+            intensity={3}
+            position={[0, 10, 40]}
+            distance={80}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={10}
+            position={[47, 10, 40]}
+            distance={20}
+            color={"#ffe692"}
+          />
+          {/* Sabhagruha */}
 
           {/*  /////////////////////////// EVENTS //////////////////////////////////////*/}
           {/* Street Lights */}
