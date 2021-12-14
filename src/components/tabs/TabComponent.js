@@ -5,6 +5,7 @@ import "../../styles/TabComponent.scss";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useRef } from "react";
 import { OC_BG } from "../../services/helpers";
+import Scene from "../ThreeDModel/Scene";
 
 function Box() {
   const boxRef = useRef();
@@ -110,6 +111,7 @@ const TabComponent = ({ tabs, defaultIndex = 0 }) => {
                   <Canvas style={{ width: "30px", height: "30px" }}>
                     <ambientLight intensity={0.5} />
                     <Box />
+                    {/* <Scene/> */}
                   </Canvas>
                 </div>
                 <motion.span

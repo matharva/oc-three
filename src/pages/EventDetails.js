@@ -13,7 +13,7 @@ import CustomLoader from "../components/Customloader";
 
 //Data and Services
 import { eventService } from "../services/eventService";
-import { Icon } from "@chakra-ui/react";
+import { Icon, Button } from "@chakra-ui/react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import EventContent from "../components/event/EventContent";
 import { EVENT_DATA } from "../services/helpers";
@@ -211,7 +211,24 @@ const EventDetails = ({ event }) => {
                       </div>
                     </div>
                     <div className="reg-btn-container">
-                      <button
+                      <Button
+                        colorScheme={"teal"}
+                        size="lg"
+                        variant={"solid"}
+                        onClick={() => {
+                          registerEvent();
+                        }}
+                        padding="0.5rem 1rem"
+                      >
+                        {currentUser
+                          ? (currentUser && paymentDone) || viewTeam
+                            ? eventData.isSingle
+                              ? "Registered"
+                              : "View Team"
+                            : "Register"
+                          : "Register"}
+                      </Button>
+                      {/* <button
                         className="reg-btn"
                         // disabled
                         style={{
@@ -230,7 +247,7 @@ const EventDetails = ({ event }) => {
                               : "View Team"
                             : "Register"
                           : "Register"}
-                      </button>
+                      </button> */}
                       {/* <Button colorScheme="teal">Button</Button> */}
                     </div>
                   </div>

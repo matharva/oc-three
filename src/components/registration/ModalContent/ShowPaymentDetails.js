@@ -1,14 +1,20 @@
-import { Form, Button } from "react-bootstrap";
+// import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import Oculus from "../../../assets/Oculus.png";
 import {
+  Heading,
   FormControl,
-  FormHelperText,
   FormLabel,
-} from "@chakra-ui/form-control";
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Select,
+  Button,
+} from "@chakra-ui/react";
 
 import React, { useEffect, useState } from "react";
 import { eventService } from "../../../services/eventService";
+import { OC_BG_DARK } from "../../../services/helpers";
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -163,56 +169,23 @@ const ShowPaymentDetails = ({
 
   return (
     <div className="payment-success-modal">
-      <h2
-        style={{ paddingBottom: "2rem", fontWeight: "bold" }}
+      <Heading
+        // style={{ paddingBottom: "2rem", fontWeight: "bold", color: "white" }}
+        color={"white"}
+        margin={"2rem 0"}
         className="form-header"
       >
-        FILL IN THESE DETAILS
-      </h2>
+        Fill in these details
+      </Heading>
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        {/* <select
-          name="type"
-          id="paymentType"
-          required
-          placeholder="Choose Payment type"
-          value={paymentType}
-          onChange={paymentHandler}
-        >
-          {details.map((item) => {
-            return (
-              <>
-                <option
-                  value={`${item.Type}`}
-                >{`${item.Type}: ${item.Fee}`}</option>
-                <br />
-              </>
-            );
-          })}
-        </select>
-        <br />
-        <input
-          type="text"
-          placeholder="Contact number"
-          value={phoneNumber}
-          onChange={phoneHandler}
-          required
-        ></input>
-        <br />
-        <input
-          type="text"
-          placeholder="Enter referral code..."
-          value={refCode}
-          onChange={refCodeHandler}
-        />
-        <br /> */}
-        <Form>
-          <Form.Group className="mb-3" controlId="">
+        <>
+          {/* <Form.Group className="mb-3" controlId="">
             <Form.Label style={{ fontWeight: "bold" }}>
-              Payment Type{" "}
+              Payment Type
             </Form.Label>
             <Form.Select
               aria-label="Default select example"
@@ -225,22 +198,56 @@ const ShowPaymentDetails = ({
               onChange={paymentHandler}
             >
               <option>Select Team Options</option>
-              {/* <option value="1"></option>
-              <option value="2">Two</option>
-              <option value="3">Three</option> */}
               {details.map((item) => {
                 return (
                   <>
                     <option
                       value={`${item.Type}`}
                     >{`${item.Type}: ${item.Fee}`}</option>
-                    {/* <br /> */}
+                
                   </>
                 );
               })}
             </Form.Select>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          </Form.Group> */}
+          <FormControl isRequired marginBottom={"1.5rem"}>
+            <FormLabel color={"white"}>Payment Type: </FormLabel>
+            <Select
+              id="paymentType"
+              value={paymentType}
+              onChange={paymentHandler}
+              color={"white"}
+              bg={OC_BG_DARK}
+            >
+              {/* <option>Select Team Options</option> */}
+              {details.map((item) => {
+                return (
+                  <>
+                    <option
+                      value={`${item.Type}`}
+                      // color={"black"}
+                      style={{ color: "black" }}
+                    >{`${item.Type}: ${item.Fee}`}</option>
+                  </>
+                );
+              })}
+              {/* <option>United Arab Emirates</option>
+              <option>Nigeria</option> */}
+            </Select>
+          </FormControl>
+
+          <FormControl id="email" marginBottom={"1.5rem"}>
+            <FormLabel color={"white"}>Team name: </FormLabel>
+            <Input
+              type="text"
+              value={teamName}
+              onChange={teamNameHandler}
+              color={"white"}
+            />
+            {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
+          </FormControl>
+
+          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label style={{ fontWeight: "bold" }}>Team Name </Form.Label>
             <Form.Control
               type="text"
@@ -248,9 +255,9 @@ const ShowPaymentDetails = ({
               value={teamName}
               onChange={teamNameHandler}
             />
-          </Form.Group>
+          </Form.Group> */}
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label style={{ fontWeight: "bold" }}>
               Phone Number{" "}
             </Form.Label>
@@ -260,8 +267,22 @@ const ShowPaymentDetails = ({
               value={phoneNumber}
               onChange={phoneHandler}
             />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          </Form.Group> */}
+
+          <FormControl id="contactNumber" marginBottom={"1.5rem"}>
+            <FormLabel color={"white"}>Phone Number: </FormLabel>
+            <Input
+              type="number"
+              value={phoneNumber}
+              onChange={phoneHandler}
+              color={"white"}
+            />
+            <FormHelperText>
+              We need it to add you to the respective event groups
+            </FormHelperText>
+          </FormControl>
+
+          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label style={{ fontWeight: "bold" }}>
               Referal Code{" "}
             </Form.Label>
@@ -271,7 +292,18 @@ const ShowPaymentDetails = ({
               value={refCode}
               onChange={refCodeHandler}
             />
-          </Form.Group>
+          </Form.Group> */}
+
+          <FormControl id="referralCode" marginBottom={"1.5rem"}>
+            <FormLabel color={"white"}>Referral Code: </FormLabel>
+            <Input
+              type="text"
+              value={refCode}
+              onChange={refCodeHandler}
+              color={"white"}
+            />
+            <FormHelperText>To get referral points</FormHelperText>
+          </FormControl>
 
           {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
@@ -279,12 +311,12 @@ const ShowPaymentDetails = ({
           {/* <Button variant="primary" type="submit">
             Submit
           </Button> */}
-        </Form>
+        </>
         <div className="form-btn-div">
-          <button
+          {/* <button
             className="reg-btn"
             onClick={() => {
-              showRazorpayModal();
+              // showRazorpayModal();
               console.log(
                 "The register form is: ",
                 phoneNumber,
@@ -296,7 +328,28 @@ const ShowPaymentDetails = ({
             }}
           >
             Proceed
-          </button>
+          </button> */}
+          <Button
+            colorScheme={"teal"}
+            variant={"solid"}
+            onClick={() => {
+              // showRazorpayModal();
+              console.log(
+                "The register form is: ",
+                phoneNumber,
+                paymentType,
+                refCode,
+                teamName,
+                eventName
+              );
+            }}
+            // padding="0.5rem 1rem"
+            // padding={"1rem"}
+            size="lg"
+            marginBottom={"1.5rem"}
+          >
+            Proceed
+          </Button>
         </div>
       </form>
     </div>

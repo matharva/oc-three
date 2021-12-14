@@ -18,11 +18,11 @@ const LoginModal = () => {
       scrollBehavior="inside"
       isCentered
       size="xl"
-      bg={OC_BG_DARK}
+      bg={"white"}
     >
       <ModalOverlay />
-      <ModalContent h="500px" w={"95%"}>
-        <ModalCloseButton />
+      <ModalContent h="500px" w={"95%"} rounded={true}>
+        <ModalCloseButton color={"white"} />
         <ModalBody p={0} m={0} bg={OC_BG_DARK}>
           <LoginContainer />
         </ModalBody>

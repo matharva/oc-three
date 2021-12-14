@@ -8,6 +8,8 @@ import { eventService } from "../../../services/eventService";
 import { PhoneIcon, AddIcon, WarningIcon, CloseIcon } from "@chakra-ui/icons";
 import "../../../styles/loginModal.scss";
 import { OC_BG_DARK } from "../../../services/helpers";
+import Login from "../../../assets/login1.svg";
+import Logout from "../../../assets/login3.svg";
 
 import {
   Stack,
@@ -111,35 +113,54 @@ const LoginContainer = () => {
   return (
     <Stack
       boxShadow={"2xl"}
-      // bg={useColorModeValue("white", "gray.700")}
-      bg={OC_BG_DARK}
-      rounded={"xl"}
+      height={"100%"}
       p={10}
       spacing={8}
       align={"center"}
+      justify={"center"}
     >
       {/* Login Image */}
       <Box style={{ width: "200px" }}>
         <Image
           w="100%"
-          src={`https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?size=338&ext=jpg`}
+          // src={!currentUser ? Login : Logout}
+          src={Login}
+          // src={`https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?size=338&ext=jpg`}
           alt="Segun Adebayo"
         />
       </Box>
+      {!currentUser ? (
+        <Stack align={"center"} spacing={2}>
+          <Heading
+            textTransform={"uppercase"}
+            fontSize={"3xl"}
+            // color={useColorModeValue("white.800", "white.200")}
+            color={"white"}
+          >
+            Login before you proceed
+          </Heading>
+          <Text fontSize={"lg"} color={"gray.500"}>
+            It'll take just a second
+          </Text>
+        </Stack>
+      ) : (
+        <>
+          <Stack align={"center"} spacing={2}>
+            <Heading
+              textTransform={"uppercase"}
+              fontSize={"3xl"}
+              // color={useColorModeValue("white.800", "white.200")}
+              color={"white"}
+            >
+              Logout
+            </Heading>
+            <Text fontSize={"lg"} color={"gray.500"}>
+              さようなら
+            </Text>
+          </Stack>
+        </>
+      )}
 
-      <Stack align={"center"} spacing={2}>
-        <Heading
-          textTransform={"uppercase"}
-          fontSize={"3xl"}
-          // color={useColorModeValue("white.800", "white.200")}
-          color={"white"}
-        >
-          Login before you proceed
-        </Heading>
-        <Text fontSize={"lg"} color={"gray.500"}>
-          It'll take just a second
-        </Text>
-      </Stack>
       {/* Login Image */}
 
       {/* Google Login Button */}
