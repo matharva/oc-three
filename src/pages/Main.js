@@ -18,7 +18,7 @@ import CustomLoader from "../components/Customloader";
 import { CircularProgress, Spinner } from "@chakra-ui/react";
 
 const Main = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   return (
     <div className="main_wrapper">
@@ -26,8 +26,8 @@ const Main = () => {
       <MobileNav />
       <div className="main-container">
         <div className="model-box">
-          {loading && <CustomLoader />}
-          <ThreeContainer setLoading={setLoading} />
+          {/* {loading && <CustomLoader />} */}
+          <ThreeContainer loading={loading} setLoading={setLoading} />
         </div>
       </div>
       <Footer />

@@ -10,7 +10,9 @@ export default function Model({ ...props }) {
   const { nodes, materials } = useGLTF("/compressed_withoutgrass.glb");
 
   useEffect(() => {
+    // props.setLoading(false);
     props.setLoading(false);
+    console.log("test: ");
   }, []);
   return (
     <group ref={group} {...props} dispose={null}>

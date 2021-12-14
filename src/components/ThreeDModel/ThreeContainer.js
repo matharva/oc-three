@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { RectAreaLightUniformsLib } from "./file";
 
 // Three imports
@@ -97,17 +97,65 @@ function Controls() {
 //   return null;
 // };
 
-const ThreeContainer = ({ setLoading }) => {
+const ThreeContainer = ({ loading, setLoading }) => {
   const history = useHistory();
-  const data = true;
+  // const data = true;
+  const [data, setData] = useState(true);
 
   return (
     <>
       {data ? (
-        <div id="magic" style={{ height: "100%" }}></div>
-      ) : (
+        <div id="magic" style={{ height: "100%", zIndex: "10" }}>
+          {/* Hello */}
+          <div
+            // style={{
+            //   position: "absolute",
+            //   top: "70%",
+            //   left: "50%",
+            //   backgroundColor: "transparent",
+            //   transform: "translateX(-50%)",
+            //   borderRadius: "20px",
+            //   border: "1px solid white",
+            //   padding: "1.5%",
+            // }}
+            className={!loading ? "testDiv" : ""}
+            // id="testDiv"
+          >
+            {loading ? (
+              // <button
+              //   // disabled
+              //   className="testDiv-btn"
+              //   onClick={() => {
+              //     console.log("Not loaded: ", loading);
+              //     // setData(false);
+              //   }}
+              // >
+              //   Go To College
+              // </button>
+              <></>
+            ) : (
+              <button
+                // disabled={!loading}
+                className="testDiv-btn"
+                onClick={() => {
+                  console.log("loaded");
+                  setData(false);
+                }}
+              >
+                Go To College
+              </button>
+            )}
+          </div>
+        </div>
+      ) : null}
+      <div className={data ? " canvaDiv canvaBefore" : "canvaDiv canvaAfter"}>
         <Canvas camera={{ fov: 75, position: [107, 34, 234] }}>
-          <color attach="background" args={["#FFffff"]} />
+          {data ? (
+            <color attach="background" args={["black"]} />
+          ) : (
+            <color attach="background" args={["#FFffff"]} />
+            // <></>
+          )}
           <spotLight
             position={[100, 2500, 100]}
             angle={0.7}
@@ -150,7 +198,7 @@ const ThreeContainer = ({ setLoading }) => {
             <Controls />
           </Physics>
         </Canvas>
-      )}
+      </div>
     </>
   );
 };

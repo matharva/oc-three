@@ -11,4 +11,35 @@
     transform: translate(-50%, -50%);
     z-index: 100;
   }
+  .testDiv {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    background-color: transparent;
+    transform: translateX(-50%);
+    border-radius: 40px;
+    border: 1px solid white;
+    padding: 1.5%;
+
+    @media screen and (max-width: 720px) {
+      padding: 5%;
+    }
+  }
+
+  .testDiv-btn:hover {
+    color: teal;
+    // border: 1px solid teal;
+  }
+  .testDiv-btn:hover .testDiv {
+    // color: teal;
+    border: 1px solid teal;
+  }
+
+  .canvaBefore {
+    height: 100%;
+    padding-top: 2rem;
+  }
+  .canvaAfter {
+    height: 100%;
+  }
 }
