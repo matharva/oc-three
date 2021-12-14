@@ -8,7 +8,7 @@ import { Sky, Cloud } from "@react-three/drei";
 
 // import Model from "./Compressed_collegealag";
 // import Model from "./Temp";
-import Model from "./Compressed_newcollege";
+// import Model from "./Compressed_newcollege";
 
 // Styles
 import "../../styles/ThreeContainer.scss";
@@ -144,7 +144,7 @@ const ThreeContainer = ({ loading, setLoading }) => {
                 className="testDiv-btn"
                 onClick={() => {
                   console.log("loaded");
-                  setData(false);
+                  // setData(false);
                 }}
               >
                 Go To College
@@ -184,8 +184,8 @@ const ThreeContainer = ({ loading, setLoading }) => {
 
           {/* OCL  */}
           <pointLight
-            intensity={2}
-            distance={100}
+            intensity={1}
+            distance={40}
             position={[170, 1, -20]}
             color={"red"}
           />
@@ -471,7 +471,7 @@ const ThreeContainer = ({ loading, setLoading }) => {
               depth={1.5} // Z-dir depth
               segments={20} // Number of particles
             />
-            <Model setLoading={setLoading} />
+            {/* <Model setLoading={setLoading} /> */}
 
             {/* <Plane /> */}
 

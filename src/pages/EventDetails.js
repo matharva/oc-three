@@ -146,12 +146,7 @@ const EventDetails = ({ event }) => {
               <div className="left-grid">
                 <div className="event-details-grid">
                   <div className="event-title-container">
-                    <div
-                      className="event-title"
-                      style={{ textAlign: "center" }}
-                    >
-                      {eventData.Title}
-                    </div>
+                    <div className="event-title">{eventData.Title}</div>
                   </div>
                   <EventContent eventData={eventData} />
 
@@ -170,10 +165,10 @@ const EventDetails = ({ event }) => {
                         colorScheme={"teal"}
                         size="lg"
                         variant={"solid"}
-                        disabled
+                        // disabled
                         opacity={0.5}
                         onClick={() => {
-                          // registerEvent();
+                          registerEvent();
                         }}
                       >
                         {currentUser

@@ -29,7 +29,7 @@ const Main = () => {
           <ThreeContainer loading={loading} setLoading={setLoading} />
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

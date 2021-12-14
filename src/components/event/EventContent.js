@@ -15,7 +15,7 @@ const EventContent = ({ eventData }) => {
     <Container maxW="container.xl" maxH="100%">
       <Tabs isFitted variant="enclosed" colorScheme="green">
         <TabList>
-          <Tab py="2">Description</Tab>
+          <Tab>Description</Tab>
           <Tab>Rules</Tab>
           <Tab>FAQ</Tab>
         </TabList>

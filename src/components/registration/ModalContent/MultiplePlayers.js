@@ -35,7 +35,7 @@ const MultiplePlayers = ({
           <Heading size="xl" color={"white"} margin={"2rem 0"}>
             Join a team
           </Heading>
-          <p style={{ color: "teal", marginBottom: "1rem" }}>
+          <p style={{ marginBottom: "1rem", color: "white" }}>
             Enter a team code to join an already registered team
           </p>
           {/* <input
