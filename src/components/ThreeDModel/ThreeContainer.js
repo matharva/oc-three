@@ -6,9 +6,9 @@ import { Physics } from "@react-three/cannon";
 import { MapControls } from "@react-three/drei";
 import { Sky, Cloud } from "@react-three/drei";
 
-import Model from "./Compressed_clg4";
+// import Model from "./Compressed_clg4";
 // import Model from "./Temp";
-// import Model from "./Compressed_withoutgrass";
+import Model from "./Compressed_withoutgrass";
 
 // Styles
 import "../../styles/ThreeContainer.scss";
@@ -99,7 +99,7 @@ function Controls() {
 
 const ThreeContainer = ({ setLoading }) => {
   const history = useHistory();
-  const data = false;
+  const data = true;
 
   return (
     <>
