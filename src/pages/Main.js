@@ -18,7 +18,7 @@ import CustomLoader from "../components/Customloader";
 import { CircularProgress, Spinner } from "@chakra-ui/react";
 
 const Main = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="main_wrapper">

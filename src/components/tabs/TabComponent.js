@@ -119,14 +119,16 @@ const TabComponent = ({ tabs, defaultIndex = 0 }) => {
                       ? {
                           color:
                             "linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
+                          fontFamily: "'Lobster', cursive;",
                           // display: "none",
                         }
                       : {
                           display: "none",
+                          fontFamily: "'Lobster', cursive;",
                         }
                   }
                 >
-                  {tab.title}
+                  <div className="tab-title">{tab.title}</div>
                 </motion.span>
               </a>
             </motion.li>

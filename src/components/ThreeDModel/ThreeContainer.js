@@ -1,12 +1,14 @@
 import React, { useRef, useEffect } from "react";
+import { RectAreaLightUniformsLib } from "./file";
 
 // Three imports
 import { Physics } from "@react-three/cannon";
 import { MapControls } from "@react-three/drei";
 import { Sky, Cloud } from "@react-three/drei";
 
-// import Model from "./Compressed_clg2";
-import Model from "./Compressed_withoutgrass";
+import Model from "./Compressed_clg4";
+// import Model from "./Temp";
+// import Model from "./Compressed_withoutgrass";
 
 // Styles
 import "../../styles/ThreeContainer.scss";
@@ -20,10 +22,27 @@ CameraControls.install({ THREE });
 
 function Box({ history }) {
   return (
-    <mesh position={[200, 2, 0]} onClick={() => history.push("/events/vsm")}>
-      <boxBufferGeometry attach="geometry" />
-      <meshLambertMaterial attach="material" color="hotpink" />
-    </mesh>
+    <>
+      {/* <GodRays
+        sun={sunRef}
+        blendFunction={BlendFunction.Screen} // The blend function of this effect.
+        samples={60} // The number of samples per pixel.
+        density={0.96} // The density of the light rays.
+        decay={0.9} // An illumination decay factor.
+        weight={0.4} // A light ray weight factor.
+        exposure={0.6} // A constant attenuation coefficient.
+        clampMax={1} // An upper bound for the saturation of the overall effect.
+        width={200} // Render width.
+        height={500} // Render height.
+        kernelSize={KernelSize.SMALL} // The blur kernel size. Has no effect if blur is disabled.
+        blur={false} // Whether the god rays should be blurred to reduce artifacts.
+      /> */}
+      <mesh position={[200, 2, 0]} onClick={() => history.push("/events/vsm")}>
+        <boxBufferGeometry attach="geometry" />
+        <meshPhysicalMaterial attach="material" color="hotpink" />
+      </mesh>
+      {/* <GodRays /> */}
+    </>
   );
 }
 
@@ -64,9 +83,23 @@ function Controls() {
   );
 }
 
+// const RectArealightWithHelper = () => {
+//   const { scene } = useThree();
+
+//   RectAreaLightUniformsLib.init();
+
+//   const rectLight = new THREE.RectAreaLight("red", 5, 4, 10);
+
+//   rectLight.position.set([-5, 5, 5]);
+//   scene.add(rectLight);
+//   scene.add(new RectAreaLightHelper(rectLight));
+
+//   return null;
+// };
+
 const ThreeContainer = ({ setLoading }) => {
   const history = useHistory();
-  const data = true;
+  const data = false;
 
   return (
     <>
@@ -82,6 +115,17 @@ const ThreeContainer = ({ setLoading }) => {
             castShadow={true}
           />
           <ambientLight intensity={0.5} />
+
+          {/* <pointLight />  */}
+          <pointLight position={[10, 10, 10]} />
+          <rectAreaLight
+            height={2}
+            width={20}
+            intensity={1}
+            position={[0, 6, 0]}
+            color={"red"}
+          />
+          {/* <RectArealightWithHelper /> */}
           <Physics>
             <Sky
               distance={450000}
@@ -89,7 +133,6 @@ const ThreeContainer = ({ setLoading }) => {
               inclination={0}
               azimuth={0.15}
               turbidity={9.4}
-              // mieDirectionalG={0.83}
             />
             <Cloud
               opacity={0.5}
@@ -101,6 +144,7 @@ const ThreeContainer = ({ setLoading }) => {
             <Model setLoading={setLoading} />
 
             <Plane />
+
             <Box history={history} />
 
             <Controls />

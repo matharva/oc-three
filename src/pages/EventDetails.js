@@ -213,7 +213,7 @@ const EventDetails = ({ event }) => {
                     <div className="reg-btn-container">
                       <button
                         className="reg-btn"
-                        disabled
+                        // disabled
                         style={{
                           // background: "-webkit-linear-gradient(to right, #ff4b2b, #ff416c);",
                           // background: "yellow",

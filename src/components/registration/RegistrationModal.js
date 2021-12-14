@@ -16,7 +16,7 @@ import MultiplePlayers from "./ModalContent/MultiplePlayers";
 import ShowJoinTeamDetails from "./ModalContent/ShowJoinTeamDetails";
 import ShowPaymentDetails from "./ModalContent/ShowPaymentDetails";
 import LoginContainer from "./Login/LoginContainer";
-import { OC_BG } from "../../services/helpers";
+import { OC_BG, OC_BG_DARK } from "../../services/helpers";
 
 const RegistrationModal = ({
   userTeam,
@@ -129,9 +129,21 @@ const RegistrationModal = ({
       size="xl"
     >
       <ModalOverlay />
-      <ModalContent h="500px" w={"95%"}>
+      <ModalContent
+        h="500px"
+        w={"95%"}
+        // style={{
+        //   background: "linear-gradient(to right, #2980b9, #6dd5fa, #ffffff);",
+        // }}
+      >
         <ModalCloseButton />
-        <ModalBody p={0} m={0}>
+        <ModalBody
+          p={0}
+          m={0}
+          style={{
+            background: "linear-gradient(to left, #2980b9, #6dd5fa, #ffffff);",
+          }}
+        >
           {renderComponent()}
         </ModalBody>
       </ModalContent>
