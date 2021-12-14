@@ -168,14 +168,15 @@ const ShowPaymentDetails = ({
   };
 
   return (
-    <div className="payment-success-modal">
+    <div className="payment-success-modal" style={{ padding: "0rem 2rem" }}>
       <Heading
         // style={{ paddingBottom: "2rem", fontWeight: "bold", color: "white" }}
         color={"white"}
         margin={"2rem 0"}
         className="form-header"
+        size="2xl"
       >
-        Fill in these details
+        Register Team
       </Heading>
       <form
         onSubmit={(e) => {

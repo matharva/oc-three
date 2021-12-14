@@ -129,7 +129,7 @@ const RegistrationModal = ({
       size="xl"
     >
       <ModalOverlay style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }} />
-      <ModalContent h="500px" w={"95%"} bg={"transparent"}>
+      <ModalContent h="500px" w={"95%"}>
         <ModalCloseButton color={"white"} />
         <ModalBody
           p={0}

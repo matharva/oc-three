@@ -71,14 +71,15 @@ const ShowJoinTeamDetails = ({
   };
 
   return (
-    <div className="payment-success-modal">
+    <div className="payment-success-modal" style={{ padding: "0rem 2rem" }}>
       <Heading
         // style={{ paddingBottom: "2rem", fontWeight: "bold", color: "white" }}
+        size="2xl"
         color={"white"}
         margin={"2rem 0"}
         className="form-header"
       >
-        Fill in these details
+        Join a team
       </Heading>
       <form
         onSubmit={(e) => {

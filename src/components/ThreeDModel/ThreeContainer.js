@@ -99,7 +99,7 @@ function Controls() {
 
 const ThreeContainer = ({ setLoading }) => {
   const history = useHistory();
-  const data = true;
+  const data = false;
 
   return (
     <>

@@ -206,7 +206,8 @@ const EventDetails = ({ event }) => {
                       <span>Date: </span>
                       <div className="reg-text">
                         {/* <span>Date:</span> */}
-                        Feb 13-14
+                        {eventData.date || "Feb 13-14"}
+
                         {/* {eventData.isSingle ? eventData.Fee[0].Fee : ""} */}
                       </div>
                     </div>
@@ -218,7 +219,6 @@ const EventDetails = ({ event }) => {
                         onClick={() => {
                           registerEvent();
                         }}
-                        padding="0.5rem 1rem"
                       >
                         {currentUser
                           ? (currentUser && paymentDone) || viewTeam
