@@ -1,9 +1,14 @@
-import { Form, Button } from "react-bootstrap";
+// import { Form, Button } from "react-bootstrap";
 import {
+  Heading,
   FormControl,
-  FormHelperText,
   FormLabel,
-} from "@chakra-ui/form-control";
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Select,
+  Button,
+} from "@chakra-ui/react";
 
 import React, { useEffect, useState } from "react";
 import { eventService } from "../../../services/eventService";
@@ -66,13 +71,16 @@ const ShowJoinTeamDetails = ({
   };
 
   return (
-    <div className="payment-success-modal">
-      <h2
-        style={{ paddingBottom: "2rem", fontWeight: "bold" }}
+    <div className="payment-success-modal" style={{ padding: "0rem 2rem" }}>
+      <Heading
+        // style={{ paddingBottom: "2rem", fontWeight: "bold", color: "white" }}
+        size="2xl"
+        color={"white"}
+        margin={"2rem 0"}
         className="form-header"
       >
-        FILL IN THESE DETAILS
-      </h2>
+        Join a team
+      </Heading>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -102,8 +110,8 @@ const ShowJoinTeamDetails = ({
           value={refCode}
           onChange={refCodeHandler}
         /> */}
-        <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+        <>
+          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label style={{ fontWeight: "bold" }}>Team Code </Form.Label>
             <Form.Control
               type="email"
@@ -113,8 +121,22 @@ const ShowJoinTeamDetails = ({
               }}
               value={code}
             />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          </Form.Group> */}
+
+          <FormControl id="teamCode" marginBottom={"1.5rem"}>
+            <FormLabel color={"white"}>Team Code: </FormLabel>
+            <Input
+              type="text"
+              onChange={(e) => {
+                setCode(e.target.value);
+              }}
+              value={code}
+              color={"white"}
+            />
+            {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
+          </FormControl>
+
+          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label style={{ fontWeight: "bold" }}>
               Phone Number{" "}
             </Form.Label>
@@ -124,7 +146,20 @@ const ShowJoinTeamDetails = ({
               value={phoneNumber}
               onChange={phoneHandler}
             />
-          </Form.Group>
+          </Form.Group> */}
+
+          <FormControl id="contactNumber" marginBottom={"1.5rem"}>
+            <FormLabel color={"white"}>Phone Number: </FormLabel>
+            <Input
+              type="number"
+              value={phoneNumber}
+              onChange={phoneHandler}
+              color={"white"}
+            />
+            <FormHelperText>
+              We need it to add you to the respective event groups
+            </FormHelperText>
+          </FormControl>
           {/* <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label style={{ fontWeight: "bold" }}>
               Referal Code{" "}
@@ -143,10 +178,13 @@ const ShowJoinTeamDetails = ({
           {/* <Button variant="primary" type="submit">
             Submit
           </Button> */}
-        </Form>
+        </>
         {/* <br /> */}
         <div className="form-btn-div">
-          <button
+          <Button colorScheme={"teal"} variant={"solid"} padding="0.5rem 1rem">
+            Confirm
+          </Button>
+          {/* <button
             className="reg-btn"
             onClick={() => {
               joinUser();
@@ -154,7 +192,7 @@ const ShowJoinTeamDetails = ({
             }}
           >
             Confirm
-          </button>
+          </button> */}
         </div>
       </form>
       {message}

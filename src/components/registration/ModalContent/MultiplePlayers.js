@@ -1,3 +1,4 @@
+import { Button, Heading } from "@chakra-ui/react";
 const MultiplePlayers = ({
   setPayTypeOpen,
   eventData,
@@ -31,7 +32,12 @@ const MultiplePlayers = ({
     <>
       <div className="modal-grid">
         <div className="section-one">
-          <h1>Join a team</h1>
+          <Heading size="xl" color={"white"} margin={"2rem 0"}>
+            Join a team
+          </Heading>
+          <p style={{ color: "teal", marginBottom: "1rem" }}>
+            Enter a team code to join an already registered team
+          </p>
           {/* <input
             type="text"
             placeholder="Enter your team code..."
@@ -40,24 +46,46 @@ const MultiplePlayers = ({
             }}
             value={code}
           /> */}
-          <button onClick={joinUser}>Join</button>
+          <Button
+            size="lg"
+            colorScheme={"teal"}
+            variant={"solid"}
+            onClick={joinUser}
+          >
+            Join
+          </Button>
+          {/* <button onClick={joinUser}>Join</button> */}
           {/* <p>{message}</p> */}
         </div>
-        <div className="section-two">
+        <div className="section-two" style={{ background: "white" }}>
           {/* <h1>Referral Code</h1>
           <input type="text" placeholder="Enter referral code..." /> */}
-          <p>
-            Once you click on the button, you will be redirected to the Razorpay
-            dashboard!
+          <Heading size="xl" color={"teal"} margin={"2rem 0"}>
+            Create a team
+          </Heading>
+          <p style={{ color: "teal" }}>
+            Once you click on the button, you will be redirected to the
+            Razorpay!
           </p>
-          <button
+          <Button
+            size="lg"
+            colorScheme={"teal"}
+            variant={"outline"}
+            onClick={() => {
+              console.log("wkuyehgfuyg");
+              setPayTypeOpen(true);
+            }}
+          >
+            Register now!
+          </Button>
+          {/* <button
             onClick={() => {
               console.log("wkuyehgfuyg");
               setPayTypeOpen(true);
             }}
           >
             Create a team
-          </button>
+          </button> */}
         </div>
       </div>
     </>

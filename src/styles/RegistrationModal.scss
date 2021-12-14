@@ -16,6 +16,7 @@
 
   .section-one {
     grid-area: one;
+
     //   border: 2px solid yellowgreen;
     display: flex;
     align-items: center;
@@ -30,18 +31,26 @@
       padding: 0.5rem;
       margin: 1rem 0;
     }
+    p {
+      font-size: 0.9rem;
 
-    button {
-      cursor: pointer;
-      background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-      background: linear-gradient(to right, #ff4b2b, #ff416c);
-      border-radius: 50px;
-      padding: 1rem 3rem;
-      border: 1px solid white;
-      color: white;
-      // font-weight: 600;
-      font-size: 1.1rem;
+      text-align: center;
+      width: 70%;
+      // border: 2px solid red;
+      margin-bottom: 1rem;
     }
+
+    // button {
+    //   cursor: pointer;
+    //   background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+    //   background: linear-gradient(to right, #ff4b2b, #ff416c);
+    //   border-radius: 50px;
+    //   padding: 1rem 3rem;
+    //   border: 1px solid white;
+    //   color: white;
+    //   // font-weight: 600;
+    //   font-size: 1.1rem;
+    // }
   }
 
   .section-two {
@@ -53,7 +62,7 @@
     justify-content: center;
     flex-direction: column;
     background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    background: linear-gradient(to right, rgb(48, 46, 46), rgb(44, 44, 44));
     //   display: none;
     h1 {
       color: white;
@@ -64,27 +73,13 @@
       margin: 1rem 0;
     }
 
-    button {
-      cursor: pointer;
-      background: transparent;
-      border-radius: 50px;
-      padding: 1rem 1.5rem;
-      border: 1px solid white;
-      color: white;
-      // font-weight: 600;
-      font-size: 1.2rem;
-
-      &:active {
-        outline: none;
-      }
-    }
-
     p {
       font-size: 0.9rem;
       color: white;
       // font-weight: bold;
       text-align: center;
       width: 70%;
+      // border: 2px solid red;
       margin-bottom: 1rem;
     }
   }
@@ -322,6 +317,25 @@
     color: white;
     // font-weight: bold;
     font-size: 1.1rem;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
   }
 }
 

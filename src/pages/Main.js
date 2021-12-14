@@ -15,7 +15,6 @@ import DesktopNav from "../components/navigation/DesktopNav";
 import MobileNav from "../components/navigation/MobileNav";
 import Footer from "../components/Footer";
 import CustomLoader from "../components/Customloader";
-import { CircularProgress, Spinner } from "@chakra-ui/react";
 
 const Main = () => {
   const [loading, setLoading] = useState(true);
@@ -30,7 +29,7 @@ const Main = () => {
           <ThreeContainer loading={loading} setLoading={setLoading} />
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

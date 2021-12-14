@@ -124,25 +124,24 @@ const RegistrationModal = ({
     <Modal
       onClose={handleClose}
       isOpen={isOpen}
-      scrollBehavior="inside"
+      // scrollBehavior="inside"
       isCentered
       size="xl"
     >
-      <ModalOverlay />
-      <ModalContent
-        h="500px"
-        w={"95%"}
-        // style={{
-        //   background: "linear-gradient(to right, #2980b9, #6dd5fa, #ffffff);",
-        // }}
-      >
-        <ModalCloseButton />
+      <ModalOverlay style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }} />
+      <ModalContent h="500px" w={"95%"}>
+        <ModalCloseButton color={"white"} />
         <ModalBody
           p={0}
           m={0}
-          style={{
-            background: "linear-gradient(to left, #2980b9, #6dd5fa, #ffffff);",
-          }}
+          bg={OC_BG_DARK}
+          // style={{
+          //   // border: "2px solid red",
+          //   backdropFilter: "blur(16px) saturate(180%)",
+          //   backgroundColor: "rgba(17, 25, 40, 0.75)",
+          //   borderRadius: "12px",
+          //   border: "1px solid rgba(255, 255, 255, 0.125)",
+          // }}
         >
           {renderComponent()}
         </ModalBody>

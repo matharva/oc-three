@@ -22,14 +22,14 @@ const navbarItems = [
     name: "Donation Drive",
     path: "donation-drive",
   },
-  {
-    name: "Market Place",
-    path: "marketplace",
-  },
-  {
-    name: "Merchandise",
-    path: "merch",
-  },
+  // {
+  //   name: "Market Place",
+  //   path: "marketplace",
+  // },
+  // {
+  //   name: "Merchandise",
+  //   path: "merch",
+  // },
 ];
 
 const NavContent = () => {
