@@ -12,3 +12,14 @@
     z-index: 100;
   }
 }
+
+.loader-div {
+  position: "absolute";
+  top: "70%";
+  left: "50%";
+  background-color: "transparent";
+  transform: "translateX(-50%)";
+  border-radius: "20px";
+  border: "1px solid white";
+  padding: "1.5%";
+}

@@ -26,10 +26,10 @@ const Main = () => {
       <div className="main-container">
         <div className="model-box">
           {loading && <CustomLoader />}
-          <ThreeContainer setLoading={setLoading} />
+          <ThreeContainer loading={loading} setLoading={setLoading} />
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

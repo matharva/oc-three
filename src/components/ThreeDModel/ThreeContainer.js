@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { RectAreaLightUniformsLib } from "./file";
 
 // Three imports
@@ -37,9 +37,15 @@ function Box({ history }) {
         kernelSize={KernelSize.SMALL} // The blur kernel size. Has no effect if blur is disabled.
         blur={false} // Whether the god rays should be blurred to reduce artifacts.
       /> */}
+      <pointLight position={[0, 20, 0]} />
+
       <mesh position={[200, 2, 0]} onClick={() => history.push("/events/vsm")}>
         <boxBufferGeometry attach="geometry" />
-        <meshPhysicalMaterial attach="material" color="hotpink" />
+        <meshLambertMaterial
+          attach="material"
+          color="hotpink"
+          emmissive={"0x000000"}
+        />
       </mesh>
       {/* <GodRays /> */}
     </>
@@ -97,60 +103,94 @@ function Controls() {
 //   return null;
 // };
 
-const ThreeContainer = ({ setLoading }) => {
+const ThreeContainer = ({ loading, setLoading }) => {
   const history = useHistory();
-  const data = false;
+  const [data, setData] = useState(true);
 
   return (
     <>
       {data ? (
-        <div id="magic" style={{ height: "100%" }}></div>
-      ) : (
-        <Canvas camera={{ fov: 75, position: [107, 34, 234] }}>
-          <color attach="background" args={["#FFffff"]} />
-          <spotLight
-            position={[100, 2500, 100]}
-            angle={0.7}
-            color={"#FFFFFF"}
-            castShadow={true}
+        <div id="magic" style={{ height: "100%" }}>
+          {/* Hello */}
+          <div
+            style={{
+              position: "absolute",
+              top: "70%",
+              left: "50%",
+              backgroundColor: "transparent",
+              transform: "translateX(-50%)",
+              borderRadius: "20px",
+              border: "1px solid white",
+              padding: "1.5%",
+            }}
+            // className="loader-div"
+          >
+            {loading ? (
+              <button
+                disabled
+                onClick={() => {
+                  console.log("Not loaded: ", loading);
+                }}
+              >
+                Go To College
+              </button>
+            ) : (
+              <button
+                // disabled={!loading}
+                onClick={() => {
+                  console.log("loaded");
+                  setData(false);
+                }}
+              >
+                Go To College
+              </button>
+            )}
+          </div>
+        </div>
+      ) : null}
+      <Canvas camera={{ fov: 75, position: [107, 34, 234] }}>
+        <color attach="background" args={["#FFffff"]} />
+        {/* <spotLight
+          position={[100, 2500, 100]}
+          angle={0.7}
+          color={"#FFFFFF"}
+          castShadow={true}
+        />*/}
+        <ambientLight intensity={0.1} />
+
+        {/* <pointLight />  */}
+        {/* <rectAreaLight
+          height={2}
+          width={20}
+          intensity={1}
+          position={[0, 6, 0]}
+          color={"red"}
+        /> */}
+        {/* <RectArealightWithHelper /> */}
+        <Physics>
+          {/* <Sky
+            distance={450000}
+            sunPosition={[5, 1, 0]}
+            inclination={0}
+            azimuth={0.15}
+            turbidity={9.4}
+          /> */}
+          <Cloud
+            opacity={0.5}
+            speed={0.4} // Rotation speed
+            width={10} // Width of the full cloud
+            depth={1.5} // Z-dir depth
+            segments={20} // Number of particles
           />
-          <ambientLight intensity={0.5} />
+          {/* <Model setLoading={setLoading} /> */}
 
-          {/* <pointLight />  */}
-          <pointLight position={[10, 10, 10]} />
-          <rectAreaLight
-            height={2}
-            width={20}
-            intensity={1}
-            position={[0, 6, 0]}
-            color={"red"}
-          />
-          {/* <RectArealightWithHelper /> */}
-          <Physics>
-            <Sky
-              distance={450000}
-              sunPosition={[5, 1, 0]}
-              inclination={0}
-              azimuth={0.15}
-              turbidity={9.4}
-            />
-            <Cloud
-              opacity={0.5}
-              speed={0.4} // Rotation speed
-              width={10} // Width of the full cloud
-              depth={1.5} // Z-dir depth
-              segments={20} // Number of particles
-            />
-            <Model setLoading={setLoading} />
+          <Plane />
 
-            <Plane />
+          <Box history={history} />
 
-            <Box history={history} />
-
-            <Controls />
-          </Physics>
-        </Canvas>
-      )}
+          <Controls />
+        </Physics>
+      </Canvas>
     </>
   );
 };

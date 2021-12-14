@@ -52,9 +52,7 @@ const Merchandise = () => {
 
   const [merchSuccess, setMerchSuccess] = useState(false);
 
-  const { jello, currentUser } = useAuth();
-  const { isOpen, onOpen, onClose, setModalContent, onLoginModalOpen } =
-    useAuth();
+  const { isOpen, onOpen, onClose, currentUser, onLoginModalOpen } = useAuth();
 
   return (
     <>

@@ -136,9 +136,6 @@ const EventDetails = ({ event }) => {
     <>
       {eventData ? (
         <>
-          {/* {!currentUser && (
-            <LoginContainer isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
-          )} */}
           <DesktopNav />
           <div className="event-container">
             <MobileNav />
@@ -149,64 +146,21 @@ const EventDetails = ({ event }) => {
               <div className="left-grid">
                 <div className="event-details-grid">
                   <div className="event-title-container">
-                    <div className="event-title">{eventData.Title}</div>
+                    <div
+                      className="event-title"
+                      style={{ textAlign: "center" }}
+                    >
+                      {eventData.Title}
+                    </div>
                   </div>
                   <EventContent eventData={eventData} />
-                  {/* <EventRegisterFooter /> */}
-                  {/* {eventData.isSingle ? (
-                    <div className="event-register">
-                      <div className="reg-amt">
-                        <span>Registration: </span>
-                        <div className="reg-text">
-                          <span>Rs:</span>
-                          {eventData.isSingle ? eventData.Fee[0].Fee : ""}
-                        </div>
-                      </div>
-                      <div className="reg-btn-container">
-                        <button
-                          className="reg-btn"
-                          onClick={() => {
-                            registerEvent();
-                          }}
-                        >
-                          {currentUser
-                            ? (currentUser && paymentDone) || viewTeam
-                              ? eventData.isSingle
-                                ? "Registered"
-                                : "View Team"
-                              : "Register"
-                            : "Register"}
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="event-register-single">
-                      <div className="reg-btn-container">
-                        <button
-                          className="reg-btn"
-                          onClick={() => {
-                            registerEvent();
-                          }}
-                          disabled={!load}
-                        >
-                          {currentUser
-                            ? (currentUser && paymentDone) || viewTeam
-                              ? eventData.isSingle
-                                ? "Registered"
-                                : "View Team"
-                              : "Register"
-                            : "Register"}
-                        </button>
-                      </div>
-                    </div>
-                  )} */}
 
                   <div className="event-register">
                     <div className="reg-amt">
                       <span>Date: </span>
                       <div className="reg-text">
                         {/* <span>Date:</span> */}
-                        {eventData.date || "Feb 13-14"}
+                        {eventData.Date || "Feb 13-14"}
 
                         {/* {eventData.isSingle ? eventData.Fee[0].Fee : ""} */}
                       </div>
@@ -228,27 +182,6 @@ const EventDetails = ({ event }) => {
                             : "Register"
                           : "Register"}
                       </Button>
-                      {/* <button
-                        className="reg-btn"
-                        // disabled
-                        style={{
-                          // background: "-webkit-linear-gradient(to right, #ff4b2b, #ff416c);",
-                          // background: "yellow",
-                          opacity: "0.5",
-                        }}
-                        onClick={() => {
-                          registerEvent();
-                        }}
-                      >
-                        {currentUser
-                          ? (currentUser && paymentDone) || viewTeam
-                            ? eventData.isSingle
-                              ? "Registered"
-                              : "View Team"
-                            : "Register"
-                          : "Register"}
-                      </button> */}
-                      {/* <Button colorScheme="teal">Button</Button> */}
                     </div>
                   </div>
                 </div>

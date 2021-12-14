@@ -25,7 +25,7 @@ const Description = ({ event }) => {
           <div className="event-img-container">
             <img src={Cal} alt="" />
           </div>
-          <div className="event-text">{event.Date}</div>
+          <div className="event-text">{event.max}</div>
         </div>
         <div className="event-prize">
           <div className="event-img-container">
