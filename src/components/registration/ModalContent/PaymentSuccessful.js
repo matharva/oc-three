@@ -1,4 +1,5 @@
 import Payment from "../../../assets/done.jpg";
+import { Heading, Button } from "@chakra-ui/react";
 
 const PaymentSuccessful = ({ eventData, setViewTeam }) => {
   return (
@@ -7,13 +8,24 @@ const PaymentSuccessful = ({ eventData, setViewTeam }) => {
         <div className="payment-img-container">
           <img src={Payment} alt="" />
         </div>
-        <h1>Successful Payment</h1>
+        <Heading style={{ color: "white" }}>Successful Payment</Heading>
       </div>
-      <p>Your payment for event {eventData.Title} was successfully completed</p>
+      <p style={{ color: "white" }}>
+        Your payment for event {eventData.Title} was successfully completed
+      </p>
       {!eventData.isSingle && (
-        <button className="team-details-btn" onClick={() => setViewTeam(true)}>
-          Team Details
-        </button>
+        // <button className="team-details-btn" onClick={() => setViewTeam(true)}>
+
+        //   Team Details
+        // </button>
+        <Button
+          colorScheme={"teal"}
+          variant={"solid"}
+          padding="0.5rem 1rem"
+          onClick={() => setViewTeam(true)}
+        >
+          Confirm
+        </Button>
       )}
     </div>
   );
