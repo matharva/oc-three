@@ -126,7 +126,7 @@ const ThreeContainer = ({ loading, setLoading }) => {
             className={!loading ? "testDiv" : ""}
             // id="testDiv"
           >
-            {loading ? (
+            {false ? (
               // <button
               //   // disabled
               //   className="testDiv-btn"
@@ -144,7 +144,7 @@ const ThreeContainer = ({ loading, setLoading }) => {
                 className="testDiv-btn"
                 onClick={() => {
                   console.log("loaded");
-                  // setData(false);
+                  setData(false);
                 }}
               >
                 Go To College
