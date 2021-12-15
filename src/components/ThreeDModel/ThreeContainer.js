@@ -15,8 +15,8 @@ const ThreeContainer = ({ loading, setLoading }) => {
     <>
       {data ? (
         <div id="magic" style={{ height: "100%", zIndex: "10" }}>
-          <div className={!false ? "testDiv" : ""}>
-            {false ? (
+          {/* <div className={!false ? "testDiv" : ""}>
+            {true ? (
               <></>
             ) : (
               <button
@@ -29,10 +29,10 @@ const ThreeContainer = ({ loading, setLoading }) => {
                 Go To College
               </button>
             )}
-          </div>
+          </div> */}
         </div>
       ) : null}
-      <div className={data ? " canvaDiv canvaBefore" : "canvaDiv canvaAfter"}>
+      {/* <div className={data ? " canvaDiv canvaBefore" : "canvaDiv canvaAfter"}>
         <iframe
           src={"https://oculus2021-c12c7.web.app/"}
           height={"100%"}
@@ -40,7 +40,7 @@ const ThreeContainer = ({ loading, setLoading }) => {
           zIndex={-1}
           title="model"
         ></iframe>
-      </div>
+      </div> */}
     </>
   );
 };

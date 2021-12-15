@@ -165,7 +165,7 @@ const EventDetails = ({ event }) => {
                         colorScheme={"teal"}
                         size="lg"
                         variant={"solid"}
-                        // disabled
+                        disabled
                         opacity={0.5}
                         onClick={() => {
                           registerEvent();
