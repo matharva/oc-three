@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Styles
 import "../../styles/ThreeContainer.scss";
+// import { preload } from "../tabs/script";
 
 const ThreeContainer = ({ loading, setLoading }) => {
   const [data, setData] = useState(true);
+
+  // useEffect(() => {
+  //   preload();
+  // }, []);
 
   return (
     <>

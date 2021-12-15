@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import "../../styles/TabComponent.scss";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useRef } from "react";
+// import Model from "../ThreeDModel/Tech_laptop";
 
 function Box() {
   const boxRef = useRef();
@@ -105,12 +106,12 @@ const TabComponent = ({ tabs, defaultIndex = 0 }) => {
             >
               <a onClick={() => onTabClick(index)}>
                 <div className="img-icon-container">
-                  {/* <img src={tab.icon} alt="" /> */}
-                  <Canvas style={{ width: "30px", height: "30px" }}>
+                  <img src={tab.icon} alt="" />
+                  {/* <Canvas style={{ width: "30px", height: "30px" }}>
                     <ambientLight intensity={0.5} />
                     <Box />
-                    {/* <Scene/> */}
-                  </Canvas>
+            
+                  </Canvas> */}
                 </div>
                 <motion.span
                   variants={tabTextVariant}

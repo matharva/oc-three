@@ -2,7 +2,11 @@
 import TabContent from "./TabContent";
 
 // Assets
-import tech from "../../assets/tech.png";
+// import tech from "../../assets/tech.png";
+import tech from "../../assets/tech.jpg";
+import fun from "../../assets/fun.jpeg";
+import pre from "../../assets/pre-events.jpeg";
+import cult from "../../assets/cultural.jpeg";
 
 import { EVENT_DATA, OC_BG } from "../../services/helpers";
 
@@ -21,7 +25,7 @@ const tabs = [
   {
     title: "Fun",
     id: "hotels",
-    icon: tech,
+    icon: fun,
     color:
       "linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
     content: TabContent,
@@ -38,7 +42,7 @@ const tabs = [
   {
     title: "Pre-Events",
     id: "offers",
-    icon: tech,
+    icon: pre,
     color:
       "linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
     content: TabContent,
@@ -47,7 +51,7 @@ const tabs = [
   {
     title: "Cultural",
     id: "offers",
-    icon: tech,
+    icon: cult,
     color:
       "linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
     content: TabContent,

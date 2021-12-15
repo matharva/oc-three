@@ -2,7 +2,7 @@
 // const THREE = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
 const THREE = window.THREE;
 console.log("Three: ", THREE);
-const preload = () => {
+export const preload = () => {
   let manager = new THREE.LoadingManager();
   manager.onLoad = function () {
     const environment = new Environment(typo, particle);
