@@ -29,7 +29,7 @@ const Main = () => {
           <ThreeContainer loading={loading} setLoading={setLoading} />
         </div>
       </div>
-      {window.innerWidth > 720 ? <Footer /> : <></>}
+      {/* {window.innerWidth > 720 ? <Footer /> : <></>} */}
     </div>
   );
 };

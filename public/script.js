@@ -67,7 +67,7 @@ class Environment {
       10000
     );
     if (window.innerWidth > 720) {
-      this.camera.position.set(0, 0, 100);
+      this.camera.position.set(0, 0, 120);
     } else this.camera.position.set(0, 0, 175);
   }
 

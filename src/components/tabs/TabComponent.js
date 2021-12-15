@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import "../../styles/TabComponent.scss";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useRef } from "react";
-// import Model from "../ThreeDModel/Tech_laptop";
 
 function Box() {
   const boxRef = useRef();
