@@ -26,7 +26,9 @@ const ShowJoinTeamDetails = ({
   //   paymentType: details[0].Type,
   //   phoneNumber: currentUser.phoneNumber,
   // });
-  const [phoneNumber, setPhoneNumber] = useState(currentUser.phoneNumber);
+  const [phoneNumber, setPhoneNumber] = useState(
+    currentUser.phoneNumber ? currentUser.phoneNumber : ""
+  );
   const [code, setCode] = useState("");
   const [message, setMessage] = useState("");
   const [refCode, setRefCode] = useState("");
@@ -35,7 +37,19 @@ const ShowJoinTeamDetails = ({
   useEffect(() => {}, []);
 
   const joinUser = async () => {
+    if (!code.length) {
+      return;
+    }
+
+    if (error.length) {
+      return;
+    }
     console.log("The code is: ", phoneNumber, code, refCode);
+
+    if (phoneNumber.length != 10) {
+      return;
+    }
+
     let updatedUser = await eventService.setUserPhoneNumber(
       phoneNumber,
       currentUser
@@ -43,11 +57,22 @@ const ShowJoinTeamDetails = ({
     if (updatedUser.phoneNumber) {
       let joinData = await eventService.joinUser({
         teamCode: code,
-        userId: currentUser.uid,
+        email: currentUser.email,
         eventName: eventData.Title,
         // inviteCode: refCode,
       });
-      if (!joinData.Message.includes("unsuccessfully")) {
+      console.log("Joindata: ", joinData);
+      if (joinData.Message && joinData.Message == "Incorrect teamCode") {
+        setMessage("Incorrect Team Code");
+        return;
+      }
+
+      // if (joinData.Message) {
+      //   setMessage(joinData.Message);
+      //   return;
+      // }
+
+      if (joinData.registeredTeam) {
         setJoin(true);
         // setIsOpen(false);
         // onOpen();
@@ -210,7 +235,7 @@ const ShowJoinTeamDetails = ({
             variant={"solid"}
             padding="0.5rem 1rem"
             onClick={() => {
-              // joinUser();
+              joinUser();
               console.log("The register form is: ", phoneNumber, code, refCode);
             }}
           >
@@ -227,7 +252,9 @@ const ShowJoinTeamDetails = ({
           </button> */}
         </div>
       </form>
-      {message}
+      <div>
+        <h2 style={{ color: "white" }}>{message}</h2>
+      </div>
       {/* {details.map((item) => {
         return (
           <>

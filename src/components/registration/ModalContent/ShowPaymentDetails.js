@@ -55,14 +55,13 @@ const ShowPaymentDetails = ({
   useEffect(() => {}, []);
 
   async function showRazorpayModal() {
-    if (error.length) {
-      return;
-    }
-
     if (teamName.length <= 3) {
       return;
     }
-
+    console.log("sgsgsgs");
+    if (error.length) {
+      return;
+    }
     const amount = details.filter((i) => i.Type == paymentType)[0].Fee;
     console.log("The result is:", amount, eventName);
     const result = await loadScript(
@@ -381,7 +380,7 @@ const ShowPaymentDetails = ({
             colorScheme={"teal"}
             variant={"solid"}
             onClick={() => {
-              // showRazorpayModal();
+              showRazorpayModal();
               console.log(
                 "The register form is: ",
                 phoneNumber,

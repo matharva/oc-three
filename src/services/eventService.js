@@ -128,7 +128,7 @@ async function postPayment(postData) {
 
 async function joinUser(postData) {
   try {
-    let url = process.env.REACT_APP_OCULUS_API + "/addToTeam/";
+    let url = process.env.REACT_APP_OCULUS_API + "/adminUpdateTeamMembers/";
     console.log(url);
     // let url = "https://oculus-2022.herokuapp.com/addToTeam/";
     let data = await axios.post(url, postData);
