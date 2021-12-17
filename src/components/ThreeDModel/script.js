@@ -21,13 +21,6 @@ export const preload = () => {
   );
 };
 
-if (
-  document.readyState === "complete" ||
-  (document.readyState !== "loading" && !document.documentElement.doScroll)
-)
-  preload();
-else document.addEventListener("DOMContentLoaded", preload);
-
 class Environment {
   constructor(font, particle) {
     this.font = font;
@@ -67,7 +60,7 @@ class Environment {
       10000
     );
     if (window.innerWidth > 720) {
-      this.camera.position.set(0, 0, 120);
+      this.camera.position.set(0, 0, 100);
     } else this.camera.position.set(0, 0, 175);
   }
 
