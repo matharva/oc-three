@@ -41,80 +41,110 @@ const SinglePlayer = ({
 
   async function showRazorpayModal(amount) {
     console.log("The result is:", amount);
-    const result = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
-    );
-    if (!result) {
-      alert("Dard");
-      return;
-    }
+    // const result = await loadScript(
+    //   "https://checkout.razorpay.com/v1/checkout.js"
+    // );
+    // if (!result) {
+    //   alert("Dard");
+    //   return;
+    // }
     const data = {
       event: eventData.Title,
       amount: parseInt(amount),
     };
 
-    console.log("The result is:", result, data, eventData);
-    const resData = await axios.post(
-      "https://us-central1-oculus2022-75997.cloudfunctions.net/payment",
-      data
-    );
+    console.log("The result is:", data, eventData);
+    // const resData = await axios.post(
+    //   "https://us-central1-oculus2022-75997.cloudfunctions.net/payment",
+    //   data
+    // );
 
-    handleClose();
-    console.log("The resData is: ", resData);
+    // handleClose();
+    // console.log("The resData is: ", resData);
 
     let updatedUser = await eventService.setUserPhoneNumber(
       phoneNumber,
       currentUser
     );
     if (updatedUser.phoneNumber) {
-      const options = {
-        key: resData?.data?.key, // Enter the Key ID generated from the Dashboard
-        amount: resData?.data?.order?.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        currency: "INR",
-        name: eventData.Title,
-        description: `${eventData.Title} Transaction`,
-        image: Oculus,
-        order_id: resData?.data?.order?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        handler: async function (response) {
-          let paymentBody;
-          if (refCode) {
-            paymentBody = {
-              paymentId: response.razorpay_payment_id,
-              eventName: eventData.Title,
-              userId: currentUser.uid,
-              teamName: "Single Player",
-              inviteCode: refCode,
-            };
-          } else {
-            paymentBody = {
-              paymentId: response.razorpay_payment_id,
-              eventName: eventData.Title,
-              userId: currentUser.uid,
-              teamName: "Single Player",
-            };
-          }
-          let paymentData = await eventService.postPayment(paymentBody);
-          if (paymentData) {
-            setPaymentDone(true);
-            setIsPaymentSuccess(true);
-          }
-          onOpen();
-        },
-        prefill: {
-          name: currentUser.name,
-          contact: currentUser.phoneNumber,
+      let paymentBody;
+      if (refCode) {
+        paymentBody = {
+          // paymentId: response.razorpay_payment_id,
+          eventName: eventData.Title,
+          // userId: currentUser.uid,
           email: currentUser.email,
-        },
-        notes: {
-          address: "Razorpay Corporate Office",
-        },
-        theme: {
-          color: "#3399cc",
-        },
-      };
-      console.log("The options are: ", options);
-      var rzp1 = new window.Razorpay(options);
-      rzp1.open();
+          teamName: "Single Player",
+          inviteCode: refCode,
+          paymentStatus: false,
+        };
+      } else {
+        paymentBody = {
+          // paymentId: response.razorpay_payment_id,
+          eventName: eventData.Title,
+          // userId: currentUser.uid,
+          email: currentUser.email,
+
+          teamName: "Single Player",
+          paymentStatus: false,
+        };
+      }
+      let paymentData = await eventService.postPayment(paymentBody);
+      if (paymentData) {
+        setPaymentDone(true);
+        setIsPaymentSuccess(true);
+      }
+
+      // const options = {
+      //   key: resData?.data?.key, // Enter the Key ID generated from the Dashboard
+      //   amount: resData?.data?.order?.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      //   currency: "INR",
+      //   name: eventData.Title,
+      //   description: `${eventData.Title} Transaction`,
+      //   image: Oculus,
+      //   order_id: resData?.data?.order?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      //   handler: async function (response) {
+      //     let paymentBody;
+      //     if (refCode) {
+      //       paymentBody = {
+      //         paymentId: response.razorpay_payment_id,
+      //         eventName: eventData.Title,
+      //         userId: currentUser.uid,
+      //         teamName: "Single Player",
+      //         inviteCode: refCode,
+      //         payment: false,
+      //       };
+      //     } else {
+      //       paymentBody = {
+      //         paymentId: response.razorpay_payment_id,
+      //         eventName: eventData.Title,
+      //         userId: currentUser.uid,
+      //         teamName: "Single Player",
+      //         payment: false,
+      //       };
+      //     }
+      //     let paymentData = await eventService.postPayment(paymentBody);
+      //     if (paymentData) {
+      //       setPaymentDone(true);
+      //       setIsPaymentSuccess(true);
+      //     }
+      //     onOpen();
+      //   },
+      //   prefill: {
+      //     name: currentUser.name,
+      //     contact: currentUser.phoneNumber,
+      //     email: currentUser.email,
+      //   },
+      //   notes: {
+      //     address: "Razorpay Corporate Office",
+      //   },
+      //   theme: {
+      //     color: "#3399cc",
+      //   },
+      // };
+      // console.log("The options are: ", options);
+      // var rzp1 = new window.Razorpay(options);
+      // rzp1.open();
     }
   }
 
@@ -263,7 +293,7 @@ const SinglePlayer = ({
             colorScheme={"teal"}
             variant={"solid"}
             onClick={() => {
-              // showRazorpayModal(eventData.Fee[0].Fee);
+              showRazorpayModal(eventData.Fee[0].Fee);
               console.log("The data is: ", phoneNumber, refCode, eventData);
             }}
             // padding="0.5rem 1rem"

@@ -68,7 +68,7 @@ const TeamModal = ({ userTeam }) => {
             </p>
 
             <Heading size="md" textAlign="center" color="white">
-              {userTeam?.TeamName}
+              {userTeam?.TeamName || userTeam?.teamName}
             </Heading>
           </Flex>
         </Flex>
