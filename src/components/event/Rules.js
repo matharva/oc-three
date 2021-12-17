@@ -16,7 +16,7 @@ const Rules = ({ rules }) => {
           );
         })}
 
-        <Box padding={2}></Box>
+        <Box padding={5}></Box>
       </List>
     </>
   );

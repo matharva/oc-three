@@ -2,9 +2,24 @@ import React from "react";
 import ShowMoreText from "react-show-more-text";
 
 // Assets
-import Technical from "../../assets/tech.png";
-import Cal from "../../assets/calendar.jpg";
-import Prize from "../../assets/prize.jpg";
+import tech from "../../assets/tech.jpg";
+import fun from "../../assets/fun.jpeg";
+import pre from "../../assets/pre-events.jpeg";
+import cult from "../../assets/cultural.jpeg";
+
+import Cal from "../../assets/members.jpeg";
+import Prize from "../../assets/prize.jpeg";
+
+function renderImage(type) {
+  if (type === "Technical") return tech;
+  if (type === "Fun") return fun;
+  if (type === "Pre-events") return pre;
+  if (type === "Cultural") return cult;
+}
+function renderMembers(mem) {
+  if (mem == 1) return "Solo";
+  else return `Team (${mem})`;
+}
 
 const Description = ({ event }) => {
   return (
@@ -17,15 +32,15 @@ const Description = ({ event }) => {
       <div className="section-1">
         <div className="event-type">
           <div className="event-img-container">
-            <img src={Technical} alt="" />
+            <img src={renderImage(event.Category)} alt="" />
           </div>
-          <div className="event-text">{"Techincal"}</div>
+          <div className="event-text">{event.Category}</div>
         </div>
         <div className="event-date">
           <div className="event-img-container">
             <img src={Cal} alt="" />
           </div>
-          <div className="event-text">{event.max}</div>
+          <div className="event-text">{renderMembers(event.max)}</div>
         </div>
         <div className="event-prize">
           <div className="event-img-container">

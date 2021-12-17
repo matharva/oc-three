@@ -165,7 +165,7 @@ const EventDetails = ({ event }) => {
                         colorScheme={"teal"}
                         size="lg"
                         variant={"solid"}
-                        // disabled
+                        disabled
                         opacity={0.5}
                         onClick={() => {
                           registerEvent();
@@ -200,7 +200,7 @@ const EventDetails = ({ event }) => {
               </div>
             </div>
           </div>
-          {window.innerWidth > 720 ? <Footer /> : <></>}
+          <Footer />
         </>
       ) : (
         <div className="loader-div">
