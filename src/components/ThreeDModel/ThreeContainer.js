@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
+import Pop from "../../assets/pop.jpg";
 
 // Styles
 import "../../styles/ThreeContainer.scss";
 import { preload } from "./script";
 
+function InfoCard({ showNavigationCard }) {
+  return (
+    <div
+      className={`info-card-container ${!showNavigationCard && "fade-hidden"}`}
+    >
+      <img src={Pop} alt="" />
+    </div>
+  );
+}
+
 const ThreeContainer = () => {
   const [isModelLoaded, setIsModelLoaded] = useState(false);
   const [showModel, setShowModel] = useState(false);
-  const [showNavigationCard, setShowNavigationCard] = useState(true);
+  const [showNavigationCard, setShowNavigationCard] = useState(false);
 
   useEffect(() => {
     if (
@@ -35,8 +46,10 @@ const ThreeContainer = () => {
               className="testDiv-btn"
               disabled={!isModelLoaded}
               onClick={() => {
+                console.log("Model loaded");
                 setShowModel(true);
-                setTimeout(() => setShowNavigationCard(false), 2000);
+                setShowNavigationCard(true);
+                setTimeout(() => setShowNavigationCard(false), 5000);
               }}
             >
               {isModelLoaded ? "Go To College" : "Loading Model..."}
@@ -44,6 +57,7 @@ const ThreeContainer = () => {
           </div>
         </div>
       )}
+      <InfoCard showNavigationCard={showNavigationCard} />
 
       <iframe
         className={`model-iframe-container ${!showModel && "hide"}`}

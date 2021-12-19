@@ -61,7 +61,27 @@
 }
 
 .model-iframe-container {
+  position: relative;
   // border: 2px solid red;
+}
+
+.info-card-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  max-width: 400px;
+  border: 2px solid red;
+
+  img {
+    width: 100%;
+  }
+}
+.fade-hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 1s linear;
 }
 
 .hide {
