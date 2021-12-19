@@ -244,27 +244,187 @@ export const EVENT_DATA = [
   },
 ];
 
-// CULTURAL
-// Aelan-e-Jung ->
-// Sargam
-// WOB
-// Abhinaya
-// Carnival
-// Open Mic
+// export const EVENT_DATA = [
+//   /////////////////////////////////////////// Tech
+//   // {
+//   //   name: "Code Wars",
+//   //   img: Codewars,
+//   //   path: "codewars",
+//   //   type: "Technical",
+//   // },
+//   {
+//     name: "Codatron++",
+//     img: CodatronPlusPlus,
+//     path: "codatronplusplus",
+//     type: "Technical",
+//     complete: false,
+//     detailImg: CodatronPlusPlus2,
+//   },
+//   // {
+//   //   name: "Codatron",
+//   //   img: Codatron,
+//   //   path: "codatron",
+//   //   type: "Technical",
+//   // },
+//   // {
+//   //   name: "Startathon",
+//   //   img: Startathon,
+//   //   path: "startathon",
+//   //   type: "Technical",
+//   // },
+//   {
+//     name: "Virtual Stock Market",
+//     img: VSM,
+//     path: "vsm",
+//     type: "Technical",
+//     complete: true,
+//     detailImg: VSM2,
+//   },
 
-// TECHNICAL
-// Oculus Coding League
-// Short Circuit / Hardware
-// VSM
+//   /////////////////////////////////////////// Fun
+//   {
+//     name: "IPL Auction",
+//     img: IPL,
+//     path: "ipl",
+//     type: "Fun",
+//     complete: false,
+//     detailImg: IPL2,
+//   },
+//   {
+//     name: "Model United Nations",
+//     img: MUN,
+//     path: "mun",
+//     type: "Fun",
+//     complete: true,
+//     detailImg: MUN2,
+//   },
+//   {
+//     name: "Paintball",
+//     img: Paintball,
+//     path: "paintball",
+//     type: "Fun",
+//     complete: false,
+//     detailImg: Paintball2,
+//   },
+//   {
+//     name: "Human Foosball",
+//     img: HumanFoosball,
+//     path: "foosball",
+//     type: "Fun",
+//     complete: false,
+//     detailImg: HumanFoosball2,
+//   },
+//   {
+//     name: "E-Sports",
+//     img: Esports,
+//     path: "e-sports",
+//     type: "Fun",
+//     complete: false,
+//     detailImg: Esports2,
+//   },
+//   {
+//     name: "Footpool",
+//     img: Footpool,
+//     path: "footpool",
+//     type: "Fun",
+//     complete: false,
+//     detailImg: Footpool2,
+//   },
 
-// FUN
-// IPL
-// E-sports
-// Paintball
-// Footpool
-// Human Foosball
+//   // {
+//   //   name: "Online Gaming",
+//   //   img: OnlineGaming,
+//   //   path: "onlinegaming",
+//   //   type: "Fun",
+//   // },
+//   // {
+//   //   name: "Virtual Treasure Hunt",
+//   //   img: VirtualTreasure,
+//   //   path: "virtualtreasure",
+//   //   type: "Fun",
+//   // },
 
-// PRE-EVENTS
-// SPIT Hackathon
-// Advert Einstein
-// Tech Race
+//   // Prevents
+//   {
+//     name: "Short Circuit",
+//     img: ShortCircuit,
+//     path: "shortcircuit",
+//     type: "Pre-events",
+//     complete: true,
+//     detailImg: ShortCircuit2,
+//   },
+//   {
+//     name: "Advert Einstein",
+//     img: AdvertEinsten,
+//     path: "advert",
+//     type: "Pre-events",
+//     complete: false,
+//     detailImg: AdvertEinsten2,
+//   },
+//   {
+//     name: "Tech Race",
+//     img: TechRace,
+//     path: "techrace",
+//     type: "Pre-events",
+//     complete: true,
+//     detailImg: TechRace2,
+//   },
+//   {
+//     name: "SPIT-Hackathon",
+//     img: Hackathon,
+//     path: "hackathon",
+//     type: "Pre-events",
+//     complete: false,
+//     detailImg: Hackathon2,
+//   },
+
+//   // Cultural
+//   {
+//     name: "Aelan-e-Jung",
+//     img: AEJ,
+//     path: "aej",
+//     type: "Cultural",
+//     complete: true,
+//     detailImg: AEJ2,
+//   },
+//   {
+//     name: "Sargam",
+//     img: Sargam,
+//     path: "sargam",
+//     type: "Cultural",
+//     complete: true,
+//     detailImg: Sargam2,
+//   },
+//   {
+//     name: "War Of Branches",
+//     img: WOB,
+//     path: "wob",
+//     type: "Cultural",
+//     complete: false,
+//     detailImg: WOB2,
+//   },
+//   {
+//     name: "Abhinaya",
+//     img: Abhinaya,
+//     path: "abhinaya",
+//     type: "Cultural",
+//     complete: false,
+//     detailImg: Abhinaya2,
+//   },
+//   {
+//     name: "Carnival",
+//     img: Carnival,
+//     path: "carnival",
+//     type: "Cultural",
+//     complete: false,
+//     detailImg: Carnival2,
+//   },
+//   {
+//     name: "Open Mic",
+//     img: OpenMic,
+//     path: "openmic",
+//     type: "Cultural",
+//     complete: false,
+//     detailImg: OpenMic2,
+//   },
+// ];
