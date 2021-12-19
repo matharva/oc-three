@@ -77,6 +77,7 @@ const SinglePlayer = ({
           teamName: "Single Player",
           inviteCode: refCode,
           paymentStatus: false,
+          maxMembers: 1,
         };
       } else {
         paymentBody = {
@@ -87,6 +88,7 @@ const SinglePlayer = ({
 
           teamName: "Single Player",
           paymentStatus: false,
+          maxMembers: 1,
         };
       }
       let paymentData = await eventService.postPayment(paymentBody);

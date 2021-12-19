@@ -63,6 +63,9 @@ const ShowPaymentDetails = ({
       return;
     }
     const amount = details.filter((i) => i.Type == paymentType)[0].Fee;
+    const maxMembers = details.filter((i) => i.Type == paymentType)[0]
+      .maxMembers;
+
     console.log("The result is:", amount, eventName);
     // const result = await loadScript(
     //   "https://checkout.razorpay.com/v1/checkout.js"
@@ -95,6 +98,7 @@ const ShowPaymentDetails = ({
           inviteCode: refCode,
           paymentStatus: false,
           amount: parseInt(amount),
+          maxMembers: maxMembers,
         };
       } else {
         paymentBody = {
@@ -105,6 +109,7 @@ const ShowPaymentDetails = ({
           teamName: teamName,
           paymentStatus: false,
           amount: parseInt(amount),
+          maxMembers: maxMembers,
         };
       }
       console.log("The payment is: ", paymentBody);

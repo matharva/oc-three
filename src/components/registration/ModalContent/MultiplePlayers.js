@@ -64,8 +64,7 @@ const MultiplePlayers = ({
             Create a team
           </Heading>
           <p style={{ color: "teal" }}>
-            Once you click on the button, you will be redirected to the
-            Razorpay!
+            Click on the button, to send notification to Event team
           </p>
           <Button
             size="lg"
