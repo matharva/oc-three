@@ -63,20 +63,23 @@ const ShowPaymentDetails = ({
       return;
     }
     const amount = details.filter((i) => i.Type == paymentType)[0].Fee;
+    const maxMembers = details.filter((i) => i.Type == paymentType)[0]
+      .maxMembers;
+
     console.log("The result is:", amount, eventName);
-    const result = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
-    );
-    if (!result) {
-      alert("Dard");
-      return;
-    }
+    // const result = await loadScript(
+    //   "https://checkout.razorpay.com/v1/checkout.js"
+    // );
+    // if (!result) {
+    //   alert("Dard");
+    //   return;
+    // }
     const data = {
       event: eventName,
       amount: parseInt(amount),
     };
 
-    console.log("The result is:", result, data, eventName);
+    console.log("The result is:", data, eventName);
 
     let updatedUser = await eventService.setUserPhoneNumber(
       phoneNumber,
@@ -84,61 +87,99 @@ const ShowPaymentDetails = ({
     );
     if (updatedUser.phoneNumber) {
       console.log("The data is: ", updatedUser);
-      const resData = await axios.post(
-        "https://us-central1-oculus2022-75997.cloudfunctions.net/payment",
-        data
-      );
-      handleClose();
-      console.log("The resData is: ", resData);
-      //
-      const options = {
-        key: resData?.data?.key, // Enter the Key ID generated from the Dashboard
-        amount: resData?.data?.order?.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        currency: "INR",
-        name: eventName,
-        description: `${eventName} Transaction`,
-        image: Oculus,
-        order_id: resData?.data?.order?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        handler: async function (response) {
-          let paymentBody;
-          if (refCode) {
-            paymentBody = {
-              paymentId: response.razorpay_payment_id,
-              eventName: eventName,
-              userId: currentUser.uid,
-              teamName: teamName,
-              inviteCode: refCode,
-            };
-          } else {
-            paymentBody = {
-              paymentId: response.razorpay_payment_id,
-              eventName: eventName,
-              userId: currentUser.uid,
-              teamName: teamName,
-            };
-          }
-          let paymentData = await eventService.postPayment(paymentBody);
-          console.log("The payment data is: ", paymentData);
-          if (paymentData.registrationDetails) {
-            setPaymentDone(true);
-            setIsPaymentSuccess(true);
-          }
-        },
-        prefill: {
-          name: currentUser.name,
-          contact: currentUser.phoneNumber,
+      let paymentBody;
+      if (refCode) {
+        paymentBody = {
+          // paymentId: response.razorpay_payment_id,
+          eventName: eventName,
+          // userId: currentUser.uid,
           email: currentUser.email,
-        },
-        notes: {
-          address: "Razorpay Corporate Office",
-        },
-        theme: {
-          color: "#3399cc",
-        },
-      };
-      console.log("The options are: ", options);
-      var rzp1 = new window.Razorpay(options);
-      rzp1.open();
+          teamName: teamName,
+          inviteCode: refCode,
+          paymentStatus: false,
+          amount: parseInt(amount),
+          maxMembers: maxMembers,
+        };
+      } else {
+        paymentBody = {
+          // paymentId: response.razorpay_payment_id,
+          eventName: eventName,
+          // userId: currentUser.uid,
+          email: currentUser.email,
+          teamName: teamName,
+          paymentStatus: false,
+          amount: parseInt(amount),
+          maxMembers: maxMembers,
+        };
+      }
+      console.log("The payment is: ", paymentBody);
+      let paymentData = await eventService.postPayment(paymentBody);
+      console.log("The payment data is: ", paymentData);
+
+      if (paymentData.registrationDetails) {
+        setPaymentDone(true);
+        setIsPaymentSuccess(true);
+      }
+
+      // const resData = await axios.post(
+      //   "https://us-central1-oculus2022-75997.cloudfunctions.net/payment",
+      //   data
+      // );
+      // handleClose();
+      // console.log("The resData is: ", resData);
+      // //
+      // const options = {
+      //   key: resData?.data?.key, // Enter the Key ID generated from the Dashboard
+      //   amount: resData?.data?.order?.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      //   currency: "INR",
+      //   name: eventName,
+      //   description: `${eventName} Transaction`,
+      //   image: Oculus,
+      //   order_id: resData?.data?.order?.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      //   handler: async function (response) {
+      //     let paymentBody;
+      //     if (refCode) {
+      //       paymentBody = {
+      //         paymentId: response.razorpay_payment_id,
+      //         eventName: eventName,
+      //         userId: currentUser.uid,
+      //         teamName: teamName,
+      //         inviteCode: refCode,
+      //         payment: false,
+      //         amount: parseInt(amount),
+      //       };
+      //     } else {
+      //       paymentBody = {
+      //         paymentId: response.razorpay_payment_id,
+      //         eventName: eventName,
+      //         userId: currentUser.uid,
+      //         teamName: teamName,
+      //         payment: false,
+      //         amount: parseInt(amount),
+      //       };
+      //     }
+      //     let paymentData = await eventService.postPayment(paymentBody);
+      //     console.log("The payment data is: ", paymentData);
+      //     if (paymentData.registrationDetails) {
+      //       setPaymentDone(true);
+      //       setIsPaymentSuccess(true);
+      //     }
+      //   },
+      //   prefill: {
+      //     name: currentUser.name,
+      //     contact: currentUser.phoneNumber,
+      //     email: currentUser.email,
+      //   },
+      //   notes: {
+      //     address: "Razorpay Corporate Office",
+      //   },
+      //   theme: {
+      //     color: "#3399cc",
+      //   },
+      // };
+      // console.log("The options are: ", options);
+      // var rzp1 = new window.Razorpay(options);
+      // rzp1.open();
     }
   }
 

@@ -115,7 +115,8 @@ async function addEvent() {
 
 async function postPayment(postData) {
   try {
-    let url = process.env.REACT_APP_OCULUS_API + "/registrationDetails/";
+    // let url = process.env.REACT_APP_OCULUS_API + "/registrationDetails/";
+    let url = process.env.REACT_APP_OCULUS_API + "/adminAddOfflineTeam/";
     console.log(url);
     // let url = "https://oculus-2022.herokuapp.com/registrationDetails/";
     let data = await axios.post(url, postData);
