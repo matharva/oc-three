@@ -49,7 +49,7 @@ const ThreeContainer = () => {
                 console.log("Model loaded");
                 setShowModel(true);
                 setShowNavigationCard(true);
-                setTimeout(() => setShowNavigationCard(false), 5000);
+                setTimeout(() => setShowNavigationCard(false), 3000);
               }}
             >
               {isModelLoaded ? "Go To College" : "Loading Model..."}
