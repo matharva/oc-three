@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import Pop from "../../assets/pop.jpg";
+import InfoDesktop from "../../assets/info_desktop.png";
+import InfoMobile from "../../assets/info_mobile.png";
 
 // Styles
 import "../../styles/ThreeContainer.scss";
 import { preload } from "./script";
 
 function InfoCard({ showNavigationCard }) {
+  const imgSource = window.innerHeight > 720 ? InfoDesktop : InfoMobile;
   return (
     <div
       className={`info-card-container ${!showNavigationCard && "fade-hidden"}`}
     >
-      <img src={Pop} alt="" />
+      <img src={imgSource} alt="" />
     </div>
   );
 }

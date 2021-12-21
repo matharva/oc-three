@@ -1,7 +1,6 @@
 // import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
 // const THREE = "https://cdnjs.cloudflare.com/ajax/libs/tharee.js/r128/three.min.js";
-const someFont = require("../../assets/fonts/Strengthen_Regular.json");
-
+const someFont = require("../../assets/fonts/LEMON MILK Bold_Regular.json");
 // http://gero3.github.io/facetype.js/
 // https://www.dafont.com/strengthen-2.font
 // https://panzoid.com/discussions/5802?g=posts&t=5802&find=unread&=
@@ -9,6 +8,8 @@ const someFont = require("../../assets/fonts/Strengthen_Regular.json");
 
 const THREE = window.THREE;
 console.log("Three: ", THREE);
+
+const MOBILE_CAMERA_POSITION = 150;
 
 export const preload = () => {
   let manager = new THREE.LoadingManager();
@@ -27,15 +28,17 @@ export const preload = () => {
   //     reject(err);
   //   }
   // });
+  // FontLoaderPromise.then((data) => {
+  //   typo = data;
+  // });
   const loader = new THREE.FontLoader(manager);
   const font = loader.load(
     "https://res.cloudinary.com/dydre7amr/raw/upload/v1612950355/font_zsd4dr.json",
-    // someFont,
+    // someFont
     function (font) {
       typo = font;
     }
   );
-  // FontLoaderPromise.then((data) => (typo = data));
 
   const particle = new THREE.TextureLoader(manager).load(
     "https://res.cloudinary.com/dfvtkoboz/image/upload/v1605013866/particle_a64uzf.png"
@@ -82,7 +85,7 @@ class Environment {
     );
     if (window.innerWidth > 720) {
       this.camera.position.set(0, 0, 100);
-    } else this.camera.position.set(0, 0, 175);
+    } else this.camera.position.set(0, 0, MOBILE_CAMERA_POSITION);
   }
 
   createRenderer() {
@@ -138,14 +141,29 @@ class CreateParticles {
       ease: 0.05,
     };
 
-    this.setup();
+    if (window.innerWidth > 720) this.setupDesktop();
+    else this.setupMobile();
     this.bindEvents();
   }
 
-  setup() {
+  setupDesktop() {
     const geometry = new THREE.PlaneGeometry(
       this.visibleWidthAtZDepth(100, this.camera),
       this.visibleHeightAtZDepth(100, this.camera)
+    );
+    const material = new THREE.MeshBasicMaterial({
+      color: 0x00ff00,
+      transparent: true,
+    });
+    this.planeArea = new THREE.Mesh(geometry, material);
+    this.planeArea.visible = false;
+    this.createText();
+  }
+
+  setupMobile() {
+    const geometry = new THREE.PlaneGeometry(
+      this.visibleWidthAtZDepth(MOBILE_CAMERA_POSITION, this.camera),
+      this.visibleHeightAtZDepth(MOBILE_CAMERA_POSITION, this.camera)
     );
     const material = new THREE.MeshBasicMaterial({
       color: 0x00ff00,
@@ -176,6 +194,7 @@ class CreateParticles {
   }
 
   onTouchStart(event) {
+    console.log("Touch Start: ", event);
     this.mouse.x =
       (event.changedTouches[0].clientX / window.innerWidth) * 2 - 1;
     this.mouse.y =
@@ -202,6 +221,7 @@ class CreateParticles {
   }
 
   onMouseDown(event) {
+    console.log("onMouseDown: ", event);
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     const vector = new THREE.Vector3(this.mouse.x, this.mouse.y, 0.5);
