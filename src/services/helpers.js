@@ -102,7 +102,7 @@ export const EVENT_DATA = [
     img: IPL,
     path: "ipl",
     type: "Fun",
-    complete: false,
+    complete: true,
     detailImg: IPL2,
   },
   {
@@ -134,7 +134,7 @@ export const EVENT_DATA = [
     img: Esports,
     path: "e-sports",
     type: "Fun",
-    complete: false,
+    complete: true,
     detailImg: Esports2,
   },
   {
@@ -173,7 +173,7 @@ export const EVENT_DATA = [
     img: AdvertEinsten,
     path: "advert",
     type: "Pre-events",
-    complete: false,
+    complete: true,
     detailImg: AdvertEinsten2,
   },
   {
@@ -223,7 +223,7 @@ export const EVENT_DATA = [
     img: Abhinaya,
     path: "abhinaya",
     type: "Cultural",
-    complete: false,
+    complete: true,
     detailImg: Abhinaya2,
   },
   {

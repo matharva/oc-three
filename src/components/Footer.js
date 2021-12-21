@@ -20,7 +20,7 @@ import {
   chakra,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
+import { FaTwitter, FaYoutube, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import { OC_BG_DARK } from "../services/helpers";
 
@@ -108,14 +108,23 @@ export default function Footer() {
           align={{ md: "center" }}
         >
           <Text>Oculus 2022 Social Links</Text>
-          <Stack direction={"row"} spacing={6}>
-            <SocialButton label={"Twitter"} href={"#"}>
+          <Stack direction={"row"} spacing={4}>
+            {/* <SocialButton label={"Twitter"} href={"#"}>
               <FaTwitter />
             </SocialButton>
             <SocialButton label={"YouTube"} href={"#"}>
-              <FaYoutube />
+              <FaYoutube /> 
+          </SocialButton>*/}
+            <SocialButton
+              label={"LinkedIn"}
+              href={"https://www.linkedin.com/company/oculusseesall/"}
+            >
+              <FaLinkedin />
             </SocialButton>
-            <SocialButton label={"Instagram"} href={"#"}>
+            <SocialButton
+              label={"Instagram"}
+              href={"https://www.instagram.com/o.c.u.l.u.s_s.p.i.t/"}
+            >
               <FaInstagram />
             </SocialButton>
           </Stack>
