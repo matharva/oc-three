@@ -59,7 +59,7 @@ const ThreeContainer = () => {
       )}
       <InfoCard showNavigationCard={showNavigationCard} />
 
-      <iframe
+      {/* <iframe
         className={`model-iframe-container ${!showModel && "hide"}`}
         src={"https://oculus2021-c12c7.web.app/"}
         // src="http://localhost:3005/"
@@ -68,7 +68,7 @@ const ThreeContainer = () => {
         zIndex={-1}
         title="model"
         id="i_frame"
-      ></iframe>
+      ></iframe> */}
     </>
   );
 };
