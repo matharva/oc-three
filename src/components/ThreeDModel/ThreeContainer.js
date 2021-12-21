@@ -7,7 +7,7 @@ import "../../styles/ThreeContainer.scss";
 import { preload } from "./script";
 
 function InfoCard({ showNavigationCard }) {
-  const imgSource = window.innerHeight > 720 ? InfoDesktop : InfoMobile;
+  const imgSource = window.innerWidth > 720 ? InfoDesktop : InfoMobile;
   return (
     <div
       className={`info-card-container ${!showNavigationCard && "fade-hidden"}`}
