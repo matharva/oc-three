@@ -1,7 +1,6 @@
 // import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
 // const THREE = "https://cdnjs.cloudflare.com/ajax/libs/tharee.js/r128/three.min.js";
-const someFont = require("../../assets/fonts/Strengthen_Regular.json");
-
+const someFont = require("../../assets/fonts/LEMON MILK Bold_Regular.json");
 // http://gero3.github.io/facetype.js/
 // https://www.dafont.com/strengthen-2.font
 // https://panzoid.com/discussions/5802?g=posts&t=5802&find=unread&=
@@ -17,25 +16,27 @@ export const preload = () => {
   };
 
   var typo = null;
-  // const FontLoaderPromise = new Promise((resolve, reject) => {
-  //   try {
-  //     const loader = new THREE.FontLoader(manager);
-  //     console.log("some font: ", someFont);
-  //     const font = loader.parse(someFont);
-  //     resolve(font);
-  //   } catch (err) {
-  //     reject(err);
-  //   }
-  // });
-  const loader = new THREE.FontLoader(manager);
-  const font = loader.load(
-    "https://res.cloudinary.com/dydre7amr/raw/upload/v1612950355/font_zsd4dr.json",
-    // someFont,
-    function (font) {
-      typo = font;
+  const FontLoaderPromise = new Promise((resolve, reject) => {
+    try {
+      const loader = new THREE.FontLoader(manager);
+      console.log("some font: ", someFont);
+      const font = loader.parse(someFont);
+      resolve(font);
+    } catch (err) {
+      reject(err);
     }
-  );
-  // FontLoaderPromise.then((data) => (typo = data));
+  });
+  // const loader = new THREE.FontLoader(manager);
+  // const font = loader.load(
+  //   "https://res.cloudinary.com/dydre7amr/raw/upload/v1612950355/font_zsd4dr.json",
+  //   // someFont
+  //   function (font) {
+  //     typo = font;
+  //   }
+  // );
+  FontLoaderPromise.then((data) => {
+    typo = data;
+  });
 
   const particle = new THREE.TextureLoader(manager).load(
     "https://res.cloudinary.com/dfvtkoboz/image/upload/v1605013866/particle_a64uzf.png"
