@@ -18,7 +18,7 @@ function renderImage(type) {
 }
 function renderMembers(mem) {
   if (mem == 1) return "Solo";
-  else return `Team (${mem})`;
+  else return `Team`;
 }
 
 const Description = ({ event }) => {
