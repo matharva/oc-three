@@ -154,7 +154,7 @@ const Sponsors = () => {
               borderBottom: "2px solid white",
             }}
           >
-            Our Sponsers
+            Our Sponsors
           </div>
           <div
             style={{

@@ -8,10 +8,11 @@
   height: 91.5vh;
 
   @media screen and (max-width: 720px) {
-    height: 95vh;
+    // height: 89vh;
+    height: calc(100vh - 80px);
   }
   position: relative;
-  // border: 1px solid orange;
+  border: 1px solid orange;
   padding: 0.5rem;
   // transform: translateX(-0.8%);
 

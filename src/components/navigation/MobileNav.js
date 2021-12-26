@@ -53,38 +53,38 @@ const SidebarContent = ({ onClose, ...rest }) => {
       icon: BiDonateHeart,
       fn: () => history.push("/donation-drive"),
     },
-    // {
-    //   name: "Market Place",
-    //   path: "marketplace",
-    //   icon: BsCart3,
-    //   fn: () => history.push("/marketplace"),
-    // },
-    // {
-    //   name: "Merchandise",
-    //   path: "merch",
-    //   icon: BsCart4,
-    //   fn: () => history.push("/merch"),
-    // },
-    // {
-    //   name: "Privacy Policy",
-    //   path: "privacy",
-    //   icon: FiCompass,
-    //   fn: () => history.push("/privacy"),
-    // },
-    // {
-    //   name: "Refund Policy",
-    //   path: "refund-policy",
-    //   icon: FiCompass,
-    //   fn: () => history.push("/refund-policy"),
-    // },
-    // {
-    //   name: "Terms and Condition",
-    //   path: "termsnconditions",
-    //   icon: FiCompass,
-    //   fn: () => history.push("/termsnconditions"),
-    // },
-    // { name: "Favourites", icon: FiStar },
-    // { name: "Settings", icon: FiSettings },
+    {
+      name: "Market Place",
+      path: "marketplace",
+      icon: BsCart3,
+      fn: () => history.push("/marketplace"),
+    },
+    {
+      name: "Merchandise",
+      path: "merch",
+      icon: BsCart4,
+      fn: () => history.push("/merch"),
+    },
+    {
+      name: "Privacy Policy",
+      path: "privacy",
+      icon: FiCompass,
+      fn: () => history.push("/privacy"),
+    },
+    {
+      name: "Refund Policy",
+      path: "refund-policy",
+      icon: FiCompass,
+      fn: () => history.push("/refund-policy"),
+    },
+    {
+      name: "Terms and Condition",
+      path: "termsnconditions",
+      icon: FiCompass,
+      fn: () => history.push("/termsnconditions"),
+    },
+    { name: "Favourites", icon: FiStar },
+    { name: "Settings", icon: FiSettings },
   ];
 
   return (
