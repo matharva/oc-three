@@ -20,7 +20,7 @@ import { EVENT_DATA, OC_GRADIENT } from "../services/helpers";
 import Footer from "../components/Footer";
 
 // Here viewTeam basically means has the user Registered for the event(does it have any document in RegisterTeam collection)
-
+const condition = true;
 const EventDetails = ({ event }) => {
   const { jello, currentUser, onOpen } = useAuth();
   console.log("Login: ", jello, currentUser);
@@ -40,8 +40,9 @@ const EventDetails = ({ event }) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
+    console.log("CUrrent event: ", currentEvent.name);
     let event = await eventService.getEvent(currentEvent.name);
-    console.log("Heyyyyy in useEffect first wala: ", viewTeam, userTeam);
+    console.log("Heyyyyy in useEffect first wala: ", viewTeam, userTeam, event);
     setViewTeam(false);
     setUserTeam(null);
     setPaymentDone(false);

@@ -28,6 +28,7 @@ function onlyNumbers(text) {
 }
 
 const Description = ({ event }) => {
+  // console.log("hshshsh: ", onlyNumbers(event.Prizes));
   return (
     <>
       {event.Description.length > 200 ? (
