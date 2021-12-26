@@ -104,7 +104,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        margin: 1rem;
+        margin: 1rem 0;
         .event-text {
           padding: 1rem 0;
           // font-size: 1.25rem;
@@ -276,7 +276,7 @@
           flex-direction: column;
           // align-items: center;
           justify-content: center;
-          margin-left: 2rem;
+          // margin-left: 2rem;
           position: relative;
 
           .event-title {

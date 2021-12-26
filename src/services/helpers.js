@@ -64,7 +64,8 @@ import VirtualTreasure from "../assets/VirtualTreasure.jpg";
 // Preevents
 import ShortCircuit from "../assets/shortcircuit_Home.jpg";
 import ShortCircuit2 from "../assets/shortcircuit_Detail.jpg";
-import Hackathon from "../assets/hackathon_Home.jpg";
+// import Hackathon from "../assets/hackathon_Home.jpg";
+import Hackathon from "../assets/hackathon2.png";
 import Hackathon2 from "../assets/hackathon_Detail.jpg";
 
 export const OC_GRADIENT =

@@ -13,7 +13,7 @@ import Prize from "../../assets/prize.jpeg";
 function renderImage(type) {
   if (type === "Technical") return tech;
   if (type === "Fun") return fun;
-  if (type === "Pre-events") return pre;
+  if (type === "Pre-Events") return pre;
   if (type === "Cultural") return cult;
 }
 function renderMembers(mem) {

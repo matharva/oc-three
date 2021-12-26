@@ -6,11 +6,12 @@ import InfoMobile from "../../assets/info_mobile.png";
 import "../../styles/ThreeContainer.scss";
 import { preload } from "./script";
 
-function InfoCard({ showNavigationCard }) {
+function InfoCard({ showNavigationCard, setShowNavigationCard }) {
   const imgSource = window.innerWidth > 720 ? InfoDesktop : InfoMobile;
   return (
     <div
       className={`info-card-container ${!showNavigationCard && "fade-hidden"}`}
+      onClick={() => setShowNavigationCard(false)}
     >
       <img src={imgSource} alt="" />
     </div>
@@ -51,7 +52,7 @@ const ThreeContainer = () => {
                 console.log("Model loaded");
                 setShowModel(true);
                 setShowNavigationCard(true);
-                setTimeout(() => setShowNavigationCard(false), 3000);
+                setTimeout(() => setShowNavigationCard(false), 8000);
               }}
             >
               {isModelLoaded ? "Go To College" : "Loading Model..."}
@@ -59,7 +60,10 @@ const ThreeContainer = () => {
           </div>
         </div>
       )}
-      <InfoCard showNavigationCard={showNavigationCard} />
+      <InfoCard
+        showNavigationCard={showNavigationCard}
+        setShowNavigationCard={setShowNavigationCard}
+      />
 
       <iframe
         className={`model-iframe-container ${!showModel && "hide"}`}

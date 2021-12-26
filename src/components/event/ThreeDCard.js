@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 // External Components
 import Tilt from "react-tilt";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
 // Styles
 import "../../styles/ThreeDCard.scss";
@@ -29,6 +30,10 @@ const ThreeDCard = ({ data }) => {
         }
       >
         {!data.complete && <div className="comingsoon">Coming Soon..</div>}
+
+        <div className="info-icon">
+          <AiOutlineInfoCircle />
+        </div>
 
         <div class="card-text card2">{data.name}</div>
       </div>

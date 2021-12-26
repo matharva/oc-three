@@ -194,7 +194,7 @@ class CreateParticles {
   }
 
   onTouchStart(event) {
-    console.log("Touch Start: ", event);
+    // console.log("Touch Start: ", event);
     this.mouse.x =
       (event.changedTouches[0].clientX / window.innerWidth) * 2 - 1;
     this.mouse.y =
@@ -221,7 +221,7 @@ class CreateParticles {
   }
 
   onMouseDown(event) {
-    console.log("onMouseDown: ", event);
+    // console.log("onMouseDown: ", event);
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     const vector = new THREE.Vector3(this.mouse.x, this.mouse.y, 0.5);
