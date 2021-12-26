@@ -22,14 +22,14 @@ const navbarItems = [
     name: "Donation Drive",
     path: "donation-drive",
   },
-  // {
-  //   name: "Market Place",
-  //   path: "marketplace",
-  // },
-  // {
-  //   name: "Merchandise",
-  //   path: "merch",
-  // },
+  {
+    name: "Market Place",
+    path: "marketplace",
+  },
+  {
+    name: "Merchandise",
+    path: "merch",
+  },
 ];
 
 const NavContent = () => {
@@ -49,11 +49,25 @@ const NavContent = () => {
         </Link>
 
         {/* Nav Links*/}
-        <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-          {navbarItems.map((item) => {
+        <HStack
+          as={"nav"}
+          spacing={4}
+          display={{ base: "none", md: "flex" }}
+          style={{ position: "relative" }}
+        >
+          {navbarItems.map((item, index) => {
             return (
               <Link to={`/${item.path}`} style={{ color: "white" }}>
-                <div className="nav-item">{item.name}</div>
+                <div
+                  className="nav-item glitch"
+                  data-glitch={`${item.name}`}
+                  style={{
+                    left: `${index * 100}px`,
+                    transform: " translateX(10px)",
+                  }}
+                >
+                  {item.name}
+                </div>
               </Link>
             );
           })}

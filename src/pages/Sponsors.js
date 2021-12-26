@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 // Components
 import MobileNav from "../components/navigation/MobileNav";
 import DesktopNav from "../components/navigation/DesktopNav";
+import { Container, Stack, SimpleGrid } from "@chakra-ui/react";
 
 // Styles
 import "../styles/Sponsor.scss";
@@ -25,8 +26,8 @@ const Sponsors = () => {
       <MobileNav />
       <DesktopNav />
       <div className="sponsor-main">
-        <div className="title">Our Sponsors</div>
-        {sponser && sponser[0] && (
+        {/* <div className="title">Our Sponsors</div> */}
+        {/* {sponser && sponser[0] && (
           <>
             <div className="sponsor-img-container">
               <a href={sponser[0].Url}>
@@ -35,9 +36,9 @@ const Sponsors = () => {
             </div>
             <h1>{sponser.Type}</h1>
           </>
-        )}
+        )} */}
         <div className="sponsor-grid">
-          {sponser &&
+          {/* {sponser &&
             sponser.map((item, i) => {
               return i ? (
                 <>
@@ -53,7 +54,7 @@ const Sponsors = () => {
               ) : (
                 <></>
               );
-            })}
+            })} */}
 
           {/* <div className="sponsor-item">
             <div className="sponsor-img-container">
@@ -135,6 +136,51 @@ const Sponsors = () => {
           </div> */}
         </div>
       </div>
+      <Container as={Stack} maxW={"6xl"} py={10}>
+        <SimpleGrid
+          columns={{ base: 1, sm: 2, md: 3 }}
+          spacing={8}
+          minHeight={window.innerWidth > 720 ? "100vh" : "70vh"}
+          position={"relative"}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: "10%",
+              left: "50%",
+              fontSize: window.innerWidth > 720 ? "3rem" : "1.5rem",
+              fontWeight: "bold",
+              transform: "translate(-60%,-50%)",
+              borderBottom: "2px solid white",
+            }}
+          >
+            Our Sponsers
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              fontSize: window.innerWidth > 720 ? "7rem" : "3rem",
+              fontWeight: "bold",
+              transform: "translate(-50%,-50%)",
+            }}
+          >
+            COMING SOON
+          </div>
+          {/* {product.map((item) => {
+            return (
+              <Product
+                item={item}
+                currentUser={currentUser}
+                onOpen={onOpen}
+                onLoginModalOpen={onLoginModalOpen}
+                setMerchSuccess={setMerchSuccess}
+              />
+            );
+          })} */}
+        </SimpleGrid>
+      </Container>
       <Footer />
     </div>
   );

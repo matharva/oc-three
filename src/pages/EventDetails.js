@@ -16,7 +16,7 @@ import { eventService } from "../services/eventService";
 import { Icon, Button } from "@chakra-ui/react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import EventContent from "../components/event/EventContent";
-import { EVENT_DATA } from "../services/helpers";
+import { EVENT_DATA, OC_GRADIENT } from "../services/helpers";
 import Footer from "../components/Footer";
 
 // Here viewTeam basically means has the user Registered for the event(does it have any document in RegisterTeam collection)
@@ -143,11 +143,19 @@ const EventDetails = ({ event }) => {
               <div className="back-container" onClick={() => history.goBack()}>
                 <Icon as={IoMdArrowRoundBack} w={6} h={6} />
               </div>
-              <div className="left-grid">
-                <div className="event-details-grid">
+
+              <div className="right-grid">
+                <div className="overlay">
                   <div className="event-title-container">
                     <div className="event-title">{eventData.Title}</div>
                   </div>
+                </div>
+                <div className="img-container">
+                  <img src={currentEvent.detailImg || eventData.BgImg} alt="" />
+                </div>
+              </div>
+              <div className="left-grid">
+                <div className="event-details-grid">
                   <EventContent eventData={eventData} />
 
                   <div className="event-register">
@@ -162,11 +170,16 @@ const EventDetails = ({ event }) => {
                     </div>
                     <div className="reg-btn-container">
                       <Button
-                        colorScheme={"teal"}
+                        // colorScheme={"teal"}
+                        colorScheme="brand"
+                        // background={OC_GRADIENT}
+                        // _hover={{
+                        //   background: OC_GRADIENT,
+                        // }}
                         size="lg"
                         variant={"solid"}
-                        disabled
-                        opacity={0.5}
+                        // disabled
+                        // opacity={0.5}
                         onClick={() => {
                           registerEvent();
                         }}
@@ -192,11 +205,6 @@ const EventDetails = ({ event }) => {
                   currentUser={currentUser}
                   setJoin={setJoin}
                 />
-              </div>
-              <div className="right-grid">
-                <div className="img-container">
-                  <img src={currentEvent.detailImg || eventData.BgImg} alt="" />
-                </div>
               </div>
             </div>
           </div>

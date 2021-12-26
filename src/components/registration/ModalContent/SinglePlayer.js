@@ -187,8 +187,8 @@ const SinglePlayer = ({
   return (
     <div className="modal-grid-one">
       <p>
-        Once you click on the button, you will be redirected to the Razorpay
-        dashboard!
+        Once you click on the button, you will get a confirmation from the event
+        team!
       </p>
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="single-pay-form-div">

@@ -9,7 +9,7 @@ const someFont = require("../../assets/fonts/LEMON MILK Bold_Regular.json");
 const THREE = window.THREE;
 console.log("Three: ", THREE);
 
-const MOBILE_CAMERA_POSITION = 150;
+const MOBILE_CAMERA_POSITION = 170;
 
 export const preload = () => {
   let manager = new THREE.LoadingManager();
@@ -444,7 +444,8 @@ class CreateParticles {
 
     const material = new THREE.ShaderMaterial({
       uniforms: {
-        color: { value: new THREE.Color(0xffffff) },
+        // Change color here
+        color: { value: new THREE.Color(0x89cff0) },
         pointTexture: { value: this.particleImg },
       },
       vertexShader: document.getElementById("vertexshader").textContent,

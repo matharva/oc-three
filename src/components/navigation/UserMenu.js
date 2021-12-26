@@ -114,6 +114,9 @@ const UserMenu = () => {
                   <Center>
                     <p style={{ fontWeight: "bold" }}>{currentUser?.name}</p>
                   </Center>
+                  <Center>
+                    <p style={{ fontWeight: "" }}>{currentUser?.email}</p>
+                  </Center>
 
                   <Center>
                     <p style={{ fontWeight: "bold", margin: "0.5rem 0" }}>
@@ -136,7 +139,7 @@ const UserMenu = () => {
                 </Box>
                 <MenuDivider />
                 {/* </MenuItem> */}
-                {menuItems.map((item) => {
+                {/* {menuItems.map((item) => {
                   return (
                     <MenuItem
                       _hover={{
@@ -148,17 +151,22 @@ const UserMenu = () => {
                       <Link to={item.path}>{item.title}</Link>
                     </MenuItem>
                   );
-                })}
-                <MenuItem
-                  _hover={{
-                    //
-                    // backgroundColor: "red",
-                    color: "black",
-                  }}
-                  onClick={() => onLoginModalOpen()}
-                >
-                  Logout
-                </MenuItem>
+                })} */}
+                <Center>
+                  <MenuItem
+                    _hover={{
+                      //
+                      color: "teal",
+                    }}
+                    style={{
+                      backgroundColor: "white",
+                      color: "black",
+                    }}
+                    onClick={() => onLoginModalOpen()}
+                  >
+                    Logout
+                  </MenuItem>
+                </Center>
               </>
             )}
           </MenuList>

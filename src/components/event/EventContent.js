@@ -5,21 +5,24 @@ import Description from "./Description";
 import FaqSection from "./FaqSection";
 import Rules from "./Rules";
 
-const mobile = {
-  height: "50vh",
-  overflow: "auto",
-};
+// Styles
+import "../../styles/Eventpage.scss";
 
 const EventContent = ({ eventData }) => {
   return (
-    <Container maxW="container.xl" maxH="100%">
+    <Container
+      maxW="container.md"
+      maxH="100%"
+      className="event-box"
+      minH={"50vh"}
+    >
       <Tabs isFitted variant="enclosed" colorScheme="green">
         <TabList>
           <Tab>Description</Tab>
           <Tab>Rules</Tab>
           <Tab>FAQ</Tab>
         </TabList>
-        <TabPanels height={"50vh"} overflow={{ base: "none", lg: "auto" }}>
+        <TabPanels>
           <TabPanel>
             <Description event={eventData} />
           </TabPanel>

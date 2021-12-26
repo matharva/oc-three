@@ -60,8 +60,38 @@ const Merchandise = () => {
         <MobileNav />
         <DesktopNav />
         <Container as={Stack} maxW={"6xl"} py={10}>
-          <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={8}>
-            {product.map((item) => {
+          <SimpleGrid
+            columns={{ base: 1, sm: 2, md: 3 }}
+            spacing={8}
+            minHeight={window.innerWidth > 720 ? "100vh" : "70vh"}
+            position={"relative"}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: "10%",
+                left: "50%",
+                fontSize: window.innerWidth > 720 ? "3rem" : "1.5rem",
+                fontWeight: "bold",
+                transform: "translate(-60%,-50%)",
+                borderBottom: "2px solid white",
+              }}
+            >
+              Merchandise
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                fontSize: window.innerWidth > 720 ? "7rem" : "3rem",
+                fontWeight: "bold",
+                transform: "translate(-50%,-50%)",
+              }}
+            >
+              COMING SOON
+            </div>
+            {/* {product.map((item) => {
               return (
                 <Product
                   item={item}
@@ -71,12 +101,12 @@ const Merchandise = () => {
                   setMerchSuccess={setMerchSuccess}
                 />
               );
-            })}
+            })} */}
           </SimpleGrid>
         </Container>
         <Footer />
       </div>
-      <Modal
+      {/* <Modal
         onClose={onClose}
         isOpen={isOpen}
         scrollBehavior="inside"
@@ -90,7 +120,7 @@ const Merchandise = () => {
             {merchSuccess ? PaymentSuccessful() : PaymentUnSuccessful()}
           </ModalBody>
         </ModalContent>
-      </Modal>
+      </Modal> */}
     </>
   );
 };

@@ -14,13 +14,13 @@ import DonationDrive from "./pages/DonationDrive";
 
 import { AuthProvider } from "./contexts/AppContext";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import Profile from "./pages/Profile.js";
 
-// import { extendTheme } from "@chakra-ui/react";
 import PrivacyPolicy from "./pages/PrivacyPolicy.js";
 import Terms from "./pages/Terms.js";
 import RefundPolicy from "./pages/RefundPolicy.js";
+
 // import "./styles.css";
 
 // const theme = extendTheme({
@@ -42,6 +42,17 @@ import LoginModal from "./components/registration/Login/LoginModal.js";
 import MarketPlace from "./pages/MarketPlace.js";
 import Merchandise from "./pages/Merchandise.js";
 import AboutUs from "./pages/AboutUs.js";
+import { OC_GRADIENT } from "./services/helpers.js";
+
+const theme = extendTheme({
+  colors: {
+    brand: {
+      50: "#44337A",
+      100: "#B794F4",
+      500: OC_GRADIENT, // you need this
+    },
+  },
+});
 const GlobalStyles = css`
   .js-focus-visible :focus:not([data-focus-visible-added]) {
     outline: none;
@@ -51,8 +62,8 @@ const GlobalStyles = css`
 
 export default function App() {
   return (
-    // <ChakraProvider theme={theme}>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
+      {/* <ChakraProvider> */}
       {/* <Global styles={GlobalStyles}> */}
       <AuthProvider>
         <Router>

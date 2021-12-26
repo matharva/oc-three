@@ -59,7 +59,7 @@ async function createUser(emailId, phoneNumber, name, uid) {
     college: "",
     email: emailId,
     name: name,
-    phoneNumber: phoneNumber,
+    phoneNumber: phoneNumber || "",
     uid: newUserRef.id,
     inviteCode: randomString.generate(7),
     invited: 0,

@@ -4,8 +4,22 @@ import CodatronPlusPlus from "../assets/codatron++Home.jpg";
 import CodatronPlusPlus2 from "../assets/codatron++Detail.jpg";
 import Codatron from "../assets/Codatron.jpg";
 import Startathon from "../assets/Startathon.jpg";
+
 import VSM from "../assets/VSM_Home.jpg";
 import VSM2 from "../assets/VSM_Detail.jpg";
+
+import techroyale from "../assets/wob.jpg";
+import techroyale2 from "../assets/wob.jpg";
+
+import lockknock from "../assets/wob.jpg";
+import lockknock2 from "../assets/wob.jpg";
+
+import stacksquad from "../assets/wob.jpg";
+import stacksquad2 from "../assets/wob.jpg";
+
+import febootcamp from "../assets/wob.jpg";
+import febootcamp2 from "../assets/wob.jpg";
+
 import MUN from "../assets/mun_Home.jpg";
 import MUN2 from "../assets/mun_Detail.jpg";
 import Esports from "../assets/esports_Home.jpg";
@@ -67,14 +81,14 @@ export const EVENT_DATA = [
   //   path: "codewars",
   //   type: "Technical",
   // },
-  {
-    name: "Codatron++",
-    img: CodatronPlusPlus,
-    path: "codatronplusplus",
-    type: "Technical",
-    complete: false,
-    detailImg: CodatronPlusPlus2,
-  },
+  // {
+  //   name: "Codatron++",
+  //   img: CodatronPlusPlus,
+  //   path: "codatronplusplus",
+  //   type: "Technical",
+  //   complete: false,
+  //   detailImg: CodatronPlusPlus2,
+  // },
   // {
   //   name: "Codatron",
   //   img: Codatron,
@@ -95,7 +109,38 @@ export const EVENT_DATA = [
     complete: true,
     detailImg: VSM2,
   },
-
+  {
+    name: "Tech Royale",
+    img: techroyale,
+    path: "techroyale",
+    type: "Technical",
+    complete: true,
+    detailImg: techroyale2,
+  },
+  {
+    name: "Lockout and Knockout",
+    img: lockknock,
+    path: "lockknock",
+    type: "Technical",
+    complete: true,
+    detailImg: lockknock2,
+  },
+  {
+    name: "Stacked Squad",
+    img: stacksquad,
+    path: "stacksquad",
+    type: "Technical",
+    complete: true,
+    detailImg: stacksquad2,
+  },
+  {
+    name: "FE Bootcamp",
+    img: febootcamp,
+    path: "febootcamp",
+    type: "Technical",
+    complete: true,
+    detailImg: febootcamp2,
+  },
   /////////////////////////////////////////// Fun
   {
     name: "IPL Auction",
@@ -161,7 +206,7 @@ export const EVENT_DATA = [
 
   // Prevents
   {
-    name: "Short Circuit",
+    name: "Short Circuit Designathon",
     img: ShortCircuit,
     path: "shortcircuit",
     type: "Pre-events",
@@ -215,7 +260,7 @@ export const EVENT_DATA = [
     img: WOB,
     path: "wob",
     type: "Cultural",
-    complete: false,
+    complete: true,
     detailImg: WOB2,
   },
   {
@@ -231,7 +276,7 @@ export const EVENT_DATA = [
     img: Carnival,
     path: "carnival",
     type: "Cultural",
-    complete: false,
+    complete: true,
     detailImg: Carnival2,
   },
   {
