@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
     onClose: onLoginModalClose,
   } = useDisclosure();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     const user = JSON.parse(localStorage.getItem("oculus-auth"));
     console.log("Current User", user);

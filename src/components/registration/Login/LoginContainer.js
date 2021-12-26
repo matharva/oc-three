@@ -22,7 +22,7 @@ import {
 
 const LoginContainer = () => {
   const history = useHistory();
-  const { currentUser, setCurrentUser, onClose } = useAuth();
+  const { currentUser, setCurrentUser, onLoginModalClose } = useAuth();
   const uiConfig = {
     signInFlow: "popup",
     signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
@@ -67,7 +67,7 @@ const LoginContainer = () => {
           inviteCode: user.inviteCode,
           invited: user.invited,
         });
-        onClose();
+        onLoginModalClose();
 
         // user idhar se ghusao
         // window.location.assign(url);
@@ -86,7 +86,7 @@ const LoginContainer = () => {
         // Sign-out successful.
         localStorage.setItem("oculus-auth", null);
         setCurrentUser(null);
-        onClose();
+        onLoginModalClose();
 
         console.log("The user is signed out");
         history.push("/");
