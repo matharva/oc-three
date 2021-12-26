@@ -15,6 +15,18 @@ import DesktopNav from "../components/navigation/DesktopNav";
 import MobileNav from "../components/navigation/MobileNav";
 import Footer from "../components/Footer";
 import CustomLoader from "../components/Customloader";
+import Loader3d from "../components/ThreeDModel/Loader3d";
+import EventCarousel from "../components/event/EventCarousel";
+
+const MainContainer = ({ children }) => {
+  return (
+    <>
+      <div className="main-container">
+        <div className="model-box">{children}</div>
+      </div>
+    </>
+  );
+};
 
 const Main = () => {
   const [loading, setLoading] = useState(true);
@@ -23,13 +35,63 @@ const Main = () => {
     <div className="main_wrapper">
       <DesktopNav />
       <MobileNav />
+
+      <MainContainer>
+        {/* <ThreeContainer loading={loading} setLoading={setLoading} /> */}
+        <Loader3d />
+      </MainContainer>
+
       <div className="main-container">
-        <div className="model-box">
-          {/* {loading && <CustomLoader />} */}
-          <ThreeContainer loading={loading} setLoading={setLoading} />
+        <div
+          className="model-box"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <EventCarousel />
         </div>
       </div>
-      {/* {window.innerWidth > 720 ? <Footer /> : <></>} */}
+
+      <div className="main-container">
+        <div
+          className="model-box"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          Our College
+        </div>
+      </div>
+      <div className="main-container">
+        <div
+          className="model-box"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          Sponsors
+        </div>
+      </div>
+      <div className="main-container">
+        <div
+          className="model-box"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          mnerch
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 };

@@ -19,7 +19,7 @@ const ThreeDCard = ({ data }) => {
       <div
         class="card rgb item"
         style={
-          data.complete
+          data?.complete
             ? {
                 background: `linear-gradient(
             rgba(0, 0, 0, 0.3),
@@ -29,13 +29,13 @@ const ThreeDCard = ({ data }) => {
             : { background: "black" }
         }
       >
-        {!data.complete && <div className="comingsoon">Coming Soon..</div>}
+        {!data?.complete && <div className="comingsoon">Coming Soon..</div>}
 
         <div className="info-icon">
           <AiOutlineInfoCircle />
         </div>
 
-        <div class="card-text card2">{data.name}</div>
+        <div class="card-text card2">{data?.name}</div>
       </div>
     </Tilt>
   );

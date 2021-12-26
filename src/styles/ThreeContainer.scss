@@ -1,6 +1,6 @@
 .model-box {
   height: 100%;
-  // border: 2px solid red;
+  border: 2px solid red;
   // background: var(--threeback);
   position: relative;
   margin: 0 auto;
@@ -19,7 +19,7 @@
     background-color: transparent;
     transform: translateX(-50%);
     border-radius: 40px;
-    border: 1px solid white;
+    // border: 1px solid white;
     padding: 1.5%;
 
     @media screen and (max-width: 720px) {
