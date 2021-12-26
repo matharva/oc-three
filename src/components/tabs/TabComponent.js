@@ -139,22 +139,14 @@ const TabComponent = ({ tabs, defaultIndex = 0 }) => {
                   //   " linear-gradient(to right, #E96343 2.2014%, #904F95 56.7093%, #2D4FA2 100%)",
                   borderRadius: "10px",
                   overflow: "hidden",
+                  cursor: "pointer",
                 }}
               >
                 <a onClick={() => onTabClick(index)}>
                   <div className="img-icon-container">
-                    {/* {tab.title} */}
                     <img src={tab.icon} alt="" />
-                    {/* <Canvas style={{ width: "30px", height: "30px" }}>
-                    <ambientLight intensity={0.5} />
-                    <Box />
-            
-                  </Canvas> */}
                   </div>
-                  <motion.span
-                    variants={tabTextVariantMobile}
-                    style={{ cursor: "pointer" }}
-                  >
+                  <motion.span variants={tabTextVariantMobile}>
                     <div className="tab-title">{tab.title}</div>
                   </motion.span>
                 </a>

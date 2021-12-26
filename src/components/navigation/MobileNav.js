@@ -83,8 +83,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
       icon: FiCompass,
       fn: () => history.push("/termsnconditions"),
     },
-    { name: "Favourites", icon: FiStar },
-    { name: "Settings", icon: FiSettings },
   ];
 
   return (
