@@ -21,7 +21,14 @@ function renderMembers(mem) {
   else return `Team`;
 }
 
+function onlyNumbers(text) {
+  let num = text.replace(/\D/g, "");
+  console.log(num, "dhdhdhd");
+  return parseInt(num);
+}
+
 const Description = ({ event }) => {
+  // console.log("hshshsh: ", onlyNumbers(event.Prizes));
   return (
     <>
       {event.Description.length > 200 ? (
@@ -46,7 +53,9 @@ const Description = ({ event }) => {
           <div className="event-img-container">
             <img src={Prize} alt="" />
           </div>
-          <div className="event-text">{event.Prizes}</div>
+          <div className="event-text">
+            {onlyNumbers(event.Prizes) ? event.Prizes : "Coming soon"}
+          </div>
         </div>
       </div>
     </>

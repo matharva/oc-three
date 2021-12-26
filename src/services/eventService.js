@@ -14,8 +14,9 @@ async function getEvent(name) {
   // Get event and
   let item = [];
   let querySnapShot = await eventRef.where("Title", "==", name).get();
+  console.log("Kaha agay tu bhai: ", name, querySnapShot);
   querySnapShot.forEach((doc) => {
-    // console.log('The user data is: ',doc.data())
+    console.log("The user data is: ", doc.data());
     item.push(doc.data());
   });
   return item[0];
