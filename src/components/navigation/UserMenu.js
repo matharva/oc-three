@@ -40,7 +40,7 @@ const UserMenu = () => {
   return (
     <>
       <Flex alignItems={"center"}>
-        <Menu>
+        <Menu autoSelect={false}>
           {/* Menu Icon */}
           <MenuButton
             as={Button}
@@ -57,6 +57,7 @@ const UserMenu = () => {
 
           {/* Menu Dropdown*/}
           <MenuList
+            padding={"0.5rem"}
             bg={""}
             style={{
               // border: "2px solid red",
@@ -139,29 +140,29 @@ const UserMenu = () => {
                 </Box>
                 <MenuDivider />
                 {/* </MenuItem> */}
-                {/* {menuItems.map((item) => {
+                {menuItems.map((item) => {
                   return (
                     <MenuItem
                       _hover={{
                         //
-                        // backgroundColor: "red",
+                        backgroundColor: "white",
                         color: "black",
                       }}
                     >
                       <Link to={item.path}>{item.title}</Link>
                     </MenuItem>
                   );
-                })} */}
+                })}
                 <Center>
                   <MenuItem
                     _hover={{
-                      //
-                      color: "teal",
-                    }}
-                    style={{
                       backgroundColor: "white",
                       color: "black",
                     }}
+                    // style={{
+                    //   backgroundColor: "white",
+                    //   color: "black",
+                    // }}
                     onClick={() => onLoginModalOpen()}
                   >
                     Logout

@@ -145,7 +145,7 @@ const LoginContainer = () => {
               Logout
             </Heading>
             <Text fontSize={"lg"} color={"gray.500"} textAlign={"center"}>
-              さようなら
+              プリタムプリタムプリタム
             </Text>
           </Stack>
         </>
