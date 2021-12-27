@@ -12,7 +12,7 @@ const AboutOc = () => {
         alignItems={"center"}
         justifyContent={"center"}
       >
-        <Flex boxSize="sm" w={"100%"} p={10}>
+        <Flex w={"100%"} p={10} id="blah">
           <Image
             src={Oc}
             alt="oc_mob"
