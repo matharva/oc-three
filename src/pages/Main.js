@@ -44,10 +44,10 @@ const Main = () => {
       <div className="scroll-container">
         <div className="main-container" style={{ height: "91.5vh" }}>
           <div className="model-box">
-            <Loader3d />
+            <ThreeContainer />
+            {/* <Loader3d /> */}
           </div>
         </div>
-        {/* <ThreeContainer loading={loading} setLoading={setLoading} /> */}
 
         <div className="main-container">
           <div className="model-box maintain-width">
