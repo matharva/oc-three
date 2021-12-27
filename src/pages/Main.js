@@ -23,6 +23,7 @@ import { Flex, Heading, Text } from "@chakra-ui/react";
 import MobileComp from "../components/MainPageComponents/MobileComp";
 import ProductThree from "../components/merch/ProductThree";
 import AboutOc from "../components/MainPageComponents/AboutOc";
+import ThemePage from "../components/MainPageComponents/ThemePage";
 
 const MainContainer = ({ children }) => {
   return (
@@ -56,6 +57,14 @@ const Main = () => {
             <AboutOc />
           </div>
         </div>
+        <div className="main-container">
+          <div className="model-box maintain-width">
+            {/* <Heading size={"2xl"} p={"2rem"}>
+              About Oculus
+            </Heading> */}
+            <ThemePage />
+          </div>
+        </div>
 
         <div className="main-container">
           <div
@@ -66,18 +75,32 @@ const Main = () => {
             //   justifyContent: "center",
             // }}
           >
-            <Heading size={"2xl"} p={"2rem"} textAlign={"center"}>
+            <Heading
+              size={"2xl"}
+              p={"2rem"}
+              textAlign={"center"}
+              fontFamily={"inherit"}
+              display={"inline-block"}
+            >
               Our Events
+              <div className="underline"></div>
             </Heading>
             {/* <div className="section-title">Our Events</div> */}
             <EventCarousel />
           </div>
         </div>
 
-        <div className="main-container ">
+        <div className="main-container " style={{ marginTop: "2.5rem" }}>
           <div className="model-box maintain-width">
-            <Heading size={["2xl"]} textAlign={"center"} padding={"1rem"}>
-              How to register for events
+            <Heading
+              size={["2xl"]}
+              textAlign={"center"}
+              p={"2rem"}
+              fontFamily={"inherit"}
+              display={"inline-block"}
+            >
+              Register for Events
+              <div className="underline"></div>
             </Heading>
             {/* <Text size={["sm"]} textAlign={"center"} padding={"1rem"}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -108,13 +131,18 @@ const Main = () => {
           >
             <Heading
               size={["2xl"]}
-              textAlign={"center"}
+              display={"inline-block"}
+              // textAlign={"center"}
               padding={"1rem"}
-              mb="2rem"
+              m="2rem 0"
+              fontFamily={"inherit"}
             >
-              Merch
+              <Text position={"relative"} zIndex={3}>
+                Merch
+              </Text>
+              <div className="underline"></div>
             </Heading>
-            <Flex direction={{ base: "column", md: "row" }}>
+            <Flex direction={{ base: "column", md: "row" }} mb={"2rem"}>
               <ProductThree />
               <ProductThree />
               <ProductThree />

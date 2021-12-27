@@ -19,14 +19,18 @@ const MobileComp = () => {
           />
         </Box>
       </Box>
-      <Box flex={{ xl: "0.5", base: "0.7" }} textAlign={"center"}>
+      <Box flex={{ xl: "0.5", base: "0.7" }}>
         <Heading
           size="2xl"
           p="1rem"
           pt={{ base: "0rem", xl: "4rem" }}
-          textAlign={"center"}
+          //   textAlign={"center"}
+          fontFamily={"inherit"}
+          display={"inline-block"}
+          pl={"2rem"}
         >
-          About our mobile app
+          Mobile App
+          <div className="underline"></div>
         </Heading>
         <Text pt={"2rem"} textAlign={"justify"} p="4">
           Download our Oculus App Head on to playstore and download our own

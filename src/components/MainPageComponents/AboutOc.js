@@ -1,31 +1,38 @@
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import React from "react";
 
-// Assets
-import Download from "../../assets/android-download.png";
-import Mob from "../../assets/test.png";
+//  Assets
+import Oc from "../../assets/Oculus.png";
 
 const AboutOc = () => {
   return (
     <Flex h={"100%"} direction={{ base: "column", xl: "row" }}>
-      <Box flex={{ xl: "0.5", base: "0.3" }}>
+      <Flex
+        flex={{ xl: "0.5", base: "0.3" }}
+        alignItems={"center"}
+        justifyContent={"center"}
+      >
         <Box boxSize="sm" height={"100%"} w={"100%"} p={10}>
           <Image
-            src={Mob}
+            src={Oc}
             alt="oc_mob"
             height="100%"
             objectFit={"cover"}
             margin={"0 auto"}
           />
         </Box>
-      </Box>
+      </Flex>
       <Box flex={{ xl: "0.5", base: "0.7" }}>
         <Heading
           size="2xl"
+          pl={"2rem"}
           pt={{ base: "0rem", xl: "4rem" }}
           textAlign={"center"}
+          //   margin={"0 auto"}
+          display={"inline-block"}
         >
           About Us
+          <div className="underline"></div>
         </Heading>
         <Text p="1rem" pt={"2rem"} textAlign={"justify"}>
           Sardar Patel Institute of Technology is back with its' 4th edition of

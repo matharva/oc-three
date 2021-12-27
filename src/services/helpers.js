@@ -210,7 +210,7 @@ export const EVENT_DATA = [
     name: "Short Circuit Designathon",
     img: ShortCircuit,
     path: "shortcircuit",
-    type: "Pre-events",
+    type: "Technical",
     complete: true,
     detailImg: ShortCircuit2,
   },

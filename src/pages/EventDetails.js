@@ -209,7 +209,7 @@ const EventDetails = ({ event }) => {
               </div>
             </div>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </>
       ) : (
         <div className="loader-div">

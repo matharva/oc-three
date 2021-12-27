@@ -6,6 +6,7 @@ const Ma = () => {
     <Box
       maxW="xs"
       mx="auto"
+      my="auto"
       bg={useColorModeValue("white", "gray.800")}
       shadow="lg"
       rounded="lg"
