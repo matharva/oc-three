@@ -33,8 +33,6 @@ const MainContainer = ({ children }) => {
 };
 
 const Main = () => {
-  const [loading, setLoading] = useState(true);
-
   return (
     <>
       <DesktopNav />
@@ -55,22 +53,9 @@ const Main = () => {
             //   justifyContent: "center",
             // }}
           >
-            <Text
-              as={"span"}
-              position={"relative"}
-              _after={{
-                content: "''",
-                width: "full",
-                height: "30%",
-                position: "absolute",
-                bottom: 1,
-                left: 0,
-                bg: "red.400",
-                zIndex: -1,
-              }}
-            >
+            <Heading size={"2xl"} p={"2rem"}>
               Our Events
-            </Text>
+            </Heading>
             {/* <div className="section-title">Our Events</div> */}
             <EventCarousel />
           </div>

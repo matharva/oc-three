@@ -7,13 +7,13 @@ import Mob from "../../assets/test.png";
 
 const MobileComp = () => {
   return (
-    <Flex direction={window.innerWidth > 720 ? "row" : "column"} h={"100%"}>
+    <Flex h={"100%"} direction={{ base: "column", xl: "row" }}>
       <Box flex={"0.5"}>
         <Box boxSize="sm" height={"100%"} w={"100%"}>
           <Image
             src={Mob}
-            alt="Dan Abramov"
-            height={"100%"}
+            alt="oc_mob"
+            height={{ xl: "100%", base: "50%" }}
             objectFit={"cover"}
             margin={"0 auto"}
           />

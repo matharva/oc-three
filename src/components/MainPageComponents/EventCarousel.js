@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 
 // Settings for the slider
 const settings = {
-  dots: true,
+  // dots: true,
   arrows: false,
   // fade: true,
   // infinite: true,
