@@ -69,7 +69,7 @@ const UserMenu = () => {
           >
             {!currentUser ? (
               <>
-                {menuItems.map((item) => {
+                {/* {menuItems.map((item) => {
                   return (
                     <Link to={item.path}>
                       <MenuItem
@@ -83,7 +83,7 @@ const UserMenu = () => {
                       </MenuItem>
                     </Link>
                   );
-                })}
+                })} */}
                 <MenuItem
                   onClick={() => onLoginModalOpen()}
                   _hover={{
@@ -140,7 +140,7 @@ const UserMenu = () => {
                 </Box>
                 <MenuDivider />
                 {/* </MenuItem> */}
-                {menuItems.map((item) => {
+                {/* {menuItems.map((item) => {
                   return (
                     <MenuItem
                       _hover={{
@@ -152,7 +152,7 @@ const UserMenu = () => {
                       <Link to={item.path}>{item.title}</Link>
                     </MenuItem>
                   );
-                })}
+                })} */}
                 <Center>
                   <MenuItem
                     _hover={{

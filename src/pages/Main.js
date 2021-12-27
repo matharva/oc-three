@@ -19,8 +19,10 @@ import Loader3d from "../components/ThreeDModel/Loader3d";
 import EventCarousel from "../components/MainPageComponents/EventCarousel";
 import Features from "../components/MainPageComponents/Features";
 import FeatureHeader from "../components/MainPageComponents/FeatureHeader";
-import { Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import MobileComp from "../components/MainPageComponents/MobileComp";
+import ProductThree from "../components/merch/ProductThree";
+import AboutOc from "../components/MainPageComponents/AboutOc";
 
 const MainContainer = ({ children }) => {
   return (
@@ -39,21 +41,32 @@ const Main = () => {
       <MobileNav />
 
       <div className="scroll-container">
-        <MainContainer>
-          {/* <ThreeContainer loading={loading} setLoading={setLoading} /> */}
-          <Loader3d />
-        </MainContainer>
+        <div className="main-container" style={{ height: "91.5vh" }}>
+          <div className="model-box">
+            <Loader3d />
+          </div>
+        </div>
+        {/* <ThreeContainer loading={loading} setLoading={setLoading} /> */}
 
-        <div className="main-container maintain-width ">
+        <div className="main-container">
+          <div className="model-box maintain-width">
+            {/* <Heading size={"2xl"} p={"2rem"}>
+              About Oculus
+            </Heading> */}
+            <AboutOc />
+          </div>
+        </div>
+
+        <div className="main-container">
           <div
-            className="model-box"
+            className="model-box maintain-width"
             // style={{
             //   display: "flex",
             //   alignItems: "center",
             //   justifyContent: "center",
             // }}
           >
-            <Heading size={"2xl"} p={"2rem"}>
+            <Heading size={"2xl"} p={"2rem"} textAlign={"center"}>
               Our Events
             </Heading>
             {/* <div className="section-title">Our Events</div> */}
@@ -66,34 +79,46 @@ const Main = () => {
             <Heading size={["2xl"]} textAlign={"center"} padding={"1rem"}>
               How to register for events
             </Heading>
-            <Text size={["sm"]} textAlign={"center"} padding={"1rem"}>
+            {/* <Text size={["sm"]} textAlign={"center"} padding={"1rem"}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Perspiciatis sed cum quasi, voluptatem consequuntur alias? Nobis
               rem, veritatis, nam aspernatur fugit deleniti, dolorem molestiae
               fuga dolor voluptatum saepe! Similique, natus dicta dignissimos
               suscipit fugit sed excepturi ipsam amet doloribus non quos ab
               accusamus accusantium enim veniam earum esse expedita officiis?
-            </Text>
+            </Text> */}
             {/* <div className="section-title">How to register for events</div> */}
             {/* <FeatureHeader /> */}
             <Features />
           </div>
         </div>
         <div className="main-container ">
-          <div className="model-box">
+          <div className="model-box maintain-width">
             <MobileComp />
           </div>
         </div>
         <div className="main-container ">
           <div
-            className="model-box"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
+            className="model-box maintain-width"
+            // style={{
+            //   display: "flex",
+            //   alignItems: "center",
+            //   justifyContent: "center",
+            // }}
           >
-            mnerch
+            <Heading
+              size={["2xl"]}
+              textAlign={"center"}
+              padding={"1rem"}
+              mb="2rem"
+            >
+              Merch
+            </Heading>
+            <Flex direction={{ base: "column", md: "row" }}>
+              <ProductThree />
+              <ProductThree />
+              <ProductThree />
+            </Flex>
           </div>
         </div>
       </div>

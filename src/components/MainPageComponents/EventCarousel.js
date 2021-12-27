@@ -43,6 +43,7 @@ export default function CaptionCarousel() {
       // height={"600px"}
       width={"full"}
       overflow={"hidden"}
+      pb={"4rem"}
     >
       <link
         rel="stylesheet"

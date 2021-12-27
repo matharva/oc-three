@@ -2,23 +2,23 @@
 //   overflow: hidden;
 // }
 
-.scroll-container {
-  scroll-snap-type: mandatory; /* for older browsers */
-  scroll-snap-points-y: repeat(100vh); /* for older browsers */
-  scroll-snap-type: y mandatory;
-  // height: 100vh;
-  height: calc(100vh - 80px);
+// .scroll-container {
+//   scroll-snap-type: mandatory; /* for older browsers */
+//   scroll-snap-points-y: repeat(100vh); /* for older browsers */
+//   scroll-snap-type: y mandatory;
+//   // height: 100vh;
+//   height: calc(100vh - 80px);
 
-  overflow: auto;
-}
+//   overflow: auto;
+// }
 
 .main-container {
   scroll-snap-align: start;
   width: 100vw;
-  height: 91.5vh;
-  border: 2px solid orange;
 
-  min-height: calc(100vh - 80px);
+  // border: 2px solid orange;
+
+  // min-height: calc(100vh - 80px);
   @media screen and (max-width: 720px) {
   }
   position: relative;
