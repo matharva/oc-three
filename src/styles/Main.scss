@@ -1,21 +1,28 @@
-.main_wrapper {
-  overflow: hidden;
+// .main_wrapper {
+//   overflow: hidden;
+// }
+
+.scroll-container {
+  scroll-snap-type: mandatory; /* for older browsers */
+  scroll-snap-points-y: repeat(100vh); /* for older browsers */
+  scroll-snap-type: y mandatory;
+  // height: 100vh;
+  height: calc(100vh - 80px);
+
+  overflow: auto;
 }
 
 .main-container {
+  scroll-snap-align: start;
   width: 100vw;
-  overflow: hidden;
   height: 91.5vh;
+  border: 2px solid orange;
 
+  min-height: calc(100vh - 80px);
   @media screen and (max-width: 720px) {
-    // height: 89vh;
-    height: calc(100vh - 80px);
   }
   position: relative;
-  // border: 1px solid orange;
-  // padding: 0.5rem;
   padding: 2rem;
-  // transform: translateX(-0.8%);
 
   // cross browser
   -webkit-touch-callout: none;
@@ -29,41 +36,15 @@
     padding: 0.5rem;
     // padding-bottom: 5rem;
   }
+}
 
-  .menu-container {
-    position: absolute;
-    top: 50%;
-    left: 2px;
-    cursor: pointer;
+.maintain-width {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-    @media screen and (max-width: 720px) {
-      position: relative;
-      top: 0px;
-      // left: 20px;
-      display: flex;
-      margin: 0 1rem;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-img-container {
-      margin: 0.5rem 0;
-      width: 200px;
-      display: none;
-      @media screen and (max-width: 720px) {
-        display: block;
-      }
-      img {
-        width: 100%;
-      }
-    }
-    .account-icon {
-      display: none;
-      @media screen and (max-width: 720px) {
-        display: block;
-      }
-    }
-  }
+.full-height {
+  height: 100vh;
 }
 
 .marker {
@@ -73,4 +54,14 @@
   width: 200px;
   top: 0;
   border-radius: 50%;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+
+  @media screen and (max-width: 720px) {
+    font-size: 2rem;
+  }
 }

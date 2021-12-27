@@ -12,7 +12,9 @@ import {
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
-import ThreeDCard from "./ThreeDCard";
+import ThreeDCard from "../event/ThreeDCard";
+import { EVENT_DATA } from "../../services/helpers";
+import { Link } from "react-router-dom";
 
 // Settings for the slider
 const settings = {
@@ -20,48 +22,20 @@ const settings = {
   arrows: false,
   // fade: true,
   // infinite: true,
-  // autoplay: true,
+  autoplay: true,
   speed: 500,
-  autoplaySpeed: 5000,
+  autoplaySpeed: 3000,
   slidesToShow: window.innerWidth > 720 ? 3 : 1,
   slidesToScroll: 1,
 };
 
 export default function CaptionCarousel() {
-  // As we have used custom buttons, we need a reference variable to
-  // change the state
-  // const [slider, setSlider] = (React.useState < Slider) | (null > null);
   const [slider, setSlider] = useState(null);
 
   // These are the breakpoints which changes the position of the
   // buttons as the screen size changes
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
-
-  // This list contains all the data for carousels
-  // This can be static or loaded from a server
-  const cards = [
-    {
-      complete: true,
-      name: "IPL",
-    },
-    {
-      complete: true,
-      name: "IfdafdsfasPL",
-    },
-    {
-      complete: true,
-      name: "IPfadsfdaL",
-    },
-    {
-      complete: true,
-      name: "IPLffffff",
-    },
-    {
-      complete: true,
-      name: "IPL",
-    },
-  ];
 
   return (
     <Box
@@ -70,13 +44,6 @@ export default function CaptionCarousel() {
       width={"full"}
       overflow={"hidden"}
     >
-      {/* <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      > */}
       <link
         rel="stylesheet"
         type="text/css"
@@ -115,11 +82,13 @@ export default function CaptionCarousel() {
       </IconButton>
 
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        <ThreeDCard data={cards[0]} />
-        <ThreeDCard data={cards[0]} />
-        <ThreeDCard data={cards[0]} />
-        <ThreeDCard data={cards[0]} />
-        <ThreeDCard data={cards[0]} />
+        {EVENT_DATA.map((card) => {
+          return (
+            <Link to={`/events/${card.path}`}>
+              <ThreeDCard data={card} />
+            </Link>
+          );
+        })}
       </Slider>
       {/* </div> */}
     </Box>
