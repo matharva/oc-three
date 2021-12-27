@@ -19,6 +19,7 @@ const ThemePage = () => {
       </Box>
       <Box flex={{ xl: "0.5", base: "0.7" }} order={{ base: 2, md: 1 }}>
         <Heading
+          fontFamily={"inherit"}
           size="2xl"
           pt={{ base: "0rem", xl: "4rem" }}
           textAlign={"center"}

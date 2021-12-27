@@ -12,15 +12,15 @@ const AboutOc = () => {
         alignItems={"center"}
         justifyContent={"center"}
       >
-        <Box boxSize="sm" height={"100%"} w={"100%"} p={10}>
+        <Flex boxSize="sm" w={"100%"} p={10}>
           <Image
             src={Oc}
             alt="oc_mob"
-            height="100%"
-            objectFit={"cover"}
+            objectFit={"contain"}
             margin={"0 auto"}
+            w={"100%"}
           />
-        </Box>
+        </Flex>
       </Flex>
       <Box flex={{ xl: "0.5", base: "0.7" }}>
         <Heading
@@ -29,6 +29,7 @@ const AboutOc = () => {
           pt={{ base: "0rem", xl: "4rem" }}
           textAlign={"center"}
           //   margin={"0 auto"}
+          fontFamily={"inherit"}
           display={"inline-block"}
         >
           About Us
